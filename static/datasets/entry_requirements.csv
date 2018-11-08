@@ -1,0 +1,241 @@
+dress_code,price,age,requirements_id
+Smart Casual,20$,18,0
+Trendy Casual,25$,19,1
+Black & White,30$,20,2
+Clubwear,35$,21,3
+Casual,40$,22,4
+Smart Casual,45$,23,5
+Trendy Casual,50$,24,6
+Black & White,55$,25,7
+Clubwear,60$,26,8
+Casual,65$,27,9
+Smart Casual,70$,28,10
+Trendy Casual,75$,29,11
+Black & White,80$,18,12
+Clubwear,85$,19,13
+Casual,90$,20,14
+Smart Casual,95$,21,15
+Trendy Casual,20$,22,16
+Black & White,25$,23,17
+Clubwear,30$,24,18
+Casual,35$,25,19
+Smart Casual,40$,26,20
+Trendy Casual,45$,27,21
+Black & White,50$,28,22
+Clubwear,55$,29,23
+Casual,60$,18,24
+Smart Casual,65$,19,25
+Trendy Casual,70$,20,26
+Black & White,75$,21,27
+Clubwear,80$,22,28
+Casual,85$,23,29
+Smart Casual,90$,24,30
+Trendy Casual,95$,25,31
+Black & White,20$,26,32
+Clubwear,25$,27,33
+Casual,30$,28,34
+Smart Casual,35$,29,35
+Trendy Casual,40$,18,36
+Black & White,45$,19,37
+Clubwear,50$,20,38
+Casual,55$,21,39
+Smart Casual,60$,22,40
+Trendy Casual,65$,23,41
+Black & White,70$,24,42
+Clubwear,75$,25,43
+Casual,80$,26,44
+Smart Casual,85$,27,45
+Trendy Casual,90$,28,46
+Black & White,95$,29,47
+Clubwear,20$,18,48
+Casual,25$,19,49
+Smart Casual,30$,20,50
+Trendy Casual,35$,21,51
+Black & White,40$,22,52
+Clubwear,45$,23,53
+Casual,50$,24,54
+Smart Casual,55$,25,55
+Trendy Casual,60$,26,56
+Black & White,65$,27,57
+Clubwear,70$,28,58
+Casual,75$,29,59
+Smart Casual,80$,18,60
+Trendy Casual,85$,19,61
+Black & White,90$,20,62
+Clubwear,95$,21,63
+Casual,20$,22,64
+Smart Casual,25$,23,65
+Trendy Casual,30$,24,66
+Black & White,35$,25,67
+Clubwear,40$,26,68
+Casual,45$,27,69
+Smart Casual,50$,28,70
+Trendy Casual,55$,29,71
+Black & White,60$,18,72
+Clubwear,65$,19,73
+Casual,70$,20,74
+Smart Casual,75$,21,75
+Trendy Casual,80$,22,76
+Black & White,85$,23,77
+Clubwear,90$,24,78
+Casual,95$,25,79
+Smart Casual,20$,26,80
+Trendy Casual,25$,27,81
+Black & White,30$,28,82
+Clubwear,35$,29,83
+Casual,40$,18,84
+Smart Casual,45$,19,85
+Trendy Casual,50$,20,86
+Black & White,55$,21,87
+Clubwear,60$,22,88
+Casual,65$,23,89
+Smart Casual,70$,24,90
+Trendy Casual,75$,25,91
+Black & White,80$,26,92
+Clubwear,85$,27,93
+Casual,90$,28,94
+Smart Casual,95$,29,95
+Trendy Casual,20$,18,96
+Black & White,25$,19,97
+Clubwear,30$,20,98
+Casual,35$,21,99
+Smart Casual,40$,22,100
+Trendy Casual,45$,23,101
+Black & White,50$,24,102
+Clubwear,55$,25,103
+Casual,60$,26,104
+Smart Casual,65$,27,105
+Trendy Casual,70$,28,106
+Black & White,75$,29,107
+Clubwear,80$,18,108
+Casual,85$,19,109
+Smart Casual,90$,20,110
+Trendy Casual,95$,21,111
+Black & White,20$,22,112
+Clubwear,25$,23,113
+Casual,30$,24,114
+Smart Casual,35$,25,115
+Trendy Casual,40$,26,116
+Black & White,45$,27,117
+Clubwear,50$,28,118
+Casual,55$,29,119
+Smart Casual,60$,18,120
+Trendy Casual,65$,19,121
+Black & White,70$,20,122
+Clubwear,75$,21,123
+Casual,80$,22,124
+Smart Casual,85$,23,125
+Trendy Casual,90$,24,126
+Black & White,95$,25,127
+Clubwear,20$,26,128
+Casual,25$,27,129
+Smart Casual,30$,28,130
+Trendy Casual,35$,29,131
+Black & White,40$,18,132
+Clubwear,45$,19,133
+Casual,50$,20,134
+Smart Casual,55$,21,135
+Trendy Casual,60$,22,136
+Black & White,65$,23,137
+Clubwear,70$,24,138
+Casual,75$,25,139
+Smart Casual,80$,26,140
+Trendy Casual,85$,27,141
+Black & White,90$,28,142
+Clubwear,95$,29,143
+Casual,20$,18,144
+Smart Casual,25$,19,145
+Trendy Casual,30$,20,146
+Black & White,35$,21,147
+Clubwear,40$,22,148
+Casual,45$,23,149
+Smart Casual,50$,24,150
+Trendy Casual,55$,25,151
+Black & White,60$,26,152
+Clubwear,65$,27,153
+Casual,70$,28,154
+Smart Casual,75$,29,155
+Trendy Casual,80$,18,156
+Black & White,85$,19,157
+Clubwear,90$,20,158
+Casual,95$,21,159
+Smart Casual,20$,22,160
+Trendy Casual,25$,23,161
+Black & White,30$,24,162
+Clubwear,35$,25,163
+Casual,40$,26,164
+Smart Casual,45$,27,165
+Trendy Casual,50$,28,166
+Black & White,55$,29,167
+Clubwear,60$,18,168
+Casual,65$,19,169
+Smart Casual,70$,20,170
+Trendy Casual,75$,21,171
+Black & White,80$,22,172
+Clubwear,85$,23,173
+Casual,90$,24,174
+Smart Casual,95$,25,175
+Trendy Casual,20$,26,176
+Black & White,25$,27,177
+Clubwear,30$,28,178
+Casual,35$,29,179
+Smart Casual,40$,18,180
+Trendy Casual,45$,19,181
+Black & White,50$,20,182
+Clubwear,55$,21,183
+Casual,60$,22,184
+Smart Casual,65$,23,185
+Trendy Casual,70$,24,186
+Black & White,75$,25,187
+Clubwear,80$,26,188
+Casual,85$,27,189
+Smart Casual,90$,28,190
+Trendy Casual,95$,29,191
+Black & White,20$,18,192
+Clubwear,25$,19,193
+Casual,30$,20,194
+Smart Casual,35$,21,195
+Trendy Casual,40$,22,196
+Black & White,45$,23,197
+Clubwear,50$,24,198
+Casual,55$,25,199
+Smart Casual,60$,26,200
+Trendy Casual,65$,27,201
+Black & White,70$,28,202
+Clubwear,75$,29,203
+Casual,80$,18,204
+Smart Casual,85$,19,205
+Trendy Casual,90$,20,206
+Black & White,95$,21,207
+Clubwear,20$,22,208
+Casual,25$,23,209
+Smart Casual,30$,24,210
+Trendy Casual,35$,25,211
+Black & White,40$,26,212
+Clubwear,45$,27,213
+Casual,50$,28,214
+Smart Casual,55$,29,215
+Trendy Casual,60$,18,216
+Black & White,65$,19,217
+Clubwear,70$,20,218
+Casual,75$,21,219
+Smart Casual,80$,22,220
+Trendy Casual,85$,23,221
+Black & White,90$,24,222
+Clubwear,95$,25,223
+Casual,20$,26,224
+Smart Casual,25$,27,225
+Trendy Casual,30$,28,226
+Black & White,35$,29,227
+Clubwear,40$,18,228
+Casual,45$,19,229
+Smart Casual,50$,20,230
+Trendy Casual,55$,21,231
+Black & White,60$,22,232
+Clubwear,65$,23,233
+Casual,70$,24,234
+Smart Casual,75$,25,235
+Trendy Casual,80$,26,236
+Black & White,85$,27,237
+Clubwear,90$,28,238
+Casual,95$,29,239

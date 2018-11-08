@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{%block content%}
+<h1>Advanced Search</h1>
+{% from "includes/_formhelper.html" import render_field %}
+<form method="post" action="">
+    <div class="from-group">
+        {{render_field(form.artist,class_="form-control")}}
+    </div>
+    <div class="from-group">
+        {{render_field(form.city,class_="form-control")}}
+    </div>
+    <div class="from-group">
+        {{render_field(form.country,class_="form-control")}}
+    </div>
+    <div class="from-group">
+        {{render_field(form.date,class_="form-control")}}
+    </div>
+    <div class="from-group">
+        {{render_field(form.genre,class_="form-control")}}
+    </div>
+    <div class="from-group">
+        {{render_field(form.age,class_="form-control")}}
+    </div>
+    <div class="from-group">
+        {{render_field(form.min_price,class_="form-control")}}
+    </div>
+    <div class="from-group">
+        {{render_field(form.max_price,class_="form-control")}}
+    </div>
+    <p><input class="btn btn-primary" type="submit" value="Search"></p>
+</form>
+{% endblock%}

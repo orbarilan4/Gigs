@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+    {%block content%}
+    <table border="1" cellpadding="5" cellspacing="5">
+        {% for row in records %}
+        <tr>
+            {% for d in row %}
+            <td>{{ d }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    {% endblock%}
