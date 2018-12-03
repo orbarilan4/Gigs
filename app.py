@@ -6,7 +6,7 @@ import db_connection
 mysql = MySQL()
 
 # db_connection.mysql_db_connection()
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 app.config['MYSQL_DATABASE_HOST']='85.10.205.173'
 app.config['MYSQL_DATABASE_USER']='orbarilan100'
 app.config['MYSQL_DATABASE_PASSWORD']='R3hab123'
@@ -15,9 +15,9 @@ mysql.init_app(app)
 
 
 @app.route("/")
-@app.route("/home")
+@app.route("/index")
 def home():
-    return render_template('home.html')
+    return render_template('index.html')
 
 
 @app.route("/data")
@@ -70,6 +70,7 @@ def advanced_search():
 @app.route("/about")
 def about():
     return render_template('about.html')
+
 
 if __name__ == "__main__":
     app.run()
