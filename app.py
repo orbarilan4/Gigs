@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for, request ,redirect
 from flaskext.mysql import MySQL
 from wtforms import Form, StringField
+import json
 import db_connection
 
 mysql = MySQL()
@@ -19,13 +20,25 @@ mysql.init_app(app)
 def home():
     return render_template('index.html')
 
+@app.route("/location")
+def location():
+    filter = request.args.get('term', '', type=str)
+    cur = mysql.get_db().cursor()
+    cur.execute("SELECT city_id,city_name FROM city WHERE city_name like '%s' limit 5" % ('%' + filter + '%'))
+    rows = cur.fetchall()
+    print(str(rows))
+    rowarray_list = {}
+    for row in rows:
+        rowarray_list[row[0]] = row[1]
+    return json.dumps([{'id': str(k), 'label': v, 'value': v} for k,v in rowarray_list.items()], indent=4)
+
 
 @app.route("/data")
 def data():
     cur = mysql.get_db().cursor()
     cur.execute("SELECT city_id,city_name FROM city WHERE city_name ='TEL AVIV'")
     # cur.execute("SELECT city_id,city_name FROM city WHERE city_name ='TEL AVIV'")
-    print(str(cur.fetchall()))
+    rows = cur.fetchall()
     return render_template('data.html')
 
 

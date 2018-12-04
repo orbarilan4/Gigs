@@ -398,5 +398,12 @@ $(document).ready(function()
 				}
 			});	
 		}
+
+		$( function() {
+    $( ".destination" ).autocomplete({
+      source: "location",
+      minLength: 1
+    });
+  } );
 	}
 });
