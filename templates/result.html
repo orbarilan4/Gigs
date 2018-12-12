@@ -1,13 +1,41 @@
 {% extends "layout.html" %}
-
-    {%block content%}
-    <table border="1" cellpadding="5" cellspacing="5">
-        {% for row in records %}
-        <tr>
-            {% for d in row %}
-            <td>{{ d }}</td>
-            {% endfor %}
-        </tr>
+{%block content%}
+<h1 align="center">Gigs For You</h1>
+<form method="post" action="/buy_tickets">
+<table class="table table-dark" border="1" cellpadding="5" cellspacing="5">
+    <tbody>
+    <tr>
+        <th><font color="red">Artist</font></th>
+        <th><font color="red">Date</font></th>
+        <th><font color="red">City</font></th>
+        <th><font color="red">Country</font></th>
+        <th><font color="red">Genre</font></th>
+        {% if orders %}
+        <th><font color="red">Age Limit</font></th>
+        <th><font color="red">Price ($)</font></th>
+        <th><font color="red">Capacity</font></th>
+        {% if session['logged_in'] %}
+        <th><font color="red">Order</font></th>
+        {% endif %}
+        {% endif %}
+    </tr>
+    {% for row in records %}
+    {% set rowloop = loop %}
+    <tr>
+        {% for d in row %}
+        <td>{{ d }}</td>
         {% endfor %}
-    </table>
-    {% endblock%}
+        {% if orders and session['logged_in'] %}
+        <td><input type="checkbox" name="checks" value="{{row}}"></input> </td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    {% if orders and session['logged_in'] %}
+    <div align="center">
+        <button class="btn btn-primary btn-block btn-lg" id="button1" onclick="location.href='/buy_tickets';"><font color="white">Buy Now</font></button>
+    </div>
+    {% endif %}
+</form>
+{% endblock%}
