@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{%block content%}
+<h1>Advanced Search</h1>
+{% from "includes/_formhelper.html" import render_field %}
+<form method="post" action="">
+    <div class="from-group row">
+        <div class="col-md-5">
+        {{render_field(form.artist,class_="form-control")}}
+        </div>
+    </div>
+    <div class="from-group row">
+        <div class="col-md-5">
+        {{render_field(form.city,class_="form-control")}}
+        </div>
+    </div>
+    <div class="from-group row">
+        <div class="col-md-5">
+        {{render_field(form.country,class_="form-control")}}
+        </div>
+    </div>
+    <div class="from-group row">
+        <div class="col-md-5">
+        {{render_field(form.date,class_="form-control",placeholder="yyyy-MM-dd HH:mm:ss")}}
+        </div>
+    </div>
+    <div class="from-group row">
+        <div class="col-md-5">
+        {{render_field(form.genre,class_="form-control")}}
+        </div>
+    </div>
+    <div class="form-inline mx-sm-12 mb-2" >
+        <div>
+        {{render_field(form.min_age,class_="form-control")}}
+        </div>
+        <div id="doubleform">
+        {{render_field(form.max_age,class_="form-control")}}
+        </div>
+    </div>
+    <div class="form-inline mx-sm-12 mb-2" >
+        <div>
+        {{render_field(form.min_price,class_="form-control")}}
+        </div>
+        <div id="doubleform">
+        {{render_field(form.max_price,class_="form-control")}}
+        </div>
+    </div>
+    <p><input class="btn btn-primary mx-sm-12 mb-2" id="advanced_search" type="submit" value="Search"></p>
+</form>
+{% endblock %}

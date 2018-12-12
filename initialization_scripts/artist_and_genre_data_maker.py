@@ -12,7 +12,6 @@ df7 = pd.read_csv('../static/datasets/MetroLyrics.csv', encoding="ISO-8859-1")
 artist_list = list(df1.name) + list(df2.name) + list(df3.name) +\
                 list(df4.name) + list(pd.Series(df6.musician_name).unique()) +\
                 list(pd.Series(df5.band_name).unique()) + list(df7.artist)
-
 genre_list = list(df1.genre) + list(df2.genre) + list(df3.genre) +\
                list(df4.genre) + list(map(lambda x: "Jazz",range(len(pd.Series(df6.musician_name).unique())))) + \
                list(map(lambda x: "Metal", range(len(pd.Series(df5.band_name).unique())))) +\
@@ -24,6 +23,10 @@ for i in range(len(artist_list)):
     if str(artist_list[i]).startswith(" "):
         artist_list[i] = artist_list[i][1:]
     genre_list[i] = str(genre_list[i]).replace("Not Available", "Other").title()
+
+# The first 3843 artists got white space at the end of there names
+for i in range(len(df1.name)+len(df2.name)+len(df3.name)+len(df4.name)):
+    artist_list[i] = artist_list[i][:-1]
 
 genre_id = utils.names_to_ids(genre_list)
 

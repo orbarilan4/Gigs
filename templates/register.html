@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{%block content%}
+<h1>Register</h1>
+{% from "includes/_formhelper.html" import render_field %}
+<form method="post" action="">
+    <div class="from-group row">
+        <div class="col-md-3">
+        {{render_field(form.username,class_="form-control")}}
+        </div>
+    </div>
+    <div class="from-group row">
+        <div class="col-md-3">
+        {{render_field(form.age,class_="form-control")}}
+        </div>
+    </div>
+    <div class="from-group row">
+        <div class="col-md-3">
+        {{render_field(form.city,class_="form-control")}}
+        </div>
+    </div>
+    <div class="from-group row">
+        <div class="col-md-3">
+        {{render_field(form.password,class_="form-control")}}
+        </div>
+    </div>
+    <div class="from-group row">
+        <div class="col-md-3">
+        {{render_field(form.confirm_password,class_="form-control")}}
+        </div>
+    </div>
+    <br>
+    <p><input class="btn btn-primary col-sm-2" id="register" type="submit" value="Register"></p>
+</form>
+<div class="border-top pt-3">
+    <small class="text-muted">
+        Already have an account ? <a class="ml-2" href="{{ url_for('login')}}">Sign In</a>
+    </small>
+</div>
+{% endblock %}
