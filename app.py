@@ -19,7 +19,7 @@ mysql.init_app(app)
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template('home.html')
+    return render_template('index.html')
 
 
 # ================================
@@ -28,7 +28,7 @@ def home():
 @app.route("/show_profile", methods=['GET', 'POST'])
 def show_profile():
     if session['logged_in'] is False:
-        return render_template('home.html')
+        return render_template('index.html')
     return render_template('show_profile.html')
 
 
@@ -61,7 +61,7 @@ def update_profile():
                 flash(f'The entered city does not exist!', 'error')
                 return redirect(url_for('update_profile'))
     else:
-        return render_template('home.html')
+        return render_template('index.html')
     return render_template('update_profile.html', form=form)
 
 
@@ -80,7 +80,7 @@ def personal_tickets():
             , session['username'])
         records = cur.fetchall()
     else:
-        return render_template('home.html')
+        return render_template('index.html')
     return render_template('result.html', orders=False, records=records)
 
 
@@ -136,7 +136,7 @@ def analytics():
                                             zip(freq_artist['f1'], list(freq_artist['f0']), colors)],
                                        values=freq_age_limit['f1'],labels=freq_age_limit['f0'])
     else:
-        return render_template('home.html')
+        return render_template('index.html')
     return render_template('analytics.html',gigs_count=0,form=form, set=[], labels=[], values=[])
 
 
@@ -170,7 +170,7 @@ def add_concert():
                 flash(f'The entered artist does not exist!', 'error')
                 return redirect(url_for('add_concert'))
     else:
-        return render_template("home.html")
+        return render_template("index.html")
     return render_template("add_concert.html", form=form)
 
 
@@ -205,7 +205,7 @@ def del_concert():
                 flash(f'The entered artist does not exist!', 'error')
                 return redirect(url_for('del_concert'))
     else:
-        return render_template("home.html")
+        return render_template("index.html")
     return render_template("del_concert.html", form=form)
 
 
@@ -288,7 +288,7 @@ def buy_tickets():
                 flash(f"No tickets available for {record[0]}'s gig on {record[1]} !", 'error')
             elif int(concert_data[1]) > int(session['age']):
                 flash(f"You are under age for {record[0]}'s gig on {record[1]} !", 'error')
-    return render_template("home.html")
+    return render_template("index.html")
 
 
 @app.route("/recommendations", methods=['GET', 'POST'])
@@ -324,7 +324,7 @@ def recommendations():
                     , (session['country_id'], session['age'],top_5_genres))
         records = cur.fetchall()
     else:
-        return render_template('home.html')
+        return render_template('index.html')
     return render_template('result.html', orders=True, records=records)
 
 
@@ -355,7 +355,7 @@ def register():
                 flash(f'Username already exists!', 'error')
                 return redirect(url_for('register'))
     else:
-        return render_template('home.html')
+        return render_template('index.html')
     return render_template('register.html', form=form)
 
 

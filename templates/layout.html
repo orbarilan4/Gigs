@@ -1,192 +1,261 @@
-<!DOCTYPE html >
-<html>
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title>Home</title>
-</head>
-<body>
-<style>
-body {
-background-image: url({{url_for('static',filename='pictures/tenor.gif')}});
-background-size: cover;
-}
-#example3 {
-background-color:  #ffe6e6;
-background-repeat: repeat-y;
-position: relative;
-background-position: center;
-}
-#polina {
-      font-family: Agenda-Light, Agenda Light, Agenda, Arial Narrow, sans-serif;
-      font-weight:100;
-      background: rgba(0,0,0,0.3);
-      color: white;
-      padding: 2rem;
-      width: 80%;
-      height: 100%;
-      margin:2rem;
-      position: relative;
-      left: 90px;
-      font-size: 1.2rem;
-    }
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ConcertFinder &mdash; Colorlib Website Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-#navbar-default {
-    background-color: #FFFFFF;
-    border-color: #FFFFFF;
-}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:900" rel="stylesheet">
+    <link rel="stylesheet" href="static/fonts/icomoon/style.css">
 
-#button1{
-padding: 5px 15px;
-margin-left: 0.5em
-}
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/magnific-popup.css">
+    <link rel="stylesheet" href="static/css/jquery-ui.css">
+    <link rel="stylesheet" href="static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="static/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="static/css/animate.css">
 
-#advanced_search{
-padding: 8px 180px;
-}
 
-#doubleform{
-padding: 5px 40px;
-margin-left: 5px
-}
+    <link rel="stylesheet" href="static/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="static/css/fl-bigmug-line.css">
 
-#center-form {
-margin: 0 auto;
-}
-#element1 {float:left;}
-#element2 {float:center;}
-#element3 {float:right;}
+    <link rel="stylesheet" href="static/css/aos.css">
 
-.alert.success {
-  background-color: green;
-}
+    <link rel="stylesheet" href="static/css/style.css">
 
-.alert.error {
-  background-color: red;
-}
+  </head>
+  <body>
 
-.alert.warning {
-  background-color: yellow;
-}
+  <div class="site-wrap">
 
- /* ======== User card ========= */
-.column {
-    float: left;
-    width: 33.3%;
-    margin-bottom: 16px;
-    padding: 0 8px;
-}
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
 
-/* Display the columns below each other instead of side by side on small screens */
-@media screen and (max-width: 650px) {
-    .column {
-        width: 100%;
-        display: block;
-    }
-}
 
-/* Add some shadows to create a card effect */
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
+    <header class="site-navbar py-1" role="banner">
 
-/* Some left and right padding inside the container */
-.container {
-    padding: 0 16px;
-}
+      <div class="container">
+        <div class="row align-items-center">
 
-/* Clear floats */
-.container::after, .row::after {
-    content: "";
-    clear: both;
-    display: table;
-}
+          <div class="col-6 col-xl-2">
+            <h1 class="mb-0"><a href="/" class="text-black h2 mb-0">Concert<strong>finder</strong></a></h1>
+          </div>
 
-.button {
-    border: none;
-    outline: 0;
-    display: inline-block;
-    padding: 8px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-}
+          <div class="col-10 col-xl-10 d-none d-xl-block">
+            <nav class="site-navigation text-right" role="navigation">
 
-.button:hover {
-    background-color: #555;
-}
+              <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
+                <li class="active"><a href="/">Home</a></li>
+                <li class="has-children">
+                  <a href="category.html">Category</a>
+                  <ul class="dropdown">
+                    <li><a href="#">Full Time</a></li>
+                    <li><a href="#">Part Time</a></li>
+                    <li><a href="#">Freelance</a></li>
+                    <li><a href="#">Internship</a></li>
+                    <li><a href="#">Termporary</a></li>
+                  </ul>
+                </li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="new-post.html"><span class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2">+</span> Post a Job</span></a></li>
+              </ul>
+            </nav>
+          </div>
 
-</style>
+          <div class="col-6 col-xl-2 text-right d-block">
 
-<nav id="navbar-default" class="navbar  navbar-expand-lg navbar-light" style="background-color: #000000;">
-    <a class="navbar-brand" href="/home"><font color="white"><img src="static/pictures/gigs.jpg" height="30"
-                                                                  width="80"></font><span
-            class="sr-only">(current)</span></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        {% if session['logged_in'] %}
-         <ul class="navbar-nav mr-auto">
-            <button class="btn btn-success" role="button" id="button1" onclick="location.href='/show_profile';">{{ session['username'] }}'s Profile</button>
-            <button class="btn btn-danger" role="button" id="button1"  onclick="location.href='/logout';">Logout</button>
-        </ul>
-        {% else %}
-        <ul class="navbar-nav mr-auto">
-            <button class="btn btn-danger" role="button" id="button1" onclick="location.href='/register';">Register</button>
-            <button class="btn btn-danger" role="button" id="button1" onclick="location.href='/login';">Login</button>
-        </ul>
-        {% endif %}
+            <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
 
-        <button class="btn btn-primary" id="button1" onclick="location.href='/advanced_search';"><font color="white">Search Gigs</font></button>
-        {% if session['logged_in'] %}
-        <button class="btn btn-primary" id="button1" onclick="location.href='/recommendations';"><font color="white">Recommendations</font></button>
-        {% endif %}
-        {% if session['is_admin'] %}
-        <button class="btn btn-warning dropdown" style="padding: 0% 0%;margin-left: 0.5em; height: 36px;">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" >
-                <font color="white" size="3">
-                  Administration
-                </font>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" onclick="location.href='/add_concert';">Add New Gigs</a>
-              <a class="dropdown-item" onclick="location.href='/del_concert';">Delete Gigs</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" onclick="location.href='/analytics';">Gigs Analytics</a>
+          </div>
+
+        </div>
+      </div>
+
+    </header>
+
+      {% block content %} {% endblock %}
+
+
+
+    <footer class="site-footer">
+      <div class="container">
+
+
+        <div class="row">
+          <div class="col-lg-9">
+            <div class="row">
+              <div class="col-6 col-md-3 col-lg-3 mb-5 mb-lg-0">
+                <h3 class="footer-heading mb-4">For Candidates</h3>
+                <ul class="list-unstyled">
+                  <li><a href="#">Register</a></li>
+                  <li><a href="#">Find Jobs</a></li>
+                  <li><a href="#">News</a></li>
+                  <li><a href="#">Search Jobs</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">Careers</a></li>
+                </ul>
+              </div>
+              <div class="col-6 col-md-3 col-lg-3 mb-5 mb-lg-0">
+                <h3 class="footer-heading mb-4">For Employers</h3>
+                <ul class="list-unstyled">
+                  <li><a href="#">Employer Account</a></li>
+                  <li><a href="#">Clients</a></li>
+                  <li><a href="#">News</a></li>
+                  <li><a href="#">Find Candidates</a></li>
+                  <li><a href="#">Terms &amp; Policies</a></li>
+                  <li><a href="#">Careers</a></li>
+                </ul>
+              </div>
+              <div class="col-6 col-md-3 col-lg-3 mb-5 mb-lg-0">
+                <h3 class="footer-heading mb-4">Archives</h3>
+                <ul class="list-unstyled">
+                  <li><a href="#">January 2018</a></li>
+                  <li><a href="#">February 2018</a></li>
+                  <li><a href="#">March 2018</a></li>
+                  <li><a href="#">April 2018</a></li>
+                  <li><a href="#">May 2018</a></li>
+                  <li><a href="#">June 2918</a></li>
+                </ul>
+              </div>
+              <div class="col-6 col-md-3 col-lg-3 mb-5 mb-lg-0">
+                <h3 class="footer-heading mb-4">Company</h3>
+                <ul class="list-unstyled">
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Team</a></li>
+                  <li><a href="#">Terms &amp; Policies</a></li>
+                  <li><a href="#">Contact Us</a></li>
+                </ul>
+              </div>
             </div>
-        </button>
-        {% endif %}
-    </div>
-</nav>
+          </div>
+          <div class="col-lg-3">
+            <h3 class="footer-heading mb-4">Contact Info</h3>
+            <ul class="list-unstyled">
+              <li>
+                <span class="d-block text-white">Address</span>
+                New York - 2398 10 Hadson Carl Street
+              </li>
+              <li>
+                <span class="d-block text-white">Telephone</span>
+                +1 232 305 3930
+              </li>
+              <li>
+                <span class="d-block text-white">Email</span>
+                info@yourdomain.com
+              </li>
+            </ul>
 
-<!--<video loop id="myVideo" autoplay muted loop>-->
-<!--<source src="../static/pictures/background_r3hab.mp4" type="video/mp4" loop>-->
-<!--</video>-->
-{% with messages  = get_flashed_messages(with_categories=true)%}
-    {% if messages %}
-        <ul class=flashes>
-        {% for category, message in messages %}
-            <div class="alert {{ category }}"> {{ message|capitalize }} </div>
-        {% endfor%}
-        </ul>
-    {% endif%}
-{% endwith%}
-<div id="polina">
-    {% block content %} {% endblock %}
-</div>
+          </div>
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All Rights Reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+          </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-</body>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="static/js/jquery-3.3.1.min.js"></script>
+  <script src="static/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="static/js/jquery-ui.js"></script>
+  <script src="static/js/popper.min.js"></script>
+  <script src="static/js/bootstrap.min.js"></script>
+  <script src="static/js/owl.carousel.min.js"></script>
+  <script src="static/js/jquery.stellar.min.js"></script>
+  <script src="static/js/jquery.countdown.min.js"></script>
+  <script src="static/js/jquery.magnific-popup.min.js"></script>
+  <script src="static/js/bootstrap-datepicker.min.js"></script>
+  <script src="static/js/aos.js"></script>
+
+  <script>
+      // This example displays an address form, using the autocomplete feature
+      // of the Google Places API to help users fill in the information.
+
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+      var placeSearch, autocomplete;
+      var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+      };
+
+      function initAutocomplete() {
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        autocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+            {types: ['geocode']});
+
+        // When the user selects an address from the dropdown, populate the address
+        // fields in the form.
+        autocomplete.addListener('place_changed', fillInAddress);
+      }
+
+      function fillInAddress() {
+        // Get the place details from the autocomplete object.
+        var place = autocomplete.getPlace();
+
+        for (var component in componentForm) {
+          document.getElementById(component).value = '';
+          document.getElementById(component).disabled = false;
+        }
+
+        // Get each component of the address from the place details
+        // and fill the corresponding field on the form.
+        for (var i = 0; i < place.address_components.length; i++) {
+          var addressType = place.address_components[i].types[0];
+          if (componentForm[addressType]) {
+            var val = place.address_components[i][componentForm[addressType]];
+            document.getElementById(addressType).value = val;
+          }
+        }
+      }
+
+      // Bias the autocomplete object to the user's geographical location,
+      // as supplied by the browser's 'navigator.geolocation' object.
+      function geolocate() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var geolocation = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            var circle = new google.maps.Circle({
+              center: geolocation,
+              radius: position.coords.accuracy
+            });
+            autocomplete.setBounds(circle.getBounds());
+          });
+        }
+      }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&libraries=places&callback=initAutocomplete"
+        async defer></script>
+
+  <script src="static/js/main.js"></script>
+
+  </body>
 </html>
