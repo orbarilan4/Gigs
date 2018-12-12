@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{%block content%}
+<script src='static/Chart.min.js'></script>
+<script>
+
+window.onload = function () {
+   var pieData0 = [
+            {% for item,label,colors in set[0] %}
+                {
+                    value: {{item}},
+                    label: "{{label}}",
+                    color : "{{colors}}"
+                },
+                {% endfor %}
+         ];
+
+   var pieData1 = [
+            {% for item,label,colors in set[1] %}
+                {
+                    value: {{item}},
+                    label: "{{label}}",
+                    color : "{{colors}}"
+                },
+                {% endfor %}
+         ];
+
+   var barData = {
+   labels : [{% for item in labels %}
+                  "{{item}}",
+              {% endfor %}],
+   datasets : [
+      {
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+         data : [{% for item in values %}
+                      {{item}},
+                    {% endfor %}]
+      }
+      ]
+   }
+
+    steps = 10
+    max = {{gigs_count/10}}
+
+  window.myPie  = new Chart(document.getElementById("chart").getContext("2d")).Pie(pieData0)
+  window.myPie  = new Chart(document.getElementById("chart3").getContext("2d")).Pie(pieData1)
+  window.myPie  = new Chart(document.getElementById("chart2").getContext("2d")).Bar(barData, {
+        scaleOverride: true,
+        scaleSteps: steps,
+        scaleStepWidth: Math.ceil(max / steps),
+        scaleStartValue: 0,
+        scaleShowVerticalLines: true,
+        scaleShowGridLines : true,
+        barShowStroke : true,
+        scaleShowLabels: true
+        });
+}
+</script>
+{% block charts_usage %} {% endblock %}
+
+{% endblock %}
+

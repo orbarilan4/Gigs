@@ -1,0 +1,33 @@
+{% extends "includes/_chart.html" %}
+{%block charts_usage%}
+<h1 align="center">Analytics</h1>
+<br>
+{% from "includes/_formhelper.html" import render_field_without_label %}
+
+<script src='static/Chart.min.js'></script>
+<p align="center">Get some gigs analytics about this Country: </p>
+
+<div align="center">
+    <form method="post" action="">
+        <div class="from-group row">
+            <div class="col-md-3" id="center-form">
+            {{render_field_without_label(form.country,class_="form-control")}}
+            </div>
+        </div>
+        <br>
+        <p><input class="btn btn-primary col-sm-2" id="analyze" type="submit" value="Analyze Now"></p>
+    </form>
+</div>
+
+{% if session['country_input_exists'] %}
+<canvas id="chart"  width="240" height="160"></canvas>
+<canvas id="chart2"  width="480" height="160"></canvas>
+<canvas id="chart3"  width="240" height="160"></canvas>
+</br>
+<div id="element1">Top-10 host cities in {{ session['country_input_exists'] }}          </div>
+<div id="center-form">Age limit distribution in {{ session['country_input_exists'] }} </div>
+<div id="element3">Top-10 hosted artists in {{ session['country_input_exists'] }} </div>
+{% endif %}
+
+{% endblock %}
+

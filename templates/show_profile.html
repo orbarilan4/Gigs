@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{%block content%}
+{% from "includes/_formhelper.html" import render_field %}
+<h1 align="center">{{ session['username'] }}'s Profile</h1>
+<div class="row" style="display: flex; justify-content: center;">
+  <div class="column">
+    <div class="card" height="15" width="40" >
+      <img src= "{{ session['picture'] }}"
+           alt="Jane" style="width:100%">
+      <div class="container">
+          <font color="black">
+            <h2>{{ session['username'] }}</h2>
+            <div>From: {{ session['city_name']}}, {{ session['country_name']}} </div>
+            <div>Age: {{ session['age']}} </div>
+            <div> {% if not session['is_admin'] %}
+                    Status: Normal User
+                  {% else %}
+                    Status: Super User
+                  {% endif %}
+            </div>
+          </font>
+          <br>
+        <p><button class="btn btn-success btn-block"  onclick="location.href='/personal_tickets';">My Gigs</button></p>
+        <p><button class="btn btn-success btn-block"  onclick="location.href='/update_profile';">Update Details</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
