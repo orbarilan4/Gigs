@@ -3,6 +3,19 @@
 
 <div class="site-section bg-light">
       <div class="container">
+          <div class="row pb-2">
+              <div class="col-md-4 offset-md-8">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Sort by
+                      </button>
+                      <div class="dropdown-menu  dropdown-menu-right">
+                        <a class="dropdown-item" href="#">Date</a>
+                        <a class="dropdown-item" href="#">Artist</a>
+                      </div>
+                    </div>
+              </div>
+        </div>
 
           {% for row in records %}
     {% set rowloop = loop %}
