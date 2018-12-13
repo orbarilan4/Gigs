@@ -2,6 +2,7 @@ from flask import Flask, render_template, url_for, request, flash, redirect, ses
 from flaskext.mysql import MySQL
 from forms import AdvancedSearch, RegistrationForm, LoginForm, UpdateProfileForm, AddDelConcert
 import numpy as np
+import json
 from initialization_scripts.utils import xstr,get_record
 
 mysql = MySQL()
@@ -138,6 +139,40 @@ def analytics():
     else:
         return render_template('index.html')
     return render_template('analytics.html',gigs_count=0,form=form, set=[], labels=[], values=[])
+
+
+
+@app.route('/search', methods=['GET'] )
+def search():
+    filter = request.args.get('term', '', type=str)
+    cur = mysql.get_db().cursor()
+    cur.execute("SELECT city_id, city_name, country_name "
+                "FROM city "
+                "INNER JOIN country "
+                "ON city.country_id = country.country_id "
+                "AND city_name like '%s' "                
+                "LIMIT 5" % ('%' + filter + '%'))
+    rows = cur.fetchall()
+
+    cur.execute("SELECT country_id, country_name "
+                "FROM country "
+                "WHERE country_name like '%s' "
+                "LIMIT 5" % ('%' + filter + '%'))
+    rows2 = cur.fetchall()
+
+    rowarray_list = {}
+    for row in rows:
+        rowarray_list[row[0]] = row[1] + ', ' + row[2]
+
+    j = [{'id': str(k), 'label': v, 'value': v, 'category' : 'Cities'} for k, v in rowarray_list.items()]
+
+    rowarray_list = {}
+    for row in rows2:
+        rowarray_list[row[0]] = row[1]
+
+    j += [{'id': str(k), 'label': v, 'value': v, 'category': 'Countries'} for k, v in rowarray_list.items()]
+
+    return json.dumps(j, indent=4)
 
 
 @app.route('/add_concert', methods=['GET', 'POST'])

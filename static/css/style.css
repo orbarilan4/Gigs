@@ -136,7 +136,7 @@ a {
     background: #26baee; }
 
 .site-footer {
-  padding: 7em 0;
+  padding: 1em 0;
   background: #393e46;
   color: rgba(255, 255, 255, 0.4); }
   .site-footer a {
@@ -1542,4 +1542,14 @@ a {
 
 .site-section .btn-group{
 float:right;
+}
+.ui-autocomplete-loading {
+	background: white url("images/ui-anim_basic_16x16.gif") right center no-repeat;
+}
+.ui-autocomplete-category{
+font-weight:bold
+}
+.ui-menu .ui-menu-item-wrapper {
+padding: 5px 1em 5px 1.4em;
+font-weight:100
 }
