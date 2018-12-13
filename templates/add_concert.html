@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{%block content%}
+<h1>Add New Gigs</h1>
+{% from "includes/_formhelper.html" import render_field %}
+<form method="post" action="">
+    <div class="from-group row">
+        <div class="col-md-3">
+        {{render_field(form.artist,class_="form-control")}}
+        </div>
+    </div>
+    <div class="from-group row">
+        <div class="col-md-3">
+        {{render_field(form.city,class_="form-control")}}
+        </div>
+    </div>
+    <div class="from-group row">
+        <div class="col-md-3">
+        {{render_field(form.date,class_="form-control")}}
+        </div>
+    </div>
+    <div class="from-group row">
+        <div class="col-md-3">
+        {{render_field(form.capacity,class_="form-control")}}
+        </div>
+    </div>
+    <div class="from-group row">
+        <div class="col-md-3">
+        {{render_field(form.age_limit,class_="form-control")}}
+        </div>
+    </div>
+
+    <div class="from-group row">
+        <div class="col-md-3">
+        {{render_field(form.price,class_="form-control")}}
+        </div>
+    </div>
+    <br>
+    <p><input class="btn btn-primary col-sm-2" id="add_gig" type="submit" value="Add Gig"></p>
+</form>
+{% endblock %}

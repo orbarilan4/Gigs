@@ -1,13 +1,74 @@
 {% extends "layout.html" %}
+{%block content%}
 
-    {%block content%}
-    <table border="1" cellpadding="5" cellspacing="5">
-        {% for row in records %}
-        <tr>
-            {% for d in row %}
-            <td>{{ d }}</td>
-            {% endfor %}
-        </tr>
-        {% endfor %}
-    </table>
-    {% endblock%}
+<div class="site-section bg-light">
+      <div class="container">
+          <div class="row pb-2">
+              <div class="col-md-4 offset-md-8">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Sort by
+                      </button>
+                      <div class="dropdown-menu  dropdown-menu-right">
+                        <a class="dropdown-item" href="#">Date</a>
+                        <a class="dropdown-item" href="#">Artist</a>
+                      </div>
+                    </div>
+              </div>
+        </div>
+
+          {% for row in records %}
+    {% set rowloop = loop %}
+
+        <div class="row" data-aos="fade">
+         <div class="col-md-12">
+
+           <div class="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
+
+              <div class="mb-4 mb-md-0 mr-5">
+               <div class="job-post-item-header d-flex align-items-center">
+                 <h2 class="mr-3 text-black h4">{{row[0]}}</h2>
+                 <div class="badge-wrap">
+                  <span class="bg-primary text-white badge py-2 px-4">Primary</span>
+                 </div>
+               </div>
+               <div class="job-post-item-body d-block d-md-flex">
+                 <div class="mr-3"><span class="fl-bigmug-line-portfolio23"></span> <a href="#">{{row[1]}}</a></div>
+                 <div><span class="fl-bigmug-line-big104"></span> <span>{{row[2]}}, {{row[3]}}</span></div>
+               </div>
+              </div>
+
+              <div class="ml-auto">
+                <a href="#" class="btn btn-secondary rounded-circle btn-favorite text-gray-500"><span class="icon-heart"></span></a>
+                <a href="job-single.html" class="btn btn-primary py-2">Buy tickets</a>
+              </div>
+           </div>
+
+         </div>
+        </div>
+ {% endfor %}
+
+        <div class="row mt-5">
+          <div class="col-md-12 text-center">
+            <div class="site-block-27">
+              <ul>
+                <li><a href="#"><i class="icon-keyboard_arrow_left h5"></i></a></li>
+                <li class="active"><span>1</span></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#"><i class="icon-keyboard_arrow_right h5"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+
+
+
+{% endblock%}
