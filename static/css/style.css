@@ -106,8 +106,7 @@ a {
 .site-section {
   padding: 3em 0; }
   @media (min-width: 768px) {
-    .site-section {
-      padding: 7em 0; } }
+    .site-section {} }
   .site-section.site-section-sm {
     padding: 4em 0; }
 
@@ -136,7 +135,7 @@ a {
     background: #26baee; }
 
 .site-footer {
-  padding: 1em 0;
+
   background: #393e46;
   color: rgba(255, 255, 255, 0.4); }
   .site-footer a {
@@ -1552,4 +1551,96 @@ font-weight:bold
 .ui-menu .ui-menu-item-wrapper {
 padding: 5px 1em 5px 1.4em;
 font-weight:100
+}
+.indicator{
+display:none;
+width:30px;
+}
+
+.loading .indicator{
+display:inline;
+}
+
+/*login*/
+/* Made with love by Mutiullah Samim*/
+
+
+
+.container{
+height: 100%;
+align-content: center;
+}
+
+.card{
+min-height: 370px;
+margin-top: auto;
+margin-bottom: auto;
+width: 400px;
+background-color: rgba(255,255,255,1) !important;
+}
+
+.social_icon span{
+font-size: 60px;
+margin-left: 10px;
+color: #26baee!important;
+}
+
+.social_icon span:hover{
+color: white;
+cursor: pointer;
+}
+
+.card-header h3{
+color: white;
+font-weight:bolder;
+}
+
+.social_icon{
+position: absolute;
+right: 20px;
+top: -45px;
+}
+
+.input-group-prepend span{
+width: 50px;
+background-color: #26baee!important;
+color: black;
+border:0 !important;
+}
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+
+}
+
+.remember{
+color: white;
+}
+
+.remember input
+{
+width: 20px;
+height: 20px;
+margin-left: 15px;
+margin-right: 5px;
+}
+
+.login_btn{
+color: black;
+background-color: #26baee!important;
+width: 100px;
+}
+
+.login_btn:hover{
+color: black;
+background-color: white;
+}
+
+.links{
+color: black;
+}
+
+.links a{
+margin-left: 4px;
 }
