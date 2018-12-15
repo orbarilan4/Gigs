@@ -271,6 +271,10 @@ $( function() {
       return split( term ).pop();
     }
 
+    $('.add_concert').click(add_concert);
+    $('.login').click(login);
+    $('.register').click(register);
+
     $.widget("custom.catcomplete", $.ui.autocomplete, {
          _renderMenu: function (ul, items) {
              var self = this,
@@ -325,3 +329,56 @@ $( function() {
         }
       });
   } );
+
+  function add_concert(){
+    $('form').toggleClass('loading').find('fieldset').attr('disabled','');
+    $.ajax({
+        method: "POST",
+        url: "/add_concert",
+        data: { artist: "John",
+                location: "Boston" }
+    }).done(function( msg ) {
+        alert( "Data Saved: " + msg );
+        $('form').toggleClass('loading').find('fieldset').removeAttr('disabled');
+    });
+
+    return false;
+  }
+
+  function login(){
+    $('.alert').addClass('d-none');
+    $('form').toggleClass('loading').find('fieldset').attr('disabled','');
+    $.ajax({
+        method: "POST",
+        url: "/login",
+        data: { username: "John",
+                password: "Boston" }
+    }).done(function( msg ) {
+        if (msg > 0){
+            $('.alert').removeClass('d-none');
+        }
+
+        $('form').toggleClass('loading').find('fieldset').removeAttr('disabled');
+    });
+
+    return false;
+  }
+
+  function register(){
+    $('.alert').addClass('d-none');
+    $('form').toggleClass('loading').find('fieldset').attr('disabled','');
+    $.ajax({
+        method: "POST",
+        url: "/register",
+        data: { username: "John",
+                password: "Boston" }
+    }).done(function( msg ) {
+        if (msg > 0){
+            $('.alert').removeClass('d-none');
+        }
+
+        $('form').toggleClass('loading').find('fieldset').removeAttr('disabled');
+    });
+
+    return false;
+  }

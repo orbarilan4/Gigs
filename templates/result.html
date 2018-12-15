@@ -2,8 +2,73 @@
 {%block content%}
 
 <div class="site-section bg-light">
+
+    <div class="p-5" style="background-image: url(static/images/hero_bg_4.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+        <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-12">
+
+            <div class="job-search">
+              <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active py-3" id="pills-job-tab" data-toggle="pill" href="#pills-job" role="tab" aria-controls="pills-job" aria-selected="true">Find A Concert</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link py-3" id="pills-candidate-tab" data-toggle="pill" href="#pills-candidate" role="tab" aria-controls="pills-candidate" aria-selected="false">Advanced search</a>
+                </li>
+              </ul>
+              <div class="tab-content bg-white p-4 rounded" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-job" role="tabpanel" aria-labelledby="pills-job-tab">
+                  <form action="advanced_search" method="post">
+                    <div class="row">
+                      <div class="col-md-6 mb-3 mb-lg-0">
+                        <input type="text" class="form-control" placeholder="eg. Beyonce" name="artist">
+                      </div>
+                      <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+                        <input id="city" type="text" class="form-control form-control-block search-input" id="autocomplete" placeholder="Location" onFocus="geolocate()">
+                      </div>
+                      <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+                        <input type="submit" class="btn btn-primary btn-block" value="Search">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="tab-pane fade" id="pills-candidate" role="tabpanel" aria-labelledby="pills-candidate-tab">
+                  <form action="advanced_search" method="post">
+                    <div class="row">
+                      <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+                        <input type="text" class="form-control" placeholder="eg. Carl Smith">
+                      </div>
+                      <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+                        <div class="select-wrap">
+                          <span class="icon-keyboard_arrow_down arrow-down"></span>
+                          <select name="" id="" class="form-control">
+                            <option value="">Category</option>
+                            <option value="fulltime">Full Time</option>
+                            <option value="fulltime">Part Time</option>
+                            <option value="freelance">Freelance</option>
+                            <option value="internship">Internship</option>
+                            <option value="internship">Termporary</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+                        <input type="text" class="form-control form-control-block search-input" id="autocomplete" placeholder="Location" onFocus="geolocate()">
+                      </div>
+                      <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+                        <input type="submit" class="btn btn-primary btn-block" value="Search">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
       <div class="container">
-          <div class="row pb-2">
+          <div class="row pb-2 d-none">
               <div class="col-md-4 offset-md-8">
                     <div class="btn-group">
                       <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -48,7 +113,7 @@
         </div>
  {% endfor %}
 
-        <div class="row mt-5">
+        <div class="row mt-5 d-none">
           <div class="col-md-12 text-center">
             <div class="site-block-27">
               <ul>

@@ -177,36 +177,42 @@ def search():
 
 @app.route('/add_concert', methods=['GET', 'POST'])
 def add_concert():
-    if session['is_admin'] and session['logged_in']:
+    if request.method == 'GET':
+        return render_template("add_concert.html")
+    #session['is_admin'] = True
+    #session['logged_in'] = True
+    elif session['is_admin'] and session['logged_in']:
         form = AddDelConcert(request.form)
-        if request.method == 'POST' and form.validate():
-            cur = mysql.get_db().cursor()
-            cur.execute("SELECT city_name, city_id FROM city WHERE city_name = %s",form.city.data) # Checking if the city exist
-            city_record = cur.fetchall()
-            cur.execute("SELECT artist_name, artist_id FROM artist WHERE artist_name = %s",form.artist.data)  # Checking if the artist exist
-            artist_record = cur.fetchall()
-            if len(city_record) != 0 and len(artist_record) != 0:
-                try:
-                    cur.execute(
-                        "INSERT INTO concert (artist_id,city_id,date_time,capacity,age_limit,price)"
-                        "VALUES (%s,%s,%s,%s,%s,%s)",
-                        (int(list(artist_record).pop(0)[1]), int(list(city_record).pop(0)[1]),
-                         form.date.data, form.capacity.data, form.age_limit.data,form.price.data))
-                    mysql.get_db().commit()
-                    flash(f'New gig created successfully!', 'success')
-                    return redirect(url_for('add_concert'))
-                except:
-                    flash(f'The artist has already played on this date', 'error')
-                    return redirect(url_for('add_concert'))
-            elif len(city_record) == 0:
-                flash(f'The entered city does not exist!', 'error')
-                return redirect(url_for('add_concert'))
-            elif len(artist_record) == 0:
-                flash(f'The entered artist does not exist!', 'error')
-                return redirect(url_for('add_concert'))
+        #if request.method == 'POST' and form.validate():
+        cur = mysql.get_db().cursor()
+        cur.execute("SELECT city_name, city_id FROM city WHERE city_name = %s",form.city.data) # Checking if the city exist
+        city_record = cur.fetchall()
+        cur.execute("SELECT artist_name, artist_id FROM artist WHERE artist_name = %s",form.artist.data)  # Checking if the artist exist
+        artist_record = cur.fetchall()
+        if len(city_record) != 0 and len(artist_record) != 0:
+            try:
+                cur.execute(
+                    "INSERT INTO concert (artist_id,city_id,date_time,capacity,age_limit,price)"
+                    "VALUES (%s,%s,%s,%s,%s,%s)",
+                    (int(list(artist_record).pop(0)[1]), int(list(city_record).pop(0)[1]),
+                     form.date.data, form.capacity.data, form.age_limit.data,form.price.data))
+                mysql.get_db().commit()
+
+                return '0'
+
+            except:
+                flash(f'The artist has already played on this date', 'error')
+                return '1'
+
+        elif len(city_record) == 0:
+            flash(f'The entered city does not exist!', 'error')
+            return '2'
+        elif len(artist_record) == 0:
+            flash(f'The entered artist does not exist!', 'error')
+            return '3'
     else:
-        return render_template("index.html")
-    return render_template("add_concert.html", form=form)
+        return '4'
+
 
 
 @app.route('/del_concert', methods=['GET', 'POST'])
@@ -247,7 +253,7 @@ def del_concert():
 # ================================
 # ===== General Options ======
 # ================================
-@app.route('/advanced_search', methods=['GET', 'POST'])
+@app.route('/find', methods=['GET', 'POST'])
 def advanced_search():
     form = AdvancedSearch(request.form)
     if request.method == 'POST':
@@ -285,7 +291,8 @@ def advanced_search():
             return render_template("sorry.html")
         else:
             return render_template("result.html", records=records, orders=True)
-    return render_template("advanced_search.html", form=form)
+
+    return render_template("result.html")
 
 
 # ================================
@@ -368,42 +375,45 @@ def recommendations():
 # ================================
 @app.route("/register", methods=['GET', 'POST'])
 def register():
-    if session['logged_in'] is False:
-        form = RegistrationForm(request.form)
-        if request.method == 'POST' and form.validate():
+
+    form = RegistrationForm(request.form)
+    if request.method == 'POST':
+        try:
             cur = mysql.get_db().cursor()
-            cur.execute("SELECT city_name, city_id FROM city WHERE city_name = %s", form.city.data) # Checking if the city exist
-            city_record = cur.fetchall()
-            cur.execute("SELECT is_admin,username FROM user WHERE username = %s", form.username.data) # Checking if user doesnt exist
-            username_record = cur.fetchall()
-            if len(city_record) != 0 and len(username_record) == 0:
-                cur.execute("INSERT INTO user (username,age,city_id,password,is_admin,picture) VALUES (%s,%s,%s,%s,%s,%s)",
-                            (form.username.data, form.age.data, int(list(city_record).pop(0)[1]),
-                             form.password.data,False,"http://meng.uic.edu/wp-content/uploads/sites/92/2018/07/empty-profile.png"))
-                mysql.get_db().commit()
-                flash(f'Account created for {form.username.data}!', 'success')
-                return redirect(url_for('home'))
-            elif len(city_record) == 0:
-                flash(f'The entered city does not exist!', 'error')
-                return redirect(url_for('register'))
-            elif len(username_record) != 0:
-                flash(f'Username already exists!', 'error')
-                return redirect(url_for('register'))
-    else:
-        return render_template('index.html')
-    return render_template('register.html', form=form)
+
+            cur.execute("INSERT INTO user (username,age,city_id,password,is_admin,picture) VALUES (%s,%s,%s,%s,%s,%s)",
+                        (form.username.data, 0, 0, form.password.data,False,"http://meng.uic.edu/wp-content/uploads/sites/92/2018/07/empty-profile.png"))
+            mysql.get_db().commit()
+
+            cur.execute("SELECT username, city_id, age, is_admin, picture FROM user WHERE username = %s AND password = %s ",
+                        (form.username.data, form.password.data))
+            user = cur.fetchall()
+            if len(user) != 0:
+                record = list(user).pop(0)
+                session['logged_in'] = True
+                session['username'] = record[0]
+                session['city_id'] = record[1]
+                session['age'] = record[2]
+                session['is_admin'] = record[3]
+                session['picture'] = record[4]  # Get city and country name from user
+                return '0'
+
+            return '1'
+        except:
+            return '2'
+
+    return render_template('register.html')
 
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     form = LoginForm(request.form)
-    if request.method == 'POST' and form.validate():
+    if request.method == 'POST':
         cur = mysql.get_db().cursor()
         cur.execute("SELECT username, city_id, age, is_admin, picture FROM user WHERE username = %s AND password = %s ",
                     (form.username.data,form.password.data))
         user = cur.fetchall()
         if len(user) != 0:
-            flash(f'You have been logged in !', 'success')
             record = list(user).pop(0)
             session['logged_in'] = True
             session['username'] = record[0]
@@ -411,18 +421,11 @@ def login():
             session['age'] = record[2]
             session['is_admin'] = record[3]
             session['picture'] = record[4]
-            cur.execute("SELECT city.city_name, country.country_name,country.country_id FROM city,country "
-                        "WHERE country.country_id = city.country_id AND city.city_id = %s"
-                        , session['city_id'])  # Get city and country name from user
-            place = list(cur.fetchall()).pop(0)
-            session['city_name'] = place[0]
-            session['country_name'] = place[1]
-            session['country_id'] = place[2]
-            return redirect(url_for('home'))
+
+            return '0'
         else:
-            flash(f'Login unsuccessful. Please check username and password !', 'error')
-            return redirect(url_for('login'))
-    return render_template('login.html', form=form)
+            return '1'
+    return render_template('login.html')
 
 
 @app.route("/logout")

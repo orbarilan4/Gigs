@@ -1,19 +1,89 @@
 {% extends "layout.html" %}
 {%block content%}
-<h1>Login</h1>
-{% from "includes/_formhelper.html" import render_field %}
-<form method="post" action="">
-    <div class="from-group row">
-        <div class="col-md-3">
-        {{render_field(form.username,class_="form-control")}}
-        </div>
-    </div>
-    <div class="from-group row">
-        <div class="col-md-3">
-        {{render_field(form.password,class_="form-control")}}
-        </div>
-    </div>
-    <br>
-    <p><input class="btn btn-primary col-sm-2" id="register" type="submit" value="Login"></p>
-</form>
+
+<div class="site-blocks-cover" style="background-image: url(static/images/hero_bg_2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+  <!--<div class="container">-->
+    <!--<div class="row row-custom align-items-center justify-content-lg-center">-->
+
+      <!--<div class="col-md-12 col-lg-8">-->
+
+
+        <!--<form class="p-5 bg-white rounded">-->
+          <!--<fieldset>-->
+
+          <!--<div class="row form-group">-->
+            <!--<div class="col-md-12 mb-3 mb-md-0">-->
+              <!--<input type="text" name="username" class="form-control" placeholder="Username">-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="row form-group">-->
+            <!--<div class="col-md-12">-->
+              <!--<input type="password" name="password" class="form-control" placeholder="Password">-->
+            <!--</div>-->
+          <!--</div>-->
+
+
+          <!--<div class="row form-group">-->
+            <!--<div class="col-md-12">-->
+              <!--<button class="btn btn-primary py-2 px-4 login">Login</button>-->
+              <!--<img src="static/images/loader.gif" class="indicator">-->
+            <!--</div>-->
+          <!--</div>-->
+            <!--<div class="alert alert-danger d-none" role="alert">-->
+              <!--<b>The username/password you entered is incorrect.</b><br>-->
+              <!--Please try again.-->
+            <!--</div>-->
+          <!--</fieldset>-->
+        <!--</form>-->
+      <!--</div>-->
+
+
+    <!--</div>-->
+  <!--</div>-->
+  <div class="container">
+<div class="d-flex justify-content-center h-100">
+		<div class="card">
+			<div class="card-header bg-primary">
+				<h3>Sign In</h3>
+
+			</div>
+			<div class="card-body">
+				<form  autocomplete="off">
+                  <fieldset>
+                    <div class="alert alert-danger d-none" role="alert">
+                      <b>Username and/or password is incorrect.</b> Please try again.
+                    </div>
+
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" class="form-control" placeholder="username" name="username">
+
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" class="form-control" placeholder="password" name="password">
+					</div>
+
+					<div class="form-group">
+                      <img src="static/images/loader.gif" class="indicator">
+						<button class="btn float-right login_btn login">Login</button>
+					</div>
+                    </fieldset>
+				</form>
+			</div>
+			<div class="card-footer">
+				<div class="d-flex justify-content-center links">
+					Don't have an account?<a href="/register">Sign Up</a>
+				</div>
+				<div class="d-flex justify-content-center">
+					<a href="#">Forgot your password?</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}
