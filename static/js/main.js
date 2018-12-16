@@ -274,6 +274,8 @@ $( function() {
     $('.add_concert').click(add_concert);
     $('.login').click(login);
     $('.register').click(register);
+    $('.prev').click(prev);
+    $('.next').click(next);
 
     $.widget("custom.catcomplete", $.ui.autocomplete, {
          _renderMenu: function (ul, items) {
@@ -303,7 +305,48 @@ $( function() {
       })
       .catcomplete({
         source: function( request, response ) {
+            var artist = '';
+           if ($('#cbx').is(':checked')){
+                artist = $('#artist').val();
+           }
           $.getJSON( "search", {
+            term: extractLast( request.term ),
+            artist: artist
+          }, response );
+        },
+        search: function() {
+          // custom minLength
+          var term = extractLast( this.value );
+          if ( term.length < 2 ) {
+            return false;
+          }
+        },
+        focus: function() {
+          // prevent value inserted on focus
+          return false;
+        },
+        select: function( event, ui ) {
+          var terms = split( this.value );
+          // remove the current input
+          terms.pop();
+          // add the selected item
+          terms.push( ui.item.value );
+          this.value = terms;
+          return false;
+        }
+      });
+
+
+  $( "#artist" )
+      .on( "keydown", function( event ) {
+        if ( event.keyCode === $.ui.keyCode.TAB &&
+            $( this ).autocomplete( "instance" ).menu.active ) {
+          event.preventDefault();
+        }
+      })
+      .autocomplete({
+        source: function( request, response ) {
+          $.getJSON( "search_artist", {
             term: extractLast( request.term )
           }, response );
         },
@@ -328,7 +371,16 @@ $( function() {
           return false;
         }
       });
+
+    $.views.settings.delimiters("<%", "%>");
+
+     page = parseInt(getUrlParameter('page'));
+      if (!Number.isInteger(page)){
+        page = 0;
+      }
   } );
+
+var page;
 
   function add_concert(){
     $('form').toggleClass('loading').find('fieldset').attr('disabled','');
@@ -338,11 +390,60 @@ $( function() {
         data: { artist: "John",
                 location: "Boston" }
     }).done(function( msg ) {
-        alert( "Data Saved: " + msg );
         $('form').toggleClass('loading').find('fieldset').removeAttr('disabled');
     });
 
     return false;
+  }
+
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+};
+
+  function prev(){
+    $('form').toggleClass('loading').find('fieldset').attr('disabled','');
+
+    page -= 1;
+    $.ajax({
+        method: "POST",
+        url: "/find2",
+        data: { artist: getUrlParameter('artist'),
+                page: page}
+    }).done(function( msg ) {
+        $('form').toggleClass('loading').find('fieldset').removeAttr('disabled');
+    });
+
+    return false;
+  }
+   function next(e){
+    $('form').toggleClass('loading').find('fieldset').attr('disabled','');
+    page += 1;
+    $.ajax({
+        method: "POST",
+        url: "/find2",
+        dataType: "json",
+        data: { artist: getUrlParameter('artist'),
+                page: page}
+    }).done(function( msg ) {
+        var template = $.templates("#theTmpl");
+        var htmlOutput = template.render(msg);
+        $(".results .result").remove();
+        $(".results").append(htmlOutput);
+        $('form').toggleClass('loading').find('fieldset').removeAttr('disabled');
+    });
+
+    e.preventDefault();
   }
 
   function login(){

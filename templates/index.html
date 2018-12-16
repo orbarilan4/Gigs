@@ -20,15 +20,20 @@
                   <form action="find" method="post">
                     <div class="row">
                       <div class="col-md-6 mb-3 mb-lg-0">
-                        <input type="text" class="form-control" placeholder="eg. Beyonce" name="artist">
+                        <input id="artist" type="text" class="form-control" placeholder="eg. Beyonce" name="artist">
                       </div>
                       <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                        <input id="city" type="text" class="form-control form-control-block search-input" id="autocomplete" placeholder="Location" onFocus="geolocate()">
+                        <input id="city" type="text" class="form-control form-control-block search-input" placeholder="Location">
                       </div>
                       <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
                         <input type="submit" class="btn btn-primary btn-block" value="Search">
                       </div>
                     </div>
+                  <div class="row">
+                    <div class="col mb-3 mb-lg-0">
+                      <input type="checkbox" id="cbx" checked> Only show locations which the artist has future concerts at
+                    </div>
+                  </div>
                   </form>
                 </div>
                 <div class="tab-pane fade" id="pills-candidate" role="tabpanel" aria-labelledby="pills-candidate-tab">

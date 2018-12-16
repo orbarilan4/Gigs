@@ -12,6 +12,7 @@ class AdvancedSearch(Form):
     max_age = StringField('Maximum Age')
     min_price = StringField('Minimum Price')
     max_price = StringField('Maximum Price')
+    page = StringField('Page')
 
 
 class AddDelConcert(Form):

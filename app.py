@@ -3,7 +3,6 @@ from flaskext.mysql import MySQL
 from forms import AdvancedSearch, RegistrationForm, LoginForm, UpdateProfileForm, AddDelConcert
 import numpy as np
 import json
-from initialization_scripts.utils import xstr,get_record
 
 mysql = MySQL()
 
@@ -144,20 +143,48 @@ def analytics():
 
 @app.route('/search', methods=['GET'] )
 def search():
-    filter = request.args.get('term', '', type=str)
+    filter = request.args.get('term', '', type=str).strip()
+    artist = request.args.get('artist', '', type=str).strip()
     cur = mysql.get_db().cursor()
-    cur.execute("SELECT city_id, city_name, country_name "
-                "FROM city "
-                "INNER JOIN country "
-                "ON city.country_id = country.country_id "
-                "AND city_name like '%s' "                
-                "LIMIT 5" % ('%' + filter + '%'))
+    if (artist == ''):
+        cur.execute("SELECT city.city_id, city_name, country_name "
+                    "FROM city "
+                    "INNER JOIN country "
+                    "ON city.country_id = country.country_id "
+                    "AND city_name like '%s' "
+                    "LIMIT 5" % ('%' + filter + '%'))
+    else:
+        cur.execute("SELECT city.city_id, city_name, country_name "
+                    "FROM city "
+                    "INNER JOIN country "
+                    "ON city.country_id = country.country_id "
+                    "AND city_name like '%s' "                
+                    "INNER JOIN concert "
+                    "ON concert.city_id = city.city_id "
+                    "INNER JOIN artist "
+                    "ON concert.artist_id = artist.artist_id "
+                    "AND artist_name like '%s' "
+                    "LIMIT 5" % ('%' + filter + '%','%' + artist + '%',))
     rows = cur.fetchall()
 
-    cur.execute("SELECT country_id, country_name "
-                "FROM country "
-                "WHERE country_name like '%s' "
-                "LIMIT 5" % ('%' + filter + '%'))
+    if (artist == ''):
+        cur.execute("SELECT country_id, country_name "
+                    "FROM country "
+                    "WHERE country_name like '%s' "
+                    "LIMIT 5" % ('%' + filter + '%'))
+    else:
+        cur.execute("SELECT country.country_id, country_name "
+                    "FROM city "
+                    "INNER JOIN country "
+                    "ON city.country_id = country.country_id "
+                    "AND city_name like '%s' "
+                    "INNER JOIN concert "
+                    "ON concert.city_id = city.city_id "
+                    "INNER JOIN artist "
+                    "ON concert.artist_id = artist.artist_id "
+                    "AND artist_name like '%s' "
+                    "LIMIT 5" % ('%' + filter + '%', '%' + artist + '%',))
+
     rows2 = cur.fetchall()
 
     rowarray_list = {}
@@ -173,6 +200,26 @@ def search():
     j += [{'id': str(k), 'label': v, 'value': v, 'category': 'Countries'} for k, v in rowarray_list.items()]
 
     return json.dumps(j, indent=4)
+
+
+@app.route('/search_artist', methods=['GET'] )
+def search_artist():
+    filter = request.args.get('term', '', type=str)
+    cur = mysql.get_db().cursor()
+    cur.execute("SELECT artist_id, artist_name "
+                "FROM artist "                
+                "WHERE artist_name like '%s' "                
+                "LIMIT 5" % ('%' + filter + '%'))
+    rows = cur.fetchall()
+
+    rowarray_list = {}
+    for row in rows:
+        rowarray_list[row[0]] = row[1]
+
+    j = [{'id': str(k), 'label': v, 'value': v} for k, v in rowarray_list.items()]
+
+    return json.dumps(j, indent=4)
+
 
 
 @app.route('/add_concert', methods=['GET', 'POST'])
@@ -251,6 +298,12 @@ def del_concert():
         return render_template("index.html")
     return render_template("del_concert.html", form=form)
 
+# Convert to string and if doesnt get anything return str("")
+def xstr(s):
+    if s is None:
+        return ''
+    return s.encode('utf-8').strip()
+
 
 # ================================
 # ===== General Options ======
@@ -258,6 +311,7 @@ def del_concert():
 @app.route('/find', methods=['GET', 'POST'])
 def advanced_search():
     form = AdvancedSearch(request.form)
+    records = []
     if request.method == 'POST':
         artist = form.artist.data if form.artist.data != '' else None
         city = form.city.data if form.city.data != '' else None
@@ -268,6 +322,7 @@ def advanced_search():
         max_age = form.max_age.data if form.max_age.data != '' else 100
         min_price = form.min_price.data if form.min_price.data != '' else 0
         max_price = form.max_price.data if form.max_price.data != '' else 100
+        page = int(form.page.data) * 10 if form.page.data != '' else 0
         cur = mysql.get_db().cursor()
 
         cur.execute(
@@ -285,16 +340,70 @@ def advanced_search():
             "AND (concert.age_limit <= COALESCE(%s,concert.age_limit)) "
             "AND (concert.price >= COALESCE(%s,concert.price)) "
             "AND (concert.price <= COALESCE(%s,concert.price)) "
-            ")ORDER BY concert.price LIMIT 20",
+            ")ORDER BY concert.price LIMIT %s,11",
             (("%" + xstr(artist) + "%"), date, ("%" + xstr(country) + "%"), ("%" + xstr(city) + "%"), ("%" + xstr(genre) + "%"),
-             int(min_age), int(max_age), int(min_price), int(max_price)))
+             int(min_age), int(max_age), int(min_price), int(max_price), page))
         records = cur.fetchall()
         if len(records) == 0:
             return render_template("sorry.html")
         else:
             return render_template("result.html", records=records, orders=True)
 
-    return render_template("result.html")
+    return render_template("result.html", records=records, orders=True)
+
+from datetime import date, datetime
+
+def json_serial(obj):
+    """JSON serializer for objects not serializable by default json code"""
+
+    if isinstance(obj, (datetime, date)):
+        return obj.isoformat()
+    raise TypeError ("Type %s not serializable" % type(obj))
+
+@app.route('/find2', methods=['GET', 'POST'])
+def advanced_search2():
+    form = AdvancedSearch(request.form)
+    records = []
+    if request.method == 'POST':
+        artist = form.artist.data if form.artist.data != '' else None
+        city = form.city.data if form.city.data != '' else None
+        country = form.country.data if form.country.data != '' else None
+        date = form.date.data if form.date.data != '' else None
+        genre = form.genre.data if form.genre.data != '' else None
+        min_age = form.min_age.data if form.min_age.data != '' else 0
+        max_age = form.max_age.data if form.max_age.data != '' else 100
+        min_price = form.min_price.data if form.min_price.data != '' else 0
+        max_price = form.max_price.data if form.max_price.data != '' else 100
+        page = int(form.page.data) * 10 if form.page.data != '' else 0
+        cur = mysql.get_db().cursor()
+
+        cur.execute(
+            "SELECT artist.artist_name ,concert.date_time , city.city_name, country.country_name, "
+            "genre.genre_name, concert.age_limit , concert.price, concert.capacity "
+            "FROM city, concert, artist, genre, country "
+            "WHERE concert.city_id = city.city_id AND country.country_id = city.country_id "
+            "AND concert.artist_id = artist.artist_id AND artist.genre_id = genre.genre_id "
+            "AND ((artist.artist_name LIKE COALESCE(%s,artist.artist_name)) "
+            "AND (concert.date_time = COALESCE(%s,concert.date_time)) "
+            "AND (country.country_name LIKE COALESCE(%s,country.country_name)) "
+            "AND (city.city_name LIKE COALESCE(%s,city.city_name)) "
+            "AND (genre.genre_name LIKE COALESCE(%s,genre.genre_name)) "
+            "AND (concert.age_limit >= COALESCE(%s,concert.age_limit)) "
+            "AND (concert.age_limit <= COALESCE(%s,concert.age_limit)) "
+            "AND (concert.price >= COALESCE(%s,concert.price)) "
+            "AND (concert.price <= COALESCE(%s,concert.price)) "
+            ")ORDER BY concert.price LIMIT %s,11",
+            (("%" + xstr(artist) + "%"), date, ("%" + xstr(country) + "%"), ("%" + xstr(city) + "%"), ("%" + xstr(genre) + "%"),
+             int(min_age), int(max_age), int(min_price), int(max_price), page))
+        records = cur.fetchall()
+        columns = cur.description
+        result = [{columns[index][0]: column for index, column in enumerate(value)} for value in records]
+        if len(records) == 0:
+            return render_template("sorry.html")
+
+    return json.dumps(result, default=json_serial)
+
+
 
 
 # ================================
