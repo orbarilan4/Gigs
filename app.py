@@ -56,9 +56,10 @@ def update_profile():
 
                 place = list(cur.fetchall()).pop(0)
                 session['country_name'] = place[1]
-                
+                #flash(f'Your account updated!', 'success')
                 return show_profile()
             elif len(city_record) == 0:
+                #flash(f'The entered city does not exist!', 'error')
                 return redirect(url_for('update_profile'))
     else:
         return render_template('index.html')
@@ -100,7 +101,7 @@ def analytics():
             cur.execute("SELECT country_name FROM country WHERE country_name = %s", form.country.data)
             country = cur.fetchall()
             if len(country) == 0:
-                ##flash(f'The entered country does not exist!', 'error')
+                #flash(f'The entered country does not exist!', 'error')
                 return redirect(url_for('analytics'))
             else:
                 session['country_input_exists'] = form.country.data
@@ -239,9 +240,11 @@ def del_concert():
                     print(form.date.data)
                     return redirect(url_for('del_concert'))
                 else:
+                    pass
                     #flash(f"There is no {artist[0]}'s gig on {form.date.data}", 'error')
                     return redirect(url_for('del_concert'))
             elif len(artist_record) == 0:
+                pass
                 #flash(f'The entered artist does not exist!', 'error')
                 return redirect(url_for('del_concert'))
     else:
