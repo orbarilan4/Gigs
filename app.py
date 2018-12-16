@@ -56,10 +56,9 @@ def update_profile():
 
                 place = list(cur.fetchall()).pop(0)
                 session['country_name'] = place[1]
-                flash(f'Your account updated!', 'success')
+                
                 return show_profile()
             elif len(city_record) == 0:
-                flash(f'The entered city does not exist!', 'error')
                 return redirect(url_for('update_profile'))
     else:
         return render_template('index.html')
@@ -101,7 +100,7 @@ def analytics():
             cur.execute("SELECT country_name FROM country WHERE country_name = %s", form.country.data)
             country = cur.fetchall()
             if len(country) == 0:
-                flash(f'The entered country does not exist!', 'error')
+                ##flash(f'The entered country does not exist!', 'error')
                 return redirect(url_for('analytics'))
             else:
                 session['country_input_exists'] = form.country.data
@@ -201,14 +200,14 @@ def add_concert():
                 return '0'
 
             except:
-                flash(f'The artist has already played on this date', 'error')
+                #flash(f'The artist has already played on this date', 'error')
                 return '1'
 
         elif len(city_record) == 0:
-            flash(f'The entered city does not exist!', 'error')
+            #flash(f'The entered city does not exist!', 'error')
             return '2'
         elif len(artist_record) == 0:
-            flash(f'The entered artist does not exist!', 'error')
+            #flash(f'The entered artist does not exist!', 'error')
             return '3'
     else:
         return '4'
@@ -236,14 +235,14 @@ def del_concert():
                         "DELETE FROM concert WHERE artist_id = %s AND date_time = %s",
                         (int(artist[1]), form.date.data))
                     mysql.get_db().commit()
-                    flash(f"{artist[0]}'s gig on {form.date.data} canceled successfully!", 'success')
+                    #flash(f"{artist[0]}'s gig on {form.date.data} canceled successfully!", 'success')
                     print(form.date.data)
                     return redirect(url_for('del_concert'))
                 else:
-                    flash(f"There is no {artist[0]}'s gig on {form.date.data}", 'error')
+                    #flash(f"There is no {artist[0]}'s gig on {form.date.data}", 'error')
                     return redirect(url_for('del_concert'))
             elif len(artist_record) == 0:
-                flash(f'The entered artist does not exist!', 'error')
+                #flash(f'The entered artist does not exist!', 'error')
                 return redirect(url_for('del_concert'))
     else:
         return render_template("index.html")
@@ -323,13 +322,16 @@ def buy_tickets():
                     cur.execute("UPDATE concert SET capacity = (capacity - 1) WHERE artist_id = %s AND date_time = %s",
                                 (artist_record[1], record[1]))  # Capacity update after purchase
                     mysql.get_db().commit()
-                    flash(f"You bought some tickets ! You can view them on your profile", 'success')
+                    #flash(f"You bought some tickets ! You can view them on your profile", 'success')
                 except:
-                    flash(f"Already have a ticket for {record[0]}'s gig on {record[1]} !", 'warning')
+                    pass
+                    #flash(f"Already have a ticket for {record[0]}'s gig on {record[1]} !", 'warning')
             elif int(concert_data[0]) == 0:
-                flash(f"No tickets available for {record[0]}'s gig on {record[1]} !", 'error')
+                pass
+                #flash(f"No tickets available for {record[0]}'s gig on {record[1]} !", 'error')
             elif int(concert_data[1]) > int(session['age']):
-                flash(f"You are under age for {record[0]}'s gig on {record[1]} !", 'error')
+                pass
+                #flash(f"You are under age for {record[0]}'s gig on {record[1]} !", 'error')
     return render_template("index.html")
 
 
