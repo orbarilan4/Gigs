@@ -384,11 +384,13 @@ var page;
 
   function add_concert(){
     $('form').toggleClass('loading').find('fieldset').attr('disabled','');
+    artist = $('#artist').val()
+    location = $('#location').val()
     $.ajax({
         method: "POST",
         url: "/add_concert",
-        data: { artist: "John",
-                location: "Boston" }
+        data: { artist: artist,
+                location: location }
     }).done(function( msg ) {
         $('form').toggleClass('loading').find('fieldset').removeAttr('disabled');
     });
@@ -449,11 +451,13 @@ var getUrlParameter = function getUrlParameter(sParam) {
   function login(){
     $('.alert').addClass('d-none');
     $('form').toggleClass('loading').find('fieldset').attr('disabled','');
+    user = $('#username').val()
+    password = $('#password').val()
     $.ajax({
         method: "POST",
         url: "/login",
-        data: { username: "John",
-                password: "Boston" }
+        data: { username: user,
+                password: password }
     }).done(function( msg ) {
         if (msg > 0){
             $('.alert').removeClass('d-none');
@@ -468,11 +472,13 @@ var getUrlParameter = function getUrlParameter(sParam) {
   function register(){
     $('.alert').addClass('d-none');
     $('form').toggleClass('loading').find('fieldset').attr('disabled','');
+    user = $('#username').val()
+    password = $('#password').val()
     $.ajax({
         method: "POST",
         url: "/register",
-        data: { username: "John",
-                password: "Boston" }
+        data: { username: user,
+                password: password }
     }).done(function( msg ) {
         if (msg > 0){
             $('.alert').removeClass('d-none');
