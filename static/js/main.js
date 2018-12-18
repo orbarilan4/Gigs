@@ -462,7 +462,9 @@ var getUrlParameter = function getUrlParameter(sParam) {
         if (msg > 0){
             $('.alert').removeClass('d-none');
         }
-
+        else{
+            location.href = '/';
+        }
         $('form').toggleClass('loading').find('fieldset').removeAttr('disabled');
     });
 
@@ -483,7 +485,9 @@ var getUrlParameter = function getUrlParameter(sParam) {
         if (msg > 0){
             $('.alert').removeClass('d-none');
         }
-
+        else{
+            location.href = '/';
+        }
         $('form').toggleClass('loading').find('fieldset').removeAttr('disabled');
     });
 
