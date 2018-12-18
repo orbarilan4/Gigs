@@ -118,7 +118,7 @@
           <div class="col-md-12 text-center">
             <div class="site-block-27">
               <ul>
-                  {% if request.args.get('a') > 0 %}
+                  {% if request.args.get('a', 0) > 0 %}
                 <li><a href="#" class="prev"><i class="icon-keyboard_arrow_left h5"></i> Prev</a></li>
                   {% endif %}
                   {% if records|length > 10 %}
