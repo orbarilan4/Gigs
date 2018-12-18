@@ -505,6 +505,7 @@ var getUrlParameter = function getUrlParameter(sParam) {
         if (msg == 'True'){
             $('.menu_login a>span').html('<span class="h5 mr-2"><i class="fas fa-user"></i></span> Logout');
             $('.menu_login a').attr('href', '/logout');
+            $('.loggedIn').removeClass('d-none');
         }
         $('.menu_login').removeClass('invisible');
     });
