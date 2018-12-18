@@ -228,41 +228,37 @@ def search_artist():
 
 @app.route('/add_concert', methods=['GET', 'POST'])
 def add_concert():
+    if session['is_admin'] is False:
+        return home()
+
     if request.method == 'GET':
         return render_template("add_concert.html")
-    #session['is_admin'] = True
-    #session['logged_in'] = True
-    elif session['is_admin'] and session['logged_in']:
-        form = AddDelConcert(request.form)
-        #if request.method == 'POST' and form.validate():
-        cur = mysql.get_db().cursor()
-        cur.execute("SELECT city_name, city_id FROM city WHERE city_name = %s",form.city.data) # Checking if the city exist
-        city_record = cur.fetchall()
-        cur.execute("SELECT artist_name, artist_id FROM artist WHERE artist_name = %s",form.artist.data)  # Checking if the artist exist
-        artist_record = cur.fetchall()
-        if len(city_record) != 0 and len(artist_record) != 0:
-            try:
-                cur.execute(
-                    "INSERT INTO concert (artist_id,city_id,date_time,capacity,age_limit,price)"
-                    "VALUES (%s,%s,%s,%s,%s,%s)",
-                    (int(list(artist_record).pop(0)[1]), int(list(city_record).pop(0)[1]),
-                     form.date.data, form.capacity.data, form.age_limit.data,form.price.data))
-                mysql.get_db().commit()
 
-                return '0'
 
-            except:
-                #flash(f'The artist has already played on this date', 'error')
-                return '1'
+    form = AddDelConcert(request.form)
 
-        elif len(city_record) == 0:
-            #flash(f'The entered city does not exist!', 'error')
-            return '2'
-        elif len(artist_record) == 0:
-            #flash(f'The entered artist does not exist!', 'error')
-            return '3'
-    else:
-        return '4'
+    cur = mysql.get_db().cursor()
+    cur.execute("SELECT city_name, city_id FROM city WHERE city_name = %s",form.city.data) # Checking if the city exist
+    city_record = cur.fetchall()
+    cur.execute("SELECT artist_name, artist_id FROM artist WHERE artist_name = %s",form.artist.data)  # Checking if the artist exist
+    artist_record = cur.fetchall()
+    if len(city_record) != 0 and len(artist_record) != 0:
+        try:
+            cur.execute(
+                "INSERT INTO concert (artist_id,city_id,date_time,capacity,age_limit,price)"
+                "VALUES (%s,%s,%s,%s,%s,%s)",
+                (int(list(artist_record).pop(0)[1]), int(list(city_record).pop(0)[1]),
+                 form.date.data, form.capacity.data, form.age_limit.data,form.price.data))
+            mysql.get_db().commit()
+
+            return '0'
+        except:
+            return '1'
+    elif len(city_record) == 0:
+        return '2'
+    elif len(artist_record) == 0:
+        return '3'
+
 
 
 
