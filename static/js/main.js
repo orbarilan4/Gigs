@@ -276,6 +276,7 @@ $( function() {
     $('.register').click(register);
     $('.prev').click(prev);
     $('.next').click(next);
+    isLoggedIn();
 
     $.widget("custom.catcomplete", $.ui.autocomplete, {
          _renderMenu: function (ul, items) {
@@ -493,3 +494,19 @@ var getUrlParameter = function getUrlParameter(sParam) {
 
     return false;
   }
+
+
+
+  function isLoggedIn(){
+    $.ajax({
+        method: "GET",
+        url: "/isloggedin"
+    }).done(function( msg ) {
+        if (msg == 'True'){
+            $('.menu_login a>span').html('<span class="h5 mr-2"><i class="fas fa-user"></i></span> Logout');
+            $('.menu_login a').attr('href', '/logout');
+        }
+        $('.menu_login').removeClass('invisible');
+    });
+  }
+

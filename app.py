@@ -22,6 +22,10 @@ def home():
     return render_template('index.html')
 
 
+@app.route("/isloggedin", methods=['GET'])
+def is_logged_in():
+    return str(session['logged_in'])
+
 # ================================
 # ===== User Page Options ======
 # ================================
