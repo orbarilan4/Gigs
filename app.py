@@ -24,7 +24,12 @@ def home():
 
 @app.route("/isloggedin", methods=['GET'])
 def is_logged_in():
-    return str(session['logged_in'])
+    if session['is_admin']:
+        return '2'
+    elif session['logged_in']:
+        return '1'
+
+    return '0'
 
 # ================================
 # ===== User Page Options ======
@@ -71,21 +76,21 @@ def update_profile():
 
 @app.route("/personal_tickets", methods=['GET', 'POST'])
 def personal_tickets():
-    if session['logged_in']:
-        cur = mysql.get_db().cursor()
-        # Searching for top-10 gigs base on user's city and user's age
-        cur.execute(
-            "SELECT artist.artist_name, concert.date_time, city.city_name, country.country_name, genre.genre_name "
-            "FROM city, concert, artist,user_concert,country,genre "
-            "WHERE concert.city_id = city.city_id "
-            "AND concert.artist_id = artist.artist_id AND country.country_id = city.country_id "
-            "AND user_concert.artist_id = concert.artist_id AND user_concert.date_time = concert.date_time "
-            "AND artist.genre_id = genre.genre_id AND user_concert.username = %s ORDER BY concert.price "
-            , session['username'])
-        records = cur.fetchall()
-    else:
-        return render_template('index.html')
-    return render_template('result.html', orders=False, records=records)
+    if session['logged_in'] is False:
+        return home()
+
+    cur = mysql.get_db().cursor()
+    # Searching for top-10 gigs base on user's city and user's age
+    cur.execute(
+        "SELECT artist.artist_name, concert.date_time, city.city_name, country.country_name, genre.genre_name "
+        "FROM city, concert, artist,user_concert,country,genre "
+        "WHERE concert.city_id = city.city_id "
+        "AND concert.artist_id = artist.artist_id AND country.country_id = city.country_id "
+        "AND user_concert.artist_id = concert.artist_id AND user_concert.date_time = concert.date_time "
+        "AND artist.genre_id = genre.genre_id AND user_concert.username = %s ORDER BY concert.price "
+        , session['username'])
+    records = cur.fetchall()
+    return render_template('my_tickets.html', orders=False, records=records)
 
 
 # ================================
@@ -302,7 +307,7 @@ def del_concert():
 def xstr(s):
     if s is None:
         return ''
-    return s.encode('utf-8').strip()
+    return str(s.encode('utf-8'))[2:-1].strip()
 
 
 # ================================
@@ -331,23 +336,31 @@ def advanced_search():
             "FROM city, concert, artist, genre, country "
             "WHERE concert.city_id = city.city_id AND country.country_id = city.country_id "
             "AND concert.artist_id = artist.artist_id AND artist.genre_id = genre.genre_id "
-            "AND ((artist.artist_name LIKE COALESCE(%s,artist.artist_name)) "
-            "AND (concert.date_time = COALESCE(%s,concert.date_time)) "
-            "AND (country.country_name LIKE COALESCE(%s,country.country_name)) "
-            "AND (city.city_name LIKE COALESCE(%s,city.city_name)) "
-            "AND (genre.genre_name LIKE COALESCE(%s,genre.genre_name)) "
-            "AND (concert.age_limit >= COALESCE(%s,concert.age_limit)) "
-            "AND (concert.age_limit <= COALESCE(%s,concert.age_limit)) "
-            "AND (concert.price >= COALESCE(%s,concert.price)) "
-            "AND (concert.price <= COALESCE(%s,concert.price)) "
-            ")ORDER BY concert.price LIMIT %s,11",
-            (("%" + xstr(artist) + "%"), date, ("%" + xstr(country) + "%"), ("%" + xstr(city) + "%"), ("%" + xstr(genre) + "%"),
-             int(min_age), int(max_age), int(min_price), int(max_price), page))
+            "AND (artist.artist_name LIKE COALESCE(%s,artist.artist_name)) "
+            #"AND (concert.date_time = COALESCE(%s,concert.date_time)) "
+            #"AND (country.country_name LIKE COALESCE(%s,country.country_name)) "
+            #"AND (city.city_name LIKE COALESCE(%s,city.city_name)) "
+            #"AND (genre.genre_name LIKE COALESCE(%s,genre.genre_name)) "
+            #"AND (concert.age_limit >= COALESCE(%s,concert.age_limit)) "
+            #"AND (concert.age_limit <= COALESCE(%s,concert.age_limit)) "
+            #"AND (concert.price >= COALESCE(%s,concert.price)) "
+            #"AND (concert.price <= COALESCE(%s,concert.price)) "
+            "ORDER BY concert.price LIMIT %s,11",
+            (("%" + xstr(artist) + "%"),
+           #  date,
+           #  ("%" + xstr(country) + "%"),
+           #  ("%" + xstr(city) + "%"),
+           #  ("%" + xstr(genre) + "%"),
+           #  int(min_age),
+           #  int(max_age),
+           #  int(min_price),
+           #  int(max_price),
+             page))
+
+
+
         records = cur.fetchall()
-        if len(records) == 0:
-            return render_template("sorry.html")
-        else:
-            return render_template("result.html", records=records, orders=True)
+        return render_template("result.html", records=records, orders=True)
 
     return render_template("result.html", records=records, orders=True)
 

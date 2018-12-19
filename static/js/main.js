@@ -385,14 +385,19 @@ var page;
 
   function add_concert(){
     $('form').toggleClass('loading').find('fieldset').attr('disabled','');
-    artist = $('#artist').val()
-    location = $('#location').val()
+    artist = $('#artist').val();
+    //location = $('#location').val();
     $.ajax({
         method: "POST",
         url: "/add_concert",
-        data: { artist: artist,
-                location: location }
+        data: { artist: artist }
     }).done(function( msg ) {
+        if (msg > 0){
+            $('.alert').removeClass('d-none');
+        }
+        else{
+            $('#myModal').modal();
+        }
         $('form').toggleClass('loading').find('fieldset').removeAttr('disabled');
     });
 
@@ -414,20 +419,34 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
 };
 
-  function prev(){
+  function prev(e){
     $('form').toggleClass('loading').find('fieldset').attr('disabled','');
-
     page -= 1;
     $.ajax({
         method: "POST",
         url: "/find2",
-        data: { artist: getUrlParameter('artist'),
+        dataType: "json",
+        data: { artist: $('#artist').val(),
                 page: page}
     }).done(function( msg ) {
+        if (msg.length > 10){
+            msg.pop();
+        }
+
+        var template = $.templates("#theTmpl");
+        var htmlOutput = template.render(msg);
+        $(".results .result").remove();
+        $(".results").append(htmlOutput);
+        $('.next').removeClass('d-none');
+
+        if (page == 0){
+            $('.prev').addClass('d-none');
+        }
+
         $('form').toggleClass('loading').find('fieldset').removeAttr('disabled');
     });
 
-    return false;
+    e.preventDefault();
   }
    function next(e){
     $('form').toggleClass('loading').find('fieldset').attr('disabled','');
@@ -436,13 +455,21 @@ var getUrlParameter = function getUrlParameter(sParam) {
         method: "POST",
         url: "/find2",
         dataType: "json",
-        data: { artist: getUrlParameter('artist'),
+        data: { artist: $('#artist').val(),
                 page: page}
     }).done(function( msg ) {
+        if (msg.length > 10){
+            msg.pop();
+        }
+        else {
+            $('.next').addClass('d-none');
+        }
+
         var template = $.templates("#theTmpl");
         var htmlOutput = template.render(msg);
         $(".results .result").remove();
         $(".results").append(htmlOutput);
+        $('.prev').removeClass('d-none');
         $('form').toggleClass('loading').find('fieldset').removeAttr('disabled');
     });
 
@@ -502,7 +529,12 @@ var getUrlParameter = function getUrlParameter(sParam) {
         method: "GET",
         url: "/isloggedin"
     }).done(function( msg ) {
-        if (msg == 'True'){
+        if (msg > 0){
+
+            if (msg > 1){
+                $('.admin').removeClass('d-none');
+            }
+
             $('.menu_login a>span').html('<span class="h5 mr-2"><i class="fas fa-user"></i></span> Logout');
             $('.menu_login a').attr('href', '/logout');
             $('.loggedIn').removeClass('d-none');

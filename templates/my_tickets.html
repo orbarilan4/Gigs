@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+{%block content%}
+
+<div class="site-section bg-light">
+
+
+<div class="container results pt-5">
+
+          {% for row in records[:-1] %}
+    {% set rowloop = loop %}
+
+        <div class="row result" data-aos="fade">
+         <div class="col-md-12">
+
+           <div class="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
+
+              <div class="mb-4 mb-md-0 mr-5">
+               <div class="job-post-item-header d-flex align-items-center">
+                 <h2 class="mr-3 text-black h4">{{row[0]}}</h2>
+                 <div class="badge-wrap">
+                  <span class="bg-primary text-white badge py-2 px-4">Primary</span>
+                 </div>
+               </div>
+               <div class="job-post-item-body d-block d-md-flex">
+                 <div class="mr-3"><span class="fl-bigmug-line-portfolio23"></span> <a href="#">{{row[1]}}</a></div>
+                 <div><span class="fl-bigmug-line-big104"></span> <span>{{row[2]}}, {{row[3]}}</span></div>
+               </div>
+              </div>
+
+              <div class="ml-auto">
+                <a href="job-single.html" class="btn btn-danger py-2">Cancel tickets</a>
+              </div>
+           </div>
+
+         </div>
+        </div>
+ {% endfor %}
+</div>
+        <div class="row mt-5">
+          <div class="col-md-12 text-center">
+            <div class="site-block-27">
+              <ul>
+                <li><a href="#" class="prev d-none"><i class="icon-keyboard_arrow_left h5"></i> Prev</a></li>
+                  {% if records|length > 10 %}
+                <li><a href="#" class="next"><i class="icon-keyboard_arrow_right h5"></i> Next</a></li>
+                  {% endif %}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+
+<script id="theTmpl" type="text/x-jsrender">
+
+<div class="row result" data-aos="fade">
+         <div class="col-md-12">
+
+           <div class="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
+
+              <div class="mb-4 mb-md-0 mr-5">
+               <div class="job-post-item-header d-flex align-items-center">
+                 <h2 class="mr-3 text-black h4"><%:artist_name%></h2>
+                 <div class="badge-wrap">
+                  <span class="bg-primary text-white badge py-2 px-4">Primary</span>
+                 </div>
+               </div>
+               <div class="job-post-item-body d-block d-md-flex">
+                 <div class="mr-3"><span class="fl-bigmug-line-portfolio23"></span> <a href="#"><%:date_time%></a></div>
+                 <div><span class="fl-bigmug-line-big104"></span> <span><%:city_name%>, <%:country_name%></span></div>
+               </div>
+              </div>
+
+              <div class="ml-auto">
+                <a href="job-single.html" class="btn btn-danger py-2">Cancel tickets</a>
+              </div>
+           </div>
+
+         </div>
+        </div>
+
+</script>
+
+{% endblock%}
