@@ -1,13 +1,14 @@
 import csv
-import mysql.connector
+import sqlite3
 
 def mysql_db():
-    my_db = mysql.connector.connect(
-      host="85.10.205.173",
-      user="orbari123456",
-      passwd="Oliver123",
-      database="music321"
-    )
+    my_db = sqlite3.connect('../db/gigs.db')
+    #my_db = mysql.connector.connect(
+      #host="85.10.205.173",
+      #user="orbari123456",
+      #passwd="Oliver123",
+      #database="music321"
+    #)
     # Old database - better keep this !!!
     # host = "85.10.205.173",
     # user = "ori12345",
@@ -53,29 +54,29 @@ def mysql_db():
 
     with open('../static/datasets/created/genre.csv', 'r', encoding="utf8") as f:
         reader = tuple(csv.reader(f))
-        cursor.executemany("INSERT INTO genre (genre_name,genre_id) VALUES (%s,%s)", reader[1:])
+        cursor.executemany("INSERT INTO genre (genre_name,genre_id) VALUES (?,?)", reader[1:])
         my_db.commit()
 
     with open('../static/datasets/created/country.csv', 'r', encoding="utf8") as f:
         reader = tuple(csv.reader(f))
-        cursor.executemany("INSERT INTO country (country_name,country_id) VALUES (%s,%s)", reader[1:])
+        cursor.executemany("INSERT INTO country (country_name,country_id) VALUES (?,?)", reader[1:])
         my_db.commit()
 
     with open('../static/datasets/created/city.csv', 'r', encoding="utf8") as f:
         reader = tuple(csv.reader(f))
-        cursor.executemany("INSERT INTO city (city_name,country_id,city_id) VALUES (%s,%s,%s)", reader[1:])
+        cursor.executemany("INSERT INTO city (city_name,country_id,city_id) VALUES (?,?,?)", reader[1:])
         my_db.commit()
 
     with open('../static/datasets/created/artist.csv', 'r', encoding="utf8") as f:
         reader = tuple(csv.reader(f))
-        cursor.executemany("INSERT INTO artist (artist_name,genre_id,artist_id) VALUES (%s,%s,%s)", reader[1:])
+        cursor.executemany("INSERT INTO artist (artist_name,genre_id,artist_id) VALUES (?,?,?)", reader[1:])
         my_db.commit()
 
     with open('../static/datasets/created/concert.csv', 'r', encoding="utf8") as f:
         reader = tuple(csv.reader(f))
         for i in range(1, 7500):
             cursor.executemany("INSERT INTO concert (artist_id,city_id,date_time,price,age_limit,capacity)"
-                               " VALUES (%s,%s,%s,%s,%s,%s)", reader[i*50:((i+1)*50)])
+                               " VALUES (?,?,?,?,?,?)", reader[i*50:((i+1)*50)])
             print(i)
             my_db.commit()
 
