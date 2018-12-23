@@ -390,8 +390,6 @@ def advanced_search():
            #  int(max_price),
              page))
 
-
-
         records = cur.fetchall()
         return render_template("result.html", records=records, orders=True)
 
