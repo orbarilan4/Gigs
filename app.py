@@ -6,6 +6,10 @@ import json
 from datetime import date, datetime
 import wikipedia
 
+import models as model
+
+db = model.modelDB()
+
 DATABASE = 'db/gigs.db'
 def get_db():
     db = getattr(g, '_database', None)
@@ -22,6 +26,10 @@ app = Flask(__name__)
 #app.config['MYSQL_DATABASE_DB'] = 'music321'
 app.config['SECRET_KEY'] = 'f9bf78b9a18ce6d46a0cd2b0b86df9da'
 #mysql.init_app(app)
+
+@app.teardown_appcontext
+def close_connection(exception):
+    db.close_connection(exception)
 
 @app.teardown_appcontext
 def close_connection(exception):
@@ -71,15 +79,14 @@ def show_profile():
         return render_template('index.html')
     return render_template('show_profile.html')
 
-
+'''
 @app.route("/update_profile", methods=['GET', 'POST'])
 def update_profile():
     if session['logged_in']:
         form = UpdateProfileForm(request.form)
         if request.method == 'POST' and form.validate():
-            cur = get_db().cursor()
-            cur.execute("SELECT city_name, city_id FROM city WHERE city_name = ?", form.city.data) # Checking if the city exist
-            city_record = list(cur.fetchall())
+         
+            city_record = db.getRecord(form.city.data)
             if city_record:
                 city_record = city_record.pop(0)
                 cur.execute("UPDATE user SET user.age = ? , user.city_id = ?, user.picture = ?  WHERE user.username = ?",
@@ -104,23 +111,14 @@ def update_profile():
         return render_template('index.html')
     return render_template('update_profile.html', form=form)
 
+'''
 
 @app.route("/personal_tickets", methods=['GET', 'POST'])
 def personal_tickets():
     if session['logged_in'] is False:
         return home()
 
-    cur = get_db().cursor()
-    # Searching for top-10 gigs base on user's city and user's age
-    cur.execute(
-        "SELECT artist.artist_name, concert.date_time, city.city_name, country.country_name, genre.genre_name "
-        "FROM city, concert, artist,user_concert,country,genre "
-        "WHERE concert.city_id = city.city_id "
-        "AND concert.artist_id = artist.artist_id AND country.country_id = city.country_id "
-        "AND user_concert.artist_id = concert.artist_id AND user_concert.date_time = concert.date_time "
-        "AND artist.genre_id = genre.genre_id AND user_concert.username = ? ORDER BY concert.price "
-        , (session['username'],))
-    records = cur.fetchall()
+    records = db.getPersonalTikets(session['username'])
     return render_template('my_tickets.html', orders=False, records=records)
 
 
@@ -583,10 +581,8 @@ def register():
 def login():
     form = LoginForm(request.form)
     if request.method == 'POST':
-        cur = get_db().cursor()
-        cur.execute("SELECT username, city_id, age, is_admin, picture FROM user WHERE username = ? AND password = ? ",
-                    (form.username.data,form.password.data))
-        user = cur.fetchall()
+
+        user = db.login(form.username.data,form.password.data)
         if len(user) != 0:
             record = list(user).pop(0)
             session['logged_in'] = True
