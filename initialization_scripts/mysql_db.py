@@ -42,7 +42,7 @@ def mysql_db():
     cursor.execute("CREATE TABLE artist (artist_name VARCHAR(255) NOT NULL, "
                    "genre_id INT, artist_id INT, PRIMARY KEY (artist_id),CONSTRAINT fk_genre_id FOREIGN KEY (genre_id) "
                    "REFERENCES genre(genre_id) ON UPDATE CASCADE ON DELETE RESTRICT)")
-    cursor.execute("CREATE TABLE concert (id INT PRIMARY KEY,"
+    cursor.execute("CREATE TABLE concert (id INTEGER PRIMARY KEY AUTOINCREMENT,"
                                                         "name CHAR(50) NOT NULL,"
                                                         "artist_id INT,"
                                                         "city_id INT, "
@@ -89,8 +89,8 @@ def mysql_db():
     with open('static/datasets/created/concert.csv', 'r', encoding="utf8") as f:
         reader = tuple(csv.reader(f))
         for i in range(1, 7500):
-            cursor.executemany("INSERT INTO concert (artist_id,city_id,date_time,price,age_limit,capacity,name,id)"
-                               " VALUES (?,?,?,?,?,?,'',NULL)", reader[i*50:((i+1)*50)])
+            cursor.executemany("INSERT INTO concert (artist_id,city_id,date_time,price,age_limit,capacity,name)"
+                               " VALUES (?,?,?,?,?,?,'')", reader[i*50:((i+1)*50)])
             print(i)
             my_db.commit()
 

@@ -242,13 +242,9 @@ def search():
 
 @app.route('/search_artist', methods=['GET'] )
 def search_artist():
-    filter = request.args.get('term', '', type=str)
-    cur = get_db().cursor()
-    cur.execute("SELECT artist_id, artist_name "
-                "FROM artist "                
-                "WHERE artist_name like ? "                
-                "LIMIT 5", (('%' + filter + '%'),))
-    rows = cur.fetchall()
+    artist = request.args.get('term', '', type=str)
+
+    rows = db.searchArtist(artist)
 
     rowarray_list = {}
     for row in rows:
@@ -258,7 +254,17 @@ def search_artist():
 
     return json.dumps(j, indent=4)
 
+@app.route('/edit_concert', methods=['GET'] )
+def edit_concert():
+    if session['is_admin']:
+        id = request.args.get('id', '', type=int)
 
+        row,columns = db.getConcert(id)
+        result = [{columns[index][0]: column for index, column in enumerate(row)}]
+
+        return json.dumps(result, indent=4)
+
+    return ''
 
 @app.route('/add_concert', methods=['GET', 'POST'])
 def add_concert():
@@ -296,41 +302,13 @@ def add_concert():
 
 
 
-@app.route('/del_concert', methods=['GET', 'POST'])
+@app.route('/del_concert', methods=['GET'])
 def del_concert():
-    if session['is_admin'] and session['logged_in']:
-        form = AddDelConcert(request.form)
-        if request.method == 'POST':
-            cur = get_db().cursor()
-            cur.execute("SELECT artist_name, artist_id FROM artist WHERE artist_name = ?", form.artist.data)  # Checking if the artist exist
-            artist_record = cur.fetchall()
-            if len(artist_record) != 0:
-                artist = list(artist_record).pop(0)
-                cur.execute("SELECT date_time, artist_id FROM concert WHERE artist_id= ? AND date_time = ?",
-                            (int(artist[1]),form.date.data))  # Checking if the concert exist
-                concert_record = cur.fetchall()
-                if len(concert_record) != 0:
-                    cur.execute(
-                        "DELETE FROM user_concert WHERE artist_id = ? AND date_time = ?",
-                        (int(artist[1]), form.date.data))
-                    cur.execute(
-                        "DELETE FROM concert WHERE artist_id = ? AND date_time = ?",
-                        (int(artist[1]), form.date.data))
-                    
-                    #flash(f"{artist[0]}'s gig on {form.date.data} canceled successfully!", 'success')
-                    print(form.date.data)
-                    return redirect(url_for('del_concert'))
-                else:
-                    pass
-                    #flash(f"There is no {artist[0]}'s gig on {form.date.data}", 'error')
-                    return redirect(url_for('del_concert'))
-            elif len(artist_record) == 0:
-                pass
-                #flash(f'The entered artist does not exist!', 'error')
-                return redirect(url_for('del_concert'))
-    else:
-        return render_template("index.html")
-    return render_template("del_concert.html", form=form)
+    if session['is_admin']:
+        id = request.args.get('id', -1, type=int)
+        db.deleteConcert(id)
+        return '0'
+    return '1'
 
 # Convert to string and if doesnt get anything return str("")
 def xstr(s):
@@ -392,7 +370,7 @@ def advanced_search2():
 
         cur.execute(
             "SELECT artist.artist_name ,concert.date_time , city.city_name, country.country_name, "
-            "genre.genre_name, concert.age_limit , concert.price, concert.capacity "
+            "genre.genre_name, concert.age_limit , concert.price, concert.capacity,concert.id "
             "FROM city, concert, artist, genre, country "
             "WHERE concert.city_id = city.city_id AND country.country_id = city.country_id "
             "AND concert.artist_id = artist.artist_id AND artist.genre_id = genre.genre_id "

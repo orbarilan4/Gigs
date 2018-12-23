@@ -280,6 +280,10 @@ $( function() {
     hot();
     buy();
 
+    if ($('.concert_manip').length > 0 & getUrlParameter('id') > 0){
+        concert_manip();
+    }
+
     $.widget("custom.catcomplete", $.ui.autocomplete, {
          _renderMenu: function (ul, items) {
              var self = this,
@@ -392,6 +396,7 @@ $('.search').click( search);
   } );
 
 var page;
+var isAdmin = false;
 
   function add_concert(){
     $('form').toggleClass('loading').find('fieldset').attr('disabled','');
@@ -453,6 +458,12 @@ var getUrlParameter = function getUrlParameter(sParam) {
             $('.prev').addClass('d-none');
         }
 
+        if (isAdmin){
+            $('.admin').show().css('visibility', 'visible');
+            $('.icon-delete').click(del_concert);
+            $('.icon-edit').click(edit_concert);
+        }
+
         $('form').toggleClass('loading').find('fieldset').removeAttr('disabled');
     });
 
@@ -480,6 +491,13 @@ var getUrlParameter = function getUrlParameter(sParam) {
         $(".results .result").remove();
         $(".results").append(htmlOutput);
         $('.prev').removeClass('d-none');
+
+        if (isAdmin){
+            $('.admin').show().css('visibility', 'visible');
+            $('.icon-delete').click(del_concert);
+            $('.icon-edit').click(edit_concert);
+        }
+
         $('form').toggleClass('loading').find('fieldset').removeAttr('disabled');
     });
 
@@ -541,10 +559,12 @@ var getUrlParameter = function getUrlParameter(sParam) {
         method: "GET",
         url: "/isloggedin"
     }).done(function( msg ) {
+        $('.admin').hide();
         if (msg > 0){
 
             if (msg > 1){
                 $('.admin').show().css('visibility', 'visible');
+                isAdmin = true;
             }
 
             $('.menu_login a>span').html('<span class="h5 mr-2"><i class="fas fa-user"></i></span> Logout');
@@ -553,6 +573,24 @@ var getUrlParameter = function getUrlParameter(sParam) {
         }
         $('.menu_login').removeClass('invisible');
     });
+  }
+
+
+  function del_concert(){
+    p = $(this);
+    $.ajax({
+        method: "GET",
+        url: "/del_concert",
+        data : {id : $(this).parents('.ml-auto').find('input:hidden').val()}
+    }).done(function( msg ) {
+        if (msg == 0){
+            p.parents('.result').remove();
+        }
+    });
+  }
+
+    function edit_concert(){
+    location.href = 'add_concert?id=' + $(this).parents('.ml-auto').find('input:hidden').val();
   }
 
   // Image Picker
@@ -606,6 +644,9 @@ var getUrlParameter = function getUrlParameter(sParam) {
         var htmlOutput = template.render(msg);
         $(".hot .result").remove();
         $(".hot .container").append(htmlOutput);
+        if (isAdmin){
+            $('.admin').show().css('visibility', 'visible');
+        }
     });
   }
 
@@ -648,6 +689,26 @@ function search(){
         $(".results .result").remove();
         $(".results").append(htmlOutput);
         $('.prev').removeClass('d-none');
+        if (isAdmin){
+            $('.admin').show().css('visibility', 'visible');
+            $('.icon-delete').click(del_concert);
+            $('.icon-edit').click(edit_concert);
+        }
         $('form').toggleClass('loading').find('fieldset').removeAttr('disabled');
+    });
+}
+
+function concert_manip(){
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        data: {id : getUrlParameter('id')},
+        url: "/edit_concert"
+    }).done(function( msg ) {
+        if (msg.length > 0){
+            $('#artist').val(msg[0].artist_name);
+            $('#location').val(msg[0].city_name + ', ' + msg[0].country_name);
+            $('.add_concert').text('Update');
+        }
     });
 }
