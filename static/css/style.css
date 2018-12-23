@@ -76,7 +76,7 @@ a {
   .btn.btn-sm {
     font-size: 0.9rem; }
   .btn.btn-primary {
-    color: #fff; }
+    color: #fff !important; }
   .btn.btn-outline-primary:hover {
     color: #fff !important; }
   .btn.btn-black {
@@ -1682,3 +1682,6 @@ ul.thumbnails.image_picker_selector {
         -webkit-user-drag: none; }
     ul.thumbnails.image_picker_selector li .thumbnail.selected {
       background: #0088cc; }
+.admin{
+visibility:hidden;
+}

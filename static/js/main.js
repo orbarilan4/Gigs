@@ -278,6 +278,7 @@ $( function() {
     $('.next').click(next);
     isLoggedIn();
     hot();
+    buy();
 
     $.widget("custom.catcomplete", $.ui.autocomplete, {
          _renderMenu: function (ul, items) {
@@ -538,7 +539,7 @@ var getUrlParameter = function getUrlParameter(sParam) {
         if (msg > 0){
 
             if (msg > 1){
-                $('.admin').removeClass('d-none');
+                $('.admin').removeClass('d-none').show();
             }
 
             $('.menu_login a>span').html('<span class="h5 mr-2"><i class="fas fa-user"></i></span> Logout');
@@ -603,3 +604,19 @@ var getUrlParameter = function getUrlParameter(sParam) {
     });
   }
 
+function update_price(){
+    var cat = $('.tickets_cat').val().split(" ");
+    cat = cat[cat.length-1].replace('$');
+    var price = parseInt($('.tickets_num').val()) * parseInt(cat);
+    $('.price').text(price + '$');
+}
+
+function buy(){
+try{
+update_price();
+ $('.modal.modal-buy *').change(function(){
+    update_price();
+ });
+ }
+ catch(e){}
+}

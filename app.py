@@ -560,8 +560,8 @@ def register():
         cur = get_db().cursor()
 
         cur.execute("INSERT INTO user (username,age,city_id,password,is_admin,picture) VALUES (?,?,?,?,?,?)",
-                    (form.username.data, 0, 0, form.password.data,False,"http://meng.uic.edu/wp-content/uploads/sites/92/2018/07/empty-profile.png"))
-
+                    (form.username.data, 0, 0, form.password.data,False,''))
+        cur.connection.commit()
 
         cur.execute("SELECT username, city_id, age, is_admin, picture FROM user WHERE username = ? AND password = ? ",
                     (form.username.data, form.password.data))
