@@ -14,8 +14,6 @@ def get_db():
     return db
 
 
-
-
 # db_connection.mysql_db_connection()
 app = Flask(__name__)
 #app.config['MYSQL_DATABASE_HOST'] = '85.10.205.173'
