@@ -539,7 +539,7 @@ var getUrlParameter = function getUrlParameter(sParam) {
         if (msg > 0){
 
             if (msg > 1){
-                $('.admin').removeClass('d-none').show();
+                $('.admin').show().css('visibility', 'visible');
             }
 
             $('.menu_login a>span').html('<span class="h5 mr-2"><i class="fas fa-user"></i></span> Logout');

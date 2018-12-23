@@ -33,22 +33,22 @@ def mysql_db():
     cursor.execute("CREATE TABLE IF NOT EXISTS artist (artist_name VARCHAR(255) NOT NULL, "
                    "genre_id INT, artist_id INT, PRIMARY KEY (artist_id),CONSTRAINT fk_genre_id FOREIGN KEY (genre_id) "
                    "REFERENCES genre(genre_id) ON UPDATE CASCADE ON DELETE RESTRICT)")
-    cursor.execute("CREATE TABLE IF NOT EXISTS concert (artist_id INT,city_id INT, "
+    cursor.execute("CREATE TABLE IF NOT EXISTS concert (id INT NOT NULL AUTO_INCREMENT,name CHAR(50) NOT NULL,artist_id INT,city_id INT, "
                    "date_time TIMESTAMP,price INT,age_limit INT,capacity INT,"
                    "CONSTRAINT fk_artist_id FOREIGN KEY (artist_id) REFERENCES artist(artist_id) "
                    "ON UPDATE CASCADE ON DELETE RESTRICT,"
                    "CONSTRAINT fk_city_id FOREIGN KEY (city_id) REFERENCES city(city_id) "
                    "ON UPDATE CASCADE ON DELETE RESTRICT, "
-                   "PRIMARY KEY (artist_id,date_time))")
+                   "PRIMARY KEY (id))")
     cursor.execute("CREATE TABLE IF NOT EXISTS user (username VARCHAR(255) NOT NULL, age INT, city_id INT, "
                    "password VARCHAR(255) NOT NULL, picture VARCHAR(10000) NOT NULL, "
                    "is_admin BOOLEAN, PRIMARY KEY (username), "
                    "CONSTRAINT fk_user_city_id FOREIGN KEY (city_id) REFERENCES city(city_id) "
                    "ON UPDATE CASCADE ON DELETE RESTRICT)")
-    cursor.execute("CREATE TABLE IF NOT EXISTS user_concert (username VARCHAR(255) NOT NULL, artist_id INT, "
-                   "date_time TIMESTAMP, PRIMARY KEY (username,artist_id,date_time), "
-                   "CONSTRAINT fk_user_concert_artist_datetime FOREIGN KEY (artist_id,date_time) "
-                   "REFERENCES concert(artist_id,date_time) ON UPDATE CASCADE ON DELETE RESTRICT, "
+    cursor.execute("CREATE TABLE IF NOT EXISTS user_concert (username VARCHAR(255) NOT NULL, concert_id INT, "
+                   "date_time TIMESTAMP, PRIMARY KEY (username,concert_id), "
+                   "CONSTRAINT fk_user_concert_id_datetime FOREIGN KEY (concert_id) "
+                   "REFERENCES concert(id) ON UPDATE CASCADE ON DELETE RESTRICT, "
                    "CONSTRAINT fk_user_concert_username FOREIGN KEY (username) "
                    "REFERENCES user(username) ON UPDATE CASCADE ON DELETE RESTRICT)")
 
@@ -75,8 +75,8 @@ def mysql_db():
     with open('../static/datasets/created/concert.csv', 'r', encoding="utf8") as f:
         reader = tuple(csv.reader(f))
         for i in range(1, 7500):
-            cursor.executemany("INSERT INTO concert (artist_id,city_id,date_time,price,age_limit,capacity)"
-                               " VALUES (?,?,?,?,?,?)", reader[i*50:((i+1)*50)])
+            cursor.executemany("INSERT INTO concert (artist_id,city_id,date_time,price,age_limit,capacity,name)"
+                               " VALUES (?,?,?,?,?,?,'')", reader[i*50:((i+1)*50)])
             print(i)
             my_db.commit()
 
