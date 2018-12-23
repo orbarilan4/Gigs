@@ -346,52 +346,7 @@ def xstr(s):
 # ================================
 @app.route('/find', methods=['GET', 'POST'])
 def advanced_search():
-    form = AdvancedSearch(request.form)
-    records = []
-    if request.method == 'POST':
-        artist = form.artist.data if form.artist.data != '' else None
-        city = form.city.data if form.city.data != '' else None
-        country = form.country.data if form.country.data != '' else None
-        date = form.date.data if form.date.data != '' else None
-        genre = form.genre.data if form.genre.data != '' else None
-        min_age = form.min_age.data if form.min_age.data != '' else 0
-        max_age = form.max_age.data if form.max_age.data != '' else 100
-        min_price = form.min_price.data if form.min_price.data != '' else 0
-        max_price = form.max_price.data if form.max_price.data != '' else 100
-        page = int(form.page.data) * 10 if form.page.data != '' else 0
-        cur = get_db().cursor()
-
-        cur.execute(
-            "SELECT artist.artist_name ,concert.date_time , city.city_name, country.country_name, "
-            "genre.genre_name, concert.age_limit , concert.price, concert.capacity "
-            "FROM city, concert, artist, genre, country "
-            "WHERE concert.city_id = city.city_id AND country.country_id = city.country_id "
-            "AND concert.artist_id = artist.artist_id AND artist.genre_id = genre.genre_id "
-            "AND (artist.artist_name LIKE COALESCE(?,artist.artist_name)) "
-            #"AND (concert.date_time = COALESCE(?,concert.date_time)) "
-            #"AND (country.country_name LIKE COALESCE(?,country.country_name)) "
-            #"AND (city.city_name LIKE COALESCE(?,city.city_name)) "
-            #"AND (genre.genre_name LIKE COALESCE(?,genre.genre_name)) "
-            #"AND (concert.age_limit >= COALESCE(?,concert.age_limit)) "
-            #"AND (concert.age_limit <= COALESCE(?,concert.age_limit)) "
-            #"AND (concert.price >= COALESCE(?,concert.price)) "
-            #"AND (concert.price <= COALESCE(?,concert.price)) "
-            "ORDER BY concert.price LIMIT ?,11",
-            (("%" + xstr(artist) + "%"),
-           #  date,
-           #  ("%" + xstr(country) + "%"),
-           #  ("%" + xstr(city) + "%"),
-           #  ("%" + xstr(genre) + "%"),
-           #  int(min_age),
-           #  int(max_age),
-           #  int(min_price),
-           #  int(max_price),
-             page))
-
-        records = cur.fetchall()
-        return render_template("result.html", records=records, orders=True)
-
-    return render_template("result.html", records=records, orders=True)
+    return render_template("result.html", records=[], orders=True)
 
 @app.route('/hot_concerts', methods=['GET'])
 def hot_concerts():

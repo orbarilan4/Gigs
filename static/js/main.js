@@ -339,8 +339,10 @@ $( function() {
         }
       });
 
+$('.search').click( search);
 
   $( "#artist" )
+        .val(getUrlParameter('artist'))
       .on( "keydown", function( event ) {
         if ( event.keyCode === $.ui.keyCode.TAB &&
             $( this ).autocomplete( "instance" ).menu.active ) {
@@ -384,7 +386,8 @@ $( function() {
 
      page = parseInt(getUrlParameter('page'));
       if (!Number.isInteger(page)){
-        page = 0;
+        page = -1;
+        search();
       }
   } );
 
@@ -421,7 +424,7 @@ var getUrlParameter = function getUrlParameter(sParam) {
         sParameterName = sURLVariables[i].split('=');
 
         if (sParameterName[0] === sParam) {
-            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]).replace(/\+/g, ' ');
         }
     }
 };
@@ -479,6 +482,8 @@ var getUrlParameter = function getUrlParameter(sParam) {
         $('.prev').removeClass('d-none');
         $('form').toggleClass('loading').find('fieldset').removeAttr('disabled');
     });
+
+
 
     e.preventDefault();
   }
@@ -619,4 +624,30 @@ update_price();
  });
  }
  catch(e){}
+}
+
+
+function search(){
+    $('form').toggleClass('loading').find('fieldset').attr('disabled','');
+    page = 0;
+    $.ajax({
+        method: "POST",
+        url: "/find2",
+        dataType: "json",
+        data: { artist: $('#artist').val(),
+                page: page}
+    }).done(function( msg ) {
+        if (msg.length > 10){
+            msg.pop();
+        }
+        else {
+            $('.next').addClass('d-none');
+        }
+        var template = $.templates("#theTmpl");
+        var htmlOutput = template.render(msg);
+        $(".results .result").remove();
+        $(".results").append(htmlOutput);
+        $('.prev').removeClass('d-none');
+        $('form').toggleClass('loading').find('fieldset').removeAttr('disabled');
+    });
 }
