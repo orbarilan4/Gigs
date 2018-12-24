@@ -70,12 +70,10 @@ class modelDB:
     def getConcert(self, id):
         cur = self.get_db().cursor()
         cur.execute(
-            "SELECT artist.artist_name, concert.date_time, city.city_name, country.country_name, genre.genre_name "
-            "FROM city, concert, artist,country,genre "
-            "WHERE concert.city_id = city.city_id "
-            "AND concert.artist_id = artist.artist_id AND country.country_id = city.country_id "
-            "AND artist.genre_id = genre.genre_id AND concert.id = ? ORDER BY concert.price "
-            , (id,))
+            "SELECT concert.name, concert.capacity, concert.start, concert.end "
+            "FROM concert "
+            "WHERE concert.id = ? ",
+            (id,))
         return (cur.fetchone(),cur.description)
 
     def addConcert(self, name, capacity):

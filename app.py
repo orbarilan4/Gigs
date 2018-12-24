@@ -348,7 +348,7 @@ def advanced_search2():
         cur = get_db().cursor()
 
         cur.execute(
-            "SELECT concert.name ,concert.start  "            
+            "SELECT concert.name ,concert.start, concert.id "            
             "FROM concert "
             "WHERE ((concert.name LIKE COALESCE(?,concert.name)) "            
             ")",

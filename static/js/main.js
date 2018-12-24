@@ -763,8 +763,10 @@ function concert_manip(){
         url: "/edit_concert"
     }).done(function( msg ) {
         if (msg.length > 0){
-            $('#artist').val(msg[0].artist_name);
-            $('#location').val(msg[0].city_name + ', ' + msg[0].country_name);
+            $('#name').val(msg[0].name);
+            $('#capacity').val(msg[0].capacity);
+            $('#from').val(msg[0].start);
+            $('#to').val(msg[0].end);
             $('.add_concert').text('Update');
         }
     });
