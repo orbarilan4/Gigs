@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, request, flash, redirect, session, g
-import sqlite3
+import sqlite3,time
 from forms import AdvancedSearch, RegistrationForm, LoginForm, UpdateProfileForm, AddDelConcert
 import numpy as np
 import json
@@ -240,6 +240,28 @@ def search():
     return json.dumps(j, indent=4)
 
 
+@app.route('/free_search', methods=['GET'] )
+def free_search():
+    free = request.args.get('term', '', type=str)
+
+    rows = db.freeSearch(free)
+
+    j = [{'id': id, 'label': name + ", " + location + ", " + city + ", " + country, 'value': name + ", " + location + ", " + city + ", " + country} for id, name, location, city, country in rows]
+
+    return json.dumps(j, indent=4)
+
+@app.route('/search_location', methods=['GET'] )
+def search_location():
+    location = request.args.get('term', '', type=str)
+
+    rows = db.getLocations(location)
+
+    j = [{'id': id, 'label': name, 'value': name} for id, name in rows]
+
+    return json.dumps(j, indent=4)
+
+
+
 @app.route('/search_artist', methods=['GET'] )
 def search_artist():
     artist = request.args.get('term', '', type=str)
@@ -259,12 +281,18 @@ def edit_concert():
     if session['is_admin']:
         id = request.args.get('id', '', type=int)
 
-        row,columns = db.getConcert(id)
-        result = [{columns[index][0]: column for index, column in enumerate(row)}]
-
-        return json.dumps(result, indent=4)
+        return db.getConcert(id)
 
     return ''
+
+
+@app.route('/artist', methods=['GET'] )
+def get_artist():
+
+    id = request.args.get('id', '', type=int)
+
+    return db.getArtist(id)
+
 
 @app.route('/add_concert', methods=['GET', 'POST'])
 def add_concert():
@@ -274,33 +302,18 @@ def add_concert():
     if request.method == 'GET':
         return render_template("add_concert.html")
 
+    name = request.form.get('name', '', type=str)
+    capacity = request.form.get('capacity', '', type=int)
+    artists = request.form.get('artists', '', type=str).split(',')
+    start = request.form.get('start', '', type=str).replace('- ','')
+    end = request.form.get('end', '', type=str).replace('- ','')
 
-    form = AddDelConcert(request.form)
+    start = time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime(time.mktime(time.strptime(start, '%d %B %Y %H:%M'))))
+    end = time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime(time.mktime(time.strptime(end, '%d %B %Y %H:%M'))))
 
-    cur = get_db().cursor()
-    cur.execute("SELECT city_name, city_id FROM city WHERE city_name = ?",form.city.data) # Checking if the city exist
-    city_record = cur.fetchall()
-    cur.execute("SELECT artist_name, artist_id FROM artist WHERE artist_name = ?",form.artist.data)  # Checking if the artist exist
-    artist_record = cur.fetchall()
-    if len(city_record) != 0 and len(artist_record) != 0:
-        try:
-            cur.execute(
-                "INSERT INTO concert (artist_id,city_id,date_time,capacity,age_limit,price)"
-                "VALUES (?,?,?,?,?,?)",
-                (int(list(artist_record).pop(0)[1]), int(list(city_record).pop(0)[1]),
-                 form.date.data, form.capacity.data, form.age_limit.data,form.price.data))
-            
+    id = db.addConcert(name, capacity,artists,start,end)
 
-            return '0'
-        except:
-            return '1'
-    elif len(city_record) == 0:
-        return '2'
-    elif len(artist_record) == 0:
-        return '3'
-
-
-
+    return '{"id" : "' + str(id) + '"}'
 
 @app.route('/del_concert', methods=['GET'])
 def del_concert():
@@ -326,22 +339,9 @@ def advanced_search():
 
 @app.route('/hot_concerts', methods=['GET'])
 def hot_concerts():
-    records = []
+    return db.getHotConcerts()
 
-    cur = get_db().cursor()
 
-    cur.execute(
-            "SELECT artist.artist_name ,concert.date_time , city.city_name, country.country_name, "
-            "genre.genre_name, concert.age_limit , concert.price, concert.capacity "
-            "FROM city, concert, artist, genre, country "
-            "WHERE concert.city_id = city.city_id AND country.country_id = city.country_id "
-            "AND concert.artist_id = artist.artist_id AND artist.genre_id = genre.genre_id "                        
-            "ORDER BY concert.price LIMIT 5")
-
-    records = cur.fetchall()
-    columns = cur.description
-    result = [{columns[index][0]: column for index, column in enumerate(value)} for value in records]
-    return json.dumps(result, default=json_serial)
 
 
 def json_serial(obj):
@@ -353,46 +353,13 @@ def json_serial(obj):
 
 @app.route('/find2', methods=['GET', 'POST'])
 def advanced_search2():
-    form = AdvancedSearch(request.form)
-    records = []
-    if request.method == 'POST':
-        artist = form.artist.data if form.artist.data != '' else None
-        city = form.city.data if form.city.data != '' else None
-        country = form.country.data if form.country.data != '' else None
-        date = form.date.data if form.date.data != '' else None
-        genre = form.genre.data if form.genre.data != '' else None
-        min_age = form.min_age.data if form.min_age.data != '' else 0
-        max_age = form.max_age.data if form.max_age.data != '' else 100
-        min_price = form.min_price.data if form.min_price.data != '' else 0
-        max_price = form.max_price.data if form.max_price.data != '' else 100
-        page = int(form.page.data) * 10 if form.page.data != '' else 0
-        cur = get_db().cursor()
 
-        cur.execute(
-            "SELECT artist.artist_name ,concert.date_time , city.city_name, country.country_name, "
-            "genre.genre_name, concert.age_limit , concert.price, concert.capacity,concert.id "
-            "FROM city, concert, artist, genre, country "
-            "WHERE concert.city_id = city.city_id AND country.country_id = city.country_id "
-            "AND concert.artist_id = artist.artist_id AND artist.genre_id = genre.genre_id "
-            "AND ((artist.artist_name LIKE COALESCE(?,artist.artist_name)) "
-            "AND (concert.date_time = COALESCE(?,concert.date_time)) "
-            "AND (country.country_name LIKE COALESCE(?,country.country_name)) "
-            "AND (city.city_name LIKE COALESCE(?,city.city_name)) "
-            "AND (genre.genre_name LIKE COALESCE(?,genre.genre_name)) "
-            "AND (concert.age_limit >= COALESCE(?,concert.age_limit)) "
-            "AND (concert.age_limit <= COALESCE(?,concert.age_limit)) "
-            "AND (concert.price >= COALESCE(?,concert.price)) "
-            "AND (concert.price <= COALESCE(?,concert.price)) "
-            ")ORDER BY concert.price LIMIT ?,11",
-            (("%" + xstr(artist) + "%"), date, ("%" + xstr(country) + "%"), ("%" + xstr(city) + "%"), ("%" + xstr(genre) + "%"),
-             int(min_age), int(max_age), int(min_price), int(max_price), page))
-        records = cur.fetchall()
-        columns = cur.description
-        result = [{columns[index][0]: column for index, column in enumerate(value)} for value in records]
-        if len(records) == 0:
-            return render_template("sorry.html")
+    concert_id = request.args.get('concert_id')
 
-    return json.dumps(result, default=json_serial)
+    if concert_id:
+        return db.getConcert(concert_id)
+
+    return ''
 
 
 

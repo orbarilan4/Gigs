@@ -11,54 +11,43 @@
             <div class="job-search">
               <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item">
-                  <a class="nav-link active py-3" id="pills-job-tab" data-toggle="pill" href="#pills-job" role="tab" aria-controls="pills-job" aria-selected="true">Find A Concert</a>
+                  <a class="nav-link active py-3" id="pills-job-tab" data-toggle="pill" href="#pills-candidate" role="tab" aria-controls="pills-candidate" aria-selected="true">Find A Concert</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link py-3" id="pills-candidate-tab" data-toggle="pill" href="#pills-candidate" role="tab" aria-controls="pills-candidate" aria-selected="false">Advanced search</a>
+                  <a class="nav-link py-3  bg-white" id="pills-candidate-tab" data-toggle="pill" href="#pills-job" role="tab" aria-controls="pills-job" aria-selected="false">Advanced search</a>
                 </li>
               </ul>
               <div class="tab-content bg-white p-4 rounded" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-job" role="tabpanel" aria-labelledby="pills-job-tab">
+                <div class="tab-pane fade show active" id="pills-candidate" role="tabpanel" aria-labelledby="pills-candidate-tab">
                   <form>
                     <div class="row">
-                      <div class="col-md-6 mb-3 mb-lg-0">
-                        <input type="text" class="form-control" placeholder="eg. Beyonce" id="artist">
+                      <div class="col-md-9 mb-3 mb-lg-0">
+                        <input type="text" class="form-control" placeholder="eg. Concert name, artist, location" id="free" name="free">
                       </div>
-                      <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                        <input id="city" type="text" class="form-control form-control-block search-input" id="autocomplete" placeholder="Location" onFocus="geolocate()">
-                      </div>
-                      <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                        <button class="btn btn-primary btn-block search" type="button">Search</button>
+                      <div class="col-md-3 mb-3 mb-lg-0">
+                        <button type="button" class="btn btn-primary btn-block free_search">Search</button>
                       </div>
                     </div>
                   </form>
                 </div>
-                <div class="tab-pane fade" id="pills-candidate" role="tabpanel" aria-labelledby="pills-candidate-tab">
-                  <form>
+                <div class="tab-pane fade" id="pills-job" role="tabpanel" aria-labelledby="pills-job-tab">
+                  <form action="find" method="get">
                     <div class="row">
-                      <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                        <input type="text" class="form-control" placeholder="eg. Carl Smith">
+                      <div class="col-md-6 mb-3 mb-lg-0">
+                        <input id="artist" type="text" class="form-control" placeholder="eg. Beyonce" name="artist">
                       </div>
                       <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                        <div class="select-wrap">
-                          <span class="icon-keyboard_arrow_down arrow-down"></span>
-                          <select name="" id="" class="form-control">
-                            <option value="">Category</option>
-                            <option value="fulltime">Full Time</option>
-                            <option value="fulltime">Part Time</option>
-                            <option value="freelance">Freelance</option>
-                            <option value="internship">Internship</option>
-                            <option value="internship">Termporary</option>
-                          </select>
-                        </div>
+                        <input id="city" type="text" class="form-control form-control-block search-input" placeholder="Location">
                       </div>
                       <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                        <input type="text" class="form-control form-control-block search-input" id="autocomplete" placeholder="Location" onFocus="geolocate()">
-                      </div>
-                      <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                        <button class="btn btn-primary btn-block search" type="button">Search</button>
+                        <input type="submit" class="btn btn-primary btn-block" value="Search">
                       </div>
                     </div>
+                  <div class="row">
+                    <div class="col mb-3 mb-lg-0">
+                      <input type="checkbox" id="cbx" checked> Only show locations which the artist has future concerts at
+                    </div>
+                  </div>
                   </form>
                 </div>
               </div>
@@ -82,39 +71,8 @@
               </div>
         </div>
 
-<div class="container results">
-          {% for row in records[:-1] %}
-    {% set rowloop = loop %}
+<div class="container results spinner">
 
-        <div class="row result" data-aos="fade">
-         <div class="col-md-12">
-
-           <div class="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
-
-              <div class="mb-4 mb-md-0 mr-5">
-               <div class="job-post-item-header d-flex align-items-center">
-                 <h2 class="mr-3 text-black h4">{{row[0]}}</h2>
-                 <div class="badge-wrap">
-                  <span class="bg-primary text-white badge py-2 px-4">Primary</span>
-                 </div>
-               </div>
-               <div class="job-post-item-body d-block d-md-flex">
-                 <div class="mr-3"><span class="fl-bigmug-line-portfolio23"></span> <a href="#">{{row[1]}}</a></div>
-                 <div><span class="fl-bigmug-line-big104"></span> <span>{{row[2]}}, {{row[3]}}</span></div>
-               </div>
-              </div>
-
-              <div class="ml-auto">
-                  <a class="btn btn-secondary rounded-circle btn-favorite text-gray-500 admin"><span class="icon-delete"></span></a>
-                  <a class="btn btn-secondary rounded-circle btn-favorite text-gray-500 admin" href="add_concert?id={{row[4]}}"><span class="icon-edit"></span></a>
-                <a class="btn btn-secondary rounded-circle btn-favorite text-gray-500"><span class="icon-heart"></span></a>
-                <a class="btn btn-primary py-2 buy" data-toggle="modal" data-target="#exampleModalCenter">Buy tickets</a>
-              </div>
-           </div>
-
-         </div>
-        </div>
- {% endfor %}
 </div>
         <div class="row mt-5">
           <div class="col-md-12 text-center">
@@ -134,41 +92,8 @@
     </div>
 
 
-<script id="theTmpl" type="text/x-jsrender">
 
-<div class="row result">
-         <div class="col-md-12">
 
-           <div class="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
-
-              <div class="mb-4 mb-md-0 mr-5">
-               <div class="job-post-item-header d-flex align-items-center">
-                 <h2 class="mr-3 text-black h4"><%:artist_name%></h2>
-                 <div class="badge-wrap">
-                  <span class="bg-primary text-white badge py-2 px-4">Primary</span>
-                 </div>
-               </div>
-               <div class="job-post-item-body d-block d-md-flex">
-                 <div class="mr-3"><span class="fl-bigmug-line-portfolio23"></span> <a href="#"><%:date_time%></a></div>
-                 <div><span class="fl-bigmug-line-big104"></span> <span><%:city_name%>, <%:country_name%></span></div>
-               </div>
-              </div>
-
-              <div class="ml-auto">
-              <input type="hidden" value="<%:id%>">
-              <a class="btn btn-secondary rounded-circle btn-favorite text-gray-500 admin"><span class="icon-delete"></span></a>
-                  <a class="btn btn-secondary rounded-circle btn-favorite text-gray-500 admin"><span class="icon-edit"></span></a>
-                <a class="btn btn-secondary rounded-circle btn-favorite text-gray-500"><span class="icon-heart"></span></a>
-                <a href="job-single.html" class="btn btn-primary py-2 buy" data-toggle="modal" data-target="#exampleModalCenter">Buy tickets</a>
-              </div>
-           </div>
-
-         </div>
-        </div>
-
-</script>
-
-<!-- Modal -->
 <div class="modal modal-buy fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -204,4 +129,62 @@
   </div>
 </div>
 
+<div class="modal modal-buy fade" id="concertDetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="concertTitle"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script id="theTmpl" type="text/x-jsrender">
+
+<div class="row result">
+         <div class="col-md-12">
+
+           <div class="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
+
+              <div class="mb-4 mb-md-0 mr-5">
+               <div class="job-post-item-header d-flex align-items-center">
+                <input type="hidden" value="<%:id%>" />
+                 <h2 class="mr-3 text-black h4"><%:name%></h2>
+                 <div class="badge-wrap">
+                  <span class="bg-primary text-white badge py-2 px-4">Primary</span>
+                 </div>
+               </div>
+               <div class="job-post-item-body d-block d-md-flex">
+                 <div class="mr-3"><span class="fl-bigmug-line-portfolio23"></span> <a href="#"><%:start%> - <%:end%></a></div>
+                 <div><span class="fl-bigmug-line-big104"></span> <span><%:city_name%>, <%:country_name%></span></div>
+               </div>
+               <div class="job-post-item-body d-block d-md-flex" id="concert_artists">
+
+                 Artists:
+                 <%:artists_links%>
+
+               </div>
+              </div>
+
+              <div class="ml-auto">
+              <input type="hidden" value="<%:id%>">
+              <a class="btn btn-secondary rounded-circle btn-favorite text-gray-500 admin"><span class="icon-delete"></span></a>
+                  <a class="btn btn-secondary rounded-circle btn-favorite text-gray-500 admin"><span class="icon-edit"></span></a>
+                <a class="btn btn-secondary rounded-circle btn-favorite text-gray-500"><span class="icon-heart"></span></a>
+                <a href="job-single.html" class="btn btn-primary py-2 buy" data-toggle="modal" data-target="#exampleModalCenter">Buy tickets</a>
+              </div>
+           </div>
+
+         </div>
+        </div>
+
+</script>
+
 {% endblock%}
+

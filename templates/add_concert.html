@@ -14,10 +14,15 @@
                     </div>
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <input type="text" name="artist" class="form-control" placeholder="Artist" id="artist">
+                  <input type="text" name="name" class="form-control" placeholder="Concert name" id="name">
                 </div>
               </div>
-              <div class="row form-group desc">
+                <div class="row form-group">
+                <div class="col-md-12 mb-3 mb-md-0">
+                    <input id="birds" class="form-control" placeholder="Artists" >
+                </div>
+              </div>
+                  <div class="row form-group desc">
                 <div class="col-md-12 mb-3 mb-md-0">
                   <div class="form-group">
                     <textarea class="form-control" rows="3" disabled></textarea>
@@ -30,6 +35,21 @@
                     <div class="col-md-4 clicked"></div>
                   </div>
               </div>
+                <div class="row form-group">
+                  <div class="col-md-6 mb-3 mb-md-0">
+                    <div class="input-append date form_datetime position-relative">
+                        <input type="text" value="" readonly placeholder="From" class="form-control" id="from">
+                        <span class="add-on"><i class="icon-calendar"></i></span>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3 mb-md-0">
+                    <div class="input-append date form_datetime position-relative">
+                        <input type="text" value="" readonly placeholder="To" class="form-control" id="to">
+                        <span class="add-on"><i class="icon-calendar"></i></span>
+                    </div>
+                  </div>
+                </div>
+
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
                   <input type="text" name="city" class="form-control" placeholder="Location" id="location">
@@ -38,21 +58,10 @@
 
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <input type="number" name="capacity" class="form-control" placeholder="Capacity" id="capacity">
+                  <input type="number" name="capacity" class="form-control" placeholder="Capacity" id="capacity" min="1">
                 </div>
               </div>
 
-              <div class="row form-group">
-                <div class="col-md-12 mb-3 mb-md-0">
-                  <input type="number" name="age_limit" class="form-control" placeholder="Age limit">
-                </div>
-              </div>
-
-              <div class="row form-group">
-                <div class="col-md-12 mb-3 mb-md-0">
-                  <input type="number" name="price" class="form-control" placeholder="Price">
-                </div>
-              </div>
 
               <div class="row form-group">
                 <div class="col-md-12">
@@ -80,11 +89,11 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+          <p>Concert created successfully</p>
+          <p>Click <a>here</a> to see the concert details.</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
