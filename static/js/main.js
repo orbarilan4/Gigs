@@ -303,6 +303,9 @@ function split( val ) {
           terms.push( ui.item.value );
           // add placeholder to get the comma-and-space at the end
           terms.push( "" );
+
+          ids.push(ui.item.id);
+
           this.value = terms.join( ", " );
           return false;
         }
@@ -393,6 +396,47 @@ $(".form_datetime").datetimepicker({
         format: "dd MM yyyy - hh:ii"
     });
 
+$( "#free" )
+        .val(getUrlParameter('artist'))
+      .on( "keydown", function( event ) {
+        if ( event.keyCode === $.ui.keyCode.TAB &&
+            $( this ).autocomplete( "instance" ).menu.active ) {
+          event.preventDefault();
+        }
+      })
+      .autocomplete({
+        source: function( request, response ) {
+          $.getJSON( "free_search", {
+            term: extractLast( request.term )
+          }, response );
+        },
+        search: function() {
+          // custom minLength
+          var term = extractLast( this.value );
+          if ( term.length < 1 ) {
+            return false;
+          }
+        },
+        focus: function() {
+          // prevent value inserted on focus
+          return false;
+        },
+        select: function( event, ui ) {
+          var terms = split( this.value );
+          // remove the current input
+          terms.pop();
+          // add the selected item
+          terms.push( ui.item.value );
+          this.value = terms;
+
+          if ($('.desc').length){
+            get_desc();
+          }
+
+          return false;
+        }
+      });
+
 $('.search').click( search);
 
   $( "#artist" )
@@ -426,6 +470,9 @@ $('.search').click( search);
           terms.pop();
           // add the selected item
           terms.push( ui.item.value );
+
+
+
           this.value = terms;
 
           if ($('.desc').length){
@@ -451,6 +498,7 @@ $('.search').click( search);
 
 var page;
 var isAdmin = false;
+var ids = [];
 
   function add_concert(){
     $('form').toggleClass('loading').find('fieldset').attr('disabled','');
@@ -460,7 +508,8 @@ var isAdmin = false;
         method: "POST",
         url: "/add_concert",
         data: { name: name,
-                capacity: capacity}
+                capacity: capacity,
+                artists : ids.join(',')}
     }).done(function( msg ) {
         if (msg > 0){
             $('.alert').removeClass('d-none');

@@ -9,14 +9,26 @@
             <div class="job-search">
               <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item">
-                  <a class="nav-link active py-3" id="pills-job-tab" data-toggle="pill" href="#pills-job" role="tab" aria-controls="pills-job" aria-selected="true">Find A Concert</a>
+                  <a class="nav-link active py-3" id="pills-job-tab" data-toggle="pill" href="#pills-candidate" role="tab" aria-controls="pills-candidate" aria-selected="true">Find A Concert</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link py-3" id="pills-candidate-tab" data-toggle="pill" href="#pills-candidate" role="tab" aria-controls="pills-candidate" aria-selected="false">Advanced search</a>
+                  <a class="nav-link py-3  bg-white" id="pills-candidate-tab" data-toggle="pill" href="#pills-job" role="tab" aria-controls="pills-job" aria-selected="false">Advanced search</a>
                 </li>
               </ul>
               <div class="tab-content bg-white p-4 rounded" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-job" role="tabpanel" aria-labelledby="pills-job-tab">
+                <div class="tab-pane fade show active" id="pills-candidate" role="tabpanel" aria-labelledby="pills-candidate-tab">
+                  <form action="advanced_search" method="post">
+                    <div class="row">
+                      <div class="col-md-9 mb-3 mb-lg-0">
+                        <input type="text" class="form-control" placeholder="eg. Concert name, artist, location" id="free">
+                      </div>
+                      <div class="col-md-3 mb-3 mb-lg-0">
+                        <input type="submit" class="btn btn-primary btn-block" value="Search">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="tab-pane fade" id="pills-job" role="tabpanel" aria-labelledby="pills-job-tab">
                   <form action="find" method="get">
                     <div class="row">
                       <div class="col-md-6 mb-3 mb-lg-0">
@@ -34,34 +46,6 @@
                       <input type="checkbox" id="cbx" checked> Only show locations which the artist has future concerts at
                     </div>
                   </div>
-                  </form>
-                </div>
-                <div class="tab-pane fade" id="pills-candidate" role="tabpanel" aria-labelledby="pills-candidate-tab">
-                  <form action="advanced_search" method="post">
-                    <div class="row">
-                      <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                        <input type="text" class="form-control" placeholder="eg. Carl Smith">
-                      </div>
-                      <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                        <div class="select-wrap">
-                          <span class="icon-keyboard_arrow_down arrow-down"></span>
-                          <select name="" id="" class="form-control">
-                            <option value="">Category</option>
-                            <option value="fulltime">Full Time</option>
-                            <option value="fulltime">Part Time</option>
-                            <option value="freelance">Freelance</option>
-                            <option value="internship">Internship</option>
-                            <option value="internship">Termporary</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                        <input type="text" class="form-control form-control-block search-input" id="autocomplete" placeholder="Location" onFocus="geolocate()">
-                      </div>
-                      <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                        <input type="submit" class="btn btn-primary btn-block" value="Search">
-                      </div>
-                    </div>
                   </form>
                 </div>
               </div>

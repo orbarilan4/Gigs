@@ -240,6 +240,17 @@ def search():
     return json.dumps(j, indent=4)
 
 
+@app.route('/free_search', methods=['GET'] )
+def free_search():
+    free = request.args.get('term', '', type=str)
+
+    rows = db.freeSearch(free)
+    rows = db.freeSearch(free)
+
+    j = [{'id': id, 'label': name, 'value': id} for id, name in rows]
+
+    return json.dumps(j, indent=4)
+
 @app.route('/search_artist', methods=['GET'] )
 def search_artist():
     artist = request.args.get('term', '', type=str)
@@ -259,10 +270,7 @@ def edit_concert():
     if session['is_admin']:
         id = request.args.get('id', '', type=int)
 
-        row,columns = db.getConcert(id)
-        result = [{columns[index][0]: column for index, column in enumerate(row)}]
-
-        return json.dumps(result, indent=4)
+        return db.getConcert(id)
 
     return ''
 
@@ -276,8 +284,11 @@ def add_concert():
 
     name = request.form.get('name', '', type=str)
     capacity = request.form.get('capacity', '', type=int)
+    artists = request.form.get('artists', '', type=str).split(',')
 
-    cur = db.addConcert(name, capacity)
+    print(artists)
+
+    cur = db.addConcert(name, capacity,artists)
 
     return '0'
 

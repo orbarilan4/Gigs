@@ -1718,3 +1718,13 @@ left:0;right:0;top:0;bottom:0;
 .form_datetime,.form_datetime input{cursor:pointer}
 .input-group-addon,.input-group-btn,.input-group .form-control{display:table-cell;}
 .input-group-addon{margin-left:-2px;padding:14px 12px;font-size:14px;font-weight:400;line-height:1;color:#555;text-align:center;background-color:#eee;border:1px solid #ccc;border-radius:0px 4px 4px 0px}
+
+.nav-link.active{
+    background-color:#fff !important;
+    color:#26baee !important;
+}
+
+.nav-link:not(.active){
+    background-color:#26baee !important;
+    color:#fff !important;
+}

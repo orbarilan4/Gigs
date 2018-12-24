@@ -1,4 +1,6 @@
 from flask import g
+import json
+from datetime import date, datetime
 import sqlite3
 
 
@@ -67,14 +69,53 @@ class modelDB:
 
     def getConcert(self, id):
         cur = self.get_db().cursor()
+
+        cur.execute(
+            "select artist.artist_id, artist.artist_name "
+            "from  artist	inner join	concert_artist "
+            "               on			artist.artist_id = concert_artist.artist_id "
+            "               and			concert_artist.concert_id = ? ",
+            (id,))
+
+        artists = self.sqlToJson(cur.fetchall(), cur.description)
+
         cur.execute(
             "SELECT concert.name, concert.capacity, concert.start, concert.end "
             "FROM concert "
             "WHERE concert.id = ? ",
             (id,))
-        return (cur.fetchone(),cur.description)
 
-    def addConcert(self, name, capacity):
+        concert = json.loads(self.sqlToJson([cur.fetchone()],cur.description))
+
+        concert[0]['artists'] = artists
+
+        return json.dumps(concert[0], default=self.json_serial)
+
+    def addConcert(self, name, capacity, artists):
         cur = self.get_db().cursor()
         cur.execute("INSERT INTO concert(name,capacity) VALUES(?,?)", (name,capacity))
         cur.connection.commit()
+
+        id = cur.lastrowid
+        for artist in artists:
+            cur.execute("INSERT INTO concert_artist(concert_id,artist_id) VALUES(?,?)", (id, artist))
+
+        cur.connection.commit()
+
+    def freeSearch(self, free):
+        cur = self.get_db().cursor()
+        cur.execute(
+            "SELECT concert.id,concert.name "
+            "FROM concert "
+            "WHERE concert.name like ? ",
+            ('%' + free + '%',))
+        return cur.fetchall()
+
+    def sqlToJson(self, records, columns):
+        result = [{columns[index][0]: column for index, column in enumerate(value)} for value in records]
+        return json.dumps(result, default=self.json_serial)
+
+    def json_serial(obj):
+        if isinstance(obj, (datetime, date)):
+            return obj.isoformat()
+        raise TypeError("Type ? not serializable" % type(obj))
