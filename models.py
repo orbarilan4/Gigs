@@ -40,13 +40,11 @@ class modelDB:
         cur = self.get_db().cursor()
         # Searching for top-10 gigs base on user's city and user's age
         cur.execute(
-            "SELECT artist.artist_name, concert.date_time, city.city_name, country.country_name, genre.genre_name "
-            "FROM city, concert, artist,user_concert,country,genre "
-            "WHERE concert.city_id = city.city_id "
-            "AND concert.artist_id = artist.artist_id AND country.country_id = city.country_id "
-            "AND user_concert.artist_id = concert.artist_id AND user_concert.date_time = concert.date_time "
-            "AND artist.genre_id = genre.genre_id AND user_concert.username = ? ORDER BY concert.price "
-            , (username))
+            "SELECT concert.name, concert.id "
+            "FROM concert,user_concert "
+            "WHERE user_concert.concert_id = concert.id "
+            "AND user_concert.username = ? "
+            , (username, ))
         records = cur.fetchall()
         return records
 
