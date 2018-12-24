@@ -263,6 +263,52 @@ jQuery(document).ready(function($) {
 
 });
 
+$(function(){
+function split( val ) {
+      return val.split( /,\s*/ );
+    }
+    function extractLast( term ) {
+      return split( term ).pop();
+    }
+
+    $( "#birds" )
+      .on( "keydown", function( event ) {
+        if ( event.keyCode === $.ui.keyCode.TAB &&
+            $( this ).autocomplete( "instance" ).menu.active ) {
+          event.preventDefault();
+        }
+      })
+      .autocomplete({
+        source: function( request, response ) {
+          $.getJSON( "search_artist", {
+            term: extractLast( request.term )
+          }, response );
+        },
+        search: function() {
+          // custom minLength
+          var term = extractLast( this.value );
+          if ( term.length < 1 ) {
+            return false;
+          }
+        },
+        focus: function() {
+          // prevent value inserted on focus
+          return false;
+        },
+        select: function( event, ui ) {
+          var terms = split( this.value );
+          // remove the current input
+          terms.pop();
+          // add the selected item
+          terms.push( ui.item.value );
+          // add placeholder to get the comma-and-space at the end
+          terms.push( "" );
+          this.value = terms.join( ", " );
+          return false;
+        }
+      });
+});
+
 $( function() {
     function split( val ) {
       return val.split( /,\s*/ );
@@ -277,7 +323,7 @@ $( function() {
     $('.prev').click(prev);
     $('.next').click(next);
     isLoggedIn();
-    hot();
+    //hot();
     buy();
 
     if ($('.concert_manip').length > 0 & getUrlParameter('id') > 0){
@@ -343,6 +389,10 @@ $( function() {
         }
       });
 
+$(".form_datetime").datetimepicker({
+        format: "dd MM yyyy - hh:ii"
+    });
+
 $('.search').click( search);
 
   $( "#artist" )
@@ -391,6 +441,10 @@ $('.search').click( search);
      page = parseInt(getUrlParameter('page'));
       if (!Number.isInteger(page)){
         page = -1;
+
+      }
+
+      if ($('.results').length > 0){
         search();
       }
   } );
@@ -400,18 +454,20 @@ var isAdmin = false;
 
   function add_concert(){
     $('form').toggleClass('loading').find('fieldset').attr('disabled','');
-    artist = $('#artist').val();
-    //location = $('#location').val();
+    name = $('#name').val();
+    capacity = $('#capacity').val();
     $.ajax({
         method: "POST",
         url: "/add_concert",
-        data: { artist: artist }
+        data: { name: name,
+                capacity: capacity}
     }).done(function( msg ) {
         if (msg > 0){
             $('.alert').removeClass('d-none');
         }
         else{
-            $('#myModal').modal();
+            $('#exampleModalCenter').modal();
+            $('fieldset input').val('');
         }
         $('form').toggleClass('loading').find('fieldset').removeAttr('disabled');
     });
@@ -670,6 +726,7 @@ update_price();
 
 function search(){
     $('form').toggleClass('loading').find('fieldset').attr('disabled','');
+    $(".results .result").remove().addClass('spinner');
     page = 0;
     $.ajax({
         method: "POST",
@@ -686,8 +743,8 @@ function search(){
         }
         var template = $.templates("#theTmpl");
         var htmlOutput = template.render(msg);
-        $(".results .result").remove();
-        $(".results").append(htmlOutput);
+
+        $(".results").append(htmlOutput).removeClass('spinner');
         $('.prev').removeClass('d-none');
         if (isAdmin){
             $('.admin').show().css('visibility', 'visible');

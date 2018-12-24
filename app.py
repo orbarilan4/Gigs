@@ -274,33 +274,12 @@ def add_concert():
     if request.method == 'GET':
         return render_template("add_concert.html")
 
+    name = request.form.get('name', '', type=str)
+    capacity = request.form.get('capacity', '', type=int)
 
-    form = AddDelConcert(request.form)
+    cur = db.addConcert(name, capacity)
 
-    cur = get_db().cursor()
-    cur.execute("SELECT city_name, city_id FROM city WHERE city_name = ?",form.city.data) # Checking if the city exist
-    city_record = cur.fetchall()
-    cur.execute("SELECT artist_name, artist_id FROM artist WHERE artist_name = ?",form.artist.data)  # Checking if the artist exist
-    artist_record = cur.fetchall()
-    if len(city_record) != 0 and len(artist_record) != 0:
-        try:
-            cur.execute(
-                "INSERT INTO concert (artist_id,city_id,date_time,capacity,age_limit,price)"
-                "VALUES (?,?,?,?,?,?)",
-                (int(list(artist_record).pop(0)[1]), int(list(city_record).pop(0)[1]),
-                 form.date.data, form.capacity.data, form.age_limit.data,form.price.data))
-            
-
-            return '0'
-        except:
-            return '1'
-    elif len(city_record) == 0:
-        return '2'
-    elif len(artist_record) == 0:
-        return '3'
-
-
-
+    return '0'
 
 @app.route('/del_concert', methods=['GET'])
 def del_concert():
@@ -369,28 +348,14 @@ def advanced_search2():
         cur = get_db().cursor()
 
         cur.execute(
-            "SELECT artist.artist_name ,concert.date_time , city.city_name, country.country_name, "
-            "genre.genre_name, concert.age_limit , concert.price, concert.capacity,concert.id "
-            "FROM city, concert, artist, genre, country "
-            "WHERE concert.city_id = city.city_id AND country.country_id = city.country_id "
-            "AND concert.artist_id = artist.artist_id AND artist.genre_id = genre.genre_id "
-            "AND ((artist.artist_name LIKE COALESCE(?,artist.artist_name)) "
-            "AND (concert.date_time = COALESCE(?,concert.date_time)) "
-            "AND (country.country_name LIKE COALESCE(?,country.country_name)) "
-            "AND (city.city_name LIKE COALESCE(?,city.city_name)) "
-            "AND (genre.genre_name LIKE COALESCE(?,genre.genre_name)) "
-            "AND (concert.age_limit >= COALESCE(?,concert.age_limit)) "
-            "AND (concert.age_limit <= COALESCE(?,concert.age_limit)) "
-            "AND (concert.price >= COALESCE(?,concert.price)) "
-            "AND (concert.price <= COALESCE(?,concert.price)) "
-            ")ORDER BY concert.price LIMIT ?,11",
-            (("%" + xstr(artist) + "%"), date, ("%" + xstr(country) + "%"), ("%" + xstr(city) + "%"), ("%" + xstr(genre) + "%"),
-             int(min_age), int(max_age), int(min_price), int(max_price), page))
+            "SELECT concert.name ,concert.start  "            
+            "FROM concert "
+            "WHERE ((concert.name LIKE COALESCE(?,concert.name)) "            
+            ")",
+            (("%" + xstr(artist) + "%"),))
         records = cur.fetchall()
         columns = cur.description
         result = [{columns[index][0]: column for index, column in enumerate(value)} for value in records]
-        if len(records) == 0:
-            return render_template("sorry.html")
 
     return json.dumps(result, default=json_serial)
 

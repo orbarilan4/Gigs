@@ -77,3 +77,8 @@ class modelDB:
             "AND artist.genre_id = genre.genre_id AND concert.id = ? ORDER BY concert.price "
             , (id,))
         return (cur.fetchone(),cur.description)
+
+    def addConcert(self, name, capacity):
+        cur = self.get_db().cursor()
+        cur.execute("INSERT INTO concert(name,capacity) VALUES(?,?)", (name,capacity))
+        cur.connection.commit()
