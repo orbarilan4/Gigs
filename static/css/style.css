@@ -1697,6 +1697,7 @@ visibility:hidden;
 .result{
     cursor:pointer;
 }
+.results{min-height:800px}
 .spinner{
 min-height:300px;
 left:0;right:0;top:0;bottom:0;
@@ -1728,3 +1729,11 @@ left:0;right:0;top:0;bottom:0;
     background-color:#26baee !important;
     color:#fff !important;
 }
+.artist_profile{
+width:100px;
+float:right;
+margin:3px;
+}
+
+.modal-title{line-height:2em}
+.readonly{background-color:#d1d1d1}

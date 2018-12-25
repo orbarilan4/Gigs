@@ -12,6 +12,7 @@ class modelDB:
         db = getattr(g, '_database', None)
         if db is None:
             db = g._database = sqlite3.connect(self.DATABASE)
+        db.cursor().execute("PRAGMA foreign_keys = ON")
         return db
 
     def close_connection(self, exception):
@@ -21,22 +22,20 @@ class modelDB:
 
     def login(self, username, password):
         cur = self.get_db().cursor()
-        cur.execute("SELECT username, city_id, age, is_admin, picture FROM user WHERE username = ? AND password = ? ",
+        cur.execute("SELECT username, is_admin FROM user WHERE username = ? AND password = ? ",
                     (username, password))
         user = cur.fetchall()
         return user
 
     def getRecord(self, city):
         cur = self.get_db().cursor()
-        cur.execute("SELECT city_name, city_id FROM city WHERE city_name = ?",
+        cur.execute("SELECT name, id FROM city WHERE name = ?",
                     city)  # Checking if the city exist
         city_record = list(cur.fetchall())
         return city_record
 
     def updateRecord(self,age, city, pic, username):
-        cur = self.get_db().cursor()
-        cur.execute("UPDATE user SET user.age = ? , user.city_id = ?, user.picture = ?  WHERE user.username = ?",
-                    (age, city, pic, username))
+        pass
 
     def getPersonalTikets(self, username):
         cur = self.get_db().cursor()
@@ -55,9 +54,9 @@ class modelDB:
 
     def searchArtist(self, artist):
         cur = self.get_db().cursor()
-        cur.execute("SELECT artist_id, artist_name "
+        cur.execute("SELECT id, name "
                     "FROM artist "
-                    "WHERE artist_name like ? "
+                    "WHERE name like ? "
                     "LIMIT 5", (('%' + artist + '%'),))
         records = list(cur.fetchall())
         return records
@@ -71,42 +70,46 @@ class modelDB:
         cur = self.get_db().cursor()
 
         cur.execute(
-            "select artist.artist_id, artist.artist_name "
+            "select artist.id, artist.name, concert_id "
             "from  artist	inner join	concert_artist "
-            "               on			artist.artist_id = concert_artist.artist_id "
+            "               on			artist.id = concert_artist.artist_id "
             "               and			concert_artist.concert_id = ? ",
             (id,))
 
         artists = self.sqlToJson(cur.fetchall(), cur.description)
 
         cur.execute(
-            "SELECT concert.name, concert.capacity, concert.start, concert.end, concert.id "
-            "FROM concert "
+            "SELECT concert.name, concert.capacity, concert.start, concert.end, concert.id, location.name as location, city.name as city, country.name as country "
+            "FROM concert   inner join  location "
+            "               on          concert.location_id = location.id "
+            "               inner join  city "
+            "               on          location.city_id = city.id "
+            "               inner join  country "
+            "               on          city.country_id = country.id "
             "WHERE concert.id = ? ",
             (id,))
 
-        concert = json.loads(self.sqlToJson([cur.fetchone()],cur.description))
 
-        concert[0]['artists'] = artists
+        concert = json.loads(self.sqlToJson(cur.fetchall(), cur.description))
 
-        return json.dumps(concert[0], default=self.json_serial)
+        return json.dumps({'concerts' : concert, 'artists' : artists}, default=self.json_serial)
 
     def getArtist(self, id):
         cur = self.get_db().cursor()
 
         cur.execute(
-            "select artist.artist_id, artist.artist_name "
+            "select artist.id, artist.name "
             "from  artist	"
-            "where artist_id = ? ",
+            "where id = ? ",
             (id,))
 
         artist = self.sqlToJson(cur.fetchall(), cur.description)
 
         return json.dumps(artist, default=self.json_serial)
 
-    def addConcert(self, name, capacity, artists, start, end):
+    def addConcert(self, name, capacity, artists, start, end,location_id):
         cur = self.get_db().cursor()
-        cur.execute("INSERT INTO concert(name,capacity,start,end) VALUES(?,?,?,?)", (name,capacity,start,end))
+        cur.execute("INSERT INTO concert(name,capacity,start,end,location_id) VALUES(?,?,?,?,?)", (name,capacity,start,end,location_id))
         cur.connection.commit()
 
         id = cur.lastrowid
@@ -120,13 +123,13 @@ class modelDB:
     def freeSearch(self, free):
         cur = self.get_db().cursor()
         cur.execute(
-            "SELECT concert.id,concert.name, location.name, city.city_name, country.country_name  "
+            "SELECT concert.id,concert.name, location.name, city.name, country.name  "
             "FROM concert   inner join  location"
             "               on          location.id = concert.location_id "
             "               inner join  city "
-            "               on          city.city_id = location.city_id "
+            "               on          city.id = location.city_id "
             "               inner join  country "
-            "               on          city.country_id = country.country_id "
+            "               on          city.country_id = country.id "
             "WHERE concert.name like ? ",
             ('%' + free + '%',))
         return cur.fetchall()
@@ -134,12 +137,12 @@ class modelDB:
     def getLocations(self, location):
         cur = self.get_db().cursor()
         cur.execute(
-            "select location.id, location.name || ', ' || city.city_name || ', ' || country.country_name " 
+            "select location.id, location.name || ', ' || city.name || ', ' || country.name " 
             "from location	inner join	city "
-            "				on			location.city_id = city.city_id "
+            "				on			location.city_id = city.id "
             "				and			location.name like ? "
             "				inner join	country "
-            "				on			city.country_id = country.country_id",
+            "				on			city.country_id = country.id",
             ('%' + location + '%',))
         return cur.fetchall()
 
@@ -164,9 +167,9 @@ class modelDB:
 
         '''
         cur.execute(
-            "select artist.artist_id, artist.artist_name "
+            "select artist.id, artist.name "
             "from  artist	inner join	concert_artist "
-            "               on			artist.artist_id = concert_artist.artist_id "
+            "               on			artist.id = concert_artist.artist_id "
             "               and			concert_artist.concert_id = ? ",
             (id,))
 
@@ -177,3 +180,36 @@ class modelDB:
         #concert[0]['artists'] = artists
 
         return json.dumps(concerts, default=self.json_serial)
+
+    def getConcertsByArtist(self, artist_id):
+        cur = self.get_db().cursor()
+
+        cur.execute(
+            "select artist.id, artist.name, concert_id "
+            "from  artist	inner join	concert_artist "
+            "               on			artist.id = concert_artist.artist_id "
+            "               and			concert_artist.concert_id in ("
+            "                                                           select  concert_id "
+            "                                                           from    concert_artist"
+            "                                                           where   artist_id = ?) "
+            "ORDER BY concert_id",
+            (artist_id,))
+
+        artists = self.sqlToJson(cur.fetchall(), cur.description)
+
+        cur.execute(
+            "SELECT concert.name, concert.capacity, concert.start, concert.end, concert.id, location.name as location, city.name as city, country.name as country "
+            "FROM concert   inner join  location"
+            "               on          location.id = concert.location_id "
+            "               inner join  city "
+            "               on          city.id = location.city_id "
+            "               inner join  country "
+            "               on          city.country_id = country.id "
+            "               inner join  concert_artist "
+            "               on          concert_artist.concert_id = concert.id "
+            "WHERE concert_artist.artist_id = ? ",
+            (artist_id,))
+
+        concert = json.loads(self.sqlToJson(cur.fetchall(), cur.description))
+
+        return json.dumps({'concerts' : concert, 'artists' : artists}, default=self.json_serial)

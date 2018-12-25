@@ -42,71 +42,95 @@ def mysql_db():
     cursor.execute("DROP TABLE IF EXISTS user_concert")
 
 
-    cursor.execute("CREATE TABLE genre (genre_name VARCHAR(255) NOT NULL, "
-                   "genre_id INT, PRIMARY KEY (genre_id))")
-    cursor.execute("CREATE TABLE country (country_name VARCHAR(255) NOT NULL, "
-                   "country_id INT, PRIMARY KEY (country_id))")
-    cursor.execute("CREATE TABLE city (city_name VARCHAR(255) NOT NULL, "
-                   "country_id INT, city_id INT, PRIMARY KEY (city_id),CONSTRAINT fk_country_id FOREIGN KEY (country_id) "
-                   "REFERENCES country(country_id) ON UPDATE CASCADE ON DELETE RESTRICT)")
-    cursor.execute("CREATE TABLE artist (artist_name VARCHAR(255) NOT NULL, "
-                                        "genre_id INT, "
-                   "                     artist_id INT, "
-                   "                     picture blob,"
-                   "                     PRIMARY KEY (artist_id),CONSTRAINT fk_genre_id FOREIGN KEY (genre_id) "
-                   "REFERENCES genre(genre_id) ON UPDATE CASCADE ON DELETE RESTRICT)")
+    cursor.execute("CREATE TABLE genre (id INT, "
+                   "                    name VARCHAR(255) NOT NULL, "                   
+                   "                    PRIMARY KEY (id))")
+
+    cursor.execute("CREATE TABLE country (id INT, "
+                   "                        name VARCHAR(255) NOT NULL, "                   
+                   "                      PRIMARY KEY (id))")
+
+    cursor.execute("CREATE TABLE city (id INT, "
+                   "                    name VARCHAR(255) NOT NULL, "
+                   "                    country_id INT NOT NULL, "
+                   "                    PRIMARY KEY (id),"
+                   "                    CONSTRAINT fk_country_city FOREIGN KEY (country_id) "
+                   "                    REFERENCES country(id) ON UPDATE CASCADE ON DELETE CASCADE)")
+
+    cursor.execute("CREATE TABLE artist (id INT, "
+                   "                        name VARCHAR(255) NOT NULL, "
+                   "                        genre_id INT, "                   
+                   "                        PRIMARY KEY (id),"
+                   "                        CONSTRAINT fk_genre_artist FOREIGN KEY (genre_id) "
+                   "                        REFERENCES genre(id) ON UPDATE CASCADE ON DELETE CASCADE)")
+
     cursor.execute("CREATE TABLE location (id INTEGER PRIMARY KEY AUTOINCREMENT,"
-                                            "Name VARCHAR(255) NOT NULL, "
-                                            "Address VARCHAR(255) NOT NULL, "
-                                            "city_id INT)")
+                   "                        name VARCHAR(255) NOT NULL, "
+                   "                        city_id INT NOY NULL,"                   
+                   "                        CONSTRAINT fk_location_city FOREIGN KEY (city_id) "
+                   "                        REFERENCES city(id) ON UPDATE CASCADE ON DELETE CASCADE)")
+
     cursor.execute("CREATE TABLE ticket_category (id INTEGER PRIMARY KEY AUTOINCREMENT,"
-                                                    "Name VARCHAR(255) NOT NULL)")
-    cursor.execute("CREATE TABLE concert_ticket (concert_id INTEGER,"
-                                                    "category_id INTEGER,"
-                                                    "price FLOAT)")
-    cursor.execute("CREATE TABLE concert_artist (concert_id INTEGER,"
-                                                   "artist_id INTEGER)")
-    cursor.execute("CREATE TABLE concert (id INTEGER PRIMARY KEY AUTOINCREMENT,"
-                                                        "name CHAR(50) NOT NULL,"
-                                                        #"artist_id INT,"
-                                                        "location_id INT, "
-                                                        "start TIMESTAMP,"
-                                                        "end TIMESTAMP,"
-                                                        #"prices INT,"
-                                                        #"age_limit INT,"
-                                                        "capacity INT,"
-                   "CONSTRAINT fk_location_concert FOREIGN KEY (location_id) REFERENCES location(id) "
-                   "ON UPDATE CASCADE ON DELETE RESTRICT)")
-    cursor.execute("CREATE TABLE user (username VARCHAR(255) NOT NULL, age INT, city_id INT, "
-                   "password VARCHAR(255) NOT NULL, picture VARCHAR(10000) NOT NULL, "
-                   "is_admin BOOLEAN, PRIMARY KEY (username), "
-                   "CONSTRAINT fk_user_city_id FOREIGN KEY (city_id) REFERENCES city(city_id) "
-                   "ON UPDATE CASCADE ON DELETE RESTRICT)")
-    cursor.execute("CREATE TABLE user_concert (username VARCHAR(255) NOT NULL, concert_id INT, "
-                   "date_time TIMESTAMP, PRIMARY KEY (username,concert_id), "
-                   "CONSTRAINT fk_user_concert_id_datetime FOREIGN KEY (concert_id) "
-                   "REFERENCES concert(id) ON UPDATE CASCADE ON DELETE RESTRICT, "
-                   "CONSTRAINT fk_user_concert_username FOREIGN KEY (username) "
-                   "REFERENCES user(username) ON UPDATE CASCADE ON DELETE RESTRICT)")
+                                                    "name VARCHAR(255) NOT NULL)")
+
+    cursor.execute("CREATE TABLE concert_ticket (concert_id INTEGER NOT NULL,"
+                   "                                category_id INTEGER NOT NULL,"
+                   "                                price FLOAT NOT NULL,"
+                   "                                PRIMARY KEY (concert_id,category_id),"
+                   "                                CONSTRAINT fk_concert_ticket_category FOREIGN KEY (category_id) "
+                   "                                REFERENCES ticket_category(id) ON UPDATE CASCADE ON DELETE CASCADE,"
+                   "                                CONSTRAINT fk_concert_ticket_concert FOREIGN KEY (concert_id) "
+                   "                                REFERENCES concert(id) ON UPDATE CASCADE ON DELETE CASCADE)")
+
+    cursor.execute("CREATE TABLE concert_artist (concert_id INTEGER NOT NULL,"
+                                                   "artist_id INTEGER NOT NULL,"
+                   "                                PRIMARY KEY (concert_id,artist_id),"
+                   "                                CONSTRAINT fk_concert_artist_concert FOREIGN KEY (concert_id) "
+                   "                                REFERENCES concert(id) ON UPDATE CASCADE ON DELETE CASCADE,"
+                   "                                CONSTRAINT fk_concert_artist_artist FOREIGN KEY (artist_id) "
+                   "                                REFERENCES artist(id) ON UPDATE CASCADE ON DELETE CASCADE)")
+
+    cursor.execute("CREATE TABLE concert (id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                   "                        name CHAR(50) NOT NULL, "
+                   "                        location_id INT NOT NULL,"
+                   "                        start TIMESTAMP NOT NULL,"
+                   "                        end TIMESTAMP NOT NULL,"
+                   "                        capacity INT NOT NULL,"
+           "                                CONSTRAINT fk_location_concert FOREIGN KEY (location_id) REFERENCES location(id) "
+                   "                        ON UPDATE CASCADE ON DELETE CASCADE)")
+
+    cursor.execute("CREATE TABLE user (id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                   "                    username VARCHAR(255) NOT NULL, "                              
+                   "                    password VARCHAR(255) NOT NULL, "                   
+                   "                    is_admin BOOLEAN DEFAULT 0,"
+                   "                    UNIQUE (username))")
+
+    cursor.execute("CREATE TABLE user_concert (user_id INT NOT NULL, "
+                   "                    concert_id INT NOT NULL, "                   
+                   "                    PRIMARY KEY (user_id,concert_id), "
+                   "                    CONSTRAINT fk_user_concert FOREIGN KEY (concert_id) "
+                   "                    REFERENCES concert(id) ON UPDATE CASCADE ON DELETE CASCADE, "
+                   "                    CONSTRAINT fk_user_concert_user FOREIGN KEY (user_id) "
+                   "                    REFERENCES user(id) ON UPDATE CASCADE ON DELETE CASCADE)")
 
     with open(prefix + 'static/datasets/created/genre.csv', 'r', encoding="utf8") as f:
         reader = tuple(csv.reader(f))
-        cursor.executemany("INSERT INTO genre (genre_name,genre_id) VALUES (?,?)", reader[1:])
+        cursor.executemany("INSERT INTO genre (name,id) VALUES (?,?)", reader[1:])
         my_db.commit()
 
     with open(prefix + 'static/datasets/created/country.csv', 'r', encoding="utf8") as f:
         reader = tuple(csv.reader(f))
-        cursor.executemany("INSERT INTO country (country_name,country_id) VALUES (?,?)", reader[1:])
+        cursor.executemany("INSERT INTO country (name,id) VALUES (?,?)", reader[1:])
         my_db.commit()
 
     with open(prefix + 'static/datasets/created/city.csv', 'r', encoding="utf8") as f:
         reader = tuple(csv.reader(f))
-        cursor.executemany("INSERT INTO city (city_name,country_id,city_id) VALUES (?,?,?)", reader[1:])
+        cursor.executemany("INSERT INTO city (name,country_id,id) VALUES (?,?,?)", reader[1:])
         my_db.commit()
 
     with open(prefix + 'static/datasets/created/artist.csv', 'r', encoding="utf8") as f:
         reader = tuple(csv.reader(f))
-        cursor.executemany("INSERT INTO artist (artist_name,genre_id,artist_id) VALUES (?,?,?)", reader[1:])
+        cursor.executemany("INSERT INTO artist (name,genre_id,id) VALUES (?,?,?)", reader[1:])
         my_db.commit()
 
     '''
