@@ -335,7 +335,7 @@ $( function() {
     buy();
 
     $('.free_search').click(function(){
-        location.href = '/find?free_id=' + free_id;
+        location.href = '/find?concert_id=' + concert_id;
     });
 
     if ($('.concert_manip').length > 0 & getUrlParameter('id') > 0){
@@ -438,7 +438,7 @@ $( "#free" )
           terms.push( ui.item.value );
           this.value = terms;
 
-            free_id = ui.item.id;
+            concert_id = ui.item.id;
 
           return false;
         }
@@ -542,7 +542,7 @@ $('.search').click( search);
       }
   } );
 
-var page, free_id,loc_id;
+var page, concert_id,loc_id;
 var isAdmin = false;
 var ids = [];
 
