@@ -1,5 +1,6 @@
 from flask import Flask, render_template, url_for, request, flash, redirect, session, g
-import sqlite3,time,sys
+import time,sys
+from flaskext.mysql import MySQL
 from forms import AdvancedSearch, RegistrationForm, LoginForm, UpdateProfileForm, AddDelConcert
 import numpy as np
 import json
@@ -8,24 +9,19 @@ import wikipedia
 
 import models as model
 
-db = model.modelDB()
-
-DATABASE = 'db/gigs.db'
-def get_db():
-    db = getattr(g, '_database', None)
-    if db is None:
-        db = g._database = sqlite3.connect(DATABASE)
-    return db
 
 
 # db_connection.mysql_db_connection()
+mysql = MySQL()
 app = Flask(__name__)
-#app.config['MYSQL_DATABASE_HOST'] = '85.10.205.173'
-#app.config['MYSQL_DATABASE_USER'] = 'orbari123456'
-#app.config['MYSQL_DATABASE_PASSWORD'] = 'Oliver123'
-#app.config['MYSQL_DATABASE_DB'] = 'music321'
+app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+app.config['MYSQL_DATABASE_USER'] = 'root'
+app.config['MYSQL_DATABASE_PASSWORD'] = '1q2w3e4r'
+app.config['MYSQL_DATABASE_DB'] = 'music321'
 app.config['SECRET_KEY'] = 'f9bf78b9a18ce6d46a0cd2b0b86df9da'
-#mysql.init_app(app)
+mysql.init_app(app)
+
+db = model.modelDB(mysql)
 
 @app.teardown_appcontext
 def close_connection(exception):
@@ -125,6 +121,10 @@ def personal_tickets():
 # ================================
 # ===== Admin Options ======
 # ================================
+def get_db():
+    return mysql.connect()
+
+
 @app.route("/analytics", methods=['GET', 'POST'])
 def analytics():
     if session['is_admin'] and session['logged_in']:
@@ -135,7 +135,7 @@ def analytics():
             cur = get_db().cursor()
             colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA", "#ABCDEF", "#DDDDDD", "#ABCABC"]
             # Checking if the entered country is exist
-            cur.execute("SELECT country.name FROM country WHERE country.name = ?", form.country.data)
+            cur.execute("SELECT country.name FROM country WHERE country.name = %s", form.country.data)
             country = cur.fetchall()
             if len(country) == 0:
                 #flash(f'The entered country does not exist!', 'error')
@@ -146,7 +146,7 @@ def analytics():
                 cur.execute("SELECT city.name,counter.job FROM city AS city, "
                             "(SELECT concert.city_id,count(*) AS 'job' FROM concert, city, country "
                             "WHERE concert.city_id = city.id AND city.country_id = country.id "
-                            "AND country.country.name = COALESCE(?,country.country.name) "
+                            "AND country.country.name = COALESCE(%s,country.country.name) "
                             "GROUP BY concert.city_id "
                             "ORDER BY job DESC LIMIT 10) AS counter "
                             "WHERE counter.city_id = city.id", form.country.data)
@@ -156,7 +156,7 @@ def analytics():
                 cur.execute("SELECT artist.name,counter.job FROM artist AS artist, "
                             "(SELECT concert.artist_id,count(*) AS 'job' FROM concert, city, country "
                             "WHERE concert.city_id = city.id AND city.country_id = country.id "
-                            "AND country.country.name = COALESCE(?,country.country.name) "
+                            "AND country.country.name = COALESCE(%s,country.country.name) "
                             "GROUP BY concert.artist_id "
                             "ORDER BY job DESC LIMIT 10) AS counter "
                             "WHERE counter.artist_id = artist.id", form.country.data)
@@ -165,7 +165,7 @@ def analytics():
                 # Age limit distribution in selected (by user) country
                 cur.execute("SELECT concert.age_limit,count(*) AS 'job' FROM concert, city, country "
                             "WHERE concert.city_id = city.id AND city.country_id = country.id "
-                            "AND country.country.name = COALESCE(?,country.country.name) "
+                            "AND country.country.name = COALESCE(%s,country.country.name) "
                             "GROUP BY concert.age_limit ORDER BY concert.age_limit LIMIT 12", form.country.data)
                 freq_age_limit = np.array(list(cur.fetchall()), dtype=np.dtype('int,int'))
 
@@ -189,46 +189,46 @@ def search():
                     "FROM city "
                     "INNER JOIN country "
                     "ON city.country_id = country.id "
-                    "AND city.name like ? "
+                    "AND city.name like %s "
                     "LIMIT 5", ('%' + filter + '%',))
     else:
         cur.execute("SELECT city.id, city.name, country.name "
                     "FROM city "
                     "INNER JOIN country "
                     "ON city.country_id = country.id "
-                    "AND city.name like ? "
+                    "AND city.name like %s "
                     "inner join location "
-                    "on         location.id = concert.location_id "                
+                    "ON location.city_id = city.id "                                    
                     "INNER JOIN concert "
-                    "ON location.city_id = city.id "
+                    "on         location.id = concert.location_id "
                     "INNER join concert_artist "
                     "on         concert_artist.concert_id = concert_id "
                     "INNER JOIN artist "
                     "ON concert_artist.artist_id = artist.id "
-                    "AND artist.name like ? "
+                    "AND artist.name like %s "
                     "LIMIT 5", ('%' + filter + '%','%' + artist + '%'))
     rows = cur.fetchall()
 
     if (artist == ''):
         cur.execute("SELECT country.id, country.name "
                     "FROM country "
-                    "WHERE country.name like ? "
+                    "WHERE country.name like %s "
                     "LIMIT 5", ('%' + filter + '%',))
     else:
         cur.execute("SELECT country.id, country.name "
                     "FROM city "
                     "INNER JOIN country "
                     "ON city.country_id = country.id "
-                    "AND city.name like ? "
+                    "AND city.name like %s "
                     "inner join location "
-                    "on         location.id = concert.location_id "                
+                    "ON location.city_id = city.id "                                    
                     "INNER JOIN concert "
-                    "ON location.city_id = city.id "
+                    "on         location.id = concert.location_id "
                     "INNER join concert_artist "
                     "on         concert_artist.concert_id = concert_id "
                     "INNER JOIN artist "
                     "ON concert_artist.artist_id = artist.id "
-                    "AND artist.name like ? "
+                    "AND artist.name like %s "
                     "LIMIT 5", ('%' + filter + '%', '%' + artist + '%',))
 
     rows2 = cur.fetchall()
@@ -358,7 +358,7 @@ def json_serial(obj):
 
     if isinstance(obj, (datetime, date)):
         return obj.isoformat()
-    raise TypeError ("Type ? not serializable" % type(obj))
+    raise TypeError ("Type %s not serializable" % type(obj))
 
 @app.route('/find2', methods=['GET', 'POST'])
 def advanced_search2():
@@ -390,19 +390,19 @@ def buy_tickets():
             record = get_record(record)
             # Get artist id
             cur.execute("SELECT artist.name, artist.id FROM artist,genre "
-                        "WHERE genre.genre_id = artist.genre_id AND artist_name = ? AND genre_name = ?", (record[0], record[4]))
+                        "WHERE genre.genre_id = artist.genre_id AND artist_name = %s AND genre_name = %s", (record[0], record[4]))
             artist_record = list(cur.fetchall()).pop(0)
             # Get capacity and age limit for concert
-            cur.execute("SELECT capacity,age_limit FROM concert WHERE artist_id = ? AND date_time = ?",
+            cur.execute("SELECT capacity,age_limit FROM concert WHERE artist_id = %s AND date_time = %s",
                         (artist_record[1], record[1]))
             concert_data = list(cur.fetchall()).pop(0)
 
             # If there are tickets available
             if int(concert_data[0]) > 0 and int(session['age']) >= int(concert_data[1]):
                 try:
-                    cur.execute("INSERT INTO user_concert (username,artist_id,date_time) VALUES (?,?,?)",
+                    cur.execute("INSERT INTO user_concert (username,artist_id,date_time) VALUES (%s,%s,%s)",
                                 (session['username'],artist_record[1] , record[1])) # New Add ticket to user_concert
-                    cur.execute("UPDATE concert SET capacity = (capacity - 1) WHERE artist_id = ? AND date_time = ?",
+                    cur.execute("UPDATE concert SET capacity = (capacity - 1) WHERE artist_id = %s AND date_time = %s",
                                 (artist_record[1], record[1]))  # Capacity update after purchase
                     
                     #flash(f"You bought some tickets ! You can view them on your profile", 'success')
@@ -431,7 +431,7 @@ def recommendations():
                     "FROM user_concert,concert,artist "
                     "WHERE user_concert.artist_id = concert.artist_id AND user_concert.date_time = concert.date_time "
                     "AND concert.artist_id = artist.id "
-                    "AND user_concert.username = ? "
+                    "AND user_concert.username = %s "
                     "GROUP BY concert.artist_id ORDER BY job DESC) AS counter "
                     "WHERE counter.artist_id = artist.id AND artist.genre_id = genre.genre_id "
                     "GROUP BY genre.genre_id ORDER BY number_of_tickets DESC LIMIT 5"
@@ -446,7 +446,7 @@ def recommendations():
                     "FROM city, concert, artist, genre, country "
                     "WHERE concert.city_id = city.id AND country.id = city.country_id "
                     "AND concert.artist_id = artist.id AND artist.genre_id = genre.genre_id "
-                    "AND city.country_id = ? AND concert.age_limit <= ? AND genre.genre_id IN ? "
+                    "AND city.country_id = %s AND concert.age_limit <= %s AND genre.genre_id IN %s "
                     "ORDER BY concert.price ASC LIMIT 10"
                     , (session['country_id'], session['age'],top_5_genres))
         records = cur.fetchall()
@@ -467,7 +467,7 @@ def register():
         cur = get_db().cursor()
 
         try:
-            cur.execute("INSERT INTO user (username,password) VALUES (?,?)", (form.username.data, form.password.data))
+            cur.execute("INSERT INTO user (username,password) VALUES (%s,%s)", (form.username.data, form.password.data))
             cur.connection.commit()
         except Exception as e:
             s = str(e)
@@ -476,7 +476,7 @@ def register():
                 return '1'
             return '2'
 
-        cur.execute("SELECT username, is_admin FROM user WHERE username = ? AND password = ? ",
+        cur.execute("SELECT username, is_admin FROM user WHERE username = %s AND password = %s ",
                     (form.username.data, form.password.data))
         user = cur.fetchall()
         if len(user) != 0:
