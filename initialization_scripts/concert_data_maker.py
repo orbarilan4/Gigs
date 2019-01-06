@@ -42,4 +42,4 @@ df = pd.DataFrame(data={'artist_id': artist_id,
                         'age_limit':age_limit[:len(artist_id)],
                         'capacity':capacity[:len(artist_id)]})\
                         .drop_duplicates(subset=('artist_id','date_time'),keep='first')
-df.to_csv("../static/datasets/created/concert.csv",sep=",",header=True, index=False)
+df.to_csv("../static/datasets/created/concert1.csv",sep=",",header=True, index=False)

@@ -540,6 +540,8 @@ $('.search').click( search);
       if ($('.results').length > 0){
         search();
       }
+
+
   } );
 
 var page, concert_id,loc_id;
@@ -828,15 +830,40 @@ function update_price(){
     $('.price').text(price + '$');
 }
 
+function buyTicket(){
+
+    quantity = $('#username').val()
+    catagory_id = 1
+    concert_id = 1
+    user_id = 1
+    $.ajax({
+        method: "GET",
+        url: "/buy_tickets",
+        data: { quantity: quantity,
+                catagory_id: catagory_id,
+                 concert_id: concert_id}
+    }).done(function( msg ) {
+        if (msg > 1){
+            $('.alert').html('<b>An error occurred.</b> Please try again.').removeClass('d-none');
+        }
+        else{
+            $('.alert').html('<b>This username is taken.</b> Please try another.').removeClass('d-none');
+        }
+        })
+
+}
+
 function buy(){
 try{
 update_price();
  $('.modal.modal-buy *').change(function(){
     update_price();
+
  });
  }
  catch(e){}
 }
+
 
 var results;
 function search(){

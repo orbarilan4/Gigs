@@ -20,9 +20,18 @@ class modelDB:
         if db is not None:
             db.close()
 
+    def buy_ticket(self,category,user_id,concert_id):
+        cur = self.get_db().cursor()
+        #add concert to user_concert table
+        cur.execute("INSERT INTO user_concert(user_id,concert_id) VALUES(?,?)", (user_id, concert_id))
+        cur.connection.commit()
+        #update the capacity of the ticket in the concert
+        #user = cur.fetchall()
+        #return user
+
     def login(self, username, password):
         cur = self.get_db().cursor()
-        cur.execute("SELECT username, is_admin FROM user WHERE username = ? AND password = ? ",
+        cur.execute("SELECT username, is_admin, id FROM user WHERE username = ? AND password = ? ",
                     (username, password))
         user = cur.fetchall()
         return user
