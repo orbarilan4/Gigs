@@ -1,3 +1,4 @@
+
 from flask import g
 import json
 from datetime import date, datetime
@@ -18,7 +19,7 @@ class modelDB:
     def buy_ticket(self,category,user_id,concert_id):
         cur = self.get_db().cursor()
         #add concert to user_concert table
-        cur.execute("INSERT INTO user_concert(user_id,concert_id) VALUES(?,?)", (user_id, concert_id))
+        cur.execute("INSERT INTO user_concert(user_id,concert_id) VALUES(%s,%s)", (user_id, concert_id))
         cur.connection.commit()
         #update the capacity of the ticket in the concert
         #user = cur.fetchall()
@@ -93,8 +94,8 @@ class modelDB:
             "WHERE concert.id = %s ",
             (id,))
 
-
-        concert = json.loads(self.sqlToJson(cur.fetchall(), cur.description))
+        s = self.sqlToJson(cur.fetchall(), cur.description)
+        concert = json.loads(s)
 
         return json.dumps({'concerts' : concert, 'artists' : artists}, default=self.json_serial)
 
@@ -141,7 +142,7 @@ class modelDB:
     def getLocations(self, location):
         cur = self.get_db().cursor()
         cur.execute(
-            "select location.id, location.name || ', ' || city.name || ', ' || country.name " 
+            "select  location.id as id, concat(location.name, ', ', city.name , ', ' , country.name) as name " 
             "from location	inner join	city "
             "				on			location.city_id = city.id "
             "				and			location.name like %s "
@@ -152,7 +153,10 @@ class modelDB:
 
     def sqlToJson(self, records, columns):
         result = [{columns[index][0]: column for index, column in enumerate(value)} for value in records]
-        return json.dumps(result, default=self.json_serial)
+        try:
+            return json.dumps(result, indent=4, sort_keys=True, default=str)
+        except:
+            return json.dumps(result)
 
     def json_serial(obj):
         if isinstance(obj, (datetime, date)):

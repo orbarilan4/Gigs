@@ -77,7 +77,7 @@ def mysql_db():
                                                     "name VARCHAR(255) NOT NULL)")
 
     cursor.execute("CREATE TABLE concert (id INTEGER PRIMARY KEY AUTO_INCREMENT, "
-                   "                        name CHAR(50) NOT NULL, "
+                   "                        name CHAR(100) NOT NULL, "
                    "                        location_id INT NOT NULL,"
                    "                        start TIMESTAMP NOT NULL,"
                    "                        end TIMESTAMP NOT NULL,"
@@ -94,7 +94,7 @@ def mysql_db():
                    "                                CONSTRAINT fk_concert_ticket_concert FOREIGN KEY (concert_id) "
                    "                                REFERENCES concert(id) ON UPDATE CASCADE ON DELETE CASCADE)")
 
-    cursor.execute("CREATE TABLE concert_artist (concert_id INTEGER NOT NULL,"
+    cursor.execute("CREATE TABLE concert_artist  (concert_id INTEGER NOT NULL,"
                                                    "artist_id INTEGER NOT NULL,"
                    "                                PRIMARY KEY (concert_id,artist_id),"
                    "                                CONSTRAINT fk_concert_artist_concert FOREIGN KEY (concert_id) "
@@ -110,7 +110,8 @@ def mysql_db():
                    "                    is_admin BOOLEAN DEFAULT 0,"
                    "                    UNIQUE (username))")
 
-    cursor.execute("CREATE TABLE user_concert (user_id INT NOT NULL, "
+    cursor.execute("CREATE TABLE user_concert (user_id INT NOT NULL, "                   
+                   "                    rankiconcert_artistng INT DEFAULT 0,"
                    "                    concert_id INT NOT NULL, "                   
                    "                    PRIMARY KEY (user_id,concert_id), "
                    "                    CONSTRAINT fk_user_concert FOREIGN KEY (concert_id) "
@@ -137,6 +138,40 @@ def mysql_db():
         reader = tuple(csv.reader(f))
         cursor.executemany("INSERT INTO artist (name,genre_id,id) VALUES (%s,%s,%s)", reader[1:])
         my_db.commit()
+
+    with open(prefix + 'static/datasets/created/location.csv', 'r', encoding="utf8") as f:
+        reader = tuple(csv.reader(f))
+        cursor.executemany("INSERT INTO location (id,name,city_id) VALUES (%s,%s,%s)", reader[1:])
+        my_db.commit()
+
+    with open(prefix + 'static/datasets/created/users.csv', 'r', encoding="utf8") as f:
+        reader = tuple(csv.reader(f))
+        cursor.executemany("INSERT INTO user (id,username,password,is_admin) VALUES (%s,%s,%s,%s)", reader[1:])
+        my_db.commit()
+
+    with open(prefix + 'static/datasets/created/concert.csv', 'r', encoding="utf8") as f:
+        reader = tuple(csv.reader(f))
+        cursor.executemany("INSERT INTO concert (id,name,location_id,start,end,capacity) VALUES (%s,%s,%s,%s,%s,%s)", reader[1:])
+        my_db.commit()
+
+    with open(prefix + 'static/datasets/created/artist_concert.csv', 'r', encoding="utf8") as f:
+        reader = tuple(csv.reader(f))
+        cursor.executemany("INSERT INTO concert_artist (concert_id,artist_id) VALUES (%s,%s)", reader[1:])
+        my_db.commit()
+    with open(prefix + 'static/datasets/created/ticket_category.csv', 'r', encoding="utf8") as f:
+        reader = tuple(csv.reader(f))
+        cursor.executemany("INSERT INTO ticket_category (id,name) VALUES (%s,%s)", reader[1:])
+        my_db.commit()
+
+    with open(prefix + 'static/datasets/created/concert_ticket.csv', 'r', encoding="utf8") as f:
+        reader = tuple(csv.reader(f))
+        cursor.executemany("INSERT INTO concert_ticket (concert_id,category_id,price) VALUES (%s,%s,%s)", reader[1:])
+        my_db.commit()
+
+
+
+
+
 
     '''
     with open(prefix + 'static/datasets/created/concert.csv', 'r', encoding="utf8") as f:
