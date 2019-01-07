@@ -110,8 +110,9 @@ def mysql_db():
                    "                    is_admin BOOLEAN DEFAULT 0,"
                    "                    UNIQUE (username))")
 
-    cursor.execute("CREATE TABLE user_concert (user_id INT NOT NULL, "                   
-                   "                    rankiconcert_artistng INT DEFAULT 0,"
+    cursor.execute("CREATE TABLE user_concert (user_id INT NOT NULL, "
+                   "                    like_concert BOOLEAN DEFAULT 0,"
+                   "                    quantity INT NOT NULL, " 
                    "                    concert_id INT NOT NULL, "                   
                    "                    PRIMARY KEY (user_id,concert_id), "
                    "                    CONSTRAINT fk_user_concert FOREIGN KEY (concert_id) "
@@ -166,6 +167,11 @@ def mysql_db():
     with open(prefix + 'static/datasets/created/concert_ticket.csv', 'r', encoding="utf8") as f:
         reader = tuple(csv.reader(f))
         cursor.executemany("INSERT INTO concert_ticket (concert_id,category_id,price) VALUES (%s,%s,%s)", reader[1:])
+        my_db.commit()
+
+    with open(prefix + 'static/datasets/created/user_concert.csv', 'r', encoding="utf8") as f:
+        reader = tuple(csv.reader(f))
+        cursor.executemany("INSERT INTO user_concert (user_id,like_concert,quantity,concert_id) VALUES (%s,%s,%s,%s)", reader[1:])
         my_db.commit()
 
 
