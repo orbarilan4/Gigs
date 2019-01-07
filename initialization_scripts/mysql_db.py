@@ -1,19 +1,18 @@
-import csv
-import sqlite3
+import csv,mysql.connector
+#import sqlite3
 
 def mysql_db():
     prefix = ''
-    try:
-        my_db = sqlite3.connect('db/gigs.db')
-    except:
-        prefix = '../'
-        my_db = sqlite3.connect(prefix + 'db/gigs.db')
-    #my_db = mysql.connector.connect(
-      #host="85.10.205.173",
-      #user="orbari123456",
-      #passwd="Oliver123",
-      #database="music321"
-    #)
+    # try:
+    #     my_db = sqlite3.connect('db/gigs.db')
+    # except:
+    prefix = '../'
+    #     my_db = sqlite3.connect(prefix + 'db/gigs.db')
+    my_db = mysql.connector.connect(
+      host="localhost",
+      user="root",
+      passwd="1q2w3e4r"
+    )
     # Old database - better keep this !!!
     # host = "85.10.205.173",
     # user = "ori12345",
@@ -28,18 +27,22 @@ def mysql_db():
     print(my_db)
     cursor = my_db.cursor()
 
-    cursor.execute("DROP TABLE IF EXISTS genre")
-    cursor.execute("DROP TABLE IF EXISTS country")
-    cursor.execute("DROP TABLE IF EXISTS city")
-    cursor.execute("DROP TABLE IF EXISTS artist")
-    cursor.execute("DROP TABLE IF EXISTS concert")
-    cursor.execute("DROP TABLE IF EXISTS user")
-    cursor.execute("DROP TABLE IF EXISTS location")
-    cursor.execute("DROP TABLE IF EXISTS ticket_category")
-    cursor.execute("DROP TABLE IF EXISTS concert_ticket")
+    cursor.execute("CREATE DATABASE IF NOT EXISTS music321;")
+    cursor.execute("USE music321;")
+
     cursor.execute("DROP TABLE IF EXISTS concert_artist")
-    cursor.execute("DROP TABLE IF EXISTS user")
+    cursor.execute("DROP TABLE IF EXISTS artist")
+    cursor.execute("DROP TABLE IF EXISTS genre")
+    cursor.execute("DROP TABLE IF EXISTS concert_ticket")
     cursor.execute("DROP TABLE IF EXISTS user_concert")
+    cursor.execute("DROP TABLE IF EXISTS concert")
+    cursor.execute("DROP TABLE IF EXISTS location")
+    cursor.execute("DROP TABLE IF EXISTS city")
+    cursor.execute("DROP TABLE IF EXISTS country")
+    cursor.execute("DROP TABLE IF EXISTS user")
+    cursor.execute("DROP TABLE IF EXISTS ticket_category")
+    cursor.execute("DROP TABLE IF EXISTS user")
+
 
 
     cursor.execute("CREATE TABLE genre (id INT, "
@@ -64,14 +67,23 @@ def mysql_db():
                    "                        CONSTRAINT fk_genre_artist FOREIGN KEY (genre_id) "
                    "                        REFERENCES genre(id) ON UPDATE CASCADE ON DELETE CASCADE)")
 
-    cursor.execute("CREATE TABLE location (id INTEGER PRIMARY KEY AUTOINCREMENT,"
+    cursor.execute("CREATE TABLE location (id INTEGER PRIMARY KEY AUTO_INCREMENT,"
                    "                        name VARCHAR(255) NOT NULL, "
-                   "                        city_id INT NOY NULL,"                   
+                   "                        city_id INT NOT NULL,"                   
                    "                        CONSTRAINT fk_location_city FOREIGN KEY (city_id) "
                    "                        REFERENCES city(id) ON UPDATE CASCADE ON DELETE CASCADE)")
 
-    cursor.execute("CREATE TABLE ticket_category (id INTEGER PRIMARY KEY AUTOINCREMENT,"
+    cursor.execute("CREATE TABLE ticket_category (id INTEGER PRIMARY KEY AUTO_INCREMENT,"
                                                     "name VARCHAR(255) NOT NULL)")
+
+    cursor.execute("CREATE TABLE concert (id INTEGER PRIMARY KEY AUTO_INCREMENT, "
+                   "                        name CHAR(50) NOT NULL, "
+                   "                        location_id INT NOT NULL,"
+                   "                        start TIMESTAMP NOT NULL,"
+                   "                        end TIMESTAMP NOT NULL,"
+                   "                        capacity INT NOT NULL,"
+           "                                CONSTRAINT fk_location_concert FOREIGN KEY (location_id) REFERENCES location(id) "
+                   "                        ON UPDATE CASCADE ON DELETE CASCADE)")
 
     cursor.execute("CREATE TABLE concert_ticket (concert_id INTEGER NOT NULL,"
                    "                                category_id INTEGER NOT NULL,"
@@ -90,16 +102,9 @@ def mysql_db():
                    "                                CONSTRAINT fk_concert_artist_artist FOREIGN KEY (artist_id) "
                    "                                REFERENCES artist(id) ON UPDATE CASCADE ON DELETE CASCADE)")
 
-    cursor.execute("CREATE TABLE concert (id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                   "                        name CHAR(50) NOT NULL, "
-                   "                        location_id INT NOT NULL,"
-                   "                        start TIMESTAMP NOT NULL,"
-                   "                        end TIMESTAMP NOT NULL,"
-                   "                        capacity INT NOT NULL,"
-           "                                CONSTRAINT fk_location_concert FOREIGN KEY (location_id) REFERENCES location(id) "
-                   "                        ON UPDATE CASCADE ON DELETE CASCADE)")
 
-    cursor.execute("CREATE TABLE user (id INTEGER PRIMARY KEY AUTOINCREMENT,"
+
+    cursor.execute("CREATE TABLE user (id INTEGER PRIMARY KEY AUTO_INCREMENT,"
                    "                    username VARCHAR(255) NOT NULL, "                              
                    "                    password VARCHAR(255) NOT NULL, "                   
                    "                    is_admin BOOLEAN DEFAULT 0,"
@@ -115,22 +120,22 @@ def mysql_db():
 
     with open(prefix + 'static/datasets/created/genre.csv', 'r', encoding="utf8") as f:
         reader = tuple(csv.reader(f))
-        cursor.executemany("INSERT INTO genre (name,id) VALUES (?,?)", reader[1:])
+        cursor.executemany("INSERT INTO genre (name,id) VALUES (%s,%s)", reader[1:])
         my_db.commit()
 
     with open(prefix + 'static/datasets/created/country.csv', 'r', encoding="utf8") as f:
         reader = tuple(csv.reader(f))
-        cursor.executemany("INSERT INTO country (name,id) VALUES (?,?)", reader[1:])
+        cursor.executemany("INSERT INTO country (name,id) VALUES (%s,%s)", reader[1:])
         my_db.commit()
 
     with open(prefix + 'static/datasets/created/city.csv', 'r', encoding="utf8") as f:
         reader = tuple(csv.reader(f))
-        cursor.executemany("INSERT INTO city (name,country_id,id) VALUES (?,?,?)", reader[1:])
+        cursor.executemany("INSERT INTO city (name,country_id,id) VALUES (%s,%s,%s)", reader[1:])
         my_db.commit()
 
     with open(prefix + 'static/datasets/created/artist.csv', 'r', encoding="utf8") as f:
         reader = tuple(csv.reader(f))
-        cursor.executemany("INSERT INTO artist (name,genre_id,id) VALUES (?,?,?)", reader[1:])
+        cursor.executemany("INSERT INTO artist (name,genre_id,id) VALUES (%s,%s,%s)", reader[1:])
         my_db.commit()
 
     '''
@@ -138,7 +143,7 @@ def mysql_db():
         reader = tuple(csv.reader(f))
         for i in range(1, 7500):
             cursor.executemany("INSERT INTO concert (location_id,capacity,name)"
-                               " VALUES (?,?,'')", reader[i*50:((i+1)*50)])
+                               " VALUES (%s,%s,'')", reader[i*50:((i+1)*50)])
             print(i)
             my_db.commit()
     '''
