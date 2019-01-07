@@ -1,0 +1,331 @@
+{% extends "layout.html" %}
+{%block content%}
+<script src='static/Chart.min.js'></script>
+<script src="static/highcharts.js"></script>
+<script src="static/exporting.js"></script>
+<script src="static/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/drilldown.js"></script>
+<style type="">
+    .chart-outer {
+    max-width: 500px;
+    margin: 2em auto;
+}
+.highChartsContainer {
+    height: 300px;
+     width: 50%;
+    min-width: 300px;
+      float:left; /* add this */
+    border: 1px solid ;
+    vertical_align: middle;
+      margin: 100 auto;
+}
+.row2{
+width: 100%;
+border: 1px solid black;
+    overflow: hidden; /* will contain if #first is longer than #second */
+}
+.row3{
+width: 100%;
+    border: 1px solid black;
+
+}
+.highcharts-data-table{
+ width: 50%;
+
+    overflow: hidden;
+    position: sticky;
+    top:30%;
+}
+.highcharts-data-table table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    background: white;
+    width: 50%;
+    margin-top: 10px;
+    font-family: sans-serif;
+    font-size: 0.9em;
+     margin: 0 auto;
+}
+.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+    border: 1px solid silver;
+    padding: 0.5em;
+}
+.highcharts-data-table tr:nth-child(even), .highcharts-data-table thead tr {
+    background: #f8f8f8;
+}
+.highcharts-data-table tr:hover {
+    background: #eff;
+}
+.highcharts-data-table caption {
+    border-bottom: none;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+</style>
+<script>
+
+window.onload = function () {
+        alert("test");
+Highcharts.setOptions({
+    colors: Highcharts.map(Highcharts.getOptions().colors, function (color) {
+        return {
+            radialGradient: {
+                cx: 0.5,
+                cy: 0.3,
+                r: 0.7
+            },
+            stops: [
+                [0, color],
+                [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+            ]
+        };
+    })
+});
+Highcharts.chart('container', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Number of concerts per artist '
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                },
+                connectorColor: 'silver'
+            }
+        }
+    },
+    series: [{
+        name: '# concerts',
+        data:
+          [{% for item in number_concerts %}
+                      {name:'{{item[0]}}',y:{{item[1]}}},
+                    {% endfor %}],
+    }],
+     exporting: {
+        showTable: true
+    }
+});
+
+
+Highcharts.chart('number_concerts_per_genre', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Number of concerts per genre'
+    },
+
+    xAxis: {
+        type: 'category',
+        labels: {
+            rotation: -45,
+            style: {
+                fontSize: '13px',
+                fontFamily: 'Verdana, sans-serif'
+            }
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Number of concerts'
+        }
+    },
+    legend: {
+        enabled: false
+    },
+    tooltip: {
+        pointFormat: 'Number of concerts: <b>{point.y:.1f} </b>'
+    },
+    series: [{
+        name: 'Genre',
+        data:
+             [{% for item in number_concerts_per_genre %}
+                      ['{{item[0]}}',{{item[1]}}],
+                    {% endfor %}],
+        dataLabels: {
+            enabled: true,
+            rotation: -90,
+            color: '#FFFFFF',
+            align: 'right',
+            format: '{point.y:.1f}', // one decimal
+            y: 10, // 10 pixels down from the top
+            style: {
+                fontSize: '13px',
+                fontFamily: 'Verdana, sans-serif'
+            }
+        }
+    }],
+     exporting: {
+        showTable: true
+    }
+});
+
+
+Highcharts.chart('analytics_get_capacity_percent_per_artist2', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Avg. % capacity per artist'
+    },
+series:   [
+        {
+            "name": "Artist",
+            "colorByPoint": true,
+            data:
+             [{% for item in analytics_get_capacity_percent_per_artist %}
+                      {
+                        "name": '{{item[0]}}',
+                        "y": {{item[2]}},
+                        "drilldown": '{{item[0]}}'
+
+                      },
+                    {% endfor %}],
+        }
+    ],
+       "drilldown": {
+        "series":  [{% for the_key, the_value in artist_and_concert_percent_list.items() %}
+                      {
+                        "name": '{{the_key}}',
+                        "id": '{{the_key}}',
+                        "data": [
+                                {% for the_key2, the_value2 in the_value.items() %}
+                                ['{{the_key2}}',{{the_value2}}],
+                                {% endfor %}
+                                ]
+                      },
+                    {% endfor %}],
+        },
+    xAxis: {
+        type: 'category',
+        labels: {
+            rotation: -45,
+            style: {
+                fontSize: '13px',
+                fontFamily: 'Verdana, sans-serif'
+            }
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Avg. % Capacity'
+        }
+    },
+    legend: {
+        enabled: false
+    },
+
+
+        dataLabels: {
+            enabled: true,
+            rotation: -90,
+            color: '#FFFFFF',
+            align: 'right',
+            format: '{point.y:.1f}', // one decimal
+            y: 10, // 10 pixels down from the top
+            style: {
+                fontSize: '13px',
+                fontFamily: 'Verdana, sans-serif'
+            }
+        },
+plotOptions: {
+        series: {
+            borderWidth: 0,
+            dataLabels: {
+                enabled: true,
+                format: '{point.y:.1f}%'
+            }
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+    }
+});
+Highcharts.chart('container4', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Stacked column chart'
+    },
+    xAxis: {
+        categories: ['2019-01', '2019-02', '2019-03', '2019-04', '2019-05', '2019-06', '2019-07', '2019-08', '2019-09', '2019-10', '2019-11', '2019-12']
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Total fruit consumption'
+        },
+        stackLabels: {
+            enabled: true,
+            style: {
+                fontWeight: 'bold',
+                color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+            }
+        }
+    },
+    legend: {
+
+         reversed: true
+    },
+    tooltip: {
+        headerFormat: '<b>{point.x}</b><br/>',
+        pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+    },
+    plotOptions: {
+
+        series: {
+            stacking: 'normal'
+        },
+
+        column: {
+
+            stacking: 'normal',
+            dataLabels: {
+                enabled: true,
+                color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+            }
+        }
+    },
+    series:
+     [{% for item in analytics_get_concert_number_per_genre_per_month %}
+                      {name:'{{item[0]}}',
+                      data:[{{item[1]}},{{item[2]}} ,{{item[3]}},{{item[4]}},{{item[5]}},{{item[6]}},{{item[7]}},{{item[8]}}]},
+                    {% endfor %}],
+
+    <!--[{-->
+        <!--name: 'John',-->
+        <!--data: [5, 3, 4, 7, 2]-->
+    <!--}, {-->
+        <!--name: 'Jane',-->
+        <!--data: [2, 2, 3, 2, 1]-->
+    <!--}, {-->
+        <!--name: 'Joe',-->
+        <!--data: [3, 4, 4, 2, 5]-->
+    <!--}]-->
+});
+}
+</script>
+{% block charts_usage %} {% endblock %}
+
+{% endblock %}
+

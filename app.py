@@ -16,7 +16,7 @@ mysql = MySQL()
 app = Flask(__name__)
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = '1q2w3e4r'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'root'
 app.config['MYSQL_DATABASE_DB'] = 'music321'
 app.config['SECRET_KEY'] = 'f9bf78b9a18ce6d46a0cd2b0b86df9da'
 mysql.init_app(app)
@@ -132,47 +132,70 @@ def analytics():
         age_limit = list(range(18,30))
         session['country_input_exists'] = None
         if request.method == 'POST' and form.validate():
-            cur = get_db().cursor()
-            colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA", "#ABCDEF", "#DDDDDD", "#ABCABC"]
-            # Checking if the entered country is exist
-            cur.execute("SELECT country.name FROM country WHERE country.name = %s", form.country.data)
-            country = cur.fetchall()
-            if len(country) == 0:
-                #flash(f'The entered country does not exist!', 'error')
-                return redirect(url_for('analytics'))
-            else:
-                session['country_input_exists'] = form.country.data
+            # cur = get_db().cursor()
+            # colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA", "#ABCDEF", "#DDDDDD", "#ABCABC"]
+            # # Checking if the entered country is exist
+            # cur.execute("SELECT country.name FROM country WHERE country.name = %s", form.country.data)
+            # country = cur.fetchall()
+            # if len(country) == 0:
+            #     #flash(f'The entered country does not exist!', 'error')
+            #     return redirect(url_for('analytics'))
+            # else:
+            #     session['country_input_exists'] = form.country.data
                 # Searching for top-10 host cities in selected (by user) country
-                cur.execute("SELECT city.name,counter.job FROM city AS city, "
-                            "(SELECT concert.city_id,count(*) AS 'job' FROM concert, city, country "
-                            "WHERE concert.city_id = city.id AND city.country_id = country.id "
-                            "AND country.country.name = COALESCE(%s,country.country.name) "
-                            "GROUP BY concert.city_id "
-                            "ORDER BY job DESC LIMIT 10) AS counter "
-                            "WHERE counter.city_id = city.id", form.country.data)
-                freq_city = np.array(list(cur.fetchall()), dtype=np.dtype('object,int'))
+                # cur.execute("SELECT city.name,counter.job FROM city AS city, "
+                #             "(SELECT concert.city_id,count(*) AS 'job' FROM concert, city, country "
+                #             "WHERE concert.city_id = city.id AND city.country_id = country.id "
+                #             "AND country.country.name = COALESCE(%s,country.country.name) "
+                #             "GROUP BY concert.city_id "
+                #             "ORDER BY job DESC LIMIT 10) AS counter "
+                #             "WHERE counter.city_id = city.id", form.country.data)
+                # freq_city = np.array(list(cur.fetchall()), dtype=np.dtype('object,int'))
+                #
+                # # Searching for top-10 hosted artists in selected (by user) country
+                # cur.execute("SELECT artist.name,counter.job FROM artist AS artist, "
+                #             "(SELECT concert.artist_id,count(*) AS 'job' FROM concert, city, country "
+                #             "WHERE concert.city_id = city.id AND city.country_id = country.id "
+                #             "AND country.country.name = COALESCE(%s,country.country.name) "
+                #             "GROUP BY concert.artist_id "
+                #             "ORDER BY job DESC LIMIT 10) AS counter "
+                #             "WHERE counter.artist_id = artist.id", form.country.data)
+                # freq_artist = np.array(list(cur.fetchall()), dtype=np.dtype('object,int'))
+                #
+                # # Age limit distribution in selected (by user) country
+                # cur.execute("SELECT concert.age_limit,count(*) AS 'job' FROM concert, city, country "
+                #             "WHERE concert.city_id = city.id AND city.country_id = country.id "
+                #             "AND country.country.name = COALESCE(%s,country.country.name) "
+                #             "GROUP BY concert.age_limit ORDER BY concert.age_limit LIMIT 12", form.country.data)
+                # freq_age_limit = np.array(list(cur.fetchall()), dtype=np.dtype('int,int'))
+                #
+                # return render_template('analytics.html', form=form,gigs_count=sum(freq_age_limit['f1']),
+                #                        set=[zip(freq_city['f1'], list(freq_city['f0']), colors),
+                #                             zip(freq_artist['f1'], list(freq_artist['f0']), colors)],
+                #                        values=freq_age_limit['f1'],labels=freq_age_limit['f0'])
+                number_concerts_per_artist = db.analytics_get_concert_number_per_artist()
+                number_concerts_per_genre = db.analytics_get_concert_number_per_genre()
+                analytics_get_concert_number_per_genre_per_month = db.analytics_get_concert_number_per_genre_per_month()
+                analytics_get_capacity_percent_per_artist = db.analytics_get_capacity_percent_per_artist()
+                analytics_get_capacity_percent_per_concert_per_artist = db.analytics_get_capacity_percent_per_concert_per_artist()
+                artist_and_concert_percent_list = dict()
 
-                # Searching for top-10 hosted artists in selected (by user) country
-                cur.execute("SELECT artist.name,counter.job FROM artist AS artist, "
-                            "(SELECT concert.artist_id,count(*) AS 'job' FROM concert, city, country "
-                            "WHERE concert.city_id = city.id AND city.country_id = country.id "
-                            "AND country.country.name = COALESCE(%s,country.country.name) "
-                            "GROUP BY concert.artist_id "
-                            "ORDER BY job DESC LIMIT 10) AS counter "
-                            "WHERE counter.artist_id = artist.id", form.country.data)
-                freq_artist = np.array(list(cur.fetchall()), dtype=np.dtype('object,int'))
+                for item in analytics_get_capacity_percent_per_concert_per_artist:
+                    # artist_concerts = dict()
+                    artist_concerts = dict()
+                    artist_concerts.update({item[2]: item[5]})
+                    if item[0] in artist_and_concert_percent_list:
+                        artist_and_concert_percent_list[item[0]].update(artist_concerts)
+                    else:
+                        artist_and_concert_percent_list.update({item[0]: artist_concerts})
 
-                # Age limit distribution in selected (by user) country
-                cur.execute("SELECT concert.age_limit,count(*) AS 'job' FROM concert, city, country "
-                            "WHERE concert.city_id = city.id AND city.country_id = country.id "
-                            "AND country.country.name = COALESCE(%s,country.country.name) "
-                            "GROUP BY concert.age_limit ORDER BY concert.age_limit LIMIT 12", form.country.data)
-                freq_age_limit = np.array(list(cur.fetchall()), dtype=np.dtype('int,int'))
-
-                return render_template('analytics.html', form=form,gigs_count=sum(freq_age_limit['f1']),
-                                       set=[zip(freq_city['f1'], list(freq_city['f0']), colors),
-                                            zip(freq_artist['f1'], list(freq_artist['f0']), colors)],
-                                       values=freq_age_limit['f1'],labels=freq_age_limit['f0'])
+                return render_template('analytics.html', form=form, gigs_count=0,
+                                       number_concerts=number_concerts_per_artist,
+                                       number_concerts_per_genre=number_concerts_per_genre,
+                                       analytics_get_concert_number_per_genre_per_month=analytics_get_concert_number_per_genre_per_month,
+                                       analytics_get_capacity_percent_per_artist=analytics_get_capacity_percent_per_artist,
+                                       analytics_get_capacity_percent_per_concert_per_artist=analytics_get_capacity_percent_per_concert_per_artist,
+                                       artist_and_concert_percent_list = artist_and_concert_percent_list)
     else:
         return render_template('index.html')
     return render_template('analytics.html',gigs_count=0,form=form, set=[], labels=[], values=[])
