@@ -153,7 +153,7 @@ class modelDB:
             "               on          city.id = location.city_id "
             "               inner join  country "
             "               on          city.country_id = country.id "
-            "WHERE concert.name like %s ",
+            "WHERE concert.name like %s LIMIT 5 ",
             ('%' + free + '%',))
         return cur.fetchall()
 
@@ -185,27 +185,35 @@ class modelDB:
         cur = self.get_db().cursor()
 
         cur.execute(
-            "SELECT concert.name, concert.capacity, concert.start, concert.end, concert.id "
-            "FROM concert "
-            "Limit 5")
-
-        concerts = json.loads(self.sqlToJson(cur.fetchall(), cur.description))
-
-        '''
-        cur.execute(
-            "select artist.id, artist.name "
+            "select artist.id, artist.name, concert_id "
             "from  artist	inner join	concert_artist "
             "               on			artist.id = concert_artist.artist_id "
-            "               and			concert_artist.concert_id = %s ",
-            (id,))
+            "               and			concert_artist.concert_id in ("
+            "                                                           select  concert_id "
+            "                                                           from    concert_artist"
+            "                                                           where   artist_id = %s) "
+            "ORDER BY concert_id")
 
         artists = self.sqlToJson(cur.fetchall(), cur.description)
-        '''
 
+        cur.execute(
+            "SELECT concert.name, concert.capacity, concert.start, concert.end, concert.id, location.name as location, city.name as city, country.name as country "
+            "FROM concert   inner join  location"
+            "               on          location.id = concert.location_id "
+            "               inner join  city "
+            "               on          city.id = location.city_id "
+            "               inner join  country "
+            "               on          city.country_id = country.id "
+            "               inner join  concert_artist "
+            "               on          concert_artist.concert_id = concert.id "
+            "               inner join  concert_user    "
+            "               on          concert_user.concert_id = concert.id "
+            "order by concert.id LIMIT 5")
 
-        #concert[0]['artists'] = artists
+        concert = json.loads(self.sqlToJson(cur.fetchall(), cur.description))
 
-        return json.dumps(concerts, default=self.json_serial)
+        return json.dumps({'concerts': concert, 'artists': artists}, default=self.json_serial)
+
 
     def getConcertsByArtist(self, artist_id):
         cur = self.get_db().cursor()
