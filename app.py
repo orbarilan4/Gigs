@@ -423,8 +423,8 @@ def buy_tickets():
             isSuccess = db.buy_ticket(quantity,catagory_id,user_id,concert_id)
 
             return isSuccess
-    else:
-        return 0;
+
+    return '0'
 
 
 @app.route("/recommendations", methods=['GET', 'POST'])

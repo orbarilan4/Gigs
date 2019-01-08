@@ -942,6 +942,7 @@ function search(){
             j = 0;
             curc = msg.concerts[j];
             curcid = msg.concerts[j].id;
+            msg.concerts[j].artists_links = '';
             for (i=0; i < arts.length;i++){
                 cid = arts[i].concert_id;
                 while (cid > curcid){

@@ -22,20 +22,20 @@ class modelDB:
                     (concert_id))
         concert_data = list(cur.fetchall()).pop(0)
         if int(concert_data[0]) > 0:
-            try:
+            #try:
                 cur.execute("INSERT INTO user_concert (user_id,like_concert,quantity,concert_id) VALUES (%s,%s,%s,%s)",
-                        (user_id, 0, quantity, concert_id))
+                        (user_id, 0, quantity, concert_id,))
 
                 cur.execute("UPDATE concert SET capacity = (capacity - 1) WHERE id = %s",
-                            (concert_id))  # Capacity update after purchase
+                            (concert_id,))  # Capacity update after purchase
 
                 cur.connection.commit()
-                return 1
-                # flash(f"You bought some tickets ! You can view them on your profile", 'success')
-            except:
-                return 0
+                return '1'
+
+            #except:
+            #    return '0'
         elif int(concert_data[0]) == 0:
-            return 0
+            return '0'
         #add concert to user_concert table
 
 
@@ -132,7 +132,7 @@ class modelDB:
 
     def addConcert(self, name, capacity, artists, start, end,location_id):
         cur = self.get_db().cursor()
-        cur.execute("INSERT INTO concert(name,capacity,start,end,location_id) VALUES(%s,%s,%s,%s,%s)", (name,capacity,start,end,location_id))
+        cur.execute("INSERT INTO concert(name,capacity,start,end,location_id,tickets_left) VALUES(%s,%s,%s,%s,%s,%s)", (name,capacity,start,end,location_id,capacity))
         cur.connection.commit()
 
         id = cur.lastrowid
@@ -153,8 +153,8 @@ class modelDB:
             "               on          city.id = location.city_id "
             "               inner join  country "
             "               on          city.country_id = country.id "
-            "WHERE concert.name like %s LIMIT 5 ",
-            ('%' + free + '%',))
+            "WHERE concert.name like %s or location.name like %s or city.name like %s or country.name like %s LIMIT 5 ",
+            ('%' + free + '%','%' + free + '%','%' + free + '%','%' + free + '%',))
         return cur.fetchall()
 
     def getLocations(self, location):
