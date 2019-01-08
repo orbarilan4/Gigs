@@ -226,3 +226,112 @@ class modelDB:
         concert = json.loads(self.sqlToJson(cur.fetchall(), cur.description))
 
         return json.dumps({'concerts' : concert, 'artists' : artists}, default=self.json_serial)
+
+    def analytics_get_concert_number_per_artist(self):
+        cur = self.get_db().cursor()
+        cur.execute(
+
+            "SELECT a.name, count(c.name) "
+            "FROM concert c join concert_artist ca "
+            "on c.id = ca.concert_id "
+            "join  artist a  on a.id = ca.artist_id "
+
+            "where (substr(a.name, 1, 1) > 'A' and substr(a.name, 1, 1)< 'Z') or (substr(a.name, 1, 1) > 'a' and substr(a.name, 1, 1) < 'z') "
+            "group by a.name "
+            "order by count(c.name) desc limit 10 "
+        )
+        records = list(cur.fetchall())
+        return records
+
+    def analytics_get_concert_number_per_genre(self):
+        cur = self.get_db().cursor()
+        cur.execute(
+            "SELECT g.name, count(c.id) "
+            "FROM concert c join concert_artist ca "
+            "on c.id = ca.concert_id "
+            "join  artist a  "
+            "on a.id = ca.artist_id "
+            "join genre g "
+            "on a.genre_id = g.id "
+            "where (substr(a.name, 1, 1) > 'A' and substr(a.name, 1, 1)< 'Z') or (substr(a.name, 1, 1) > 'a' and substr(a.name, 1, 1) < 'z') "
+            "Group by g.name "
+            # "having count(c.id)>=100 "
+            " order by count(c.id) desc limit 20 "
+        )
+        records = list(cur.fetchall())
+        return records
+
+    def analytics_get_concert_number_per_genre_per_month(self):
+        cur = self.get_db().cursor()
+        cur.execute(
+            #   "   SELECT g.genre_name,strftime('%Y-%m',c.date_time) as date, count(c.id) "
+            # " FROM concert c join artist a "
+            # " on c.artist_id = a.artist_id "
+            # "  join genre g on a.genre_id = g.genre_id "
+            #  " where (substr(a.artist_name, 1, 1) > 'A' and substr(a.artist_name, 1, 1)< 'Z') or (substr(a.artist_name, 1, 1) > 'a' and substr(a.artist_name, 1, 1) < 'z') "
+            #  " Group by g.genre_name ,strftime('%Y-%m',c.date_time)"
+            #  " having count(c.id)>=100"
+            #  "  order by date desc")
+            "SELECT genre_name"
+            ",SUM(CASE WHEN date =  '2018-11' THEN count1  ELSE 0 END)  '2018-11'"
+             ",SUM(CASE WHEN date =  '2018-12' THEN count1  ELSE 0 END)  '2018-12'"
+            ", SUM(CASE WHEN date =  '2019-01' THEN count1 ELSE 0 END)  '2019-01'"
+            ", SUM(CASE WHEN date =  '2019-02' THEN count1  ELSE 0 END)  '2019-02'"
+            ",SUM(CASE WHEN date =  '2019-03' THEN count1  ELSE 0 END)  '2019-03'"
+            ", SUM(CASE WHEN date =  '2019-04' THEN count1  ELSE 0 END)  '2019-04'"
+            ", SUM(CASE WHEN date =  '2019-05' THEN count1  ELSE 0 END)  '2019-05'"
+            ", SUM(CASE WHEN date =  '2019-06' THEN count1 ELSE 0  END)  '2019-06'"
+            ",SUM(CASE WHEN date =  '2019-07' THEN count1  ELSE 0 END)  '2019-07'"
+            ", SUM(CASE WHEN date =  '2019-08' THEN count1  ELSE 0 END)  '2019-08'"
+            " , SUM(CASE WHEN date =  '2019-09' THEN count1  ELSE 0 END)  '2019-09'"
+            ", SUM(CASE WHEN date =  '2019-10' THEN count1  ELSE 0 END)  '2019-10'"
+       
+            "FROM (SELECT g.name as genre_name,DATE_FORMAT(c.start, '%Y-%m') as date, count(c.id)  as count1 "
+            "FROM concert c join concert_artist ca "
+            "on c.id = ca.concert_id "
+            "join  artist a  "
+            "on a.id = ca.artist_id "
+            "join genre g "
+            "on a.genre_id = g.id "
+
+            "where (substr(a.name, 1, 1) > 'A' and substr(a.name, 1, 1)< 'Z') or (substr(a.name, 1, 1) > 'a' and substr(a.name, 1, 1) < 'z')"
+            "Group by g.name ,DATE_FORMAT(c.start, '%Y-%m')"
+            # "having count(c.id)>=100" 
+            ") concerts1 "
+            "GROUP BY genre_name")
+        records = list(cur.fetchall())
+        return records
+
+    def analytics_get_capacity_percent_per_artist(self):
+        cur = self.get_db().cursor()
+        cur.execute(
+            "select artist_name,artist_id, avg(per.percent) from( "
+            "SELECT a.name as artist_name,a.id as artist_id,c.name,c.capacity, count(uc.user_id), (count(uc.user_id)/c.capacity)*100 as percent "
+            "FROM concert c join concert_artist ca "
+            "on c.id = ca.concert_id "
+            "join  artist a  on a.id = ca.artist_id "
+            "join user_concert uc on c.id = uc.concert_id "
+            "where (substr(a.name, 1, 1) > 'A' and substr(a.name, 1, 1)< 'Z') or (substr(a.name, 1, 1) > 'a' and substr(a.name, 1, 1) < 'z') "
+            "group by a.name,a.id,c.name, c.capacity "
+            ") per "
+            "group by artist_name,artist_id "
+            "having count(*)>1 ")
+
+        records = list(cur.fetchall())
+        return records
+
+    def analytics_get_capacity_percent_per_concert_per_artist(self):
+        cur = self.get_db().cursor()
+        cur.execute(
+
+            "SELECT a.name as artist_name,a.id as artist_id,c.name,c.capacity, count(uc.user_id), (count(uc.user_id)/c.capacity)*100 as percent "
+            "FROM concert c join concert_artist ca "
+            "on c.id = ca.concert_id "
+            "join  artist a  on a.id = ca.artist_id "
+            "join user_concert uc on c.id = uc.concert_id "
+            "where (substr(a.name, 1, 1) > 'A' and substr(a.name, 1, 1)< 'Z') or (substr(a.name, 1, 1) > 'a' and substr(a.name, 1, 1) < 'z') "
+            "group by a.name,a.id,c.name, c.capacity "
+        )
+
+        records = list(cur.fetchall())
+        return records
