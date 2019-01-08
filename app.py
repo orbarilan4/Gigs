@@ -415,46 +415,16 @@ def buy_tickets():
 
         form = (request.form)
         if request.method == 'GET':
-            quantity = 1#form.quantity.data;
-            catagory_id = request.args.get('catagory_id');
+            quantity = request.args.get('quantity');#form.quantity.data;
+            catagory_id = 1#request.args.get('catagory_id');
             concert_id = request.args.get('concert_id');
             user_id = session['user_id'];
 
-            ticket = db.buy_ticket(quantity,catagory_id,user_id,concert_id)
-            for record in request.form.getlist('checks'):
-                print(record)
-                cur = get_db().cursor()
-                # Casting
-                record = get_record(record)
-                # Get artist id
-                cur.execute("SELECT artist.name, artist.id FROM artist,genre "
-                            "WHERE genre.genre_id = artist.genre_id AND artist_name = ? AND genre_name = ?", (record[0], record[4]))
-                artist_record = list(cur.fetchall()).pop(0)
-                # Get capacity and age limit for concert
-                cur.execute("SELECT capacity,age_limit FROM concert WHERE artist_id = ? AND date_time = ?",
-                            (artist_record[1], record[1]))
-                concert_data = list(cur.fetchall()).pop(0)
+            isSuccess = db.buy_ticket(quantity,catagory_id,user_id,concert_id)
 
-                # If there are tickets available
-                if int(concert_data[0]) > 0 and int(session['age']) >= int(concert_data[1]):
-                    try:
-                        cur.execute("INSERT INTO user_concert (username,artist_id,date_time) VALUES (?,?,?)",
-                                    (session['username'],artist_record[1] , record[1])) # New Add ticket to user_concert
-                        cur.execute("UPDATE concert SET capacity = (capacity - 1) WHERE artist_id = ? AND date_time = ?",
-                                    (artist_record[1], record[1]))  # Capacity update after purchase
-
-                        #flash(f"You bought some tickets ! You can view them on your profile", 'success')
-                    except:
-                        pass
-                        #flash(f"Already have a ticket for {record[0]}'s gig on {record[1]} !", 'warning')
-                elif int(concert_data[0]) == 0:
-                    pass
-                    #flash(f"No tickets available for {record[0]}'s gig on {record[1]} !", 'error')
-                elif int(concert_data[1]) > int(session['age']):
-                    pass
-                    #flash(f"You are under age for {record[0]}'s gig on {record[1]} !", 'error')
+            return isSuccess
     else:
-        return;
+        return 0;
 
 
 @app.route("/recommendations", methods=['GET', 'POST'])

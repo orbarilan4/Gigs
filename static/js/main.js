@@ -869,10 +869,10 @@ function update_price(){
 
 function buyTicket(){
 
-    quantity = $('#username').val()
-    catagory_id = 1
-    concert_id = 1
-    user_id = 1
+    quantity = $('#quantity').val()
+    catagory_id = $('#sell').val()
+    concert_id = $('#concert_id').val()
+
     $.ajax({
         method: "GET",
         url: "/buy_tickets",
@@ -880,11 +880,12 @@ function buyTicket(){
                 catagory_id: catagory_id,
                  concert_id: concert_id}
     }).done(function( msg ) {
-        if (msg > 1){
-            $('.alert').html('<b>An error occurred.</b> Please try again.').removeClass('d-none');
+        $('#modal').modal('toggle');
+        if (msg > 0){
+            $('.alert').html('<b>Done!.</b> Enjoy the concert :).').removeClass('d-none');
         }
         else{
-            $('.alert').html('<b>This username is taken.</b> Please try another.').removeClass('d-none');
+            $('.alert').html('<b>An error accured.</b> Please try again later.').removeClass('d-none');
         }
         })
 

@@ -18,14 +18,27 @@ class modelDB:
 
     def buy_ticket(self,quantity,category,user_id,concert_id):
         cur = self.get_db().cursor()
-        cur.execute("SELECT capacity,age_limit FROM concert WHERE concert_id = %s",
+        cur.execute("SELECT capacity FROM concert WHERE id = %s",
                     (concert_id))
         concert_data = list(cur.fetchall()).pop(0)
+        if int(concert_data[0]) > 0:
+            try:
+                cur.execute("INSERT INTO user_concert (user_id,like_concert,quantity,concert_id) VALUES (%s,%s,%s,%s)",
+                        (user_id, 0, quantity, concert_id))
 
+                cur.execute("UPDATE concert SET capacity = (capacity - 1) WHERE id = %s",
+                            (concert_id))  # Capacity update after purchase
+
+                cur.connection.commit()
+                return 1
+                # flash(f"You bought some tickets ! You can view them on your profile", 'success')
+            except:
+                return 0
+        elif int(concert_data[0]) == 0:
+            return 0
         #add concert to user_concert table
-        cur.execute("INSERT INTO user_concert (user_id,like_concert,quantity,concert_id) VALUES (%s,%s,%s,%s)", (user_id,0,quantity, concert_id))
-        cur.connection.commit()
-        concert = 1
+
+
         #update the capacity of the ticket in the concert
         #user = cur.fetchall()
         #return user
