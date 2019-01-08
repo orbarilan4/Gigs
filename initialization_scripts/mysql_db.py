@@ -2,7 +2,7 @@ import csv,mysql.connector
 #import sqlite3
 
 def mysql_db():
-    prefix = ''
+    prefix = '../'
     # try:
     #     my_db = sqlite3.connect('db/gigs.db')
     # except:
@@ -82,6 +82,7 @@ def mysql_db():
                    "                        start TIMESTAMP NOT NULL,"
                    "                        end TIMESTAMP NOT NULL,"
                    "                        capacity INT NOT NULL,"
+                   "                        tickets_left INT NOT NULL,"
            "                                CONSTRAINT fk_location_concert FOREIGN KEY (location_id) REFERENCES location(id) "
                    "                        ON UPDATE CASCADE ON DELETE CASCADE)")
 
@@ -152,7 +153,7 @@ def mysql_db():
 
     with open(prefix + 'static/datasets/created/concert.csv', 'r', encoding="utf8") as f:
         reader = tuple(csv.reader(f))
-        cursor.executemany("INSERT INTO concert (id,name,location_id,start,end,capacity) VALUES (%s,%s,%s,%s,%s,%s)", reader[1:])
+        cursor.executemany("INSERT INTO concert (id,name,location_id,start,end,capacity,tickets_left) VALUES (%s,%s,%s,%s,%s,%s,%s)", reader[1:])
         my_db.commit()
 
     with open(prefix + 'static/datasets/created/artist_concert.csv', 'r', encoding="utf8") as f:
@@ -173,10 +174,6 @@ def mysql_db():
         reader = tuple(csv.reader(f))
         cursor.executemany("INSERT INTO user_concert (user_id,like_concert,quantity,concert_id) VALUES (%s,%s,%s,%s)", reader[1:])
         my_db.commit()
-
-
-
-
 
 
     '''

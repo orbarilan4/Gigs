@@ -6,7 +6,8 @@ df1 = pd.read_csv('../static/datasets/created/ticket_category.csv')
 df2 = pd.read_csv('../static/datasets/created/artist.csv')
 df3 = pd.read_csv('../static/datasets/created/location.csv')
 df4 = pd.read_csv('../static/datasets/show names.csv')
-
+optional_capacity = [250,500,750]
+optional_capacityLen = len(optional_capacity)
 prizes = [50,75,100,125,150,175,200,225,250,275,300,350,375,400]
 prizesLen = len(prizes)
 time = [" 16:00:00"," 17:00:00"," 18:00:00", " 19:00:00", " 20:00:00", " 21:00:00"," 22:00:00", " 23:00:00",
@@ -20,7 +21,7 @@ df2Len = len(df2)
 df3Len = len(df3)
 df4Len = len(df4)
 
-concert_df = pd.DataFrame(columns=['id','name','location','start','end','capacity'])
+concert_df = pd.DataFrame(columns=['id','name','location','start','end','capacity','tickets_left'])
 artist_concert_df = pd.DataFrame(columns=['concert_id','artist_id'])
 concert_ticket_df = pd.DataFrame(columns=['concert_id','category_id','price'])
 
@@ -64,8 +65,9 @@ for i in range(1, 500):
     end = date
     end +=time[st]
     location = df3.values[randint(1, df3Len - 1)][0]
-    capacity = randint(0,100)
-    concert_df.loc[i] = [i,showsName,location, start, end,capacity]
+    left = randint(0,100)
+    capacity = optional_capacity[randint(0,optional_capacityLen-1)]
+    concert_df.loc[i] = [i,showsName,location, start, end,capacity,left]
 concert_df.to_csv("../static/datasets/created/concert.csv",sep=",",header=True, index=False)
 artist_concert_df.to_csv("../static/datasets/created/artist_concert.csv",sep=",",header=True, index=False)
 concert_ticket_df.to_csv("../static/datasets/created/concert_ticket.csv",sep=",",header=True, index=False)
