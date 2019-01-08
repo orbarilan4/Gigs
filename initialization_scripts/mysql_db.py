@@ -11,7 +11,7 @@ def mysql_db():
     my_db = mysql.connector.connect(
       host="localhost",
       user="root",
-      passwd="1q2w3e4r"
+      passwd="root"
     )
     # Old database - better keep this !!!
     # host = "85.10.205.173",
@@ -27,8 +27,8 @@ def mysql_db():
     print(my_db)
     cursor = my_db.cursor()
 
-    cursor.execute("CREATE DATABASE IF NOT EXISTS music321;")
-    cursor.execute("USE music321;")
+    cursor.execute("CREATE DATABASE IF NOT EXISTS music321y;")
+    cursor.execute("USE music321y;")
 
     cursor.execute("DROP TABLE IF EXISTS concert_artist")
     cursor.execute("DROP TABLE IF EXISTS artist")

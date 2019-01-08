@@ -1,4 +1,4 @@
-{% extends "includes/_chart.html" %}
+{% extends "includes/_NumberOfConcertchart.html" %}
 {%block charts_usage%}
 <h1 align="center">Analytics</h1>
 <br>
@@ -19,6 +19,23 @@
     </form>
 </div>
 
+
+<div class="row2" >
+<div id="container" class="highChartsContainer" style="min-width: 300px; height: 400px; margin: 100 auto"></div>
+
+</div>
+<div class="row2" >
+    <div id="number_concerts_per_genre" class="highChartsContainer" style="min-width: 300px; height: 400px; margin: 100 auto"></div>
+</div>
+
+
+<div class="row3" >
+<div id="analytics_get_capacity_percent_per_artist2" class="highChartsContainer" style="min-width: 300px; height: 400px; margin: 100 auto"></div>
+</div>
+
+<div class="row3" >
+<div id="concert_number_per_genre_per_month" class="highChartsContainer" style="min-width: 300px; height: 400px; margin: 100 auto"></div>
+</div>
 {% if session['country_input_exists'] %}
 <canvas id="chart"  width="240" height="160"></canvas>
 <canvas id="chart2"  width="480" height="160"></canvas>
