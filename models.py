@@ -356,3 +356,112 @@ class modelDB:
 
         records = list(cur.fetchall())
         return records
+    def selectCities(self,filter):
+        cur = self.get_db().cursor()
+        cur.execute("SELECT city.id, city.name, country.name "
+                    "FROM city "
+                    "INNER JOIN country "
+                    "ON city.country_id = country.id "
+                    "AND city.name like %s "
+                    "LIMIT 5", ('%' + filter + '%',))
+        rows = cur.fetchall()
+        return rows
+    def selectCitiesArtists(self,filter,artist):
+        cur = self.get_db().cursor()
+        cur.execute("SELECT city.id, city.name, country.name "
+                    "FROM city "
+                    "INNER JOIN country "
+                    "ON city.country_id = country.id "
+                    "AND city.name like %s "
+                    "inner join location "
+                    "ON location.city_id = city.id "                                    
+                    "INNER JOIN concert "
+                    "on         location.id = concert.location_id "
+                    "INNER join concert_artist "
+                    "on         concert_artist.concert_id = concert_id "
+                    "INNER JOIN artist "
+                    "ON concert_artist.artist_id = artist.id "
+                    "AND artist.id = %s "
+                    "LIMIT 5", ('%' + filter + '%', artist ))
+        rows = cur.fetchall()
+        return rows
+
+    def selectCountries(self, filter):
+        cur = self.get_db().cursor()
+        cur.execute("SELECT country.id, country.name "
+                    "FROM country "
+                    "WHERE country.name like %s "
+                    "LIMIT 5", ('%' + filter + '%',))
+        rows = cur.fetchall()
+        return rows
+
+    def selectCountriesArtists(self, filter, artist):
+        cur = self.get_db().cursor()
+        cur.execute("SELECT country.id, country.name "
+                    "FROM city "
+                    "INNER JOIN country "
+                    "ON city.country_id = country.id "
+                    "AND country.name like %s "
+                    "inner join location "
+                    "ON location.city_id = city.id "
+                    "INNER JOIN concert "
+                    "on         location.id = concert.location_id "
+                    "INNER join concert_artist "
+                    "on         concert_artist.concert_id = concert_id "
+                    "INNER JOIN artist "
+                    "ON concert_artist.artist_id = artist.id "
+                    "AND artist.id = %s "
+                    "LIMIT 5", ('%' + filter + '%', artist,))
+
+        rows = cur.fetchall()
+        return rows
+
+    def get_recommendations(self,username):
+        cur = self.get_db().cursor()
+        # We want to get the most popular genre by the user
+        # At first, We are looking for the number of tickets for each artist, Then we get there genre
+        # And in the end we group the number of tickets together for each genre
+        cur.execute("SELECT genre.genre_id, SUM(counter.job) as 'number_of_tickets' "
+                    "FROM artist,genre, "
+                    "(SELECT COUNT(user_concert.artist_id) AS 'job', user_concert.artist_id AS 'artist_id' "
+                    "FROM user_concert,concert,artist "
+                    "WHERE user_concert.artist_id = concert.artist_id AND user_concert.date_time = concert.date_time "
+                    "AND concert.artist_id = artist.id "
+                    "AND user_concert.username = %s "
+                    "GROUP BY concert.artist_id ORDER BY job DESC) AS counter "
+                    "WHERE counter.artist_id = artist.id AND artist.genre_id = genre.genre_id "
+                    "GROUP BY genre.genre_id ORDER BY number_of_tickets DESC LIMIT 5"
+                    , (username))
+        top_5_genres = [item[0] for item in list(cur.fetchall())]
+        return top_5_genres
+
+    def get_all_genre(self):
+        cur = self.get_db().cursor()
+        cur.execute("SELECT genre.genre_id FROM genre")
+        top_5_genres = list(cur.fetchall())
+        return top_5_genres
+
+    def get_top_10_country_age_user(self,country_id, age,top_5_genres):
+        cur = self.get_db().cursor()
+        cur.execute("SELECT artist.name, concert.date_time, city.name, country.country.name, "
+                    "genre.genre_name, concert.age_limit, concert.price, concert.capacity "
+                    "FROM city, concert, artist, genre, country "
+                    "WHERE concert.city_id = city.id AND country.id = city.country_id "
+                    "AND concert.artist_id = artist.id AND artist.genre_id = genre.genre_id "
+                    "AND city.country_id = %s AND concert.age_limit <= %s AND genre.genre_id IN %s "
+                    "ORDER BY concert.price ASC LIMIT 10"
+                    , (country_id, age,top_5_genres))
+        records = cur.fetchall()
+        return records
+
+    def insert_user(self,username,password):
+        cur = self.get_db().cursor()
+        cur.execute("INSERT INTO user (username,password) VALUES (%s,%s)", (username,password))
+        cur.connection.commit()
+
+    def select_user(self,username, password):
+        cur = self.get_db().cursor()
+        cur.execute("SELECT username, is_admin, id FROM user WHERE username = %s AND password = %s ",
+                    (username, password))
+        user = cur.fetchall()
+        return user
