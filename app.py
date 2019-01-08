@@ -372,7 +372,7 @@ def advanced_search2():
     if artist_id:
         return db.getConcertsByArtist(artist_id)
 
-    return ''
+    return '[]'
 
 
 

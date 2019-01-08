@@ -49,7 +49,7 @@ class modelDB:
             "SELECT concert.name, concert.id "
             "FROM concert,user_concert "
             "WHERE user_concert.concert_id = concert.id "
-            "AND user_concert.username = %s "
+            "AND user_concert.user_id = %s "
             , (username, ))
         records = cur.fetchall()
         return records

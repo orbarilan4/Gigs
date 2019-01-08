@@ -1737,3 +1737,5 @@ margin:3px;
 
 .modal-title{line-height:2em}
 .readonly{background-color:#d1d1d1}
+
+.ui-autocomplete{z-index:2000;}

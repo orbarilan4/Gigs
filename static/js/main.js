@@ -264,6 +264,11 @@ jQuery(document).ready(function($) {
 });
 
 $(function(){
+
+$('.btnAddLocation').click(function(){
+    $('#addLocation').modal();
+});
+
 function split( val ) {
       return val.split( /,\s*/ );
     }
@@ -281,12 +286,12 @@ function split( val ) {
       .autocomplete({
         source: function( request, response ) {
           $.getJSON( "search_artist", {
-            term: extractLast( request.term )
+            term: request.term
           }, response );
         },
         search: function() {
           // custom minLength
-          var term = extractLast( this.value );
+          var term = this.value ;
           if ( term.length < 1 ) {
             return false;
           }
@@ -296,19 +301,15 @@ function split( val ) {
           return false;
         },
         select: function( event, ui ) {
-          var terms = split( this.value );
-          // remove the current input
-          terms.pop();
-          // add the selected item
-          terms.push( ui.item.value );
-          // add placeholder to get the comma-and-space at the end
-          terms.push( "" );
+        this.value = '';
+
+        for (i=0; i < ids.length; i++){
+            if (ids[i] == ui.item.id)
+                return false;
+        }
 
           ids.push(ui.item.id);
-
-          this.value = terms.join( ", " );
-
-          //get_desc(ui.item.value);
+          $('.selected_artists').append('<div class="alert alert-warning alert-dismissible fade show col-3 d-inline mr-2" role="alert"><span>' + ui.item.value + '</span><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 
           return false;
         }
@@ -360,7 +361,9 @@ $( function() {
          }
      });
 
-    $( "#city" )
+
+
+      $( "#city" )
       // don't navigate away from the field on tab when selecting an item
       .on( "keydown", function( event ) {
         if ( event.keyCode === $.ui.keyCode.TAB &&
@@ -444,7 +447,41 @@ $( "#free" )
         }
       });
 
-      $( "#location" )
+      $( "#new_location_city" )
+      .on( "keydown", function( event ) {
+        if ( event.keyCode === $.ui.keyCode.TAB &&
+            $( this ).autocomplete( "instance" ).menu.active ) {
+          event.preventDefault();
+        }
+      })
+      .autocomplete({
+        source: function( request, response ) {
+          $.getJSON( "search", {
+            term: request.term
+          }, function(data){
+          response($(data).filter(function (i,n){
+        return n.category==='Cities';
+    }));
+          } );
+        },
+        search: function() {
+          // custom minLength
+          var term = this.value ;
+          if ( term.length < 1 ) {
+            return false;
+          }
+        },
+        focus: function() {
+          // prevent value inserted on focus
+          return false;
+        },
+        select: function( event, ui ) {
+          this.value = ui.item.value;
+          return false;
+        }
+      });
+
+       $( "#location" )
         .val(getUrlParameter('artist'))
       .on( "keydown", function( event ) {
         if ( event.keyCode === $.ui.keyCode.TAB &&
@@ -885,6 +922,8 @@ function search(){
         dataType: "json",
         data: data
     }).done(function( msg ) {
+        $(".results").removeClass('spinner');
+
         if (!Array.isArray(msg.concerts)){
 
             msg.artists = JSON.parse(msg.artists);
@@ -918,7 +957,7 @@ function search(){
         var template = $.templates("#theTmpl");
         var htmlOutput = template.render(msg.concerts);
 
-        $(".results").append(htmlOutput).removeClass('spinner');
+        $(".results").append(htmlOutput);
         $('.prev').removeClass('d-none');
 
         $('.result #concert_artists button').click(function(){
