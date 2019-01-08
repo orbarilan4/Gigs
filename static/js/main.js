@@ -332,8 +332,23 @@ $( function() {
     $('.prev').click(prev);
     $('.next').click(next);
     isLoggedIn();
-    hot();
+    //hot();
     buy();
+
+    if ($('.mytickets').length > 0){
+        $.ajax({
+        method: "POST",
+        url: "/my_tickets",
+        dataType: "json"
+    }).done(function( msg ) {
+
+        var template = $.templates("#theTmpl");
+        var htmlOutput = template.render(msg);
+        $(".mytickets tbody").append(htmlOutput);
+
+
+    });
+    }
 
     $('.free_search').click(function(){
         location.href = '/find?concert_id=' + concert_id;
@@ -880,12 +895,13 @@ function buyTicket(){
                 catagory_id: catagory_id,
                  concert_id: concert_id}
     }).done(function( msg ) {
-        $('#modal').modal('toggle');
         if (msg > 0){
-            $('.alert').html('<b>Done!.</b> Enjoy the concert :).').removeClass('d-none');
+            $('#exampleModalCenter .modal-body').html('<b>Done!</b> Enjoy the concert :)');
+            $('#exampleModalCenter .modal-footer').remove();
         }
         else{
-            $('.alert').html('<b>An error accured.</b> Please try again later.').removeClass('d-none');
+            $('#exampleModalCenter .modal-body').html('<b>An error occurred.</b> Please try again later.');
+            $('#exampleModalCenter .modal-footer').remove();
         }
         })
 

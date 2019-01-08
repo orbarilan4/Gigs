@@ -64,13 +64,15 @@ class modelDB:
         cur = self.get_db().cursor()
         # Searching for top-10 gigs base on user's city and user's age
         cur.execute(
-            "SELECT concert.name, concert.id "
+            "SELECT concert.name, concert.id,user_concert.quantity "
             "FROM concert,user_concert "
             "WHERE user_concert.concert_id = concert.id "
             "AND user_concert.user_id = %s "
             , (user_id, ))
-        records = cur.fetchall()
-        return records
+
+
+        return self.sqlToJson(cur.fetchall(), cur.description)
+
 
     def findConcerts(self):
         cur = self.get_db().cursor()

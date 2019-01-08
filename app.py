@@ -114,8 +114,14 @@ def personal_tickets():
     if session['logged_in'] is False:
         return home()
 
-    records = db.getPersonalTikets(session['user_id'])
-    return render_template('my_tickets.html', orders=False, records=records)
+    return render_template('my_tickets.html', orders=False)
+
+@app.route("/my_tickets", methods=['GET', 'POST'])
+def my_tickets():
+    if session['logged_in'] is False:
+        return home()
+
+    return db.getPersonalTikets(session['user_id'])
 
 
 # ================================
