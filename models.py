@@ -16,11 +16,16 @@ class modelDB:
         if db is not None:
             db.close()
 
-    def buy_ticket(self,category,user_id,concert_id):
+    def buy_ticket(self,quantity,category,user_id,concert_id):
         cur = self.get_db().cursor()
+        cur.execute("SELECT capacity,age_limit FROM concert WHERE concert_id = %s",
+                    (concert_id))
+        concert_data = list(cur.fetchall()).pop(0)
+
         #add concert to user_concert table
-        cur.execute("INSERT INTO user_concert(user_id,concert_id) VALUES(%s,%s)", (user_id, concert_id))
+        cur.execute("INSERT INTO user_concert (user_id,like_concert,quantity,concert_id) VALUES (%s,%s,%s,%s)", (user_id,0,quantity, concert_id))
         cur.connection.commit()
+        concert = 1
         #update the capacity of the ticket in the concert
         #user = cur.fetchall()
         #return user
@@ -42,15 +47,15 @@ class modelDB:
     def updateRecord(self,age, city, pic, username):
         pass
 
-    def getPersonalTikets(self, username):
+    def getPersonalTikets(self, user_id):
         cur = self.get_db().cursor()
         # Searching for top-10 gigs base on user's city and user's age
         cur.execute(
             "SELECT concert.name, concert.id "
             "FROM concert,user_concert "
             "WHERE user_concert.concert_id = concert.id "
-            "AND user_concert.username = %s "
-            , (username, ))
+            "AND user_concert.user_id = %s "
+            , (user_id, ))
         records = cur.fetchall()
         return records
 

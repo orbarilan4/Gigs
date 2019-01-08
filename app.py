@@ -114,7 +114,7 @@ def personal_tickets():
     if session['logged_in'] is False:
         return home()
 
-    records = db.getPersonalTikets(session['username'])
+    records = db.getPersonalTikets(session['user_id'])
     return render_template('my_tickets.html', orders=False, records=records)
 
 
@@ -387,12 +387,12 @@ def buy_tickets():
 
         form = (request.form)
         if request.method == 'GET':
-            #quantity = form.quantity.data;
+            quantity = 1#form.quantity.data;
             catagory_id = request.args.get('catagory_id');
             concert_id = request.args.get('concert_id');
             user_id = session['user_id'];
 
-            ticket = db.buy_ticket(catagory_id,user_id,concert_id)
+            ticket = db.buy_ticket(quantity,catagory_id,user_id,concert_id)
             for record in request.form.getlist('checks'):
                 print(record)
                 cur = get_db().cursor()
