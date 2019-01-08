@@ -375,7 +375,7 @@ $( function() {
         source: function( request, response ) {
             var artist = '';
            if ($('#cbx').is(':checked')){
-                artist = $('#artist').val();
+                artist = $('#artist_id').val();
            }
           $.getJSON( "search", {
             term: extractLast( request.term ),
@@ -556,8 +556,8 @@ $('.search').click( search);
 
 
 
-          this.value = terms;
-
+          this.value = ui.item.value;
+            $('#artist_id').val(ui.item.id);
 
 
 
@@ -581,7 +581,7 @@ $('.search').click( search);
 
   } );
 
-var page, concert_id,loc_id;
+var page, concert_id,loc_id,artist_id;
 var isAdmin = false;
 var ids = [];
 

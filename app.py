@@ -233,8 +233,8 @@ def search():
                     "on         concert_artist.concert_id = concert_id "
                     "INNER JOIN artist "
                     "ON concert_artist.artist_id = artist.id "
-                    "AND artist.name like %s "
-                    "LIMIT 5", ('%' + filter + '%','%' + artist + '%'))
+                    "AND artist.id = %s "
+                    "LIMIT 5", ('%' + filter + '%', artist ))
     rows = cur.fetchall()
 
     if (artist == ''):
@@ -247,7 +247,7 @@ def search():
                     "FROM city "
                     "INNER JOIN country "
                     "ON city.country_id = country.id "
-                    "AND city.name like %s "
+                    "AND country.name like %s "
                     "inner join location "
                     "ON location.city_id = city.id "                                    
                     "INNER JOIN concert "
@@ -256,8 +256,8 @@ def search():
                     "on         concert_artist.concert_id = concert_id "
                     "INNER JOIN artist "
                     "ON concert_artist.artist_id = artist.id "
-                    "AND artist.name like %s "
-                    "LIMIT 5", ('%' + filter + '%', '%' + artist + '%',))
+                    "AND artist.id = %s "
+                    "LIMIT 5", ('%' + filter + '%', artist ,))
 
     rows2 = cur.fetchall()
 
@@ -376,7 +376,7 @@ def advanced_search():
 
 @app.route('/hot_concerts', methods=['GET'])
 def hot_concerts():
-    return db.getHotConcerts()
+    return '[]' #db.getHotConcerts()
 
 
 
