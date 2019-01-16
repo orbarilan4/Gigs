@@ -309,7 +309,13 @@ function split( val ) {
         }
 
           ids.push(ui.item.id);
-          $('.selected_artists').append('<div class="alert alert-warning alert-dismissible fade show col-3 d-inline mr-2" role="alert"><span>' + ui.item.value + '</span><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+          $('.selected_artists').append('<div class="alert alert-warning alert-dismissible fade show col-3 d-inline mr-2 remove_artist" role="alert"><span>' + ui.item.value + '</span><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+          $('.remove_artist').click(function(){
+            for (i-0;i < ids.length; i++){
+                if (ids[i] === ui.item.id)
+                    ids.splice(i, i+1);
+            }
+          });
 
           return false;
         }
@@ -404,6 +410,24 @@ $( function() {
         }
       });
 
+$('#btnAjaxAddLocaion').click(function(){
+    $('#addLocation').toggleClass('loading').find('input').attr('disabled','');
+    name = $('#new_location').val();
+    city_id = loc_id;
+
+    $.ajax({
+        method: "POST",
+        dataType: "json",
+        url: "/add_location",
+        data: { name: name,
+                city_id: city_id}
+    }).done(function( msg ) {
+        $('#addLocation').modal('toggle');
+        loc_id = msg.id;
+        $('#addLocation').toggleClass('loading').find('input').removeAttr('disabled');
+    });
+});
+
 $(".form_datetime").datetimepicker({
         format: "dd MM yyyy - hh:ii"
     });
@@ -477,6 +501,7 @@ $( "#free" )
         },
         select: function( event, ui ) {
           this.value = ui.item.value;
+          loc_id = ui.item.id;
           return false;
         }
       });
@@ -998,10 +1023,11 @@ function concert_manip(){
         url: "/edit_concert"
     }).done(function( msg ) {
         if (msg != ''){
-            $('#name').val(msg.name);
-            $('#capacity').val(msg.capacity);
-            $('#from').val(msg.start);
-            $('#to').val(msg.end);
+            $('#name').val(msg.concerts[0].name);
+            $('#location').val(msg.concerts[0].location + ', ' + msg.concerts[0].city + ', ' + msg.concerts[0].country);
+            $('#capacity').val(msg.concerts[0].capacity);
+            $('#from').val(msg.concerts[0].start);
+            $('#to').val(msg.concerts[0].end);
             $('.add_concert').text('Update');
         }
     });

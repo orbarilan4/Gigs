@@ -352,6 +352,19 @@ def add_concert():
 
     return '{"id" : "' + str(id) + '"}'
 
+
+@app.route('/add_location', methods=['POST'])
+def add_location():
+    if session['is_admin'] is False:
+        return home()
+
+    name = request.form.get('name', '', type=str)
+    city_id = request.form.get('city_id', '', type=int)
+
+    id = db.addLocation(name, city_id)
+
+    return '{"id" : "' + str(id) + '"}'
+
 @app.route('/del_concert', methods=['GET'])
 def del_concert():
     if session['is_admin']:

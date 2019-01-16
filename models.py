@@ -117,6 +117,13 @@ class modelDB:
 
         return json.dumps(artist, default=self.json_serial)
 
+    def addLocation(self, name, city_id):
+        cur = self.get_db().cursor()
+        cur.execute("INSERT INTO location(name,city_id) VALUES(%s,%s)", (name,city_id))
+        cur.connection.commit()
+
+        return cur.lastrowid
+
     def addConcert(self, name, capacity, artists, start, end,location_id):
         cur = self.get_db().cursor()
         cur.execute("INSERT INTO concert(name,capacity,start,end,location_id) VALUES(%s,%s,%s,%s,%s)", (name,capacity,start,end,location_id))
@@ -140,8 +147,12 @@ class modelDB:
             "               on          city.id = location.city_id "
             "               inner join  country "
             "               on          city.country_id = country.id "
-            "WHERE concert.name like %s LIMIT 5 ",
-            ('%' + free + '%',))
+            "WHERE          concert.name like %s "
+            "               or location.name like %s "
+            "               or city.name like %s "
+            "               or country.name like %s "
+            "LIMIT 5 ",
+            ('%' + free + '%','%' + free + '%','%' + free + '%','%' + free + '%',))
         return cur.fetchall()
 
     def getLocations(self, location):
