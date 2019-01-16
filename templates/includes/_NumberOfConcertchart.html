@@ -4,15 +4,24 @@
 <script src="static/highcharts.js"></script>
 <script src="static/exporting.js"></script>
 <script src="static/export-data.js"></script>
-<script src="https://code.highcharts.com/modules/data.js"></script>
-<script src="https://code.highcharts.com/modules/drilldown.js"></script>
+<script src="static/data.js"></script>
+<script src="static/drilldown.js"></script>
 <style type="">
     .chart-outer {
     max-width: 500px;
     margin: 2em auto;
 }
-.highChartsContainer {
-    height: 300px;
+.row3 .highChartsContainer {
+    height: 500px;
+     width: 100%;
+    min-width: 300px;
+      float:left; /* add this */
+    border: 1px solid ;
+    vertical_align: middle;
+      margin: 100 auto;
+}
+.row2 .highChartsContainer {
+    height: 500px;
      width: 50%;
     min-width: 300px;
       float:left; /* add this */
@@ -83,7 +92,7 @@ Highcharts.setOptions({
         };
     })
 });
-Highcharts.chart('container', {
+Highcharts.chart('number_concerts', {
     chart: {
         plotBackgroundColor: null,
         plotBorderWidth: null,

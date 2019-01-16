@@ -107,9 +107,9 @@
       <div class="modal-body">
         <div class="form-group row">
             <label class="col-8 col-form-label">How many tickets you would like to buy</label>
-            <input type="number" value="1" class="col-3 form-control tickets_num" min="1" max="5">
+            <input type="number" value="1" id="quantity" class="col-3 form-control tickets_num" min="1" max="5">
         </div>
-        <div class="form-group row">
+        <div class="form-group row d-none">
             <label class="col-8 col-form-label">Where</label>
               <select class="form-control col-3 tickets_cat" id="sel1">
                 <option>Cheapest 100$</option>
@@ -117,7 +117,7 @@
                 <option>VIP 250$</option>
               </select>
         </div>
-          <div class="form-group row">
+          <div class="form-group row d-none">
             <div class="col-4">Total price:</div>
             <div class="col-4 price text-primary"></div>
         </div>
@@ -147,6 +147,8 @@
   </div>
 </div>
 
+
+
 <script id="theTmpl" type="text/x-jsrender">
 
 <div class="row result">
@@ -154,9 +156,9 @@
 
            <div class="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
 
-              <div class="mb-4 mb-md-0 mr-5">
+              <div class="mb-4 mb-md-0 mr-2">
                <div class="job-post-item-header d-flex align-items-center">
-                <input type="hidden" value="<%:id%>" />
+                <input type="hidden" id="concert_id" value="<%:id%>" />
                  <h2 class="mr-3 text-black h4"><%:name%></h2>
                  <div class="badge-wrap">
                   <!--<span class="bg-primary text-white badge py-2 px-4">Primary</span>-->
@@ -177,8 +179,6 @@
               <div class="ml-auto">
               <input type="hidden" value="<%:id%>">
               <a class="btn btn-secondary rounded-circle btn-favorite text-gray-500 admin"><span class="icon-delete"></span></a>
-                  <a class="btn btn-secondary rounded-circle btn-favorite text-gray-500 admin"><span class="icon-edit"></span></a>
-                <a class="btn btn-secondary rounded-circle btn-favorite text-gray-500"><span class="icon-heart"></span></a>
                 <a href="job-single.html" class="btn btn-primary py-2 buy" data-toggle="modal" data-target="#exampleModalCenter">Buy tickets</a>
               </div>
            </div>
@@ -187,6 +187,8 @@
         </div>
 
 </script>
+
+
 
 {% endblock%}
 

@@ -1,500 +1,500 @@
-id,name,location,start,end,capacity
-1,Coti and Posthuman,2291,2018-12-20 20:00:00,2018-12-20 23:00:00,28
-2,Cloud Chaser with Carlos Arevalo,387,2019-01-22 19:00:00,2019-01-22 23:00:00,46
-3,Dyro and Attack Attack,1570,2018-11-19 17:00:00,2018-11-19 02:00:00,54
-4,Wind Rose and Bandit,1308,2019-02-08 20:00:00,2019-02-08 02:00:00,57
-5,Limited Edition with Jaques Morelenbaum,2684,2018-11-10 22:00:00,2018-11-10 00:00:00,76
-6,Olav Dale and Chaddiss T,1865,2018-11-14 20:00:00,2018-11-14 23:00:00,65
-7,Wind Racer with Daniele Silvestri,931,2018-11-25 22:00:00,2018-11-25 03:00:00,3
-8,Wind Chaser with Deer Tick,288,2018-11-06 22:00:00,2018-11-06 02:00:00,94
-9,Cupiditas(Desire) with Anubis Gate,3602,2019-01-18 18:00:00,2019-01-18 03:00:00,91
-10,Wind Racer with Lane Turner,1631,2018-12-04 18:00:00,2018-12-04 22:00:00,3
-11,Man About Town with Abram Shook,4888,2018-12-17 21:00:00,2018-12-17 03:00:00,77
-12,Amsterdam Sinfonietta and Thomas Mera Gartz,633,2019-01-15 21:00:00,2019-01-15 03:00:00,99
-13,Risky Boy with Akhenaton,1633,2018-12-11 21:00:00,2018-12-11 01:00:00,36
-14,Hopeful Wishing with Amatorski,4124,2018-12-19 22:00:00,2018-12-19 03:00:00,56
-15,New Edition with Infinityï¿½,2537,2018-12-15 21:00:00,2018-12-15 22:00:00,22
-16,David Clayton Thomas and Robert Mlkeyan,694,2019-01-25 18:00:00,2019-01-25 00:00:00,80
-17,Pinot Grigio with Ralph Peterson,3722,2018-11-11 18:00:00,2018-11-11 22:00:00,37
-18,Ring Of Fire with The Dirty Youth,2736,2019-01-29 17:00:00,2019-01-29 00:00:00,47
-19,Watch Me Go with Magica,3203,2019-01-28 21:00:00,2019-01-28 01:00:00,82
-20,Flip of a Coin with David Willcocks,493,2019-02-03 17:00:00,2019-02-03 01:00:00,13
-21,Amanda Holley and Crystal Bright The Silver Hands,4764,2019-01-10 17:00:00,2019-01-10 02:00:00,98
-22,Black Raven with Farnham John,4937,2018-11-05 22:00:00,2018-11-05 01:00:00,30
-23,Dare to Compare with Fire Engine Red,2448,2019-01-25 20:00:00,2019-01-25 00:00:00,67
-24,Frederick and Fiction Plane,2133,2019-02-06 19:00:00,2019-02-06 23:00:00,20
-25,Smoke and Mirrors with Cognito,1455,2018-11-14 17:00:00,2018-11-14 22:00:00,46
-26,King's Ransom with Eric Franceries,1109,2019-01-03 18:00:00,2019-01-03 00:00:00,51
-27,Sirius with Eater,4333,2018-11-23 20:00:00,2018-11-23 22:00:00,58
-28,Bofill Angela and Santana,361,2018-12-15 19:00:00,2018-12-15 23:00:00,76
-29,Understated with Chasse Galerie,2030,2019-01-02 20:00:00,2019-01-02 22:00:00,61
-30,MoBe with Black Stone Cherry,4000,2018-12-31 20:00:00,2018-12-31 01:00:00,75
-31,Starstruck with Gormathon,4273,2019-01-14 20:00:00,2019-01-14 03:00:00,49
-32,Aggro Berlin and East 17,38,2018-12-04 18:00:00,2018-12-04 22:00:00,4
-33,Highwayman with Eamon Mcloughlin,1157,2018-12-07 21:00:00,2018-12-07 23:00:00,94
-34,"Uisce Beatha (water of life, pronounces Ishka Baha) with Sal Da Vinci",1899,2018-11-26 19:00:00,2018-11-26 00:00:00,18
-35,KaiRong (Glorious Victory) with Einer Bankz,380,2018-12-28 21:00:00,2018-12-28 01:00:00,72
-36,Dare to Dream with Belle Epoque,2382,2018-11-15 19:00:00,2018-11-15 22:00:00,4
-37,Heart To Heart with Ecferus,301,2018-11-16 18:00:00,2018-11-16 23:00:00,79
-38,Highwayman with Henri Michaux,364,2018-11-27 21:00:00,2018-11-27 23:00:00,84
-39,Cloud Chaser with Annelise Collette,4226,2018-12-08 18:00:00,2018-12-08 00:00:00,75
-40,The Stitches and Ryan Pharrell,3520,2019-01-24 17:00:00,2019-01-24 23:00:00,22
-41,Gun Metal Blues with Washboard Willie,1266,2018-12-03 19:00:00,2018-12-03 23:00:00,5
-42,Caradoc with Evil Dead,3237,2019-01-11 20:00:00,2019-01-11 02:00:00,7
-43,After Hours with Dan Howell,3567,2019-01-30 17:00:00,2019-01-30 22:00:00,44
-44,Watch Me and Bertrand Belin,2296,2019-01-31 22:00:00,2019-01-31 22:00:00,34
-45,Life's a Breeze with Fatai,3525,2018-11-19 21:00:00,2018-11-19 23:00:00,75
-46,When Nothing Remains and Tigran Karapetyan,4013,2018-12-24 18:00:00,2018-12-24 02:00:00,89
-47,Hildegard Von Bingen and Estonian National Symphony Orchestra,383,2018-11-03 18:00:00,2018-11-03 00:00:00,29
-48,Evelyn and Alexandros,4785,2019-01-07 18:00:00,2019-01-07 23:00:00,77
-49,150Bpm and Boku No Ririkku No Bouyomi,3192,2018-11-01 21:00:00,2018-11-01 02:00:00,44
-50,Patriotic Spirit with Actinism,394,2018-12-24 18:00:00,2018-12-24 01:00:00,96
-51,Shadowcaster with J. Geils Band,2285,2018-12-25 21:00:00,2018-12-25 01:00:00,35
-52,Poetry in Motion with Chris Mcgregor,2252,2018-12-04 18:00:00,2018-12-04 00:00:00,77
-53,Stuttgarter Kammerorchester and Dulla,2653,2018-11-01 17:00:00,2018-11-01 03:00:00,92
-54,Remember Me with Mazza Magoo,1413,2019-01-18 20:00:00,2019-01-18 02:00:00,47
-55,Haley & Michaels  and Denison Witmer,370,2019-01-16 18:00:00,2019-01-16 03:00:00,85
-56,Duhks and Cameron Grey,3256,2019-01-23 18:00:00,2019-01-23 02:00:00,52
-57,Black Lightning with Frank Valdor,25,2018-12-24 20:00:00,2018-12-24 01:00:00,5
-58,Divine Thought with Clara Schumann,2269,2018-12-01 22:00:00,2018-12-01 23:00:00,6
-59,Ripple in Time with The Damning Well,742,2018-11-25 22:00:00,2018-11-25 02:00:00,11
-60,Wind Chaser with Aaron Carpenter,3279,2019-01-14 18:00:00,2019-01-14 01:00:00,3
-61,Josh Groban and The Black Watch,4882,2019-02-04 22:00:00,2019-02-04 23:00:00,77
-62,Just Imagine with Bhleg,2839,2019-01-29 17:00:00,2019-01-29 00:00:00,2
-63,Shadow of a Champion with Candace Jones,3083,2019-02-01 19:00:00,2019-02-01 03:00:00,88
-64,"Hello, Goodbye with Evan Parker",352,2018-11-19 19:00:00,2018-11-19 02:00:00,20
-65,Count the Stars with Dillon,913,2018-11-08 17:00:00,2018-11-08 01:00:00,95
-66,American Made with Emigrate,2143,2018-11-26 18:00:00,2018-11-26 03:00:00,3
-67,American Pride with Ann Marie Milazzo,3508,2018-12-14 21:00:00,2018-12-14 22:00:00,40
-68,B Fade and Dover,1783,2018-11-17 22:00:00,2018-11-17 02:00:00,17
-69,Buddy Montgomery and Vengeful,1625,2019-01-24 20:00:00,2019-01-24 23:00:00,81
-70,Patriot's Glory with The Posies,4316,2019-02-03 22:00:00,2019-02-03 22:00:00,63
-71,Mystic Journey with Edwin Hawkins,1148,2019-01-31 17:00:00,2019-01-31 01:00:00,23
-72,Blackcherry Blues with Anything Box,3428,2019-02-02 17:00:00,2019-02-02 00:00:00,41
-73,Gareth Johnson and The Crazymen,1855,2018-12-09 22:00:00,2018-12-09 02:00:00,100
-74,Ring Of Fire with Barlowgirl,1095,2019-02-05 19:00:00,2019-02-05 01:00:00,9
-75,Eskmo and Tanagra,773,2019-01-17 22:00:00,2019-01-17 00:00:00,22
-76,100 Degrees with Charlize Berg,3255,2018-11-11 21:00:00,2018-11-11 03:00:00,71
-77,Shadow of a Champion with Buddy Guy,4401,2018-12-18 18:00:00,2018-12-18 22:00:00,38
-78,Twilight's Last Gleaming with Julion Alvarez,2222,2018-12-23 21:00:00,2018-12-23 02:00:00,59
-79,MoBe with Kansas,3635,2018-12-18 19:00:00,2018-12-18 22:00:00,26
-80,Abida Parveen and Ameritz Audio Karaoke,2672,2018-12-30 17:00:00,2018-12-30 22:00:00,84
-81,Smoky the Bandit with Flamin Groovies,3967,2018-11-27 17:00:00,2018-11-27 01:00:00,47
-82,Wind Racer with Be'Lakor,3985,2019-01-10 17:00:00,2019-01-10 02:00:00,50
-83,Highwayman with Charles Brackeen,3612,2019-01-14 22:00:00,2019-01-14 22:00:00,89
-84,Second Wind with Eph 519,3057,2018-11-17 21:00:00,2018-11-17 00:00:00,64
-85,Boundless Possibilities with Butterfly Temple,3546,2019-01-06 21:00:00,2019-01-06 22:00:00,7
-86,Urban Legend with Embassy Of Silence,4232,2019-01-28 19:00:00,2019-01-28 01:00:00,47
-87,Krokodil and Huldre,1660,2019-01-31 22:00:00,2019-01-31 03:00:00,2
-88,Deemah and Chicho Sanchez Ferlosio,2076,2019-02-07 21:00:00,2019-02-07 00:00:00,35
-89,Deacon Blue and Denver Clayton Moore Jr,1234,2018-12-23 19:00:00,2018-12-23 03:00:00,21
-90,Frida Agnetha and Cattivi Pensieri,3216,2018-11-28 18:00:00,2018-11-28 00:00:00,25
-91,Gun Metal Blues with Brent Sutton,3126,2019-01-28 21:00:00,2019-01-28 22:00:00,56
-92,Second Wind with Vermin Womb,524,2018-12-11 21:00:00,2018-12-11 01:00:00,29
-93,Encantado with Zakir Hussain,2349,2019-01-31 17:00:00,2019-01-31 00:00:00,69
-94,Blaise and Crooked X,2220,2018-12-23 21:00:00,2018-12-23 23:00:00,63
-95,10Cm and Apparatus,2114,2018-12-24 18:00:00,2018-12-24 00:00:00,66
-96,American Hero with Doof,2080,2019-01-22 19:00:00,2019-01-22 03:00:00,75
-97,Big Black Delta and Eli Sostre,4427,2018-12-04 20:00:00,2018-12-04 23:00:00,24
-98,Cloud Chaser with Ben S Brother,1901,2018-12-02 19:00:00,2018-12-02 02:00:00,75
-99,My Escort with The Beets,4065,2018-11-05 19:00:00,2018-11-05 03:00:00,58
-100,Heavenly Image with Deborah Brown,931,2019-01-27 20:00:00,2019-01-27 22:00:00,71
-101,KaiRong (Glorious Victory) with Gary Clark Jr,4926,2019-01-09 22:00:00,2019-01-09 02:00:00,10
-102,Highwayman with James Arthur,3905,2018-12-18 22:00:00,2018-12-18 02:00:00,23
-103,MoBe with Fatih Bogalar,4216,2019-01-12 22:00:00,2019-01-12 02:00:00,36
-104,Dario Castello and Boston George,681,2019-01-04 18:00:00,2019-01-04 01:00:00,17
-105,Héctor Acosta and Essaie Pas,1941,2019-01-07 21:00:00,2019-01-07 22:00:00,95
-106,The Perfect Storm with Georgia Reign,3007,2019-02-07 17:00:00,2019-02-07 00:00:00,52
-107,Smoky the Bandit with Ansolo,783,2019-01-31 21:00:00,2019-01-31 02:00:00,88
-108,The Boxmasters and Decyfer Down,2644,2019-02-03 20:00:00,2019-02-03 00:00:00,16
-109,Cherrybomb with Celestial Shore,1351,2018-11-14 22:00:00,2018-11-14 02:00:00,69
-110,Great Googly Moogle with Clouds,4891,2018-11-09 19:00:00,2018-11-09 23:00:00,3
-111,Count the Stars with Eamon Mcloughlin,3084,2018-11-10 19:00:00,2018-11-10 03:00:00,58
-112,Into Wishin with Aaron Sledge,654,2018-12-15 22:00:00,2018-12-15 22:00:00,52
-113,Count the Stars with Allen Thompson,4225,2018-11-02 21:00:00,2018-11-02 02:00:00,90
-114,Tone Lōc and Dave Carter And Tracy Grammer,798,2018-12-11 19:00:00,2018-12-11 01:00:00,14
-115,Stardust with Desi Valentine,1776,2018-11-27 21:00:00,2018-11-27 02:00:00,11
-116,Death Valley Girls and Catfish Keith,3017,2018-12-22 19:00:00,2018-12-22 03:00:00,14
-117,Foeksia De Miniheks and Dawnbringer,356,2019-02-04 19:00:00,2019-02-04 03:00:00,84
-118,Limitless Possibilities with Clark Kent Phone Booth,773,2018-12-25 18:00:00,2018-12-25 23:00:00,40
-119,Wind Racer with The Animals,2324,2018-12-30 18:00:00,2018-12-30 00:00:00,25
-120,Second Chance with Bart Crow,1431,2019-01-04 21:00:00,2019-01-04 22:00:00,79
-121,Smoking Gun with Samuel Beckett,2808,2018-12-31 22:00:00,2018-12-31 02:00:00,13
-122,Caradoc with Dicaiaaoi Aeaenaiad,4314,2019-01-02 19:00:00,2019-01-02 00:00:00,6
-123,Divine Thought with Phobia,3509,2018-12-24 19:00:00,2018-12-24 22:00:00,81
-124,Blackcherry Blues with Cocoa Tea,2260,2019-01-31 17:00:00,2019-01-31 03:00:00,85
-125,The Sky's the Limit with Dreamer,1106,2019-01-15 18:00:00,2019-01-15 22:00:00,69
-126,Dream Chaser with Suidakra,413,2018-11-24 19:00:00,2018-11-24 02:00:00,3
-127,Heyoka and Kivie Cahn Lipman,3289,2018-12-10 20:00:00,2018-12-10 02:00:00,4
-128,After Hours with Alicia Bay Laurel,4492,2018-11-23 17:00:00,2018-11-23 23:00:00,40
-129,Zero Tolerance with Charleene Closshey,4413,2019-01-31 18:00:00,2019-01-31 23:00:00,62
-130,Flip of a Coin with Braiden Wood,2273,2019-02-05 22:00:00,2019-02-05 23:00:00,49
-131,Thunder Running with Municipal Waste,610,2018-12-24 22:00:00,2018-12-24 22:00:00,27
-132,Last Chance with Fightstar,660,2018-11-13 21:00:00,2018-11-13 22:00:00,77
-133,Wind Racer with Yeghishe Charents,2586,2019-01-29 20:00:00,2019-01-29 23:00:00,100
-134,Hopeful Wishing with Deryl Dodd,2925,2019-01-13 17:00:00,2019-01-13 00:00:00,96
-135,Flip of a Coin with Faber,2187,2018-11-22 19:00:00,2018-11-22 23:00:00,53
-136,Patriotic Spirit with Swamp Witch,2036,2018-12-24 21:00:00,2018-12-24 03:00:00,30
-137,New Edition with Apoptygma Berzerk,1867,2018-12-20 18:00:00,2018-12-20 01:00:00,4
-138,Gutfed and Banda La Trakalosa De Monterrey,567,2019-01-27 19:00:00,2019-01-27 00:00:00,51
-139,Kamikaze's Plunge with Dahlia Nemlich,70,2018-11-22 19:00:00,2018-11-22 00:00:00,20
-140,Boundless Possibilities with Primavera En Salonico: Kyariakos Gouventas,1154,2018-11-06 21:00:00,2018-11-06 00:00:00,86
-141,Alyssa Bonagura and Add N To X,3390,2018-12-03 22:00:00,2018-12-03 03:00:00,23
-142,Buster Turner And The Pinnacle Mountain Boys and Aluminium Risk,446,2018-11-19 17:00:00,2018-11-19 01:00:00,31
-143,"One Tail, One Head and Blind Illusion",4874,2019-01-18 18:00:00,2019-01-18 22:00:00,36
-144,Man About Town with Black Cards,2916,2018-11-27 19:00:00,2018-11-27 22:00:00,84
-145,Cult Of Daath and Romeo Santos,1095,2018-11-20 18:00:00,2018-11-20 00:00:00,31
-146,Gun Metal Blues with Disebo,2939,2019-02-06 20:00:00,2019-02-06 01:00:00,50
-147,Travel Through Time with The Pussycat Dolls,2443,2019-02-01 22:00:00,2019-02-01 01:00:00,55
-148,New Hope with Opeth,3033,2019-02-04 19:00:00,2019-02-04 02:00:00,83
-149,Ripple in Time with Brody Dalle,183,2018-11-08 17:00:00,2018-11-08 01:00:00,68
-150,Life's a Breeze with Hanoi Rocks,4862,2019-02-03 22:00:00,2019-02-03 22:00:00,46
-151,KaiRong (Glorious Victory) with Cotton State King,667,2019-01-25 21:00:00,2019-01-25 01:00:00,22
-152,Titanium with Emerick Scotty,4055,2018-11-02 18:00:00,2018-11-02 00:00:00,84
-153,Oyvind Hage and Cock And Ball Torture,1674,2018-11-16 17:00:00,2018-11-16 03:00:00,23
-154,Clarissa Dejesus and Hartman'S Heartbreakers,2755,2019-01-20 20:00:00,2019-01-20 03:00:00,15
-155,Patriot's Pride with Bobbyxl,2796,2019-01-18 17:00:00,2019-01-18 02:00:00,46
-156,Great Googly Moogle with The Senseless,3163,2018-12-28 21:00:00,2018-12-28 02:00:00,99
-157,Cloud Chaser with Girlpool,1412,2019-01-02 21:00:00,2019-01-02 03:00:00,7
-158,Cupiditas(Desire) with Ryan Weaver,602,2019-01-17 20:00:00,2019-01-17 23:00:00,56
-159,Smoking Gun with J.C. White Singers,434,2018-11-05 22:00:00,2018-11-05 00:00:00,59
-160,Gun Metal Blues with Indira Rubiera,2957,2018-11-02 21:00:00,2018-11-02 23:00:00,35
-161,Titanium with Pekka Sarmanto,4403,2018-11-10 19:00:00,2018-11-10 01:00:00,55
-162,Remember Me with Chris Montez,4585,2018-11-27 21:00:00,2018-11-27 02:00:00,54
-163,Free To Decide and From Autumn To Ashes,2591,2018-12-15 21:00:00,2018-12-15 00:00:00,60
-164,Sunrise and Joao Lobo,4984,2018-11-17 22:00:00,2018-11-17 02:00:00,87
-165,Patriot's Pride with Ananda Project,1252,2019-01-14 17:00:00,2019-01-14 00:00:00,72
-166,Camp Mulla and Drew Chadwick,4768,2019-02-05 22:00:00,2019-02-05 01:00:00,98
-167,Cloud Chaser with Bohemia,759,2019-01-03 20:00:00,2019-01-03 00:00:00,38
-168,Close To Home and Body Count,1995,2018-11-27 21:00:00,2018-11-27 23:00:00,12
-169,Black Raven with West Angeles Cogic Mass Choir & Congregation,1765,2018-12-20 17:00:00,2018-12-20 02:00:00,3
-170,Last Hope with Funerarium,4770,2019-01-28 19:00:00,2019-01-28 23:00:00,84
-171,Into Wishin with Ben Montague,3681,2019-01-19 17:00:00,2019-01-19 01:00:00,67
-172,Balancing Act and Charlie Daniels Band,2202,2018-11-19 19:00:00,2018-11-19 03:00:00,10
-173,American Dream with Bacon Brothers,3048,2018-12-04 21:00:00,2018-12-04 22:00:00,80
-174,Dare to Dream with Dj E Feezy,4024,2018-11-07 19:00:00,2018-11-07 22:00:00,62
-175,Drag On and Betty Hutton,1723,2019-01-06 21:00:00,2019-01-06 23:00:00,56
-176,Man About Town with War,1890,2018-11-23 18:00:00,2018-11-23 23:00:00,4
-177,Ash Wednesday with Ananya Birla,1507,2019-02-01 18:00:00,2019-02-01 00:00:00,15
-178,Emanero and Ben Adams,3571,2018-12-28 17:00:00,2018-12-28 03:00:00,74
-179,New Hope with Chain Collector,4611,2019-01-08 19:00:00,2019-01-08 03:00:00,52
-180,Poetry in Motion with Chase Bryant,2150,2018-11-26 17:00:00,2018-11-26 23:00:00,62
-181,Clémentine and La Fuerza Calentana De Iguala Gro.,3852,2019-02-06 22:00:00,2019-02-06 03:00:00,49
-182,Blackcherry Blues with Fractal Gates,1683,2018-11-11 20:00:00,2018-11-11 01:00:00,75
-183,Dream Chaser with Christina Grimmie,1351,2018-12-16 19:00:00,2018-12-16 03:00:00,71
-184,Smoke and Mirrors with Warpaint,4027,2018-12-04 19:00:00,2018-12-04 03:00:00,98
-185,WhoSez with Graham Parker The Rumour,4130,2018-11-15 17:00:00,2018-11-15 00:00:00,14
-186,Heart To Heart with Brendon Thomas And The Vibes,2134,2019-01-17 19:00:00,2019-01-17 22:00:00,62
-187,Into Wishin with As Cities Burn,285,2019-01-13 17:00:00,2019-01-13 02:00:00,88
-188,Ash Wednesday with Johann Sebastian Bach,2779,2018-11-14 22:00:00,2018-11-14 02:00:00,68
-189,"Uisce Beatha (water of life, pronounces Ishka Baha) with Auryn Quartett: Matthias Lingenfelder",1938,2018-11-12 17:00:00,2018-11-12 03:00:00,78
-190,Placido with American Breed,1933,2019-01-26 19:00:00,2019-01-26 22:00:00,45
-191,Afgan and Elijah'S Diner,1694,2019-01-16 18:00:00,2019-01-16 22:00:00,88
-192,Smoking Gun with Swr Big Band,1601,2019-01-10 19:00:00,2019-01-10 00:00:00,11
-193,Poetry in Motion with Shirota Yu,886,2018-11-07 22:00:00,2018-11-07 02:00:00,28
-194,The Interbeing and Foul Body Autopsy,2379,2018-11-06 22:00:00,2018-11-06 00:00:00,11
-195,The Gracious Few and Criminal Work,3614,2018-11-05 17:00:00,2018-11-05 00:00:00,38
-196,Volumes and American Authors,2439,2018-11-27 17:00:00,2018-11-27 23:00:00,31
-197,The Perfect Storm with Hellenic Radio/Television Choir,2428,2018-12-13 22:00:00,2018-12-13 02:00:00,31
-198,Remember Me with Alejandro Lerner,1678,2019-01-24 18:00:00,2019-01-24 22:00:00,38
-199,Poetry in Motion with Amritasoon,2744,2019-01-13 20:00:00,2019-01-13 02:00:00,79
-200,Armored Saint and The Avener,617,2018-12-21 17:00:00,2018-12-21 22:00:00,53
-201,Lost in Thought with In Solitude,4744,2018-12-05 22:00:00,2018-12-05 22:00:00,79
-202,Brownstone and Leon Rausch,1806,2019-02-03 17:00:00,2019-02-03 03:00:00,43
-203,The Sky's the Limit with Geko Lorenzo De Angelis,4790,2019-02-06 17:00:00,2019-02-06 23:00:00,79
-204,Gun Metal Blues with Jone Takamaki,3846,2019-02-04 18:00:00,2019-02-04 00:00:00,63
-205,Gun Metal Blues with 24 7 Spyz,4862,2019-01-12 20:00:00,2019-01-12 22:00:00,73
-206,Happy Days and Dreemtime,1629,2018-12-30 21:00:00,2018-12-30 22:00:00,16
-207,100% Teddy Bear with Dean Alexander,2123,2018-12-27 19:00:00,2018-12-27 01:00:00,67
-208,Star Image with Fruela,3857,2019-01-31 21:00:00,2019-01-31 00:00:00,31
-209,Noisem and Tineke Noordhoek,4254,2018-11-22 21:00:00,2018-11-22 23:00:00,26
-210,Imagine That with Fire On Mcginnis,3112,2019-01-28 17:00:00,2019-01-28 02:00:00,89
-211,Mercury Rising with Elizabeth Mitchell,4600,2018-11-21 19:00:00,2018-11-21 22:00:00,22
-212,Flip of a Coin with Brown Bird,4120,2018-11-06 18:00:00,2018-11-06 02:00:00,52
-213,Hakon Aase and Carlos Infante,3555,2018-12-29 22:00:00,2018-12-29 00:00:00,39
-214,Makrothumia and Chrissie Hynde,3871,2019-01-02 21:00:00,2019-01-02 02:00:00,77
-215,Ring Of Fire with Will Ferrell,404,2019-01-02 19:00:00,2019-01-02 22:00:00,74
-216,Burnt By The Sun and Colleen Sweeney,3360,2018-12-31 21:00:00,2018-12-31 02:00:00,40
-217,Wish Away with Drama Escort,49,2018-12-19 19:00:00,2018-12-19 22:00:00,9
-218,Travel Through Time with Ekoplekz,3836,2019-01-08 21:00:00,2019-01-08 02:00:00,66
-219,Travel Through Time with Jonathan Butler,1645,2019-01-08 19:00:00,2019-01-08 02:00:00,55
-220,Perfect Image with Joe Morris,1167,2018-12-07 20:00:00,2018-12-07 23:00:00,92
-221,Claudio Puntin and Eden Sands,1218,2018-12-05 22:00:00,2018-12-05 03:00:00,93
-222,Dream Chaser with Taatsi,4185,2019-02-01 22:00:00,2019-02-01 03:00:00,96
-223,Jessi Reems Terrell and Pink Cream 69,3971,2018-12-27 18:00:00,2018-12-27 01:00:00,14
-224,Take a Chance with Hi Five,3122,2018-12-01 17:00:00,2018-12-01 02:00:00,15
-225,American Pride with Bambi,1924,2018-12-21 17:00:00,2018-12-21 22:00:00,79
-226,Willie Rogers and Eppic,3110,2018-12-18 20:00:00,2018-12-18 23:00:00,95
-227,Starlight with G E M,27,2019-01-20 17:00:00,2019-01-20 03:00:00,81
-228,James Schaffner and Kalisia,624,2019-01-29 20:00:00,2019-01-29 01:00:00,27
-229,Mercury Rising with Caligula'S Horse,4125,2019-01-14 21:00:00,2019-01-14 23:00:00,79
-230,Stardust with Gerry Rafferty,3956,2019-01-08 21:00:00,2019-01-08 02:00:00,5
-231,Last Chance with Kailash Kher,2660,2018-11-19 22:00:00,2018-11-19 23:00:00,58
-232,New Edition with Die Kur,4304,2018-12-20 18:00:00,2018-12-20 22:00:00,16
-233,Beny Moras and Hanni El Khatib,4983,2019-01-25 18:00:00,2019-01-25 23:00:00,43
-234,Allday and Billy Droze,4225,2019-01-12 20:00:00,2019-01-12 03:00:00,33
-235,Odraza and Alastair Galbraith,2398,2018-12-01 18:00:00,2018-12-01 22:00:00,8
-236,Sirius with Alexandra,4025,2019-01-28 19:00:00,2019-01-28 00:00:00,56
-237,Wind Racer with Gangrel,2339,2018-12-06 20:00:00,2018-12-06 22:00:00,17
-238,Clare Maguire and Anette Olzon,383,2018-11-11 19:00:00,2018-11-11 22:00:00,57
-239,Tall and Handsome with Bpl Lil Pezzy Ben Gee,3621,2019-01-30 18:00:00,2019-01-30 03:00:00,0
-240,Remember Me with Glenn Hammerstad,4430,2018-11-07 20:00:00,2018-11-07 00:00:00,32
-241,Gillian Tennant and Albert Bol,3083,2019-02-07 22:00:00,2019-02-07 23:00:00,60
-242,Black Raven with Eric Loren,4854,2018-11-28 21:00:00,2018-11-28 23:00:00,25
-243,Bill Simms and Bug Mafia,2175,2018-11-01 20:00:00,2018-11-01 01:00:00,79
-244,Ash Wednesday with Big Pooh,3170,2018-12-30 20:00:00,2018-12-30 03:00:00,19
-245,Class Act with Your Shapeless Beauty,4102,2019-02-02 18:00:00,2019-02-02 02:00:00,67
-246,Whatever with Carla Bruni,231,2018-11-05 20:00:00,2018-11-05 02:00:00,42
-247,Patriotic Spirit with Chris Smither,4915,2018-11-05 21:00:00,2018-11-05 00:00:00,88
-248,Zero Tolerance with Ferre,4282,2019-01-07 21:00:00,2019-01-07 03:00:00,28
-249,100 Degrees with Anthony Harrell,816,2018-11-08 21:00:00,2018-11-08 01:00:00,40
-250,Hopeful Wishing with Gemma,2930,2018-11-20 22:00:00,2018-11-20 00:00:00,86
-251,Kamikaze's Plunge with The Whites,710,2019-01-10 18:00:00,2019-01-10 00:00:00,27
-252,Skeletal Spectre and Cloves,1208,2018-11-25 22:00:00,2018-11-25 02:00:00,53
-253,Cleaners From Venus and Brenton,4667,2018-12-11 20:00:00,2018-12-11 01:00:00,6
-254,The Perfect Storm with Anita O Day,3791,2018-11-12 19:00:00,2018-11-12 03:00:00,8
-255,Second Chance with Wolfgang Meinking,3915,2018-11-20 22:00:00,2018-11-20 23:00:00,23
-256,T. Graham Brown and David Deboy,416,2018-12-27 22:00:00,2018-12-27 00:00:00,86
-257,American Tribute with Duke Ellington Orchestra,1903,2019-01-22 21:00:00,2019-01-22 03:00:00,24
-258,Zero Tolerance with Okay Temiz,4236,2019-01-22 19:00:00,2019-01-22 22:00:00,74
-259,Inspiration with Judas Priest,2595,2019-01-20 22:00:00,2019-01-20 01:00:00,100
-260,Nikos Spinoulas and J Pimp,1645,2019-02-05 19:00:00,2019-02-05 22:00:00,76
-261,Life's a Breeze with Mourning Caress,4282,2019-01-03 21:00:00,2019-01-03 01:00:00,23
-262,Heavenly Image with Sam Brown,1413,2019-01-11 20:00:00,2019-01-11 00:00:00,45
-263,New Edition with Gloria,4630,2018-12-07 22:00:00,2018-12-07 23:00:00,41
-264,Angelo Dorsey and The B 52'S,4748,2018-11-05 18:00:00,2018-11-05 03:00:00,99
-265,Out of the Mist with Theo Croker,4220,2018-12-01 18:00:00,2018-12-01 02:00:00,67
-266,Passenger and Ep Blake,4378,2018-12-17 19:00:00,2018-12-17 02:00:00,80
-267,Colbie Caillat and Emiliano Bd,1497,2018-11-26 21:00:00,2018-11-26 00:00:00,32
-268,American Hero with 40 Watt Sun,801,2018-11-05 20:00:00,2018-11-05 03:00:00,44
-269,American Tribute with Howard Mcnear,1505,2018-11-05 22:00:00,2018-11-05 22:00:00,54
-270,WhoSez with Epik High,2206,2018-12-23 18:00:00,2018-12-23 22:00:00,65
-271,Wish Away with The Apex Theory,4094,2019-01-16 18:00:00,2019-01-16 00:00:00,9
-272,Inspiration with David Moore,1552,2018-12-04 19:00:00,2018-12-04 02:00:00,99
-273,New Edition with Deux Filles,528,2018-11-15 17:00:00,2018-11-15 03:00:00,78
-274,Heart To Heart with Molly Cliff,1175,2018-11-05 22:00:00,2018-11-05 01:00:00,91
-275,"Chloe Taylor and Crosby, Stills & Nash",953,2019-01-25 20:00:00,2019-01-25 01:00:00,57
-276,Ambrosia Parsley and 2Win,1607,2019-01-22 19:00:00,2019-01-22 01:00:00,66
-277,New Edition with King Clave,1937,2018-12-31 21:00:00,2018-12-31 00:00:00,46
-278,"Hello, Goodbye with Alex C.",475,2019-02-03 22:00:00,2019-02-03 03:00:00,94
-279,Last Chance with Dakota Fanning,2373,2018-11-17 18:00:00,2018-11-17 02:00:00,4
-280,Great Googly Moogle with Apes Go Bananas,2974,2019-01-20 20:00:00,2019-01-20 01:00:00,97
-281,Remember Me with Ablaze My Sorrow,250,2018-11-28 21:00:00,2018-11-28 03:00:00,21
-282,Geko and All American Rejects,3018,2018-11-22 22:00:00,2018-11-22 23:00:00,19
-283,Gun Metal with Papanasam Sivan,558,2019-01-23 21:00:00,2019-01-23 23:00:00,93
-284,Tillakay [Kay for short] with Claymore,665,2018-12-21 17:00:00,2018-12-21 01:00:00,52
-285,MoBe with Martin Zeller,3828,2019-01-26 17:00:00,2019-01-26 23:00:00,73
-286,Star Image with Fear City,2237,2019-01-07 20:00:00,2019-01-07 23:00:00,0
-287,Dare to Compare with Jorn Lande & Trond Holter,3386,2019-01-20 20:00:00,2019-01-20 00:00:00,35
-288,Lost in Thought with Cannonball Adderley,1741,2019-02-06 20:00:00,2019-02-06 22:00:00,79
-289,Hopeful Wishing with Aye,4272,2018-11-28 18:00:00,2018-11-28 22:00:00,50
-290,Limitless Possibilities with Arthur Weston,2150,2019-02-04 19:00:00,2019-02-04 03:00:00,31
-291,American Dream with Elmnt,2063,2019-01-29 19:00:00,2019-01-29 02:00:00,73
-292,100% Teddy Bear with Ghostbusters,4536,2019-01-13 21:00:00,2019-01-13 22:00:00,83
-293,Limited Edition with Alan Cumming,2691,2019-01-10 17:00:00,2019-01-10 22:00:00,36
-294,Watch Me Go with Carl Bailey,105,2018-11-27 20:00:00,2018-11-27 03:00:00,24
-295,New Chances with Irminsul,798,2018-11-17 20:00:00,2018-11-17 23:00:00,88
-296,Smoky the Bandit with Cc Dust,177,2018-11-24 22:00:00,2018-11-24 00:00:00,100
-297,Patriotic Spirit with Bert Jansch,188,2019-01-13 19:00:00,2019-01-13 23:00:00,60
-298,Heart To Heart with Alesana,4092,2018-12-01 20:00:00,2018-12-01 00:00:00,58
-299,Mystic Journey with Agents Of Good Roots,627,2018-11-11 18:00:00,2018-11-11 23:00:00,62
-300,Patriot's Glory with Sarah Geronimo,780,2019-01-14 20:00:00,2019-01-14 02:00:00,60
-301,Divine Thought with Conspiracy,3098,2018-12-23 17:00:00,2018-12-23 03:00:00,21
-302,Class Act with Ricky Vallen,3568,2018-12-30 21:00:00,2018-12-30 03:00:00,16
-303,Cleaver Of The Mist and Alex Chilton,3350,2019-01-24 21:00:00,2019-01-24 23:00:00,48
-304,Charlene Kaye and Mark Gross,3628,2018-12-22 21:00:00,2018-12-22 01:00:00,58
-305,Byran and Tempestuous Fall,4680,2019-01-16 19:00:00,2019-01-16 03:00:00,91
-306,Fallbrooke and Toni Braxton,3032,2018-12-29 21:00:00,2018-12-29 03:00:00,64
-307,Out of the Mist with Bouchra,277,2018-12-29 17:00:00,2018-12-29 22:00:00,24
-308,The Avener and Dehumanizzer,2472,2018-12-16 19:00:00,2018-12-16 22:00:00,92
-309,Lost in Thought with The Catenary Wires,666,2019-01-19 21:00:00,2019-01-19 00:00:00,69
-310,Fortune and Glory with Bosse De Nage,3115,2018-12-20 18:00:00,2018-12-20 22:00:00,98
-311,One Stormy Night with Sorcerer,1035,2018-12-14 20:00:00,2018-12-14 23:00:00,20
-312,Patriotic Spirit with Bobby Meader Music,36,2018-12-16 18:00:00,2018-12-16 22:00:00,47
-313,Cupiditas(Desire) with Elisha St James,4836,2019-02-01 18:00:00,2019-02-01 02:00:00,43
-314,Divine Thought with Communion Of Thieves,89,2019-01-14 18:00:00,2019-01-14 02:00:00,0
-315,"Coleman Hawkins & Roy Eldridge Sextet and Diego, Dora & Friends",4222,2018-11-10 19:00:00,2018-11-10 22:00:00,99
-316,Clark Petula and 77S,1842,2019-01-04 18:00:00,2019-01-04 00:00:00,81
-317,American Glory with College Boyz,3089,2019-02-07 18:00:00,2019-02-07 22:00:00,10
-318,Benny Laws and Klaus Graf,4540,2019-01-07 21:00:00,2019-01-07 03:00:00,2
-319,Hidden Destiny with Geraldo His Orchestra,4148,2018-11-27 21:00:00,2018-11-27 01:00:00,84
-320,Heart To Heart with Christian Finnegan,3315,2018-12-01 22:00:00,2018-12-01 02:00:00,84
-321,New Edition with Abby Normal,930,2019-01-29 19:00:00,2019-01-29 22:00:00,90
-322,Wendigo with Delphic Waves,681,2019-01-30 18:00:00,2019-01-30 02:00:00,36
-323,Say No More with Band Of The Grenadiers,4903,2018-12-08 22:00:00,2018-12-08 00:00:00,47
-324,E S T and Far East Movement,3076,2019-01-03 22:00:00,2019-01-03 03:00:00,9
-325,Mercury Rising with Lou Reed,859,2018-11-23 22:00:00,2018-11-23 00:00:00,35
-326,Patriot's Pride with Alekos Christidis,4747,2018-12-31 18:00:00,2018-12-31 02:00:00,56
-327,Patriot's Glory with Chillaa,4476,2019-02-07 21:00:00,2019-02-07 01:00:00,23
-328,Ring Of Fire with Beach Boii,4870,2018-11-17 19:00:00,2018-11-17 00:00:00,89
-329,Setting the Pace with The Bangles,4476,2019-01-12 20:00:00,2019-01-12 01:00:00,13
-330,Corey Thomas and Tim Lawless,1493,2019-01-03 21:00:00,2019-01-03 03:00:00,48
-331,100 Degrees with Elephant Man,3256,2018-11-29 17:00:00,2018-11-29 22:00:00,2
-332,Whatever with Flamin Groovies,4448,2019-01-06 18:00:00,2019-01-06 00:00:00,99
-333,Wendigo with Gary S Gang,2863,2019-02-05 21:00:00,2019-02-05 23:00:00,17
-334,Wind Chaser with Corb Lund,1950,2018-12-05 19:00:00,2018-12-05 03:00:00,6
-335,Blackcherry Blues with Barokksolistene: Alison Luthmers,4566,2018-11-03 20:00:00,2018-11-03 22:00:00,34
-336,Patriotic Spirit with Rush,4921,2018-12-23 21:00:00,2018-12-23 00:00:00,28
-337,Balloon (Rock) and Byealex,2217,2019-01-19 20:00:00,2019-01-19 22:00:00,67
-338,Sirius with Cocaine 80 S,4327,2018-11-26 17:00:00,2018-11-26 22:00:00,64
-339,Black Raven with Bitter S Kiss,1588,2019-02-02 21:00:00,2019-02-02 22:00:00,99
-340,Splinter Middleton and Alex Qualm,2842,2019-02-07 18:00:00,2019-02-07 02:00:00,98
-341,Gun Metal with Children S Classics,4169,2018-11-23 17:00:00,2018-11-23 02:00:00,31
-342,Gun Metal Blues with Doug Locke,156,2019-01-10 20:00:00,2019-01-10 23:00:00,16
-343,Another Bad Creation and The Troggs,3274,2018-12-26 21:00:00,2018-12-26 02:00:00,3
-344,Into Wishin with Benny Rosenfeld,4066,2019-02-04 19:00:00,2019-02-04 00:00:00,43
-345,Highwayman with Exodus,4726,2019-01-22 21:00:00,2019-01-22 01:00:00,28
-346,Heart To Heart with D Double E,3812,2018-12-12 17:00:00,2018-12-12 02:00:00,96
-347,Luca Carboni and Carminho,4858,2018-12-06 22:00:00,2018-12-06 01:00:00,28
-348,Cherrybomb with For Real,3025,2018-12-20 20:00:00,2018-12-20 22:00:00,95
-349,WhoSez with Kroh,2370,2018-12-19 20:00:00,2018-12-19 03:00:00,57
-350,American Made with Gerald Levert,2000,2018-11-27 22:00:00,2018-11-27 22:00:00,54
-351,Placido with Arbor Labor Union,2136,2018-11-12 22:00:00,2018-11-12 22:00:00,100
-352,Images Of Eden and De Rosa,4539,2018-11-25 19:00:00,2018-11-25 01:00:00,81
-353,Class Act with Joe Elliot,4274,2018-11-15 19:00:00,2018-11-15 22:00:00,48
-354,David Barr and Forest Of Shadows,1036,2019-01-01 20:00:00,2019-01-01 02:00:00,26
-355,Starstruck with Apes Go Bananas,3850,2019-02-05 17:00:00,2019-02-05 01:00:00,96
-356,Chillaa and American Authors,2659,2018-11-14 19:00:00,2018-11-14 23:00:00,89
-357,Second Chance with Big K R I T,2623,2019-01-16 20:00:00,2019-01-16 01:00:00,29
-358,Ring Of Fire with Emmanuel And Phillip Hudson,1265,2019-01-02 17:00:00,2019-01-02 22:00:00,55
-359,Calico System and David Coverdale,2560,2018-11-25 18:00:00,2018-11-25 23:00:00,100
-360,Risky Boy with Bruce Bouton,2002,2018-11-11 22:00:00,2018-11-11 23:00:00,29
-361,Caradoc with Ben One,3526,2019-01-02 17:00:00,2019-01-02 00:00:00,71
-362,Say No More with Anibal Augusto Sardinha,2188,2019-01-02 18:00:00,2019-01-02 00:00:00,14
-363,Patriot Dream with Alexis Nicole,1021,2019-01-16 20:00:00,2019-01-16 03:00:00,61
-364,Evora and Black Theama,1452,2018-11-01 22:00:00,2018-11-01 01:00:00,100
-365,KaiRong (Glorious Victory) with The Wounded Kings,3189,2019-01-19 19:00:00,2019-01-19 22:00:00,5
-366,Out of the Mist with Andrea Rosario,3311,2018-12-02 18:00:00,2018-12-02 22:00:00,53
-367,American Tribute with Farben Lehre,3233,2019-01-01 21:00:00,2019-01-01 00:00:00,73
-368,Jonathan Stockhammer and Drew Baldridge,3595,2018-12-03 19:00:00,2018-12-03 22:00:00,70
-369,Dreadful Shadows and Ara Malikian,3061,2019-01-02 21:00:00,2019-01-02 03:00:00,4
-370,Ash Wednesday with Ramp,2539,2018-11-22 21:00:00,2018-11-22 22:00:00,14
-371,My Escort with Glow,1990,2018-12-14 18:00:00,2018-12-14 01:00:00,3
-372,Remember Me with Code Red,4347,2018-12-25 18:00:00,2018-12-25 02:00:00,63
-373,Hidden Destiny with Grupo Fornikator De Durango,4768,2019-01-17 22:00:00,2019-01-17 03:00:00,62
-374,Say No More with Brian Fallon,4238,2018-11-22 19:00:00,2018-11-22 02:00:00,45
-375,Aisha Devi and Frankie Lymon And The Teenagers,197,2018-12-12 20:00:00,2018-12-12 03:00:00,48
-376,New Edition with Familiar 48,4580,2019-01-26 20:00:00,2019-01-26 02:00:00,60
-377,The Beards and Glen Trujillo,1870,2019-01-15 17:00:00,2019-01-15 02:00:00,67
-378,Diocletian and Cornelis Vreeswijk,88,2018-12-18 21:00:00,2018-12-18 22:00:00,10
-379,Cloud Chaser with Bingo Players,3756,2018-11-05 19:00:00,2018-11-05 01:00:00,64
-380,Kamikaze's Plunge with Lil' Scrappy,3665,2018-12-30 21:00:00,2018-12-30 23:00:00,83
-381,Royal by Blood with Racer X,2823,2018-12-25 18:00:00,2018-12-25 23:00:00,87
-382,Perfection in a Glimpse with Pedram Khavar Zamini,1134,2019-01-01 21:00:00,2019-01-01 00:00:00,30
-383,American Dream with Anna Chedid,4777,2019-01-10 22:00:00,2019-01-10 00:00:00,55
-384,Relentless Rain with Bloom On,4627,2018-12-11 18:00:00,2018-12-11 02:00:00,79
-385,Ash Wednesday with Boogie Down Productions,2109,2018-12-19 17:00:00,2018-12-19 01:00:00,13
-386,Young Thugg and Burning Brides,3923,2018-11-19 17:00:00,2018-11-19 02:00:00,9
-387,100% Teddy Bear with Ytut,2656,2019-02-03 17:00:00,2019-02-03 23:00:00,6
-388,Extravaganza with Vincenzo Ferrara,613,2018-12-12 22:00:00,2018-12-12 02:00:00,88
-389,100% Teddy Bear with R3Hab,4988,2018-11-26 19:00:00,2018-11-26 23:00:00,19
-390,Twilight's Last Gleaming with Ali Kiba,231,2018-12-23 22:00:00,2018-12-23 03:00:00,36
-391,Andy Rachel Graham and Edie Brickell The New Bohemians,1629,2019-01-03 20:00:00,2019-01-03 01:00:00,97
-392,"Uisce Beatha (water of life, pronounces Ishka Baha) with David Doucet",428,2019-01-09 19:00:00,2019-01-09 03:00:00,97
-393,Divine Thought with Evan Taubenfeld,4948,2018-11-25 22:00:00,2018-11-25 22:00:00,76
-394,Relentless Rain with Debbie Harry,3165,2018-12-16 22:00:00,2018-12-16 03:00:00,44
-395,Az Dotty Rambo and K Pop,4091,2019-02-08 20:00:00,2019-02-08 22:00:00,73
-396,Seance and John Frusciante,3584,2018-11-18 20:00:00,2018-11-18 22:00:00,8
-397,Claymore and Tim White,3351,2018-11-24 20:00:00,2018-11-24 23:00:00,63
-398,Hidden Destiny with Dan Shake,295,2019-01-11 20:00:00,2019-01-11 00:00:00,37
-399,Last Chance with Eddie Murphy,555,2019-02-03 21:00:00,2019-02-03 00:00:00,1
-400,Smoke and Mirrors with Pana!,1814,2018-12-02 17:00:00,2018-12-02 01:00:00,27
-401,David Serero and Bethel Music Amanda Cook,4279,2019-01-08 20:00:00,2019-01-08 03:00:00,45
-402,"Carlton Fredericks, Ph.D. and The Big Pink",13,2018-12-03 18:00:00,2018-12-03 02:00:00,13
-403,Cupiditas(Desire) with Bj Walters,1893,2019-01-24 22:00:00,2019-01-24 02:00:00,1
-404,Bob Pyle and Samulnori: Kang Min Seok,3962,2019-02-05 20:00:00,2019-02-05 22:00:00,21
-405,Tall and Handsome with Bedouin Soundclash,3109,2019-01-11 17:00:00,2019-01-11 00:00:00,43
-406,Alex Nevsky and Bloodbath,2861,2018-11-24 22:00:00,2018-11-24 03:00:00,26
-407,Death From Above and Bakerloo,546,2018-11-29 18:00:00,2018-11-29 03:00:00,17
-408,Great Googly Moogle with Cian Nugent,864,2018-12-16 17:00:00,2018-12-16 02:00:00,90
-409,My Escort with Tort,2486,2019-01-18 17:00:00,2019-01-18 02:00:00,24
-410,Last Hope with Ganggajang,1696,2018-12-28 17:00:00,2018-12-28 00:00:00,17
-411,Ripple in Time with Division Minuscula,2960,2018-12-10 22:00:00,2018-12-10 01:00:00,99
-412,Titanium with Attitude,4669,2019-01-22 19:00:00,2019-01-22 01:00:00,35
-413,Alan G and Scream Silence,4171,2019-01-05 17:00:00,2019-01-05 23:00:00,81
-414,Cloud Chaser with Alicia James,3069,2018-11-22 18:00:00,2018-11-22 22:00:00,22
-415,Whatever with Obituary,735,2018-12-24 20:00:00,2018-12-24 23:00:00,80
-416,Sergio Rockstar and Illuminandi,4580,2018-11-23 21:00:00,2018-11-23 22:00:00,33
-417,Divine Thought with Bob Wills And His Texas Playboys,4050,2019-01-28 18:00:00,2019-01-28 00:00:00,83
-418,"Uisce Beatha (water of life, pronounces Ishka Baha) with Eric Donaldson",3046,2019-01-07 20:00:00,2019-01-07 03:00:00,51
-419,Meri Vardanyan and Malefice,424,2019-01-10 21:00:00,2019-01-10 00:00:00,28
-420,Smoking Gun with Dubtribe Sound System,3936,2018-12-15 22:00:00,2018-12-15 03:00:00,15
-421,New Hope with Kosmic Girlz & Koltrane Band,1472,2018-12-25 18:00:00,2018-12-25 03:00:00,74
-422,Patriot's Glory with Ahmad Jais,1945,2018-11-10 21:00:00,2018-11-10 00:00:00,18
-423,Never Again with Big Star,4378,2018-12-22 20:00:00,2018-12-22 23:00:00,22
-424,One Stormy Night with Giddy Stratospheres,4034,2018-12-26 17:00:00,2018-12-26 22:00:00,9
-425,The Perfect Storm with Damian Junior Gong Marley,3404,2019-01-09 21:00:00,2019-01-09 22:00:00,64
-426,Relentless Rain with Final Outlaw,2968,2019-01-17 21:00:00,2019-01-17 01:00:00,98
-427,One Stormy Night with Gob,1817,2018-12-31 17:00:00,2018-12-31 00:00:00,13
-428,Freestone and Mael Mï¿½Rdha,3545,2019-02-08 20:00:00,2019-02-08 03:00:00,58
-429,Shadow of a Champion with Akdong Musician,4685,2019-01-30 17:00:00,2019-01-30 00:00:00,23
-430,Risky Boy with Billy Kain,2812,2019-02-07 19:00:00,2019-02-07 23:00:00,20
-431,Patriotic Spirit with Aaron Drees,469,2018-11-06 21:00:00,2018-11-06 00:00:00,19
-432,Goodbye To Gravity and Demor,4331,2018-11-12 20:00:00,2018-11-12 22:00:00,32
-433,Ripple in Time with Ayumi Hamasaki,1327,2018-11-09 20:00:00,2018-11-09 02:00:00,86
-434,Second Wind with Freezepop,2540,2018-12-25 18:00:00,2018-12-25 00:00:00,65
-435,Patriotic Spirit with Action Bronson,1017,2018-12-21 17:00:00,2018-12-21 02:00:00,21
-436,Gjermund Haugen and Fan 3,4051,2019-01-13 17:00:00,2019-01-13 22:00:00,23
-437,Wendigo with Shawntae Green,3261,2018-12-09 19:00:00,2018-12-09 01:00:00,99
-438,Wind Chaser with Fi,3142,2019-01-03 18:00:00,2019-01-03 00:00:00,8
-439,Titanium with Magnitude 9,1438,2018-11-11 17:00:00,2018-11-11 22:00:00,34
-440,Shadow of a Champion with Serenity In Murder,173,2018-12-13 21:00:00,2018-12-13 22:00:00,47
-441,"Uisce Beatha (water of life, pronounces Ishka Baha) with Bethel Music Kids",705,2019-01-25 18:00:00,2019-01-25 00:00:00,8
-442,Doug Keith and Don Davis,2387,2018-11-20 21:00:00,2018-11-20 03:00:00,63
-443,Brilliant Disguise with Ariane Moffatt,1732,2018-12-31 20:00:00,2018-12-31 00:00:00,76
-444,KaiRong (Glorious Victory) with Benabar,84,2019-01-29 21:00:00,2019-01-29 23:00:00,36
-445,American Made with Draugnim,2811,2018-11-09 20:00:00,2018-11-09 23:00:00,87
-446,Mercury Rising with Dante Tomaselli,3132,2018-11-03 21:00:00,2018-11-03 22:00:00,31
-447,Scars On 45 and Ant Adam,1685,2019-01-16 18:00:00,2019-01-16 01:00:00,35
-448,Antediluvian and Julie Driscoll,3500,2019-01-07 22:00:00,2019-01-07 22:00:00,9
-449,Windy Day with D Callaos,417,2018-12-24 18:00:00,2018-12-24 00:00:00,49
-450,Count the Stars with Monolord,4678,2018-11-01 17:00:00,2018-11-01 01:00:00,31
-451,Gun Metal with Alarma,3107,2019-02-07 18:00:00,2019-02-07 23:00:00,45
-452,Angela Bofill and Boston,1462,2018-12-05 17:00:00,2018-12-05 00:00:00,36
-453,One Stormy Night with Dara Sedaka,4082,2018-12-01 18:00:00,2018-12-01 23:00:00,26
-454,Abducted and Ruelle,3467,2019-01-25 19:00:00,2019-01-25 00:00:00,59
-455,Zero Tolerance with Chad Brock,1364,2018-12-31 22:00:00,2018-12-31 23:00:00,65
-456,Lawrence Reynolds and Fei Lun Hai,3358,2019-01-17 21:00:00,2019-01-17 00:00:00,21
-457,Understated with Pilgrim Jubilee Singers,861,2018-12-12 18:00:00,2018-12-12 02:00:00,94
-458,American Pride with The Churchills,3898,2018-11-10 22:00:00,2018-11-10 00:00:00,91
-459,Whatever with Kat Edmonson,4843,2019-02-02 22:00:00,2019-02-02 03:00:00,13
-460,Shadow of a Champion with Lepers,4031,2018-11-06 21:00:00,2018-11-06 00:00:00,14
-461,Black Lightning with Wolfgang Puschnig,2226,2019-01-26 21:00:00,2019-01-26 02:00:00,63
-462,Heaven Sent with Filthy Frank Aka George Miller,2653,2018-12-07 21:00:00,2018-12-07 22:00:00,21
-463,Zero Tolerance with Apache Dropout,2419,2019-01-05 20:00:00,2019-01-05 23:00:00,14
-464,The Perfect Storm with Municipal Waste,3557,2018-11-08 20:00:00,2018-11-08 03:00:00,60
-465,Gerardo Mejia and Damnwells,3350,2018-12-06 22:00:00,2018-12-06 02:00:00,9
-466,Xanthochroid and Apollonia,899,2019-01-25 17:00:00,2019-01-25 01:00:00,83
-467,Valerie Ponomarev and Dwayne Britton,1685,2018-11-15 17:00:00,2018-11-15 02:00:00,89
-468,Divine Heresy and Unleashed,4787,2019-01-19 22:00:00,2019-01-19 03:00:00,94
-469,Cryonic Temple and Kaiser,968,2018-11-18 20:00:00,2018-11-18 03:00:00,43
-470,Evenmore and Darren Hanlon,4864,2019-01-27 21:00:00,2019-01-27 01:00:00,17
-471,Dimitris Vraskos and Kalani,4920,2019-02-07 18:00:00,2019-02-07 00:00:00,5
-472,Gun Metal with Bobby Shafto,2123,2018-11-07 22:00:00,2018-11-07 03:00:00,55
-473,Mystic Journey with Bingham Ryan,71,2018-12-15 18:00:00,2018-12-15 02:00:00,48
-474,Sarah Ross and Jon Mohr,4107,2018-11-25 22:00:00,2018-11-25 23:00:00,81
-475,100% Teddy Bear with Chocolate Watch Band,4445,2018-12-22 21:00:00,2018-12-22 03:00:00,83
-476,Titanium with Summerlyn Powers,1768,2018-12-01 20:00:00,2018-12-01 01:00:00,67
-477,Daedalus and Shadow Of The Colossus,2035,2018-12-06 21:00:00,2018-12-06 22:00:00,50
-478,Black Lightning with 21 00 Pm,4577,2018-12-21 22:00:00,2018-12-21 03:00:00,90
-479,Divine Thought with Garrison Starr,2504,2018-12-11 19:00:00,2018-12-11 00:00:00,76
-480,Encantado with Matthieu Bordenave,3204,2018-11-25 22:00:00,2018-11-25 02:00:00,87
-481,Sirius with Fondlecorpse,1204,2019-01-10 21:00:00,2019-01-10 22:00:00,10
-482,Feeling Left Out and Elmar Daucher,1115,2019-01-11 18:00:00,2019-01-11 02:00:00,39
-483,Filter and Bonnie Prince Billy,4492,2019-01-23 17:00:00,2019-01-23 03:00:00,2
-484,The Bellrays and Pariah,1454,2019-01-04 22:00:00,2019-01-04 01:00:00,99
-485,Forro Rasta Chinela and Daniel Ebans,4519,2019-01-20 19:00:00,2019-01-20 03:00:00,3
-486,Perfection in a Glimpse with Independent Artists,4826,2018-12-05 22:00:00,2018-12-05 22:00:00,52
-487,Extravaganza with Peer Van Mladen,3090,2019-01-13 18:00:00,2019-01-13 02:00:00,90
-488,Marta Kurtag and Deliverance,4361,2019-01-24 20:00:00,2019-01-24 01:00:00,31
-489,Say No More with White Wizzard,1848,2018-12-07 20:00:00,2018-12-07 22:00:00,53
-490,Torture Killer and Drop City Yacht Club,3029,2018-12-26 19:00:00,2018-12-26 22:00:00,24
-491,Borhuh and Emily Jane White,3492,2019-02-01 21:00:00,2019-02-01 22:00:00,79
-492,Lost in Thought with Emmalyn Estrada,4071,2018-12-07 18:00:00,2018-12-07 03:00:00,50
-493,Fortune and Glory with Eric Prydz,2140,2018-12-31 20:00:00,2018-12-31 22:00:00,42
-494,Kiuas and Pombagira,2283,2018-11-21 21:00:00,2018-11-21 03:00:00,94
-495,Patriot's Glory with Fretblanket,219,2019-01-17 17:00:00,2019-01-17 01:00:00,66
-496,"Chess and Juan Enrique ""El Prisionero""",3850,2019-01-26 21:00:00,2019-01-26 00:00:00,56
-497,Damaris Carbaugh and The Flirts,1603,2018-12-05 18:00:00,2018-12-05 22:00:00,84
-498,Angizia and Biometrix,3017,2018-12-02 21:00:00,2018-12-02 01:00:00,92
-499,Star Image with Humanfly,1823,2019-01-31 22:00:00,2019-01-31 01:00:00,86
+id,name,location,start,end,capacity,tickets_left
+1,Barbara Jean English and General Woo,2623,2018-11-01 22:00:00,2018-11-01 00:00:00,750,36
+2,Black Lightning with Nortt,3002,2018-12-23 21:00:00,2018-12-23 01:00:00,250,15
+3,Andrea True Connection and Durt Boi,502,2018-11-23 22:00:00,2018-11-23 23:00:00,500,99
+4,Urban Legend with Bree L Lisa,4027,2018-11-07 20:00:00,2018-11-07 22:00:00,750,13
+5,Tillakay [Kay for short] with Buxton Sarah,3641,2019-02-04 18:00:00,2019-02-04 22:00:00,750,2
+6,"Uisce Beatha (water of life, pronounces Ishka Baha) with Cliff Maytwayashing",1357,2019-01-15 19:00:00,2019-01-15 02:00:00,250,85
+7,Starstruck with Albert Mangelsdorff,800,2019-01-26 22:00:00,2019-01-26 00:00:00,250,67
+8,Patriotic Spirit with Chasing Chaos,3564,2019-01-15 22:00:00,2019-01-15 03:00:00,250,36
+9,Limitless Possibilities with Wade Hayes,1139,2018-11-09 22:00:00,2018-11-09 22:00:00,250,5
+10,Face Tomorrow and Richard Graf,4050,2018-11-15 17:00:00,2018-11-15 00:00:00,500,8
+11,Mission Possible with Choir Of Yorkminster Park Baptist Church,263,2018-12-18 19:00:00,2018-12-18 22:00:00,250,13
+12,Starstruck with Daylight Misery,3587,2018-11-06 18:00:00,2018-11-06 02:00:00,750,4
+13,De La Soul S Plug 1 Plug 2 Present and Hydra Vein,3155,2019-02-02 17:00:00,2019-02-02 03:00:00,250,73
+14,Gavin Bryars and Demy,2266,2019-01-28 21:00:00,2019-01-28 02:00:00,500,44
+15,Inspiration with Dexkoncierto,2407,2018-11-22 20:00:00,2018-11-22 22:00:00,500,17
+16,Black Raven with Conscious Toney,2729,2019-01-21 20:00:00,2019-01-21 00:00:00,500,24
+17,Electro Hippies and Finntroll,4507,2019-02-08 17:00:00,2019-02-08 03:00:00,500,14
+18,Thunder Running with Eibon,3660,2019-01-16 21:00:00,2019-01-16 00:00:00,750,66
+19,Wind Chaser with Amor E Morte,1486,2019-01-28 18:00:00,2019-01-28 01:00:00,750,51
+20,Risky Boy with Elephant Stone,81,2019-01-12 20:00:00,2019-01-12 00:00:00,750,68
+21,Thunder Running with Blacksmith,4696,2019-01-09 20:00:00,2019-01-09 00:00:00,750,47
+22,Abrasive Wheels and Creepmime,1437,2018-12-07 22:00:00,2018-12-07 23:00:00,250,51
+23,Gun Metal with Bandits Of The Acoustic Revolution,2095,2018-11-12 20:00:00,2018-11-12 00:00:00,250,0
+24,Dare to Dream with Monumental Torment,2451,2019-01-29 19:00:00,2019-01-29 03:00:00,500,79
+25,Black Lightning with The Lumineers,4607,2018-11-18 20:00:00,2018-11-18 01:00:00,250,7
+26,Extravaganza with Jason Stewart,4874,2018-12-23 22:00:00,2018-12-23 02:00:00,500,4
+27,Zero Tolerance with Rambler,4626,2018-12-28 21:00:00,2018-12-28 03:00:00,750,48
+28,Patriot Dream with Clairity,2344,2018-12-13 19:00:00,2018-12-13 03:00:00,500,61
+29,Second Chance with Impact Worship Band,949,2019-02-08 22:00:00,2019-02-08 03:00:00,750,27
+30,Astronautalis and Andy Summers,2279,2018-11-16 21:00:00,2018-11-16 22:00:00,750,66
+31,Oberon with Henry Arland,539,2018-11-15 22:00:00,2018-11-15 02:00:00,250,57
+32,Pinot Grigio with Cb Milton,2191,2018-11-03 18:00:00,2018-11-03 03:00:00,500,11
+33,Bent Knee and Before The War,561,2019-01-02 17:00:00,2019-01-02 02:00:00,250,0
+34,Setting the Pace with 16Volt,1517,2018-12-06 18:00:00,2018-12-06 03:00:00,750,72
+35,Glasseater and Johnny Bush,1020,2018-12-11 21:00:00,2018-12-11 02:00:00,500,82
+36,Just Imagine with Cage Of Torment,2466,2018-12-27 18:00:00,2018-12-27 01:00:00,750,7
+37,Raury and Cleaver Of The Mist,4929,2019-01-10 17:00:00,2019-01-10 00:00:00,750,13
+38,Cherrybomb with Wintersun,2072,2018-11-01 18:00:00,2018-11-01 22:00:00,250,57
+39,Tall and Handsome with Fat Rat,4319,2018-12-29 18:00:00,2018-12-29 02:00:00,500,44
+40,Thomas T Dahl and The Lumberjack Feedback,4278,2018-11-24 19:00:00,2018-11-24 22:00:00,500,6
+41,Dream Chaser with Music Video,4007,2018-11-04 20:00:00,2018-11-04 03:00:00,250,93
+42,Bernie Mallinger and Ameritz,2092,2018-12-31 20:00:00,2018-12-31 00:00:00,500,27
+43,Alta Consigna and Rafael Ruppert,3834,2019-01-14 17:00:00,2019-01-14 03:00:00,250,42
+44,Bishop Of Crunk and Brian Doerksen,1374,2019-01-26 20:00:00,2019-01-26 01:00:00,750,69
+45,New Hope with Coupé Cloué,2394,2019-01-17 22:00:00,2019-01-17 00:00:00,500,71
+46,Chris Sesar and Doctor P,28,2018-12-24 18:00:00,2018-12-24 02:00:00,500,14
+47,Dream Chaser with Katavasia,3747,2018-12-30 22:00:00,2018-12-30 02:00:00,250,16
+48,Last Chance with The Collective,2233,2019-01-09 18:00:00,2019-01-09 22:00:00,750,19
+49,5 Chinese Brothers and Crime In Stereo,1570,2018-11-27 22:00:00,2018-11-27 22:00:00,750,17
+50,Limitless Possibilities with Hit List,2353,2019-01-26 21:00:00,2019-01-26 22:00:00,750,69
+51,Beach Boys and The Horrors,262,2018-11-12 19:00:00,2018-11-12 01:00:00,250,41
+52,Kamikaze's Plunge with Witchcurse,3103,2018-11-25 17:00:00,2018-11-25 03:00:00,750,31
+53,Class Act with Adriana Evans,4334,2018-12-21 17:00:00,2018-12-21 00:00:00,250,14
+54,Flip of a Coin with Lord Symphony,357,2018-12-02 20:00:00,2018-12-02 22:00:00,250,76
+55,Dream Chaser with Iron Reagan,3013,2018-12-18 17:00:00,2018-12-18 00:00:00,500,39
+56,Caradoc with Alkaline Trio,4543,2018-12-08 22:00:00,2018-12-08 01:00:00,750,26
+57,Tillakay [Kay for short] with Sara Bareilles,1063,2019-01-11 20:00:00,2019-01-11 02:00:00,750,34
+58,Ring Of Fire with Muse,1577,2019-01-03 18:00:00,2019-01-03 03:00:00,250,33
+59,Sirius with Diry Macmillion,1443,2018-12-25 20:00:00,2018-12-25 01:00:00,250,22
+60,Dare to Compare with The Callbacks,1769,2018-11-19 21:00:00,2018-11-19 02:00:00,750,71
+61,Starstruck with Warrior,2790,2018-12-09 19:00:00,2018-12-09 00:00:00,500,80
+62,Wendigo with Byrd Tracy,4379,2018-12-19 19:00:00,2018-12-19 01:00:00,500,87
+63,Shadow of a Champion with Ashley Baker  Fl,4090,2018-11-03 20:00:00,2018-11-03 23:00:00,750,69
+64,Alabama Country Boys and Andrew Jackson Jihad,2543,2019-02-05 19:00:00,2019-02-05 03:00:00,750,27
+65,Shadow of a Champion with Vance Haines,2311,2018-11-26 19:00:00,2018-11-26 03:00:00,500,2
+66,Remember Me with The Chiffons,443,2018-11-23 18:00:00,2018-11-23 00:00:00,750,58
+67,The Dfa and Albano Romina Power,1680,2019-01-16 17:00:00,2019-01-16 01:00:00,250,4
+68,Wish Away with Primitive Graven Image,1539,2018-11-07 19:00:00,2018-11-07 02:00:00,750,72
+69,Black Lightning with Down Among The Dead Men,79,2018-11-12 21:00:00,2018-11-12 03:00:00,750,64
+70,American Dream with Danny,136,2019-01-04 21:00:00,2019-01-04 01:00:00,750,53
+71,Caradoc with Ovid'S Withering,3945,2018-11-23 17:00:00,2018-11-23 22:00:00,250,99
+72,Fortune and Glory with Alain Vankenhove,3329,2018-12-13 19:00:00,2018-12-13 22:00:00,500,57
+73,Special Event with Abstracter,543,2019-01-03 20:00:00,2019-01-03 22:00:00,500,28
+74,Fuentes and Collie Buddz,3732,2019-01-04 19:00:00,2019-01-04 01:00:00,750,18
+75,Setting the Pace with John Alair,917,2019-01-16 19:00:00,2019-01-16 01:00:00,500,27
+76,KaiRong (Glorious Victory) with Turbid North,2888,2019-01-31 21:00:00,2019-01-31 00:00:00,750,0
+77,Last Hope with 2 Chainz,1953,2019-01-07 19:00:00,2019-01-07 23:00:00,500,90
+78,Cityboistreets and Baby Et Lulu,2370,2019-01-11 19:00:00,2019-01-11 02:00:00,500,33
+79,Jefferson Starship and Thomas Miller,376,2019-01-23 21:00:00,2019-01-23 02:00:00,250,75
+80,Heaven Sent with Famy,1977,2018-12-19 19:00:00,2018-12-19 02:00:00,500,68
+81,American Glory with Cc Cowboys,324,2018-12-08 20:00:00,2018-12-08 03:00:00,750,14
+82,Keith Anderson and Napalm Death,133,2018-11-22 20:00:00,2018-11-22 00:00:00,750,62
+83,Epic Rap Battles Of History and David Gelman,2975,2018-11-26 17:00:00,2018-11-26 23:00:00,500,10
+84,Royal by Blood with Four Year Strong,3602,2018-12-27 21:00:00,2018-12-27 00:00:00,500,10
+85,Twilight's Last Gleaming with Felix Wahnschaffe,2982,2018-11-27 21:00:00,2018-11-27 01:00:00,500,59
+86,Life's a Breeze with Nightrage,2272,2018-12-22 21:00:00,2018-12-22 00:00:00,750,8
+87,Second Chance with Chino Y Nacho,4674,2018-11-06 22:00:00,2018-11-06 02:00:00,250,64
+88,Watch Me Go with 40 Sons,4365,2018-12-26 22:00:00,2018-12-26 22:00:00,500,32
+89,Wind Chaser with Debarge,273,2019-01-03 21:00:00,2019-01-03 00:00:00,250,11
+90,Patriotic Hero with Tom Keifer,3391,2018-11-08 18:00:00,2018-11-08 00:00:00,750,77
+91,Gary Carpenter and Young_Millz,561,2019-02-08 21:00:00,2019-02-08 22:00:00,500,20
+92,American Made with Frank Reyes,3234,2018-12-25 19:00:00,2018-12-25 01:00:00,250,36
+93,Adia Victoria and Disney Karaoke Series,1186,2018-11-28 20:00:00,2018-11-28 02:00:00,250,31
+94,New Edition with Amber Balltzglier,1246,2019-01-16 18:00:00,2019-01-16 22:00:00,500,48
+95,American Glory with Carlos Lyra,2618,2018-12-07 17:00:00,2018-12-07 01:00:00,500,57
+96,American Dream with Allo Darlin,1427,2018-11-07 20:00:00,2018-11-07 02:00:00,500,88
+97,100 Degrees with Dragon Blade,1327,2019-01-13 20:00:00,2019-01-13 23:00:00,750,72
+98,Smoke and Mirrors with Demented Are Go,828,2019-01-06 20:00:00,2019-01-06 00:00:00,500,45
+99,Akhil and Branzil,4144,2018-12-24 20:00:00,2018-12-24 02:00:00,500,70
+100,Eclipse Hunter and Gloryhammer,3806,2019-01-18 21:00:00,2019-01-18 22:00:00,750,18
+101,King's Ransom with Indira Rubiera,427,2019-02-07 17:00:00,2019-02-07 22:00:00,500,53
+102,Watch Me Go with Clive Williams,349,2018-11-16 22:00:00,2018-11-16 02:00:00,750,94
+103,Understated with Chocolate Genius,3036,2019-02-05 21:00:00,2019-02-05 02:00:00,500,69
+104,Setting the Pace with The Good Life,4763,2019-01-01 22:00:00,2019-01-01 01:00:00,500,70
+105,Smoking Gun with House Of Low Culture,3166,2019-02-01 21:00:00,2019-02-01 01:00:00,750,34
+106,New Chances with Davisson Brothers Band,994,2019-01-25 22:00:00,2019-01-25 00:00:00,500,35
+107,Coma Prevail and Ernst Ludwig Petrowsky,4930,2019-01-10 19:00:00,2019-01-10 02:00:00,750,71
+108,Thomas Zehetmair and Batdorf Mclean,1439,2018-12-22 20:00:00,2018-12-22 01:00:00,750,58
+109,New Chances with Cleanse The Hive,243,2018-11-29 18:00:00,2018-11-29 01:00:00,750,21
+110,One Stormy Night with Debora Garcia,3404,2018-12-29 20:00:00,2018-12-29 02:00:00,750,88
+111,Ripple in Time with Dj Young Cee,1341,2018-11-27 19:00:00,2018-11-27 23:00:00,750,21
+112,Smoke and Mirrors with Benj Pasek Justin Paul,4141,2018-12-15 17:00:00,2018-12-15 02:00:00,750,44
+113,Cherrybomb with Kalmankantaja,2813,2019-01-04 21:00:00,2019-01-04 03:00:00,750,30
+114,The Lumineers and Galaxie,1707,2018-11-27 19:00:00,2018-11-27 00:00:00,750,39
+115,Just Imagine with Agents Of Oblivion,4050,2019-01-07 22:00:00,2019-01-07 01:00:00,750,57
+116,Watch Me Go with Dear Ephesus,3846,2019-01-16 19:00:00,2019-01-16 22:00:00,750,65
+117,Stardust with Hardingrock,3831,2019-02-05 18:00:00,2019-02-05 02:00:00,250,11
+118,Ella Henderson and Los Pumas Del Norte,4593,2018-11-18 18:00:00,2018-11-18 22:00:00,750,59
+119,American Dream with Perzonal War,3781,2019-02-06 20:00:00,2019-02-06 22:00:00,250,97
+120,Wolfgang Amadeus Mozart and Wendy Hill,1725,2018-12-01 22:00:00,2018-12-01 00:00:00,500,25
+121,Relentless Rain with Sorathian Dawn,2253,2019-01-17 20:00:00,2019-01-17 00:00:00,750,77
+122,Mercury Rising with Samuel Beckett,3088,2019-01-13 18:00:00,2019-01-13 02:00:00,750,73
+123,Flip of a Coin with Giovanni Allevi,2159,2019-01-13 18:00:00,2019-01-13 22:00:00,250,4
+124,Stardust with Viceversah,1594,2019-01-21 19:00:00,2019-01-21 03:00:00,250,96
+125,Dare to Dream with Dave Ramone,3072,2018-12-01 21:00:00,2018-12-01 23:00:00,750,25
+126,Just Imagine with Chloe,2975,2018-11-01 22:00:00,2018-11-01 02:00:00,500,36
+127,Understated with Fionn Regan,3980,2018-11-22 17:00:00,2018-11-22 23:00:00,500,77
+128,Shadow of a Champion with Billie Tweddle,2172,2018-12-03 17:00:00,2018-12-03 02:00:00,750,80
+129,Ripple in Time with Ics Vortex,2353,2019-01-25 18:00:00,2019-01-25 00:00:00,500,85
+130,Caradoc with Rockin' Raffi Arto,817,2019-01-23 17:00:00,2019-01-23 22:00:00,500,72
+131,Special Event with George The Poet,1908,2019-01-28 17:00:00,2019-01-28 00:00:00,250,92
+132,New Hope with Austins Bridge,4964,2019-01-04 20:00:00,2019-01-04 00:00:00,250,98
+133,Never Again with Deb Barber,4500,2018-11-18 21:00:00,2018-11-18 01:00:00,250,91
+134,No Boundaries with Donatan Cleo,1337,2018-12-05 17:00:00,2018-12-05 02:00:00,500,52
+135,Heart To Heart with Avi Buffalo,1248,2018-11-28 18:00:00,2018-11-28 00:00:00,500,14
+136,Whatever with Destinee Paris,4043,2018-12-17 17:00:00,2018-12-17 00:00:00,250,74
+137,American Hero with California Swag District,4860,2018-12-01 18:00:00,2018-12-01 03:00:00,250,68
+138,American Tribute with D Lo,996,2019-01-07 20:00:00,2019-01-07 01:00:00,500,35
+139,Thunderstone and Nils Petter Molvaer,3951,2019-02-05 18:00:00,2019-02-05 22:00:00,750,80
+140,American Made with Afflicted,3701,2018-12-16 22:00:00,2018-12-16 23:00:00,250,7
+141,Tillakay [Kay for short] with Tobias Ennemoser,4211,2018-12-01 20:00:00,2018-12-01 00:00:00,500,74
+142,Ring Of Fire with Datsik,426,2018-12-14 17:00:00,2018-12-14 02:00:00,500,91
+143,Akecocke and Merle Kilgore,2988,2018-11-22 19:00:00,2018-11-22 01:00:00,500,4
+144,Out of the Blue with Longing For Dawn,4660,2018-11-26 17:00:00,2018-11-26 03:00:00,250,8
+145,Pinot Grigio with Arianna Savall,2705,2018-12-10 19:00:00,2018-12-10 03:00:00,250,5
+146,Andrew Stockdale and Alegre All Stars,2558,2018-12-06 19:00:00,2018-12-06 01:00:00,750,4
+147,Dare to Compare with Alex Velea,268,2018-12-15 19:00:00,2018-12-15 23:00:00,750,75
+148,100% Teddy Bear with Equinox Ov The Gods,3093,2019-01-13 22:00:00,2019-01-13 01:00:00,750,99
+149,No Boundaries with Aloha From Hell,2346,2018-12-08 17:00:00,2018-12-08 02:00:00,500,52
+150,Blind Jesus and Ben Bridwell,735,2019-01-25 19:00:00,2019-01-25 23:00:00,500,66
+151,The Foundations and Zz Top,516,2018-11-08 21:00:00,2018-11-08 01:00:00,500,24
+152,Bold and Brash with Barry Finclair,2714,2019-01-23 21:00:00,2019-01-23 02:00:00,500,57
+153,Ripple in Time with Damageplan,245,2018-12-25 20:00:00,2018-12-25 01:00:00,750,93
+154,Understated with Atrocious Abnormality,1192,2018-12-19 20:00:00,2018-12-19 02:00:00,750,13
+155,Setting the Pace with Gail Bliss,1807,2018-11-29 19:00:00,2018-11-29 02:00:00,500,34
+156,Fair To Midland and Pulp,3935,2018-11-06 22:00:00,2018-11-06 03:00:00,500,78
+157,Abigail Bailey and Gato Barbieri,2158,2019-02-03 20:00:00,2019-02-03 22:00:00,500,63
+158,Smoky the Bandit with Witchcurse,4128,2018-12-12 21:00:00,2018-12-12 01:00:00,500,20
+159,Real Rimes and Kalevala,762,2018-12-27 22:00:00,2018-12-27 02:00:00,500,60
+160,Kyle Lucas and Grand Puba,1366,2018-12-24 18:00:00,2018-12-24 23:00:00,500,42
+161,Wind Racer with Cheat Codes,787,2019-02-06 17:00:00,2019-02-06 22:00:00,250,39
+162,Wind Chaser with The Charlatans Uk,589,2019-01-12 20:00:00,2019-01-12 22:00:00,500,87
+163,KaiRong (Glorious Victory) with Pierce The Veil,1534,2019-01-19 19:00:00,2019-01-19 02:00:00,500,28
+164,Ub40 and Amen Dunes,2274,2018-12-11 17:00:00,2018-12-11 03:00:00,250,72
+165,No Boundaries with Gnidrolog,2019,2018-11-15 19:00:00,2018-11-15 00:00:00,750,31
+166,Heavenly Image with Kixxie Siete,4614,2019-01-29 19:00:00,2019-01-29 03:00:00,250,45
+167,Hidden Destiny with Tina Johansson,3443,2019-01-25 22:00:00,2019-01-25 02:00:00,750,24
+168,Understated with Claire,3364,2019-01-27 18:00:00,2019-01-27 00:00:00,500,17
+169,American Diary and Aaradhna,1591,2018-11-15 21:00:00,2018-11-15 00:00:00,500,27
+170,Bianco Bonnie and Fel Davis,1761,2018-11-26 17:00:00,2018-11-26 02:00:00,500,87
+171,Ripple in Time with Geoff Allen,2925,2018-12-02 17:00:00,2018-12-02 23:00:00,750,56
+172,Mission Possible with Dougie F,3026,2018-11-14 19:00:00,2018-11-14 02:00:00,750,70
+173,Brilliant Disguise with Paul Bura,915,2018-11-08 20:00:00,2018-11-08 00:00:00,500,29
+174,American Hero with Daisy Chainsaw,2008,2018-11-06 21:00:00,2018-11-06 02:00:00,750,66
+175,Smoky the Bandit with Dahleeboe Zah,1695,2018-12-04 21:00:00,2018-12-04 00:00:00,750,95
+176,Whatever with Mourning Mist,2842,2018-12-19 18:00:00,2018-12-19 23:00:00,500,38
+177,Ring Of Fire with Onerepublic,3428,2019-01-02 21:00:00,2019-01-02 22:00:00,750,27
+178,New Hope with Hyekyung Lee,1012,2018-11-25 17:00:00,2018-11-25 01:00:00,500,83
+179,The Dirty Shames and Matt Kennon,740,2019-01-03 22:00:00,2019-01-03 22:00:00,250,94
+180,Day and The Grahams,2297,2019-01-04 17:00:00,2019-01-04 02:00:00,750,48
+181,New Chances with Chelsea Wolfe,1236,2018-11-24 19:00:00,2018-11-24 01:00:00,500,99
+182,Wind Chaser with E Craft,1432,2019-01-01 21:00:00,2019-01-01 23:00:00,250,31
+183,Wish Away with Diana,1379,2018-11-09 18:00:00,2018-11-09 00:00:00,250,44
+184,American Pride with Dali Moon Lips,2890,2019-01-11 21:00:00,2019-01-11 02:00:00,250,53
+185,American Dream with Herbert Joos,3663,2018-12-08 21:00:00,2018-12-08 03:00:00,500,23
+186,American Pride with Crooked Still,3278,2018-12-28 17:00:00,2018-12-28 00:00:00,250,46
+187,WhoSez with John Wesley Carroll Jr,2175,2018-12-01 19:00:00,2018-12-01 02:00:00,750,100
+188,Starstruck with Sorrow Plagues,4415,2018-11-29 18:00:00,2018-11-29 02:00:00,250,59
+189,Blue Asyster Cult and Gotthead,3629,2018-11-03 21:00:00,2018-11-03 03:00:00,500,93
+190,The Perfect Storm with A P,2337,2019-01-29 19:00:00,2019-01-29 00:00:00,500,1
+191,The Perfect Storm with Ca$H Out,4232,2019-01-27 21:00:00,2019-01-27 01:00:00,750,79
+192,Destructor and Bhai Baldev Singh Vadala,4579,2019-01-22 20:00:00,2019-01-22 00:00:00,500,18
+193,Arno and Falcons,2875,2019-02-06 22:00:00,2019-02-06 00:00:00,250,55
+194,Chuck Offutt and Bloody Beach,2217,2019-01-19 21:00:00,2019-01-19 23:00:00,500,14
+195,Imagine That with Decapitated,2681,2019-01-12 19:00:00,2019-01-12 22:00:00,750,100
+196,Susan Tedeschi and Chicho Sanchez Ferlosio,3249,2018-11-24 19:00:00,2018-11-24 00:00:00,250,55
+197,Hellbringer and Ihsahn,4298,2018-11-18 17:00:00,2018-11-18 23:00:00,500,29
+198,Alannah and El General,1294,2019-02-04 19:00:00,2019-02-04 23:00:00,500,38
+199,Relentless Rain with Silent Stream Of Godless Elegy,2820,2018-12-11 21:00:00,2018-12-11 01:00:00,750,66
+200,Patriot's Glory with Emp,1298,2018-11-16 17:00:00,2018-11-16 23:00:00,750,70
+201,Travel Through Time with Ippe Katka,1970,2018-12-10 17:00:00,2018-12-10 03:00:00,500,52
+202,American Hero with Germ,501,2019-02-04 19:00:00,2019-02-04 02:00:00,250,80
+203,Mola1 and Miranda Lambert,3903,2019-01-19 17:00:00,2019-01-19 03:00:00,250,99
+204,Dare to Compare with The Konstellation,2643,2019-01-13 19:00:00,2019-01-13 03:00:00,500,45
+205,Anders Jormin and Reid Perry,775,2019-02-02 22:00:00,2019-02-02 03:00:00,250,57
+206,Agent Fresco and Solisia,3132,2019-02-06 19:00:00,2019-02-06 00:00:00,500,61
+207,Understated with Chrysanthi Douzi,356,2019-01-04 20:00:00,2019-01-04 22:00:00,500,58
+208,Buddy Brown and Dessa,4505,2018-12-18 17:00:00,2018-12-18 00:00:00,500,21
+209,My Escort with Jason Chan & Phil Lam,3437,2018-11-11 18:00:00,2018-11-11 03:00:00,750,60
+210,Fortune and Glory with Santal,4307,2018-11-08 18:00:00,2018-11-08 00:00:00,750,56
+211,The Sky's the Limit with Misanthrope,1960,2018-11-28 19:00:00,2018-11-28 23:00:00,750,47
+212,Seven Witches and Blindside,248,2019-02-03 19:00:00,2019-02-03 22:00:00,750,97
+213,Cloud Chaser with Charlie Pride,2254,2019-02-04 17:00:00,2019-02-04 00:00:00,500,2
+214,Wish Away with Lil Cory,1224,2019-01-15 21:00:00,2019-01-15 22:00:00,500,12
+215,Say No More with Tony Terry,43,2019-01-28 18:00:00,2019-01-28 03:00:00,750,27
+216,Out of the Blue with Eclectica,342,2018-12-24 19:00:00,2018-12-24 22:00:00,250,14
+217,Risky Boy with Willie Clayton,3825,2019-01-13 18:00:00,2019-01-13 02:00:00,750,87
+218,Into Wishin with Cerys Matthews,3329,2019-01-24 17:00:00,2019-01-24 02:00:00,750,4
+219,No Boundaries with Francis Dunnery,3697,2018-11-22 22:00:00,2018-11-22 01:00:00,250,75
+220,Starlight with George Robert,289,2018-12-19 22:00:00,2018-12-19 03:00:00,500,27
+221,Mystic Journey with Los Mora,1113,2018-12-03 21:00:00,2018-12-03 23:00:00,250,70
+222,Pinot Grigio with Iskra,1050,2018-11-04 17:00:00,2018-11-04 03:00:00,750,75
+223,"Uisce Beatha (water of life, pronounces Ishka Baha) with Edenbridge",1995,2018-12-01 17:00:00,2018-12-01 22:00:00,250,30
+224,American Pride with Ellie White,2142,2019-01-11 22:00:00,2019-01-11 23:00:00,250,60
+225,Wind Chaser with Finley Quaye,2673,2018-11-10 19:00:00,2018-11-10 23:00:00,250,79
+226,Brian Angel and Farhan Akhtar,3176,2018-11-14 18:00:00,2018-11-14 23:00:00,250,61
+227,The Wounded Kings and Tricky Lt45,502,2018-11-01 20:00:00,2018-11-01 22:00:00,500,54
+228,Ammbush and Floor Thirteen,3715,2019-01-03 20:00:00,2019-01-03 02:00:00,750,64
+229,Nero Di Marte and Elina Duni,4311,2018-11-07 18:00:00,2018-11-07 00:00:00,250,9
+230,Thunder Running with Colin Blunstone,1511,2018-12-17 21:00:00,2018-12-17 00:00:00,500,64
+231,WhoSez with Ad,4858,2018-11-01 18:00:00,2018-11-01 02:00:00,500,82
+232,Say No More with Formal Action,4840,2019-01-24 20:00:00,2019-01-24 03:00:00,500,69
+233,D Generation and Betzefer,3547,2019-01-22 22:00:00,2019-01-22 00:00:00,500,9
+234,Smoky the Bandit with Edilberto Cuestas,215,2018-11-25 18:00:00,2018-11-25 00:00:00,750,93
+235,Easy Karaoke Players and Niko Is,646,2018-11-20 22:00:00,2018-11-20 00:00:00,500,8
+236,Twilight's Last Gleaming with Andy Mckee,910,2019-02-07 18:00:00,2019-02-07 01:00:00,250,86
+237,The Perfect Storm with William Bolcom,3373,2018-11-29 22:00:00,2018-11-29 00:00:00,750,6
+238,Titanium with Vendetta (Ger),772,2018-11-23 19:00:00,2018-11-23 23:00:00,750,96
+239,Class Act with Hacride,642,2019-01-16 19:00:00,2019-01-16 03:00:00,250,63
+240,Extravaganza with Hawick Lau,2483,2018-11-12 19:00:00,2018-11-12 23:00:00,750,98
+241,Shadow of a Champion with The Crowley Brothers,625,2018-11-23 17:00:00,2018-11-23 23:00:00,500,68
+242,Anthony Hamilton and Edge Of Attack,373,2018-11-13 21:00:00,2018-11-13 22:00:00,750,74
+243,Dillinger and Aamitymae,1433,2019-01-01 17:00:00,2019-01-01 02:00:00,750,50
+244,Destroy and Alabama Friends,2957,2019-01-07 21:00:00,2019-01-07 22:00:00,500,36
+245,Abandon and Bennie Wallace,337,2019-01-25 17:00:00,2019-01-25 01:00:00,750,9
+246,Rabenwolf and Food Trucks,2448,2018-11-09 20:00:00,2018-11-09 02:00:00,500,29
+247,Say No More with Arno Santamaria,4622,2018-11-15 19:00:00,2018-11-15 23:00:00,500,18
+248,Stardust with Bumblebeez,3956,2018-12-17 19:00:00,2018-12-17 02:00:00,750,99
+249,American Tribute with Bobby Charles,3818,2018-12-11 19:00:00,2018-12-11 23:00:00,500,63
+250,Mystic Journey with Dan Smith,3461,2019-01-09 18:00:00,2019-01-09 02:00:00,250,64
+251,Oberon with Bernt Rosengren,4930,2018-11-02 20:00:00,2018-11-02 23:00:00,250,92
+252,Whatever with Carlos Franzetti,3977,2019-01-23 20:00:00,2019-01-23 00:00:00,500,20
+253,Crow Black Sky and Alessah,1928,2019-01-15 17:00:00,2019-01-15 23:00:00,750,62
+254,Everlasting Wish with Esta,915,2019-02-04 18:00:00,2019-02-04 00:00:00,750,71
+255,Dope and The Afro Cuban Messengers,4712,2019-01-27 21:00:00,2019-01-27 00:00:00,500,33
+256,Wendigo with Gregory Isaacs,4481,2018-12-04 18:00:00,2018-12-04 03:00:00,750,56
+257,American Tribute with Dailey & Vincent,1382,2018-12-30 19:00:00,2018-12-30 01:00:00,750,28
+258,Derek Wise and Alison Brown,705,2018-12-04 22:00:00,2018-12-04 00:00:00,750,13
+259,Dundika and Dario G,3057,2019-01-09 18:00:00,2019-01-09 22:00:00,250,89
+260,Patriot's Pride with Machinery,4438,2019-01-22 22:00:00,2019-01-22 00:00:00,750,35
+261,American Made with All Caps,3371,2018-11-29 20:00:00,2018-11-29 03:00:00,750,74
+262,Charlie Booth and Draconian,3804,2018-12-15 20:00:00,2018-12-15 22:00:00,250,98
+263,Never Again with Ghosts On The Radio,3403,2019-01-30 21:00:00,2019-01-30 01:00:00,750,4
+264,Shadow of a Champion with The Wailers,3306,2019-02-08 22:00:00,2019-02-08 02:00:00,750,44
+265,Brian Short and Conspiracy,2815,2019-01-17 18:00:00,2019-01-17 22:00:00,750,69
+266,Starlight with Rhevan,439,2018-12-17 21:00:00,2018-12-17 02:00:00,500,26
+267,Ash Wednesday with Sexbomb Girls,366,2018-11-13 17:00:00,2018-11-13 01:00:00,250,61
+268,Life's a Breeze with Colin Keenan,3236,2019-01-02 20:00:00,2019-01-02 22:00:00,500,73
+269,Dick Prall Band and B Ray,1694,2019-01-26 18:00:00,2019-01-26 00:00:00,250,27
+270,Smoky the Bandit with Georgia Stitt,1387,2019-01-11 19:00:00,2019-01-11 23:00:00,750,90
+271,New Edition with Fast Life Youngstaz,2187,2018-12-18 17:00:00,2018-12-18 02:00:00,250,21
+272,Big E (New Hights) and Ethan Hopkins,2421,2019-01-25 18:00:00,2019-01-25 02:00:00,500,3
+273,Hidden Destiny with Cadaveria,1975,2018-11-13 17:00:00,2018-11-13 01:00:00,750,7
+274,Ripple in Time with Isang Yun,757,2018-11-17 21:00:00,2018-11-17 22:00:00,750,39
+275,Never Again with Claydee,2486,2018-11-28 22:00:00,2018-11-28 23:00:00,750,69
+276,Three and Emf,4933,2018-11-27 21:00:00,2018-11-27 03:00:00,500,63
+277,Into Wishin with Dj Kane,4603,2018-11-19 18:00:00,2018-11-19 23:00:00,750,99
+278,Last Chance with Carissa S Wierd,1810,2018-11-05 20:00:00,2018-11-05 00:00:00,250,20
+279,American Dream with Ray J,1318,2018-12-27 19:00:00,2018-12-27 03:00:00,750,47
+280,Poetry in Motion with Kaos777,2350,2018-11-19 19:00:00,2018-11-19 01:00:00,500,58
+281,Divine Thought with Cami Bradley,641,2019-01-06 19:00:00,2019-01-06 01:00:00,250,67
+282,Limitless Possibilities with Mark Chesnutt,4561,2018-11-14 18:00:00,2018-11-14 03:00:00,750,88
+283,Second Wind with Drivin N Cryin,254,2019-01-23 19:00:00,2019-01-23 22:00:00,750,54
+284,My Escort with Azaghal,4926,2019-02-05 22:00:00,2019-02-05 00:00:00,750,83
+285,Anthony Callea and Go West,65,2019-01-06 18:00:00,2019-01-06 03:00:00,750,54
+286,Wind Chaser with Stromae,3347,2018-11-12 18:00:00,2018-11-12 00:00:00,750,64
+287,Perfection in a Glimpse with Jess Conrad,1226,2019-01-12 17:00:00,2019-01-12 00:00:00,750,89
+288,Tillakay [Kay for short] with Abel Miller,1797,2019-01-01 19:00:00,2019-01-01 00:00:00,750,4
+289,Placido with Aligned,3128,2018-12-19 17:00:00,2018-12-19 02:00:00,250,46
+290,Count the Stars with Cashman,91,2018-12-05 22:00:00,2018-12-05 23:00:00,500,82
+291,Malrun and Asne Valland Nordli,821,2019-01-20 20:00:00,2019-01-20 22:00:00,250,17
+292,Freddie Jackson and Christine Jeffrey,4198,2018-11-29 18:00:00,2018-11-29 00:00:00,500,71
+293,Man About Town with Sumy,1019,2019-01-07 17:00:00,2019-01-07 22:00:00,500,98
+294,Patriot's Glory with Booker Ervin,4079,2019-01-24 18:00:00,2019-01-24 03:00:00,750,5
+295,Gold 1 and Trio Mediaeval,1648,2019-01-31 21:00:00,2019-01-31 03:00:00,750,100
+296,Patriotic Hero with Erin Reagan,4809,2018-11-30 22:00:00,2018-11-30 03:00:00,750,35
+297,Titanium with For The Wicked,3050,2019-01-27 21:00:00,2019-01-27 02:00:00,250,56
+298,Cherrybomb with Demarco,2718,2018-12-08 21:00:00,2018-12-08 22:00:00,750,40
+299,Second Wind with Lisa Fischer,2469,2018-12-05 21:00:00,2018-12-05 23:00:00,250,4
+300,Lars Goran Carlsson and Emily Hearn,4143,2019-02-08 21:00:00,2019-02-08 22:00:00,750,79
+301,Ripple in Time with N!Codemus,567,2019-01-05 20:00:00,2019-01-05 23:00:00,500,41
+302,Beth Ditto and Lola Falana,1704,2018-12-03 21:00:00,2018-12-03 03:00:00,250,1
+303,Placido with Brown James,1844,2018-11-30 22:00:00,2018-11-30 02:00:00,500,84
+304,Into Wishin with Razor Of Occam,1872,2019-01-12 22:00:00,2019-01-12 22:00:00,250,45
+305,George Mcclure and Creepoid,2228,2019-01-22 17:00:00,2019-01-22 00:00:00,750,10
+306,American Hero with Hammer Horde,1833,2019-01-25 22:00:00,2019-01-25 01:00:00,750,44
+307,Angelina and Black Star Riders,2767,2018-11-30 22:00:00,2018-11-30 22:00:00,250,12
+308,Patriot Dream with Against The Current,347,2018-12-04 17:00:00,2018-12-04 02:00:00,750,35
+309,Twilight's Last Gleaming with Alex Alexander,1024,2018-11-20 21:00:00,2018-11-20 22:00:00,500,63
+310,American Glory with Face To Face,3252,2019-01-19 19:00:00,2019-01-19 22:00:00,500,42
+311,Cherrybomb with Eddy Herrera,2786,2019-01-30 20:00:00,2019-01-30 23:00:00,750,27
+312,Last Chance with Ariez Onasis,1243,2018-12-04 17:00:00,2018-12-04 01:00:00,500,91
+313,American Glory with Kitty Rillo,770,2018-11-25 18:00:00,2018-11-25 01:00:00,500,48
+314,KaiRong (Glorious Victory) with Chris Gaines,3952,2019-01-05 20:00:00,2019-01-05 03:00:00,750,63
+315,100 Degrees with Cryptkicker,338,2019-01-07 19:00:00,2019-01-07 02:00:00,500,94
+316,Erkan Gduan Leryduan Z and Heidi Feek,2309,2019-01-23 17:00:00,2019-01-23 00:00:00,750,96
+317,Into Wishin with Fanci,2741,2018-12-01 19:00:00,2018-12-01 01:00:00,750,96
+318,New Hope with Backstabbers Inc,958,2019-02-04 19:00:00,2019-02-04 02:00:00,250,42
+319,Wendigo with Christopher Barickman,3872,2018-12-19 20:00:00,2018-12-19 23:00:00,250,83
+320,Limited Edition with Gilang Rizky,1201,2019-01-03 20:00:00,2019-01-03 22:00:00,500,17
+321,Travel Through Time with The Killing Condition,3158,2018-11-09 17:00:00,2018-11-09 22:00:00,250,78
+322,Thunder Running with Golfam Khayam,4451,2018-11-14 20:00:00,2018-11-14 02:00:00,250,99
+323,Encantado with Hord,3955,2019-02-01 20:00:00,2019-02-01 22:00:00,500,49
+324,Scarpoint and Ron Tipping,1858,2018-12-16 22:00:00,2018-12-16 00:00:00,500,64
+325,Ring Of Fire with A2J,2645,2018-11-03 19:00:00,2018-11-03 03:00:00,750,44
+326,Gun Metal Blues with Balancing Act,2439,2018-12-19 19:00:00,2018-12-19 23:00:00,500,64
+327,Genitallica and Incursed,1908,2018-12-03 18:00:00,2018-12-03 23:00:00,750,45
+328,Erick Morillo and Kenn Nardi,3135,2019-01-01 18:00:00,2019-01-01 01:00:00,500,35
+329,Encantado with Jose Maria Napoleon,4463,2018-12-10 18:00:00,2018-12-10 02:00:00,500,22
+330,Star Image with Bart Herman,881,2018-11-28 21:00:00,2018-11-28 03:00:00,250,27
+331,Great Kat and Bria Valente,3371,2018-11-02 17:00:00,2018-11-02 00:00:00,500,100
+332,Limited Edition with Badger,2823,2019-01-02 20:00:00,2019-01-02 03:00:00,500,2
+333,Highwayman with Dol Theeta,2777,2019-01-11 18:00:00,2019-01-11 23:00:00,500,34
+334,Just Imagine with Linda Mccartney,3917,2018-12-19 17:00:00,2018-12-19 01:00:00,250,96
+335,New Hope with Frankie Valli The Four Seasons,1577,2018-12-21 17:00:00,2018-12-21 01:00:00,250,40
+336,Wolves Den and Debi Nova,4267,2018-11-15 22:00:00,2018-11-15 00:00:00,250,34
+337,Out of the Blue with Los Reyes,3517,2018-12-30 19:00:00,2018-12-30 00:00:00,500,1
+338,Mission Possible with Captain Stubing,1989,2019-01-23 20:00:00,2019-01-23 00:00:00,250,41
+339,Boothroyd and Brick,3552,2019-01-10 22:00:00,2019-01-10 00:00:00,750,29
+340,Special Event with Cedarmont Kids,3123,2019-01-27 19:00:00,2019-01-27 01:00:00,750,9
+341,Wendigo with Candice Alley,10,2018-12-18 21:00:00,2018-12-18 03:00:00,250,67
+342,Dominican Sisters Of Mary and Christian Wunderlich,1978,2019-02-06 18:00:00,2019-02-06 01:00:00,250,12
+343,Metalium and Darylese Shook,4405,2018-12-20 21:00:00,2018-12-20 00:00:00,250,67
+344,Kurt Lykes and Billy Rose,3265,2018-12-08 21:00:00,2018-12-08 02:00:00,750,13
+345,Lost in Thought with Five Times August,4041,2019-01-26 20:00:00,2019-01-26 23:00:00,500,59
+346,Starstruck with Floetry,2272,2019-01-07 20:00:00,2019-01-07 23:00:00,500,39
+347,Brilliant Disguise with Fernando Ortega,4694,2019-01-25 19:00:00,2019-01-25 22:00:00,500,71
+348,The Stitches and Claude Kelly Muslii Gg,3427,2019-01-20 19:00:00,2019-01-20 23:00:00,750,74
+349,American Glory with Johanna Vahermagi,524,2018-11-27 17:00:00,2018-11-27 23:00:00,500,72
+350,Alison James and Deadborn,1729,2018-11-09 17:00:00,2018-11-09 03:00:00,500,22
+351,Last Hope with Gloria Jean,3685,2018-11-12 19:00:00,2018-11-12 22:00:00,500,25
+352,Arditti Quartet: Irvine Arditti and Thomas Goodlunas,2477,2018-12-30 22:00:00,2018-12-30 01:00:00,250,19
+353,Wish Away with Adult Jazz,665,2018-11-26 17:00:00,2018-11-26 23:00:00,250,83
+354,Oberon with Claudia Brduan Cken,3419,2018-12-11 19:00:00,2018-12-11 23:00:00,250,17
+355,F I R and Richard Locker,1492,2019-01-18 22:00:00,2019-01-18 01:00:00,750,99
+356,Travel Through Time with Vanessa Britez,1024,2018-11-24 17:00:00,2018-11-24 00:00:00,250,40
+357,Jose Alfredo Jimenez and Ana Victoria,4679,2019-01-02 17:00:00,2019-01-02 23:00:00,500,60
+358,Everlasting Wish with David Ramirez,3718,2019-01-27 18:00:00,2019-01-27 22:00:00,750,35
+359,Second Wind with Charles Brackeen,3048,2018-12-24 20:00:00,2018-12-24 23:00:00,250,98
+360,Just Imagine with Cantrell Jerry,2216,2018-11-08 18:00:00,2018-11-08 00:00:00,250,33
+361,Biagio Antonacci and Chris Murray,3517,2018-12-03 18:00:00,2018-12-03 23:00:00,750,30
+362,Patriot's Pride with 3Bol,3016,2018-12-02 20:00:00,2018-12-02 22:00:00,500,2
+363,A Stroke of Luck with Audio Karate,1074,2019-01-20 17:00:00,2019-01-20 00:00:00,250,11
+364,Wind Racer with Eager Seas,850,2018-12-02 21:00:00,2018-12-02 03:00:00,750,64
+365,Gord Bamford and Juan Carmona,699,2018-12-24 20:00:00,2018-12-24 03:00:00,250,26
+366,100 Degrees with Ajs Nigrutin,1920,2019-02-03 22:00:00,2019-02-03 01:00:00,750,85
+367,Dell Harris and Thy Light,995,2018-12-28 20:00:00,2018-12-28 03:00:00,500,78
+368,Caradoc with We The Kings,4277,2019-01-15 18:00:00,2019-01-15 01:00:00,750,97
+369,American Made with Kilmara,4480,2019-01-04 18:00:00,2019-01-04 01:00:00,250,58
+370,Dat Politics and David Vendetta,27,2018-11-17 22:00:00,2018-11-17 23:00:00,500,64
+371,Amanda Somerville and Architekt,89,2019-01-26 21:00:00,2019-01-26 03:00:00,750,20
+372,Count the Stars with Altaria,2945,2019-01-11 17:00:00,2019-01-11 23:00:00,500,66
+373,Seraphim and Ajattara,2555,2019-01-04 22:00:00,2019-01-04 03:00:00,750,19
+374,Urban Legend with Helen Boudreaux,1122,2018-11-12 17:00:00,2018-11-12 00:00:00,500,28
+375,Dream Chaser with Gunter Lenz,2384,2019-02-02 19:00:00,2019-02-02 02:00:00,250,91
+376,Gun Metal with Claudia Phillips,741,2018-12-10 19:00:00,2018-12-10 03:00:00,250,92
+377,Out of the Mist with Cartoons,4680,2018-11-08 22:00:00,2018-11-08 01:00:00,500,85
+378,Wendigo with Don Maclean,3661,2018-12-17 20:00:00,2018-12-17 22:00:00,500,11
+379,New Hope with Brother S Keeper,2028,2019-02-02 18:00:00,2019-02-02 01:00:00,500,72
+380,Kamikaze's Plunge with Da T R U T H,118,2018-12-15 22:00:00,2018-12-15 22:00:00,500,71
+381,Exploited and Henrik Gümoes,2601,2019-01-23 21:00:00,2019-01-23 00:00:00,750,80
+382,Last Chance with Anjou,190,2018-12-22 21:00:00,2018-12-22 00:00:00,500,25
+383,Josh Ritter and Naya Rivera,4403,2019-02-06 19:00:00,2019-02-06 22:00:00,250,54
+384,Tim Cansfield and Alex Goot,1631,2018-11-06 21:00:00,2018-11-06 03:00:00,750,83
+385,American Glory with Darwin S Waiting Room,1871,2019-01-10 22:00:00,2019-01-10 02:00:00,750,31
+386,Black Raven with Felix Cartal,778,2019-01-29 17:00:00,2019-01-29 23:00:00,250,21
+387,A Stroke of Luck with The Resistance,865,2018-12-06 20:00:00,2018-12-06 00:00:00,750,50
+388,Urban Legend with Andreas,4376,2019-01-25 17:00:00,2019-01-25 23:00:00,500,63
+389,The Bells and Crazy Loop,2720,2018-12-27 17:00:00,2018-12-27 03:00:00,250,13
+390,Royal by Blood with Botany,3493,2018-11-14 17:00:00,2018-11-14 23:00:00,750,20
+391,Great Googly Moogle with Salvatore Maiore,4903,2018-12-05 19:00:00,2018-12-05 00:00:00,500,12
+392,Mercury Rising with Dionysus,1601,2018-12-03 20:00:00,2018-12-03 00:00:00,750,40
+393,Out of the Blue with Amsterdam Sinfonietta,4472,2018-11-25 17:00:00,2018-11-25 22:00:00,250,99
+394,Crystal Rose and Martin Schutz,3948,2018-11-02 22:00:00,2018-11-02 22:00:00,750,3
+395,Great Googly Moogle with Agent Orange,2855,2019-02-05 20:00:00,2019-02-05 03:00:00,250,23
+396,Encantado with Ages And Ages,1775,2018-12-06 20:00:00,2018-12-06 01:00:00,500,59
+397,Cairo and Angels And Airwaves,2966,2018-11-23 22:00:00,2018-11-23 01:00:00,500,68
+398,Bold and Brash with Amanda,1416,2019-02-02 22:00:00,2019-02-02 03:00:00,500,11
+399,American Pride with Aerial,4379,2019-01-02 19:00:00,2019-01-02 01:00:00,250,39
+400,Patriotic Spirit with Billy Sherwood,1255,2019-01-31 18:00:00,2019-01-31 02:00:00,500,20
+401,Filii Nigrantium Infernalium and Demonic Resurrection,310,2018-11-01 21:00:00,2018-11-01 03:00:00,750,71
+402,"Hello, Goodbye with Wade Bowen",3354,2018-12-12 17:00:00,2018-12-12 03:00:00,250,33
+403,Jiri Strohner and Brienn Perry,3080,2018-11-13 20:00:00,2018-11-13 02:00:00,250,65
+404,Dream Chaser with Domiflow Y Lender,362,2018-11-01 22:00:00,2018-11-01 23:00:00,750,94
+405,Dare to Compare with Brand New Sin,2395,2019-01-22 18:00:00,2019-01-22 22:00:00,750,42
+406,Wind Chaser with Dullko,2135,2018-11-10 17:00:00,2018-11-10 00:00:00,250,33
+407,Cupiditas(Desire) with 4Him,1608,2018-11-11 19:00:00,2018-11-11 00:00:00,750,82
+408,My Escort with Eshnatic,4186,2018-12-28 17:00:00,2018-12-28 23:00:00,500,84
+409,Royal by Blood with Actinism,1768,2018-12-01 22:00:00,2018-12-01 22:00:00,250,92
+410,Class Act with Bathory,977,2018-11-17 17:00:00,2018-11-17 22:00:00,500,26
+411,Brilliant Disguise with Antonis Antypas,3904,2018-12-16 21:00:00,2018-12-16 01:00:00,250,19
+412,Connor De Borhegyi and Sammi Smith,2391,2019-01-15 19:00:00,2019-01-15 01:00:00,750,73
+413,Chocquibtown and Kittie,2806,2018-12-10 17:00:00,2018-12-10 00:00:00,250,94
+414,Alice Coltrane and Benny Benassi,1498,2018-12-29 20:00:00,2018-12-29 22:00:00,750,12
+415,Vassilis Dertilis and Roberto Ottaviano,2956,2019-01-02 21:00:00,2019-01-02 01:00:00,750,93
+416,MoBe with Gifted But Twisted,3782,2019-01-01 20:00:00,2019-01-01 22:00:00,500,16
+417,Diana Vickers and Ace Shocka,3625,2019-01-04 22:00:00,2019-01-04 01:00:00,250,43
+418,Inspiration with Gerry & The Pacemakers,4230,2018-11-06 18:00:00,2018-11-06 00:00:00,750,14
+419,Black Lightning with Today I Caught The Plague,3773,2018-12-13 21:00:00,2018-12-13 22:00:00,750,42
+420,The Fleshtones and Agent Orange,4838,2018-12-22 18:00:00,2018-12-22 22:00:00,250,58
+421,City Of Caterpillar and Bobby Previte,582,2018-11-21 17:00:00,2018-11-21 03:00:00,750,96
+422,Royal by Blood with Elder,2605,2019-01-24 21:00:00,2019-01-24 00:00:00,500,64
+423,American Pride with Jason Mraz,2662,2018-11-15 18:00:00,2018-11-15 23:00:00,500,30
+424,American Dream with Gary Portnoy,3516,2018-12-03 21:00:00,2018-12-03 00:00:00,500,46
+425,Garrett Gue and Anneli Marian Drecker,1579,2018-12-23 17:00:00,2018-12-23 02:00:00,500,40
+426,Risky Boy with Capital Cities,3847,2019-02-05 17:00:00,2019-02-05 22:00:00,250,86
+427,Thunder Running with The Country Dance Kings,2412,2019-02-07 18:00:00,2019-02-07 03:00:00,500,60
+428,Out of the Blue with Chris Cohen,3566,2018-12-03 20:00:00,2018-12-03 22:00:00,250,64
+429,Dark Millenium and Eclectica,1062,2019-01-10 20:00:00,2019-01-10 22:00:00,500,99
+430,A Stroke of Luck with Wolfgang Petry,227,2018-12-22 21:00:00,2018-12-22 02:00:00,500,44
+431,Wind Chaser with Halsey,2863,2018-11-21 22:00:00,2018-11-21 03:00:00,250,55
+432,Blackcherry Blues with Ginger Sling,3948,2018-12-24 17:00:00,2018-12-24 00:00:00,500,62
+433,One Stormy Night with Masterplan,2426,2018-12-06 17:00:00,2018-12-06 01:00:00,750,41
+434,Starstruck with Ilusion 6,110,2018-12-26 18:00:00,2018-12-26 02:00:00,750,2
+435,Limited Edition with Denny Zeitlin,2125,2019-01-30 17:00:00,2019-01-30 00:00:00,500,5
+436,Titanium with Hartman'S Heartbreakers,468,2019-01-05 20:00:00,2019-01-05 00:00:00,750,32
+437,Wendigo with Ziggy Marley,4599,2018-11-14 21:00:00,2018-11-14 22:00:00,750,59
+438,Titanium with Bigger Fish Than Guns,41,2018-11-28 17:00:00,2018-11-28 22:00:00,500,93
+439,Whatever with Carrie Smith,3462,2019-01-19 19:00:00,2019-01-19 01:00:00,250,55
+440,Fortune and Glory with Uncle Lucius,3758,2018-12-26 22:00:00,2018-12-26 03:00:00,750,69
+441,The Perfect Storm with Up Dharma Down,2358,2018-11-14 21:00:00,2018-11-14 03:00:00,750,96
+442,Lost in Thought with Alex Adair,3737,2018-11-14 21:00:00,2018-11-14 03:00:00,250,59
+443,Robert Delong and King Crimson,4308,2018-12-30 17:00:00,2018-12-30 01:00:00,250,90
+444,Class Act with Thomas Bogdan,2820,2018-11-09 21:00:00,2018-11-09 22:00:00,750,77
+445,Josh Gracin and Napalm Strike,4216,2019-01-01 18:00:00,2019-01-01 03:00:00,500,94
+446,Risky Boy with Chano Domanguez,1205,2018-11-22 18:00:00,2018-11-22 00:00:00,750,60
+447,Brilliant Disguise with Carnivore,4706,2019-01-22 21:00:00,2019-01-22 01:00:00,500,82
+448,Mission Possible with Dust Bolt,4173,2019-01-02 17:00:00,2019-01-02 01:00:00,250,5
+449,Erkan Petekkaya and Pandora,1660,2019-01-26 18:00:00,2019-01-26 03:00:00,250,81
+450,Royal by Blood with Camo,1897,2019-01-19 19:00:00,2019-01-19 03:00:00,750,42
+451,"Uisce Beatha (water of life, pronounces Ishka Baha) with Children S Classics",4512,2018-12-10 18:00:00,2018-12-10 03:00:00,750,74
+452,One Stormy Night with David Correy,3650,2018-11-14 21:00:00,2018-11-14 23:00:00,750,33
+453,Bold and Brash with Bob Edmund,2774,2018-11-22 18:00:00,2018-11-22 03:00:00,250,100
+454,Star Image with Giorgia Fumanti,3046,2019-02-07 21:00:00,2019-02-07 03:00:00,750,55
+455,Second Chance with Cleric,806,2018-12-19 17:00:00,2018-12-19 01:00:00,500,92
+456,The Sky's the Limit with Benjamin Britten,2422,2018-12-21 19:00:00,2018-12-21 00:00:00,250,44
+457,Limited Edition with Dan Desnoyers,1049,2018-12-07 21:00:00,2018-12-07 00:00:00,750,46
+458,Michael Mcdermott and Anastacia,1369,2018-12-18 18:00:00,2018-12-18 03:00:00,250,86
+459,Placido with Aggro Santos,1360,2018-11-03 21:00:00,2018-11-03 00:00:00,250,40
+460,Dyro and The Eraserheads,627,2019-01-11 20:00:00,2019-01-11 00:00:00,750,50
+461,Smoky the Bandit with Gen Hoshino,2262,2018-12-12 20:00:00,2018-12-12 00:00:00,250,68
+462,Special Event with Whitney Duncan,2977,2018-12-09 22:00:00,2018-12-09 00:00:00,750,26
+463,Hopeful Wishing with Evelina Young,3178,2018-12-16 21:00:00,2018-12-16 03:00:00,500,64
+464,"Hello, Goodbye with Guillaume De Machaut",1367,2018-11-28 19:00:00,2018-11-28 02:00:00,250,35
+465,Broken Twin and Tank And The Bangas,592,2018-12-16 22:00:00,2018-12-16 22:00:00,500,12
+466,Divine Thought with Andrass Moliona,1382,2018-12-15 20:00:00,2018-12-15 03:00:00,250,60
+467,One Stormy Night with Free Cake For Every Creature,1428,2018-12-23 20:00:00,2018-12-23 23:00:00,500,65
+468,"Uisce Beatha (water of life, pronounces Ishka Baha) with Laurianne Fiorentino",796,2018-12-13 20:00:00,2018-12-13 22:00:00,750,28
+469,Cemetary and Floating Points,2767,2019-01-20 19:00:00,2019-01-20 02:00:00,750,74
+470,Patriot Dream with Alfred Zimmerlin,2588,2018-11-20 17:00:00,2018-11-20 23:00:00,250,44
+471,Smoky the Bandit with Deep,1129,2019-01-23 21:00:00,2019-01-23 02:00:00,250,68
+472,Emmanuel Jnr and Ana Belan,713,2018-12-18 18:00:00,2018-12-18 03:00:00,500,92
+473,One Stormy Night with Onmyo Za,3911,2019-01-04 20:00:00,2019-01-04 01:00:00,750,45
+474,Marc Muellbauer and Crash,1214,2018-12-03 22:00:00,2018-12-03 02:00:00,750,15
+475,After Hours with Boris Yoffe,2949,2018-11-15 19:00:00,2018-11-15 23:00:00,500,35
+476,Thunder Running with Azul Violeta,432,2018-11-29 17:00:00,2018-11-29 02:00:00,250,14
+477,Heaven Sent with Graveyard Apostles,3989,2018-11-27 20:00:00,2018-11-27 03:00:00,750,33
+478,Class Act with Breakbeat Era,1216,2018-11-25 20:00:00,2018-11-25 02:00:00,750,55
+479,Dare to Compare with Goloka,4052,2019-01-10 22:00:00,2019-01-10 23:00:00,500,26
+480,Armaan Malik and Cosmic Railroad,3137,2018-12-11 21:00:00,2018-12-11 23:00:00,500,44
+481,American Tribute with Chester Thompson,3913,2018-12-24 18:00:00,2018-12-24 01:00:00,500,23
+482,Blackthorn and Go Audio,2375,2018-12-04 21:00:00,2018-12-04 01:00:00,750,93
+483,Wind Chaser with Circle Takes The Square,2026,2019-01-20 21:00:00,2019-01-20 23:00:00,250,82
+484,Just Imagine with Dina Garipova,379,2018-12-17 22:00:00,2018-12-17 23:00:00,250,84
+485,Arno Rush and Ebony Bones,4698,2018-12-28 18:00:00,2018-12-28 00:00:00,250,57
+486,100% Teddy Bear with Brendan Morris,4310,2018-11-20 22:00:00,2018-11-20 22:00:00,500,80
+487,Last Chance with The Capsules,2476,2018-11-26 18:00:00,2018-11-26 23:00:00,750,60
+488,Domenico Pellegrini and Collett,113,2018-12-12 19:00:00,2018-12-12 00:00:00,250,15
+489,Bread Of Stone and Diane Cluck,2719,2018-11-12 22:00:00,2018-11-12 02:00:00,500,65
+490,King's Ransom with Anne Hathaway,2862,2018-12-05 18:00:00,2018-12-05 22:00:00,750,55
+491,WhoSez with Yonathan Avishai,1948,2019-01-15 20:00:00,2019-01-15 00:00:00,750,39
+492,Virtue! and Karthik,3096,2019-02-06 18:00:00,2019-02-06 03:00:00,250,62
+493,American Made with Gd Top,2262,2019-01-29 18:00:00,2019-01-29 03:00:00,500,27
+494,Man About Town with Clancy Brothers Tommy Makem,3276,2018-12-23 19:00:00,2018-12-23 00:00:00,750,77
+495,100 Degrees with Crosses,334,2019-01-29 21:00:00,2019-01-29 22:00:00,250,41
+496,Daddy Yankee and Wendy Newcomer,1270,2018-12-27 22:00:00,2018-12-27 01:00:00,750,36
+497,Stan Clarke and Laura Marling,27,2019-01-06 19:00:00,2019-01-06 00:00:00,250,24
+498,Black Raven with Lifelover,4215,2019-01-21 20:00:00,2019-01-21 22:00:00,250,38
+499,Brilliant Disguise with Cinta Laura,1272,2018-12-01 19:00:00,2018-12-01 03:00:00,500,65

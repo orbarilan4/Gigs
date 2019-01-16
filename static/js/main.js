@@ -338,8 +338,23 @@ $( function() {
     $('.prev').click(prev);
     $('.next').click(next);
     isLoggedIn();
-    hot();
+    //hot();
     buy();
+
+    if ($('.mytickets').length > 0){
+        $.ajax({
+        method: "POST",
+        url: "/my_tickets",
+        dataType: "json"
+    }).done(function( msg ) {
+
+        var template = $.templates("#theTmpl");
+        var htmlOutput = template.render(msg);
+        $(".mytickets tbody").append(htmlOutput);
+
+
+    });
+    }
 
     $('.free_search').click(function(){
         location.href = '/find?concert_id=' + concert_id;
@@ -894,10 +909,10 @@ function update_price(){
 
 function buyTicket(){
 
-    quantity = $('#username').val()
-    catagory_id = 1
-    concert_id = 1
-    user_id = 1
+    quantity = $('#quantity').val()
+    catagory_id = $('#sell').val()
+    concert_id = $('#concert_id').val()
+
     $.ajax({
         method: "GET",
         url: "/buy_tickets",
@@ -905,11 +920,13 @@ function buyTicket(){
                 catagory_id: catagory_id,
                  concert_id: concert_id}
     }).done(function( msg ) {
-        if (msg > 1){
-            $('.alert').html('<b>An error occurred.</b> Please try again.').removeClass('d-none');
+        if (msg > 0){
+            $('#exampleModalCenter .modal-body').html('<b>Done!</b> Enjoy the concert :)');
+            $('#exampleModalCenter .modal-footer').remove();
         }
         else{
-            $('.alert').html('<b>This username is taken.</b> Please try another.').removeClass('d-none');
+            $('#exampleModalCenter .modal-body').html('<b>An error occurred.</b> Please try again later.');
+            $('#exampleModalCenter .modal-footer').remove();
         }
         })
 
@@ -966,6 +983,7 @@ function search(){
             j = 0;
             curc = msg.concerts[j];
             curcid = msg.concerts[j].id;
+            msg.concerts[j].artists_links = '';
             for (i=0; i < arts.length;i++){
                 cid = arts[i].concert_id;
                 while (cid > curcid){

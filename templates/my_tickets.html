@@ -4,51 +4,34 @@
 <div class="site-section bg-light">
 
 
-<div class="container myresults pt-5">
+<div class="container mytickets pt-5">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Concert name</th>
+      <th scope="col"># of tickets</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+
+  </tbody>
+</table>
+</div>
+
 
 
 </div>
-        <div class="row mt-5">
-          <div class="col-md-12 text-center">
-            <div class="site-block-27">
-              <ul>
-                <li><a href="#" class="prev d-none"><i class="icon-keyboard_arrow_left h5"></i> Prev</a></li>
-                  {% if records|length > 10 %}
-                <li><a href="#" class="next"><i class="icon-keyboard_arrow_right h5"></i> Next</a></li>
-                  {% endif %}
-              </ul>
-            </div>
-          </div>
-        </div>
 
-
-      </div>
-    </div>
 
 
 <script id="theTmpl" type="text/x-jsrender">
 
-<div class="row result">
-         <div class="col-md-12">
-
-           <div class="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
-
-              <div class="mb-4 mb-md-0 mr-5">
-               <div class="job-post-item-header d-flex align-items-center">
-                <input type="hidden" value="<%:id%>" />
-                 <h2 class="mr-3 text-black h4"><%:name%></h2>
-                 <div class="badge-wrap">
-                  <!--<span class="bg-primary text-white badge py-2 px-4">Primary</span>-->
-                 </div>
-               </div>
-
-
-              </div>
-
-           </div>
-
-         </div>
-        </div>
+<tr>
+  <td><%:name%></td>
+  <td><%:quantity%></td>
+  <td><a href="/find?concert_id=<%:id%>" class="btn btn-outline-primary">more details</a></td>
+</tr>
 
 </script>
 

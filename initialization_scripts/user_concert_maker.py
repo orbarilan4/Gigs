@@ -7,18 +7,16 @@ df2 = pd.read_csv('../static/datasets/created/users.csv')
 users = list(df2["id"])
 concerts = list(df1['id'])
 concert_capacity = list(df1["capacity"])
+concert_left_ticket = list(df1["tickets_left"])
 userLen = len(users)
 concertLen = len(concerts)
 
 df = pd.DataFrame(columns=['user_id', 'like' ,'quantity','concert_id'])
-optional_capacity = [250,500,750]
-capacityLen = len(optional_capacity)
 
 index = 0
-
+concertIdx = 0
 for concert in concerts:
-    capacity = optional_capacity[random.randint(0,capacityLen-1)]
-    participants = capacity - concert_capacity[concert-1]
+    participants = concert_capacity[concertIdx] - concert_left_ticket[concert-1]
     random.shuffle(users)
     idx = 0
     while(participants > 0):
@@ -48,6 +46,7 @@ for concert in concerts:
 
             if(idx >= userLen):
                 idx = 0
+    concertIdx +=1
 df.to_csv("../static/datasets/created/user_concert.csv",sep=",",header=True, index=False)
 print("done")
 

@@ -114,8 +114,14 @@ def personal_tickets():
     if session['logged_in'] is False:
         return home()
 
-    records = db.getPersonalTikets(session['user_id'])
-    return render_template('my_tickets.html', orders=False, records=records)
+    return render_template('my_tickets.html', orders=False)
+
+@app.route("/my_tickets", methods=['GET', 'POST'])
+def my_tickets():
+    if session['logged_in'] is False:
+        return home()
+
+    return db.getPersonalTikets(session['user_id'])
 
 
 # ================================
@@ -132,77 +138,35 @@ def analytics():
         age_limit = list(range(18,30))
         session['country_input_exists'] = None
         artist_and_concert_percent_list = None
-        if 1==1:#request.method == 'POST' and form.validate():
-            # cur = get_db().cursor()
-            # colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA", "#ABCDEF", "#DDDDDD", "#ABCABC"]
-            # # Checking if the entered country is exist
-            # cur.execute("SELECT country.name FROM country WHERE country.name = %s", form.country.data)
-            # country = cur.fetchall()
-            # if len(country) == 0:
-            #     #flash(f'The entered country does not exist!', 'error')
-            #     return redirect(url_for('analytics'))
-            # else:
-            #     session['country_input_exists'] = form.country.data
-                # Searching for top-10 host cities in selected (by user) country
-                # cur.execute("SELECT city.name,counter.job FROM city AS city, "
-                #             "(SELECT concert.city_id,count(*) AS 'job' FROM concert, city, country "
-                #             "WHERE concert.city_id = city.id AND city.country_id = country.id "
-                #             "AND country.country.name = COALESCE(%s,country.country.name) "
-                #             "GROUP BY concert.city_id "
-                #             "ORDER BY job DESC LIMIT 10) AS counter "
-                #             "WHERE counter.city_id = city.id", form.country.data)
-                # freq_city = np.array(list(cur.fetchall()), dtype=np.dtype('object,int'))
-                #
-                # # Searching for top-10 hosted artists in selected (by user) country
-                # cur.execute("SELECT artist.name,counter.job FROM artist AS artist, "
-                #             "(SELECT concert.artist_id,count(*) AS 'job' FROM concert, city, country "
-                #             "WHERE concert.city_id = city.id AND city.country_id = country.id "
-                #             "AND country.country.name = COALESCE(%s,country.country.name) "
-                #             "GROUP BY concert.artist_id "
-                #             "ORDER BY job DESC LIMIT 10) AS counter "
-                #             "WHERE counter.artist_id = artist.id", form.country.data)
-                # freq_artist = np.array(list(cur.fetchall()), dtype=np.dtype('object,int'))
-                #
-                # # Age limit distribution in selected (by user) country
-                # cur.execute("SELECT concert.age_limit,count(*) AS 'job' FROM concert, city, country "
-                #             "WHERE concert.city_id = city.id AND city.country_id = country.id "
-                #             "AND country.country.name = COALESCE(%s,country.country.name) "
-                #             "GROUP BY concert.age_limit ORDER BY concert.age_limit LIMIT 12", form.country.data)
-                # freq_age_limit = np.array(list(cur.fetchall()), dtype=np.dtype('int,int'))
-                #
-                # return render_template('analytics.html', form=form,gigs_count=sum(freq_age_limit['f1']),
-                #                        set=[zip(freq_city['f1'], list(freq_city['f0']), colors),
-                #                             zip(freq_artist['f1'], list(freq_artist['f0']), colors)],
-                #                        values=freq_age_limit['f1'],labels=freq_age_limit['f0'])
-                number_concerts_per_artist = db.analytics_get_concert_number_per_artist()
-                number_concerts_per_genre = db.analytics_get_concert_number_per_genre()
-                analytics_get_concert_number_per_genre_per_month = db.analytics_get_concert_number_per_genre_per_month()
-                analytics_get_capacity_percent_per_artist = db.analytics_get_capacity_percent_per_artist()
-                analytics_get_capacity_percent_per_concert_per_artist = db.analytics_get_capacity_percent_per_concert_per_artist()
-                artist_and_concert_percent_list = dict()
 
-                for item in analytics_get_capacity_percent_per_concert_per_artist:
-                    # artist_concerts = dict()
-                    artist_concerts = dict()
-                    artist_concerts.update({item[2]: item[5]})
-                    if item[0] in artist_and_concert_percent_list:
-                        artist_and_concert_percent_list[item[0]].update(artist_concerts)
-                    else:
-                        artist_and_concert_percent_list.update({item[0]: artist_concerts})
-                artist_and_concert_percent_list2 = dict()
-                for the_key, the_value in artist_and_concert_percent_list.items():
-                    if the_value.items().__len__()>1:
-                        artist_and_concert_percent_list2.update({the_key:the_value})
-                return render_template('analytics.html', form=form, gigs_count=0,
-                                       number_concerts=number_concerts_per_artist,
-                                       number_concerts_per_genre=number_concerts_per_genre,
-                                       analytics_get_concert_number_per_genre_per_month=analytics_get_concert_number_per_genre_per_month,
-                                       analytics_get_capacity_percent_per_artist=analytics_get_capacity_percent_per_artist,
-                                       analytics_get_capacity_percent_per_concert_per_artist=analytics_get_capacity_percent_per_concert_per_artist,
-                                       artist_and_concert_percent_list = artist_and_concert_percent_list2)
+        number_concerts_per_artist = db.analytics_get_concert_number_per_artist()
+        number_concerts_per_genre = db.analytics_get_concert_number_per_genre()
+        analytics_get_concert_number_per_genre_per_month = db.analytics_get_concert_number_per_genre_per_month()
+        analytics_get_capacity_percent_per_artist = db.analytics_get_capacity_percent_per_artist()
+        analytics_get_capacity_percent_per_concert_per_artist = db.analytics_get_capacity_percent_per_concert_per_artist()
+        artist_and_concert_percent_list = dict()
+
+        for item in analytics_get_capacity_percent_per_concert_per_artist:
+            # artist_concerts = dict()
+            artist_concerts = dict()
+            artist_concerts.update({item[2]: item[5]})
+            if item[0] in artist_and_concert_percent_list:
+                artist_and_concert_percent_list[item[0]].update(artist_concerts)
+            else:
+                artist_and_concert_percent_list.update({item[0]: artist_concerts})
+        artist_and_concert_percent_list2 = dict()
+        for the_key, the_value in artist_and_concert_percent_list.items():
+            if the_value.items().__len__()>1:
+                artist_and_concert_percent_list2.update({the_key:the_value})
+        return render_template('analytics.html', form=form, gigs_count=0,
+                               number_concerts=number_concerts_per_artist,
+                               number_concerts_per_genre=number_concerts_per_genre,
+                               analytics_get_concert_number_per_genre_per_month=analytics_get_concert_number_per_genre_per_month,
+                               analytics_get_capacity_percent_per_artist=analytics_get_capacity_percent_per_artist,
+                               analytics_get_capacity_percent_per_concert_per_artist=analytics_get_capacity_percent_per_concert_per_artist,
+                               artist_and_concert_percent_list = artist_and_concert_percent_list2)
     else:
         return render_template('index.html')
-    return render_template('analytics.html',gigs_count=0,form=form, set=[], labels=[], values=[])
 
 
 
@@ -213,62 +177,27 @@ def search():
     artist = request.args.get('artist', '', type=str).strip()
     cur = get_db().cursor()
     if (artist == ''):
-        cur.execute("SELECT city.id, city.name, country.name "
-                    "FROM city "
-                    "INNER JOIN country "
-                    "ON city.country_id = country.id "
-                    "AND city.name like %s "
-                    "LIMIT 5", ('%' + filter + '%',))
+        rowsCities=db.selectCities(filter)
+
     else:
-        cur.execute("SELECT city.id, city.name, country.name "
-                    "FROM city "
-                    "INNER JOIN country "
-                    "ON city.country_id = country.id "
-                    "AND city.name like %s "
-                    "inner join location "
-                    "ON location.city_id = city.id "                                    
-                    "INNER JOIN concert "
-                    "on         location.id = concert.location_id "
-                    "INNER join concert_artist "
-                    "on         concert_artist.concert_id = concert_id "
-                    "INNER JOIN artist "
-                    "ON concert_artist.artist_id = artist.id "
-                    "AND artist.id = %s "
-                    "LIMIT 5", ('%' + filter + '%', artist ))
-    rows = cur.fetchall()
+        rowsCities = db.selectCitiesArtists(filter,artist)
+
 
     if (artist == ''):
-        cur.execute("SELECT country.id, country.name "
-                    "FROM country "
-                    "WHERE country.name like %s "
-                    "LIMIT 5", ('%' + filter + '%',))
-    else:
-        cur.execute("SELECT country.id, country.name "
-                    "FROM city "
-                    "INNER JOIN country "
-                    "ON city.country_id = country.id "
-                    "AND country.name like %s "
-                    "inner join location "
-                    "ON location.city_id = city.id "                                    
-                    "INNER JOIN concert "
-                    "on         location.id = concert.location_id "
-                    "INNER join concert_artist "
-                    "on         concert_artist.concert_id = concert_id "
-                    "INNER JOIN artist "
-                    "ON concert_artist.artist_id = artist.id "
-                    "AND artist.id = %s "
-                    "LIMIT 5", ('%' + filter + '%', artist ,))
+        rowsCountries = db.selectCountries(filter)
 
-    rows2 = cur.fetchall()
+    else:
+        rowsCountries = db.selectCountriesArtists(filter,artist)
+
 
     rowarray_list = {}
-    for row in rows:
+    for row in rowsCities:
         rowarray_list[row[0]] = row[1] + ', ' + row[2]
 
     j = [{'id': str(k), 'label': v, 'value': v, 'category' : 'Cities'} for k, v in rowarray_list.items()]
 
     rowarray_list = {}
-    for row in rows2:
+    for row in rowsCountries:
         rowarray_list[row[0]] = row[1]
 
     j += [{'id': str(k), 'label': v, 'value': v, 'category': 'Countries'} for k, v in rowarray_list.items()]
@@ -428,80 +357,31 @@ def buy_tickets():
 
         form = (request.form)
         if request.method == 'GET':
-            quantity = 1#form.quantity.data;
-            catagory_id = request.args.get('catagory_id');
+            quantity = request.args.get('quantity');#form.quantity.data;
+            catagory_id = 1#request.args.get('catagory_id');
             concert_id = request.args.get('concert_id');
             user_id = session['user_id'];
 
-            ticket = db.buy_ticket(quantity,catagory_id,user_id,concert_id)
-            for record in request.form.getlist('checks'):
-                print(record)
-                cur = get_db().cursor()
-                # Casting
-                record = get_record(record)
-                # Get artist id
-                cur.execute("SELECT artist.name, artist.id FROM artist,genre "
-                            "WHERE genre.genre_id = artist.genre_id AND artist_name = ? AND genre_name = ?", (record[0], record[4]))
-                artist_record = list(cur.fetchall()).pop(0)
-                # Get capacity and age limit for concert
-                cur.execute("SELECT capacity,age_limit FROM concert WHERE artist_id = ? AND date_time = ?",
-                            (artist_record[1], record[1]))
-                concert_data = list(cur.fetchall()).pop(0)
+            isSuccess = db.buy_ticket(quantity,catagory_id,user_id,concert_id)
 
-                # If there are tickets available
-                if int(concert_data[0]) > 0 and int(session['age']) >= int(concert_data[1]):
-                    try:
-                        cur.execute("INSERT INTO user_concert (username,artist_id,date_time) VALUES (?,?,?)",
-                                    (session['username'],artist_record[1] , record[1])) # New Add ticket to user_concert
-                        cur.execute("UPDATE concert SET capacity = (capacity - 1) WHERE artist_id = ? AND date_time = ?",
-                                    (artist_record[1], record[1]))  # Capacity update after purchase
+            return isSuccess
 
-                        #flash(f"You bought some tickets ! You can view them on your profile", 'success')
-                    except:
-                        pass
-                        #flash(f"Already have a ticket for {record[0]}'s gig on {record[1]} !", 'warning')
-                elif int(concert_data[0]) == 0:
-                    pass
-                    #flash(f"No tickets available for {record[0]}'s gig on {record[1]} !", 'error')
-                elif int(concert_data[1]) > int(session['age']):
-                    pass
-                    #flash(f"You are under age for {record[0]}'s gig on {record[1]} !", 'error')
-    else:
-        return;
+    return '0'
 
 
 @app.route("/recommendations", methods=['GET', 'POST'])
 def recommendations():
     if session['logged_in']:
+        top_5_genres= db.get_recommendations(session['username'])
         cur = get_db().cursor()
-        # We want to get the most popular genre by the user
-        # At first, We are looking for the number of tickets for each artist, Then we get there genre
-        # And in the end we group the number of tickets together for each genre
-        cur.execute("SELECT genre.genre_id, SUM(counter.job) as 'number_of_tickets' "
-                    "FROM artist,genre, "
-                    "(SELECT COUNT(user_concert.artist_id) AS 'job', user_concert.artist_id AS 'artist_id' "
-                    "FROM user_concert,concert,artist "
-                    "WHERE user_concert.artist_id = concert.artist_id AND user_concert.date_time = concert.date_time "
-                    "AND concert.artist_id = artist.id "
-                    "AND user_concert.username = %s "
-                    "GROUP BY concert.artist_id ORDER BY job DESC) AS counter "
-                    "WHERE counter.artist_id = artist.id AND artist.genre_id = genre.genre_id "
-                    "GROUP BY genre.genre_id ORDER BY number_of_tickets DESC LIMIT 5"
-                    , (session['username']))
-        top_5_genres = [item[0] for item in list(cur.fetchall())]
+
         print(len(top_5_genres))
-        cur.execute("SELECT genre.genre_id FROM genre")
-        top_5_genres = list(cur.fetchall()) if len(top_5_genres) == 0 else top_5_genres
+        if len(top_5_genres) == 0:
+            top_5_genres = db.get_all_genre()
+
         # Searching for top-10 gigs base on user's country and user's age
-        cur.execute("SELECT artist.name, concert.date_time, city.name, country.country.name, "
-                    "genre.genre_name, concert.age_limit, concert.price, concert.capacity "
-                    "FROM city, concert, artist, genre, country "
-                    "WHERE concert.city_id = city.id AND country.id = city.country_id "
-                    "AND concert.artist_id = artist.id AND artist.genre_id = genre.genre_id "
-                    "AND city.country_id = %s AND concert.age_limit <= %s AND genre.genre_id IN %s "
-                    "ORDER BY concert.price ASC LIMIT 10"
-                    , (session['country_id'], session['age'],top_5_genres))
-        records = cur.fetchall()
+        records = db.get_top_10_country_age_user(session['country_id'], session['age'],top_5_genres)
+
     else:
         return render_template('index.html')
     return render_template('result.html', orders=True, records=records)
@@ -516,21 +396,19 @@ def register():
     form = RegistrationForm(request.form)
     if request.method == 'POST':
 
-        cur = get_db().cursor()
+
 
         try:
-            cur.execute("INSERT INTO user (username,password) VALUES (%s,%s)", (form.username.data, form.password.data))
-            cur.connection.commit()
+            db.insert_user(form.username.data, form.password.data)
+
         except Exception as e:
             s = str(e)
             print(s)
             if 'UNIQUE' in s:
                 return '1'
             return '2'
+        user= db.select_user(form.username.data, form.password.data)
 
-        cur.execute("SELECT username, is_admin, id FROM user WHERE username = %s AND password = %s ",
-                    (form.username.data, form.password.data))
-        user = cur.fetchall()
         if len(user) != 0:
             record = list(user).pop(0)
             session['logged_in'] = True
